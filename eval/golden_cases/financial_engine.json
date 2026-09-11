@@ -1,0 +1,247 @@
+[
+  {
+    "name": "worked_example",
+    "input": {
+      "available_capital": 100000,
+      "feasibility_verdict": "recommended",
+      "scheme": "pmmy",
+      "scheme_terms": {
+        "margin_rate": 0.10,
+        "working_capital_rate": 0.20,
+        "interest_rate": 0.08,
+        "tenure_years": 7,
+        "moratorium_months": 6
+      }
+    },
+    "expected": {
+      "available_capital": 100000.0,
+      "project_cost": 1000000.0,
+      "capital_expenditure": 800000.0,
+      "working_capital_requirement": 200000.0,
+      "loan_amount": 900000.0,
+      "loan_eligibility": "eligible",
+      "scheme_name": "pmmy",
+      "scheme_tier.name": "pmmy",
+      "scheme_tier.rate": 0.08,
+      "scheme_tier.tenure_years": 7,
+      "scheme_tier.moratorium_months": 6,
+      "repayment_schedule.length": 90,
+      "repayment_schedule.0.period_type": "moratorium",
+      "repayment_schedule.0.principal": 0.0,
+      "repayment_schedule.-1.remaining_balance": 0.0
+    }
+  },
+  {
+    "name": "micro_finance_boundary",
+    "input": {
+      "available_capital": 14000,
+      "feasibility_verdict": "recommended",
+      "scheme": "pmmy",
+      "scheme_terms": {
+        "margin_rate": 0.10,
+        "working_capital_rate": 0.20,
+        "interest_rate": 0.08,
+        "tenure_years": 7,
+        "moratorium_months": 6
+      }
+    },
+    "expected": {
+      "project_cost": 140000.0,
+      "loan_amount": 126000.0,
+      "scheme_name": "pmmy",
+      "scheme_tier.name": "pmmy",
+      "scheme_tier.rate": 0.08,
+      "scheme_tier.tenure_years": 7,
+      "scheme_tier.moratorium_months": 6,
+      "repayment_schedule.length": 90,
+      "repayment_schedule.-1.remaining_balance": 0.0
+    }
+  },
+  {
+    "name": "marginal_case_is_not_eligible",
+    "input": {
+      "available_capital": 100000,
+      "feasibility_verdict": "marginal",
+      "scheme": "pmmy",
+      "scheme_terms": {
+        "margin_rate": 0.10,
+        "working_capital_rate": 0.20,
+        "interest_rate": 0.08,
+        "tenure_years": 7,
+        "moratorium_months": 6
+      }
+    },
+    "expected": {
+      "loan_eligibility": "not_eligible",
+      "scheme_name": "pmmy",
+      "scheme_tier.name": null,
+      "repayment_schedule.length": 0
+    }
+  },
+  {
+    "name": "pmegp_explicit_terms",
+    "input": {
+      "available_capital": 100000,
+      "feasibility_verdict": "recommended",
+      "scheme": "pmegp",
+      "scheme_terms": {
+        "margin_rate": 0.10,
+        "working_capital_rate": 0.20,
+        "interest_rate": 0.09,
+        "tenure_years": 5,
+        "moratorium_months": 3
+      }
+    },
+    "expected": {
+      "project_cost": 1000000.0,
+      "capital_expenditure": 800000.0,
+      "working_capital_requirement": 200000.0,
+      "loan_amount": 900000.0,
+      "loan_eligibility": "eligible",
+      "scheme_name": "pmegp",
+      "scheme_tier.name": "pmegp",
+      "scheme_tier.rate": 0.09,
+      "scheme_tier.tenure_years": 5,
+      "scheme_tier.moratorium_months": 3,
+      "repayment_schedule.length": 63,
+      "repayment_schedule.0.period_type": "moratorium",
+      "repayment_schedule.-1.remaining_balance": 0.0
+    }
+  },
+  {
+    "name": "stand_up_woman_explicit_terms",
+    "input": {
+      "available_capital": 200000,
+      "feasibility_verdict": "recommended",
+      "scheme": "stand_up_india",
+      "scheme_terms": {
+        "margin_rate": 0.15,
+        "working_capital_rate": 0.20,
+        "interest_rate": 0.10,
+        "tenure_years": 7,
+        "moratorium_months": 6
+      }
+    },
+    "expected": {
+      "project_cost": 1333333.33,
+      "capital_expenditure": 1066666.66,
+      "working_capital_requirement": 266666.67,
+      "loan_amount": 1133333.33,
+      "loan_eligibility": "eligible",
+      "scheme_name": "stand_up_india",
+      "scheme_tier.name": "stand_up_india",
+      "scheme_tier.rate": 0.10,
+      "scheme_tier.tenure_years": 7,
+      "scheme_tier.moratorium_months": 6,
+      "repayment_schedule.length": 90,
+      "repayment_schedule.0.period_type": "moratorium",
+      "repayment_schedule.-1.remaining_balance": 0.0
+    }
+  },
+  {
+    "name": "stand_up_sc_st_explicit_terms",
+    "input": {
+      "available_capital": 200000,
+      "feasibility_verdict": "recommended",
+      "scheme": "stand_up_india_sc_st",
+      "scheme_terms": {
+        "margin_rate": 0.15,
+        "working_capital_rate": 0.20,
+        "interest_rate": 0.10,
+        "tenure_years": 7,
+        "moratorium_months": 6
+      }
+    },
+    "expected": {
+      "project_cost": 1333333.33,
+      "capital_expenditure": 1066666.66,
+      "working_capital_requirement": 266666.67,
+      "loan_amount": 1133333.33,
+      "loan_eligibility": "eligible",
+      "scheme_name": "stand_up_india_sc_st",
+      "scheme_tier.name": "stand_up_india_sc_st",
+      "scheme_tier.rate": 0.10,
+      "scheme_tier.tenure_years": 7,
+      "scheme_tier.moratorium_months": 6,
+      "repayment_schedule.length": 90,
+      "repayment_schedule.0.period_type": "moratorium",
+      "repayment_schedule.-1.remaining_balance": 0.0
+    }
+  },
+  {
+    "name": "day_nrlm_explicit_terms",
+    "input": {
+      "available_capital": 50000,
+      "feasibility_verdict": "recommended",
+      "scheme": "day_nrlm_shg_finance",
+      "scheme_terms": {
+        "margin_rate": 0.10,
+        "working_capital_rate": 0.25,
+        "interest_rate": 0.12,
+        "tenure_years": 4,
+        "moratorium_months": 2
+      }
+    },
+    "expected": {
+      "project_cost": 500000.0,
+      "capital_expenditure": 375000.0,
+      "working_capital_requirement": 125000.0,
+      "loan_amount": 450000.0,
+      "loan_eligibility": "eligible",
+      "scheme_name": "day_nrlm_shg_finance",
+      "scheme_tier.name": "day_nrlm_shg_finance",
+      "scheme_tier.rate": 0.12,
+      "scheme_tier.tenure_years": 4,
+      "scheme_tier.moratorium_months": 2,
+      "repayment_schedule.length": 50,
+      "repayment_schedule.0.period_type": "moratorium",
+      "repayment_schedule.-1.remaining_balance": 0.0
+    }
+  },
+  {
+    "name": "zero_capital",
+    "input": {
+      "available_capital": 0,
+      "feasibility_verdict": "recommended",
+      "scheme": "pmmy",
+      "scheme_terms": {
+        "margin_rate": 0.10,
+        "working_capital_rate": 0.20,
+        "interest_rate": 0.08,
+        "tenure_years": 7,
+        "moratorium_months": 6
+      }
+    },
+    "expected": {
+      "project_cost": 0.0,
+      "loan_amount": 0.0,
+      "loan_eligibility": "eligible",
+      "scheme_name": "pmmy",
+      "repayment_schedule.length": 90,
+      "repayment_schedule.-1.remaining_balance": 0.0
+    }
+  },
+  {
+    "name": "pmmy_loan_limit_rejected",
+    "input": {
+      "available_capital": 2500000,
+      "feasibility_verdict": "recommended",
+      "scheme": "pmmy",
+      "scheme_terms": {
+        "margin_rate": 0.10,
+        "working_capital_rate": 0.20,
+        "interest_rate": 0.08,
+        "tenure_years": 7,
+        "moratorium_months": 6
+      }
+    },
+    "expected": {
+      "project_cost": 25000000.0,
+      "loan_amount": 22500000.0,
+      "loan_eligibility": "not_eligible",
+      "scheme_name": "pmmy",
+      "repayment_schedule.length": 0,
+      "scheme_tier.name": null
+    }
+  }
+]
