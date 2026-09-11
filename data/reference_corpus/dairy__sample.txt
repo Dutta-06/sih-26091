@@ -1,0 +1,21 @@
+[SAMPLE PLACEHOLDER CONTENT -- not a real NABARD/KVIC report. Written for
+this prototype to exercise the RAG pipeline end-to-end. Replace with real
+model project reports before any real use; see IMPLEMENTATION_PLAN.md
+Section 4 and TECHNICAL_SETUP.md Section 8.6.]
+
+Dairy - small-holder milch animal units. A common rural micro-enterprise
+model involves 2-5 crossbred milch animals, with capital covering animal
+purchase, a basic shed, and initial fodder stock. Viable sub-niches
+typically include raw milk supply to a local dairy cooperative
+collection point, small-batch curd/paneer production sold directly to
+nearby households and shops, and door-step milk delivery in villages
+without an organized collection route. Saturation in a given locality
+depends heavily on whether a cooperative collection point already exists
+nearby and how many other households in the same radius already keep
+milch animals for sale rather than only for household consumption.
+
+Dairy - fodder and feed supply. A secondary niche adjacent to dairy
+farming is organized fodder cultivation and feed-mix supply to other
+dairy farmers in the same cluster, which tends to be less saturated in
+areas where dairy farming itself is common but fodder is still
+individually sourced.

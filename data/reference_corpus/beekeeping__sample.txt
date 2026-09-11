@@ -1,0 +1,14 @@
+[SAMPLE PLACEHOLDER CONTENT -- not a real NABARD/KVIC report. Written for
+this prototype to exercise the RAG pipeline end-to-end. Replace with real
+model project reports before any real use; see IMPLEMENTATION_PLAN.md
+Section 4 and TECHNICAL_SETUP.md Section 8.6.]
+
+Beekeeping - small apiary unit. A starter unit typically covers 10-20 bee
+boxes, with income from honey sale and, at larger scale, pollination
+services to nearby orchard or mustard-growing farmers. Sub-niches include
+raw honey sold locally in bulk to traders (lower margin, low marketing
+effort), bottled/branded honey sold directly to consumers (higher margin,
+requires basic packaging and a sales channel), and beeswax by-product
+sale to candle or cosmetic makers. This category tends to remain
+low-saturation in most rural clusters, since it requires specific
+training and is far less commonly taken up than dairy or food processing.

@@ -1,0 +1,21 @@
+# Core orchestration
+langgraph>=0.2,<0.3
+langchain-core>=0.3,<0.4
+
+# State / config
+pydantic>=2.6,<3
+pydantic-settings>=2.2,<3
+python-dotenv>=1.0,<2
+
+# Data connectors
+requests>=2.31,<3
+scipy>=1.11,<2
+numpy>=1.26,<2
+
+# RAG (Opportunity Agent)
+scikit-learn>=1.4,<2
+faiss-cpu>=1.8,<2
+pypdf>=4.0,<5           # only needed if real NABARD/KVIC PDFs are ingested
+
+# Testing
+pytest>=8.0,<9

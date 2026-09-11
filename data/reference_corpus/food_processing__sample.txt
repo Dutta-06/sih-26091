@@ -1,0 +1,15 @@
+[SAMPLE PLACEHOLDER CONTENT -- not a real NABARD/KVIC report. Written for
+this prototype to exercise the RAG pipeline end-to-end. Replace with real
+model project reports before any real use; see IMPLEMENTATION_PLAN.md
+Section 4 and TECHNICAL_SETUP.md Section 8.6.]
+
+Food processing - small-batch agro-processing unit. Common rural
+micro-enterprise sub-niches include grain milling and pulse processing
+(flour, dal) for a local catchment too small to be served by a large
+mill, spice grinding and packaging sold under a small local brand, and
+seasonal fruit/vegetable preservation (pickles, jams, sun-dried produce)
+timed to local harvest gluts. Grain milling tends to reach high
+saturation quickly in any village with year-round cereal demand, while
+seasonal preservation and small-batch branded spice packaging remain
+lower-saturation options for longer, since they require more active
+marketing rather than simply serving walk-in demand.

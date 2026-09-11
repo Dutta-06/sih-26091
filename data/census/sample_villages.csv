@@ -1,0 +1,12 @@
+village_name,district,state,lat,lon,population
+Sample Village A,Sample District,Sample State,20.0000,78.0000,3200
+Sample Village B,Sample District,Sample State,20.0210,78.0150,1800
+Sample Village C,Sample District,Sample State,19.9850,77.9800,2600
+Sample Village D,Sample District,Sample State,20.0400,77.9700,900
+Sample Village E,Sample District,Sample State,20.0600,78.0400,4100
+Sample Village F,Sample District,Sample State,19.9600,78.0300,1500
+Sample Village G,Sample District,Sample State,20.0900,78.0900,700
+Sample Village H,Sample District,Sample State,19.9300,77.9300,2100
+Sample Village I,Neighboring District,Sample State,20.1500,78.1500,5200
+Sample Village J,Neighboring District,Sample State,19.8500,77.8500,1300
+Sample Village Alpha,Other District,Other State,20.0050,78.0050,2900

@@ -2,6 +2,8 @@
 
 This document describes how to set up, configure, and run the prototype locally. It is organized to mirror the architecture in the technical design document: one section per orchestration layer, and one subsection per agent or deterministic node, so that each feature unit in the design maps to exactly one setup section here.
 
+> **Scope note (added):** This repository currently implements only the **Market Reach Agent** (5.3) and **Opportunity Agent** (5.4) sections below, plus the shared orchestration/state/config scaffolding needed to run them as LangGraph nodes. Every other section (all other agents, Modules 2 and 3, the multilingual layer, the FastAPI app) is documented here for future reference and integration compatibility, but is not built yet. See `IMPLEMENTATION_PLAN.md` for the two-agent build's scope and feasibility notes.
+
 ## Table of Contents
 
 1. [Repository Structure](#1-repository-structure)

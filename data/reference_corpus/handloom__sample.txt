@@ -1,0 +1,16 @@
+[SAMPLE PLACEHOLDER CONTENT -- not a real NABARD/KVIC report. Written for
+this prototype to exercise the RAG pipeline end-to-end. Replace with real
+model project reports before any real use; see IMPLEMENTATION_PLAN.md
+Section 4 and TECHNICAL_SETUP.md Section 8.6.]
+
+Handloom - single-loom weaving unit. A typical entry point is a
+single-loom household unit producing regional cotton or silk textiles,
+either for a master weaver on a job-work basis or independently for
+direct local sale. Sub-niches include plain utility cloth (lower margin,
+steadier local demand), festival/occasion textiles (higher margin,
+seasonal demand concentrated around specific months), and small-batch
+home-furnishing textiles sold through a nearby weekly market or a
+regional handicraft outlet. Saturation is typically higher in villages
+already known as a weaving cluster and lower in villages adjacent to such
+a cluster that have supply-chain access (yarn, dyeing) but few existing
+looms.
