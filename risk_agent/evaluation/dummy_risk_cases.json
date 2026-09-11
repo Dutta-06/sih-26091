@@ -1,0 +1,626 @@
+[
+  {
+    "case_id": "R001",
+    "name": "Local Vegetable Seller",
+    "business_category": "vegetable retail",
+    "origin": {
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "distribution_point": {
+      "lat": 28.6200,
+      "lon": 77.2100
+    },
+    "price_history": [20, 21, 20, 21, 22, 21, 20, 21, 22, 21, 20, 21],
+    "buyer_concentration": 0.10,
+    "perishability_days": 5,
+    "raw_material_dependency": 0.20,
+    "licensing_complexity": 0.10,
+    "capital_intensity": 0.20,
+    "market_saturation": 0.20,
+    "skill_dependency": 0.20,
+    "infrastructure_risk": 0.10,
+
+    "expected": {
+      "overall": "LOW",
+      "route": "LOW",
+      "seasonal": "LOW",
+      "structural_high_risks": []
+    }
+  },
+
+  {
+    "case_id": "R002",
+    "name": "Local Tailoring Shop",
+    "business_category": "tailoring",
+    "origin": {
+      "lat": 28.6200,
+      "lon": 77.2100
+    },
+    "distribution_point": {
+      "lat": 28.6250,
+      "lon": 77.2150
+    },
+    "price_history": [500, 510, 505, 500, 515, 510, 505, 510, 500, 515, 510, 505],
+    "buyer_concentration": 0.15,
+    "perishability_days": 365,
+    "raw_material_dependency": 0.20,
+    "licensing_complexity": 0.10,
+    "capital_intensity": 0.20,
+    "market_saturation": 0.25,
+    "skill_dependency": 0.40,
+    "infrastructure_risk": 0.10,
+
+    "expected": {
+      "overall": "LOW",
+      "route": "LOW",
+      "seasonal": "LOW",
+      "structural_high_risks": []
+    }
+  },
+
+  {
+    "case_id": "R003",
+    "name": "Small Grocery Store",
+    "business_category": "grocery retail",
+    "origin": {
+      "lat": 28.6100,
+      "lon": 77.2000
+    },
+    "distribution_point": {
+      "lat": 28.6400,
+      "lon": 77.2200
+    },
+    "price_history": [100, 102, 101, 103, 99, 101, 100, 102, 101, 100, 102, 101],
+    "buyer_concentration": 0.20,
+    "perishability_days": 30,
+    "raw_material_dependency": 0.30,
+    "licensing_complexity": 0.20,
+    "capital_intensity": 0.30,
+    "market_saturation": 0.40,
+    "skill_dependency": 0.20,
+    "infrastructure_risk": 0.20,
+
+    "expected": {
+      "overall": "LOW",
+      "route": "LOW",
+      "seasonal": "LOW",
+      "structural_high_risks": []
+    }
+  },
+
+  {
+    "case_id": "R004",
+    "name": "Small Dairy Business",
+    "business_category": "dairy",
+    "origin": {
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "distribution_point": {
+      "lat": 28.6800,
+      "lon": 77.2500
+    },
+    "price_history": [40, 41, 39, 42, 40, 41, 39, 43, 40, 42, 39, 41],
+    "buyer_concentration": 0.25,
+    "perishability_days": 3,
+    "raw_material_dependency": 0.30,
+    "licensing_complexity": 0.30,
+    "capital_intensity": 0.30,
+    "market_saturation": 0.30,
+    "skill_dependency": 0.30,
+    "infrastructure_risk": 0.30,
+
+    "expected": {
+      "overall": "MEDIUM",
+      "route": "LOW",
+      "seasonal": "LOW",
+      "structural_high_risks": []
+    }
+  },
+
+  {
+    "case_id": "R005",
+    "name": "Wholesale Fruit Seller",
+    "business_category": "fruit wholesale",
+    "origin": {
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "distribution_point": {
+      "lat": 28.8500,
+      "lon": 77.3500
+    },
+    "price_history": [20, 35, 18, 40, 22, 37, 19, 42, 21, 38, 20, 40],
+    "buyer_concentration": 0.30,
+    "perishability_days": 4,
+    "raw_material_dependency": 0.40,
+    "licensing_complexity": 0.20,
+    "capital_intensity": 0.30,
+    "market_saturation": 0.30,
+    "skill_dependency": 0.30,
+    "infrastructure_risk": 0.30,
+
+    "expected": {
+      "overall": "HIGH",
+      "route": "MEDIUM",
+      "seasonal": "HIGH",
+      "structural_high_risks": []
+    }
+  },
+
+  {
+    "case_id": "R006",
+    "name": "Single Buyer Handicraft Supplier",
+    "business_category": "handicrafts",
+    "origin": {
+      "lat": 28.6200,
+      "lon": 77.2100
+    },
+    "distribution_point": {
+      "lat": 28.6250,
+      "lon": 77.2150
+    },
+    "price_history": [100, 101, 99, 100, 101, 100, 99, 101, 100, 99, 100, 101],
+    "buyer_concentration": 0.90,
+    "perishability_days": 365,
+    "raw_material_dependency": 0.50,
+    "licensing_complexity": 0.20,
+    "capital_intensity": 0.30,
+    "market_saturation": 0.30,
+    "skill_dependency": 0.70,
+    "infrastructure_risk": 0.20,
+
+    "expected": {
+      "overall": "HIGH",
+      "route": "LOW",
+      "seasonal": "LOW",
+      "structural_high_risks": [
+        "buyer_concentration"
+      ]
+    }
+  },
+
+  {
+    "case_id": "R007",
+    "name": "Highly Perishable Fish Seller",
+    "business_category": "fish retail",
+    "origin": {
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "distribution_point": {
+      "lat": 28.6500,
+      "lon": 77.2300
+    },
+    "price_history": [200, 202, 198, 201, 199, 200, 201, 198, 202, 200, 199, 201],
+    "buyer_concentration": 0.20,
+    "perishability_days": 1,
+    "raw_material_dependency": 0.40,
+    "licensing_complexity": 0.40,
+    "capital_intensity": 0.40,
+    "market_saturation": 0.40,
+    "skill_dependency": 0.30,
+    "infrastructure_risk": 0.80,
+
+    "expected": {
+      "overall": "HIGH",
+      "route": "LOW",
+      "seasonal": "LOW",
+      "structural_high_risks": [
+        "perishability",
+        "infrastructure"
+      ]
+    }
+  },
+
+  {
+    "case_id": "R008",
+    "name": "High Capital Manufacturing",
+    "business_category": "small manufacturing",
+    "origin": {
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "distribution_point": {
+      "lat": 28.7000,
+      "lon": 77.3000
+    },
+    "price_history": [100, 101, 99, 102, 100, 98, 101, 100, 99, 102, 100, 101],
+    "buyer_concentration": 0.30,
+    "perishability_days": 365,
+    "raw_material_dependency": 0.80,
+    "licensing_complexity": 0.50,
+    "capital_intensity": 0.95,
+    "market_saturation": 0.60,
+    "skill_dependency": 0.70,
+    "infrastructure_risk": 0.50,
+
+    "expected": {
+      "overall": "HIGH",
+      "route": "MEDIUM",
+      "seasonal": "LOW",
+      "structural_high_risks": [
+        "capital_intensity",
+        "raw_material_dependency"
+      ]
+    }
+  },
+
+  {
+    "case_id": "R009",
+    "name": "Regulated Food Processing",
+    "business_category": "food processing",
+    "origin": {
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "distribution_point": {
+      "lat": 28.6200,
+      "lon": 77.2150
+    },
+    "price_history": [100, 101, 100, 99, 101, 100, 102, 99, 100, 101, 100, 99],
+    "buyer_concentration": 0.20,
+    "perishability_days": 20,
+    "raw_material_dependency": 0.50,
+    "licensing_complexity": 0.95,
+    "capital_intensity": 0.60,
+    "market_saturation": 0.50,
+    "skill_dependency": 0.50,
+    "infrastructure_risk": 0.40,
+
+    "expected": {
+      "overall": "HIGH",
+      "route": "LOW",
+      "seasonal": "LOW",
+      "structural_high_risks": [
+        "licensing"
+      ]
+    }
+  },
+
+  {
+    "case_id": "R010",
+    "name": "Oversaturated Tea Stall",
+    "business_category": "tea stall",
+    "origin": {
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "distribution_point": {
+      "lat": 28.6160,
+      "lon": 77.2110
+    },
+    "price_history": [20, 20, 21, 20, 20, 21, 20, 20, 21, 20, 20, 21],
+    "buyer_concentration": 0.20,
+    "perishability_days": 2,
+    "raw_material_dependency": 0.30,
+    "licensing_complexity": 0.10,
+    "capital_intensity": 0.20,
+    "market_saturation": 0.95,
+    "skill_dependency": 0.20,
+    "infrastructure_risk": 0.20,
+
+    "expected": {
+      "overall": "HIGH",
+      "route": "LOW",
+      "seasonal": "LOW",
+      "structural_high_risks": [
+        "market_saturation"
+      ]
+    }
+  },
+
+  {
+    "case_id": "R011",
+    "name": "Remote Village Retailer",
+    "business_category": "general retail",
+    "origin": {
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "distribution_point": {
+      "lat": 29.5000,
+      "lon": 77.9000
+    },
+    "price_history": [100, 101, 100, 99, 101, 100, 99, 100, 101, 100, 99, 101],
+    "buyer_concentration": 0.20,
+    "perishability_days": 30,
+    "raw_material_dependency": 0.40,
+    "licensing_complexity": 0.20,
+    "capital_intensity": 0.30,
+    "market_saturation": 0.30,
+    "skill_dependency": 0.20,
+    "infrastructure_risk": 0.80,
+
+    "expected": {
+      "overall": "HIGH",
+      "route": "HIGH",
+      "seasonal": "LOW",
+      "structural_high_risks": [
+        "infrastructure"
+      ]
+    }
+  },
+
+  {
+    "case_id": "R012",
+    "name": "Stable Bakery",
+    "business_category": "bakery",
+    "origin": {
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "distribution_point": {
+      "lat": 28.6200,
+      "lon": 77.2150
+    },
+    "price_history": [100, 100, 101, 100, 99, 100, 100, 101, 100, 99, 100, 100],
+    "buyer_concentration": 0.15,
+    "perishability_days": 5,
+    "raw_material_dependency": 0.30,
+    "licensing_complexity": 0.20,
+    "capital_intensity": 0.30,
+    "market_saturation": 0.30,
+    "skill_dependency": 0.30,
+    "infrastructure_risk": 0.20,
+
+    "expected": {
+      "overall": "LOW",
+      "route": "LOW",
+      "seasonal": "LOW",
+      "structural_high_risks": []
+    }
+  },
+
+  {
+    "case_id": "R013",
+    "name": "Seasonal Crop Trader",
+    "business_category": "agricultural trading",
+    "origin": {
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "distribution_point": {
+      "lat": 28.8000,
+      "lon": 77.3000
+    },
+    "price_history": [50, 90, 45, 100, 55, 95, 48, 105, 50, 98, 45, 100],
+    "buyer_concentration": 0.30,
+    "perishability_days": 10,
+    "raw_material_dependency": 0.70,
+    "licensing_complexity": 0.20,
+    "capital_intensity": 0.40,
+    "market_saturation": 0.40,
+    "skill_dependency": 0.50,
+    "infrastructure_risk": 0.40,
+
+    "expected": {
+      "overall": "HIGH",
+      "route": "MEDIUM",
+      "seasonal": "HIGH",
+      "structural_high_risks": []
+    }
+  },
+
+  {
+    "case_id": "R014",
+    "name": "Moderate Furniture Workshop",
+    "business_category": "furniture",
+    "origin": {
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "distribution_point": {
+      "lat": 28.6800,
+      "lon": 77.2600
+    },
+    "price_history": [500, 510, 505, 515, 500, 505, 510, 500, 515, 505, 510, 500],
+    "buyer_concentration": 0.40,
+    "perishability_days": 365,
+    "raw_material_dependency": 0.65,
+    "licensing_complexity": 0.30,
+    "capital_intensity": 0.65,
+    "market_saturation": 0.50,
+    "skill_dependency": 0.70,
+    "infrastructure_risk": 0.40,
+
+    "expected": {
+      "overall": "MEDIUM",
+      "route": "LOW",
+      "seasonal": "LOW",
+      "structural_high_risks": []
+    }
+  },
+
+  {
+    "case_id": "R015",
+    "name": "Single Skill Artisan",
+    "business_category": "handicraft artisan",
+    "origin": {
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "distribution_point": {
+      "lat": 28.6250,
+      "lon": 77.2150
+    },
+    "price_history": [100, 101, 99, 100, 101, 100, 99, 100, 101, 100, 99, 100],
+    "buyer_concentration": 0.30,
+    "perishability_days": 365,
+    "raw_material_dependency": 0.40,
+    "licensing_complexity": 0.20,
+    "capital_intensity": 0.20,
+    "market_saturation": 0.30,
+    "skill_dependency": 0.95,
+    "infrastructure_risk": 0.20,
+
+    "expected": {
+      "overall": "HIGH",
+      "route": "LOW",
+      "seasonal": "LOW",
+      "structural_high_risks": [
+        "skill_dependency"
+      ]
+    }
+  },
+
+  {
+    "case_id": "R016",
+    "name": "Multiple Buyer Grocery",
+    "business_category": "grocery",
+    "origin": {
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "distribution_point": {
+      "lat": 28.6300,
+      "lon": 77.2200
+    },
+    "price_history": [100, 101, 100, 99, 100, 101, 100, 99, 101, 100, 100, 99],
+    "buyer_concentration": 0.05,
+    "perishability_days": 30,
+    "raw_material_dependency": 0.20,
+    "licensing_complexity": 0.10,
+    "capital_intensity": 0.20,
+    "market_saturation": 0.20,
+    "skill_dependency": 0.10,
+    "infrastructure_risk": 0.10,
+
+    "expected": {
+      "overall": "LOW",
+      "route": "LOW",
+      "seasonal": "LOW",
+      "structural_high_risks": []
+    }
+  },
+
+  {
+    "case_id": "R017",
+    "name": "Moderately Seasonal Flower Seller",
+    "business_category": "flowers",
+    "origin": {
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "distribution_point": {
+      "lat": 28.6700,
+      "lon": 77.2500
+    },
+    "price_history": [100, 120, 80, 110, 95, 115, 85, 105, 100, 118, 82, 108],
+    "buyer_concentration": 0.30,
+    "perishability_days": 2,
+    "raw_material_dependency": 0.60,
+    "licensing_complexity": 0.20,
+    "capital_intensity": 0.30,
+    "market_saturation": 0.40,
+    "skill_dependency": 0.30,
+    "infrastructure_risk": 0.50,
+
+    "expected": {
+      "overall": "MEDIUM",
+      "route": "LOW",
+      "seasonal": "MEDIUM",
+      "structural_high_risks": []
+    }
+  },
+
+  {
+    "case_id": "R018",
+    "name": "High Buyer Dependence Manufacturer",
+    "business_category": "component manufacturing",
+    "origin": {
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "distribution_point": {
+      "lat": 28.6200,
+      "lon": 77.2150
+    },
+    "price_history": [100, 101, 100, 99, 101, 100, 99, 100, 101, 100, 99, 101],
+    "buyer_concentration": 0.98,
+    "perishability_days": 365,
+    "raw_material_dependency": 0.80,
+    "licensing_complexity": 0.40,
+    "capital_intensity": 0.80,
+    "market_saturation": 0.60,
+    "skill_dependency": 0.60,
+    "infrastructure_risk": 0.40,
+
+    "expected": {
+      "overall": "HIGH",
+      "route": "LOW",
+      "seasonal": "LOW",
+      "structural_high_risks": [
+        "buyer_concentration",
+        "raw_material_dependency",
+        "capital_intensity"
+      ]
+    }
+  },
+
+  {
+    "case_id": "R019",
+    "name": "Moderate Retail Business",
+    "business_category": "retail",
+    "origin": {
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "distribution_point": {
+      "lat": 28.7500,
+      "lon": 77.2800
+    },
+    "price_history": [100, 104, 97, 103, 98, 102, 99, 104, 97, 103, 98, 102],
+    "buyer_concentration": 0.45,
+    "perishability_days": 20,
+    "raw_material_dependency": 0.45,
+    "licensing_complexity": 0.30,
+    "capital_intensity": 0.50,
+    "market_saturation": 0.55,
+    "skill_dependency": 0.40,
+    "infrastructure_risk": 0.35,
+
+    "expected": {
+      "overall": "MEDIUM",
+      "route": "MEDIUM",
+      "seasonal": "LOW",
+      "structural_high_risks": []
+    }
+  },
+
+  {
+    "case_id": "R020",
+    "name": "High Risk Rural Food Business",
+    "business_category": "food distribution",
+    "origin": {
+      "lat": 28.6139,
+      "lon": 77.2090
+    },
+    "distribution_point": {
+      "lat": 29.2000,
+      "lon": 77.7000
+    },
+    "price_history": [50, 100, 45, 110, 55, 105, 48, 115, 52, 108, 46, 112],
+    "buyer_concentration": 0.85,
+    "perishability_days": 2,
+    "raw_material_dependency": 0.85,
+    "licensing_complexity": 0.60,
+    "capital_intensity": 0.70,
+    "market_saturation": 0.70,
+    "skill_dependency": 0.60,
+    "infrastructure_risk": 0.90,
+
+    "expected": {
+      "overall": "HIGH",
+      "route": "HIGH",
+      "seasonal": "HIGH",
+      "structural_high_risks": [
+        "buyer_concentration",
+        "perishability",
+        "raw_material_dependency",
+        "infrastructure"
+      ]
+    }
+  }
+]
