@@ -1,0 +1,577 @@
+[
+  {
+    "case_id": "D001",
+    "name": "Complete profile, no voice collection needed",
+    "language": "Hindi",
+    "entrepreneur_profile": {
+      "name": "Sunita Devi",
+      "aadhaar_number": "123456789012",
+      "pan_number": "ABCDE1234F",
+      "phone_number": "9876543210",
+      "bank_account": "1234567890",
+      "guarantor_name": "Ram Devi",
+      "available_capital": 100000,
+      "location": {
+        "address": "Village Rampur, Block Danapur, Bihar"
+      }
+    },
+    "business_shortlist": [
+      {
+        "business_category": "small-scale vegetable vending",
+        "selected": true
+      }
+    ],
+    "financial_plan": {
+      "project_cost": 1000000,
+      "loan_eligibility": 900000,
+      "scheme_tier": "term_loan"
+    },
+    "feasibility_record": {
+      "verdict": "viable"
+    },
+    "dummy_user_responses": {
+      "Udyam Registration": {},
+      "KYC": {},
+      "Loan Application": {}
+    },
+    "expected": {
+      "document_status": {
+        "Udyam Registration": "complete",
+        "KYC": "complete",
+        "Loan Application": "complete"
+      },
+      "form_data": {
+        "Udyam Registration": {
+          "applicant_name": "Sunita Devi",
+          "aadhaar_number": "123456789012",
+          "business_category": "small-scale vegetable vending",
+          "business_address": "Village Rampur, Block Danapur, Bihar",
+          "investment_amount": 1000000,
+          "bank_account": "1234567890"
+        },
+        "KYC": {
+          "applicant_name": "Sunita Devi",
+          "aadhaar_number": "123456789012",
+          "pan_number": "ABCDE1234F",
+          "residential_address": "Village Rampur, Block Danapur, Bihar",
+          "phone_number": "9876543210"
+        },
+        "Loan Application": {
+          "applicant_name": "Sunita Devi",
+          "business_category": "small-scale vegetable vending",
+          "project_cost": 1000000,
+          "loan_eligibility": 900000,
+          "scheme_tier": "term_loan",
+          "margin_capital": 100000,
+          "feasibility_verdict": "viable",
+          "guarantor_name": "Ram Devi"
+        }
+      },
+      "missing_required_after_collection": {
+        "Udyam Registration": [],
+        "KYC": [],
+        "Loan Application": []
+      }
+    }
+  },
+  {
+    "case_id": "D002",
+    "name": "Missing optional fields only — still COMPLETE",
+    "language": "Hindi",
+    "entrepreneur_profile": {
+      "name": "Ravi Kumar",
+      "aadhaar_number": "234567890123",
+      "phone_number": "9123456780",
+      "available_capital": 50000,
+      "location": {
+        "address": "Ward 4, Muzaffarpur, Bihar"
+      }
+    },
+    "business_shortlist": [
+      {
+        "business_category": "tailoring",
+        "selected": true
+      }
+    ],
+    "financial_plan": {
+      "project_cost": 500000,
+      "loan_eligibility": 450000,
+      "scheme_tier": "term_loan"
+    },
+    "feasibility_record": {
+      "verdict": "viable"
+    },
+    "dummy_user_responses": {
+      "Udyam Registration": {},
+      "KYC": {},
+      "Loan Application": {}
+    },
+    "expected": {
+      "document_status": {
+        "Udyam Registration": "complete",
+        "KYC": "complete",
+        "Loan Application": "complete"
+      },
+      "form_data": {
+        "Udyam Registration": {
+          "applicant_name": "Ravi Kumar",
+          "aadhaar_number": "234567890123",
+          "business_category": "tailoring",
+          "business_address": "Ward 4, Muzaffarpur, Bihar",
+          "investment_amount": 500000
+        },
+        "KYC": {
+          "applicant_name": "Ravi Kumar",
+          "aadhaar_number": "234567890123",
+          "residential_address": "Ward 4, Muzaffarpur, Bihar",
+          "phone_number": "9123456780"
+        },
+        "Loan Application": {
+          "applicant_name": "Ravi Kumar",
+          "business_category": "tailoring",
+          "project_cost": 500000,
+          "loan_eligibility": 450000,
+          "scheme_tier": "term_loan",
+          "margin_capital": 50000,
+          "feasibility_verdict": "viable"
+        }
+      },
+      "missing_required_after_collection": {
+        "Udyam Registration": [],
+        "KYC": [],
+        "Loan Application": []
+      }
+    }
+  },
+  {
+    "case_id": "D003",
+    "name": "Required user fields missing, collected through voice",
+    "language": "Hindi",
+    "entrepreneur_profile": {
+      "name": "Meena Kumari",
+      "available_capital": 30000,
+      "location": {
+        "address": "Village Sitapur, Bihar"
+      }
+    },
+    "business_shortlist": [
+      {
+        "business_category": "dairy processing",
+        "selected": true
+      }
+    ],
+    "financial_plan": {
+      "project_cost": 300000,
+      "loan_eligibility": 270000,
+      "scheme_tier": "micro_finance"
+    },
+    "feasibility_record": {
+      "verdict": "viable"
+    },
+    "dummy_user_responses": {
+      "Udyam Registration": {
+        "aadhaar_number": "345678901234"
+      },
+      "KYC": {
+        "phone_number": "9988776655"
+      },
+      "Loan Application": {}
+    },
+    "expected": {
+      "document_status": {
+        "Udyam Registration": "complete",
+        "KYC": "complete",
+        "Loan Application": "complete"
+      },
+      "form_data": {
+        "Udyam Registration": {
+          "applicant_name": "Meena Kumari",
+          "aadhaar_number": "345678901234",
+          "business_category": "dairy processing",
+          "business_address": "Village Sitapur, Bihar",
+          "investment_amount": 300000
+        },
+        "KYC": {
+          "applicant_name": "Meena Kumari",
+          "aadhaar_number": "345678901234",
+          "residential_address": "Village Sitapur, Bihar",
+          "phone_number": "9988776655"
+        },
+        "Loan Application": {
+          "applicant_name": "Meena Kumari",
+          "business_category": "dairy processing",
+          "project_cost": 300000,
+          "loan_eligibility": 270000,
+          "scheme_tier": "micro_finance",
+          "margin_capital": 30000,
+          "feasibility_verdict": "viable"
+        }
+      },
+      "missing_required_after_collection": {
+        "Udyam Registration": [],
+        "KYC": [],
+        "Loan Application": []
+      },
+      "cross_document_reuse": {
+        "note": "Aadhaar is collected once for Udyam Registration and reused for KYC.",
+        "field_key": "aadhaar_number",
+        "reused_in_document": "KYC"
+      }
+    }
+  },
+  {
+    "case_id": "D004",
+    "name": "No voice responses — required user fields remain MISSING",
+    "language": "Hindi",
+    "entrepreneur_profile": {
+      "name": "Anita Sharma",
+      "available_capital": 20000,
+      "location": {
+        "address": "Village Kasba, Bihar"
+      }
+    },
+    "business_shortlist": [
+      {
+        "business_category": "handicraft making",
+        "selected": true
+      }
+    ],
+    "financial_plan": {
+      "project_cost": 200000,
+      "loan_eligibility": 180000,
+      "scheme_tier": "micro_finance"
+    },
+    "feasibility_record": {
+      "verdict": "viable"
+    },
+    "dummy_user_responses": {
+      "Udyam Registration": {},
+      "KYC": {},
+      "Loan Application": {}
+    },
+    "expected": {
+      "document_status": {
+        "Udyam Registration": "pending",
+        "KYC": "pending",
+        "Loan Application": "complete"
+      },
+      "form_data": {
+        "Udyam Registration": {
+          "applicant_name": "Anita Sharma",
+          "business_category": "handicraft making",
+          "business_address": "Village Kasba, Bihar",
+          "investment_amount": 200000
+        },
+        "KYC": {
+          "applicant_name": "Anita Sharma",
+          "residential_address": "Village Kasba, Bihar"
+        },
+        "Loan Application": {
+          "applicant_name": "Anita Sharma",
+          "business_category": "handicraft making",
+          "project_cost": 200000,
+          "loan_eligibility": 180000,
+          "scheme_tier": "micro_finance",
+          "margin_capital": 20000,
+          "feasibility_verdict": "viable"
+        }
+      },
+      "missing_required_after_collection": {
+        "Udyam Registration": [
+          "aadhaar_number"
+        ],
+        "KYC": [
+          "aadhaar_number",
+          "phone_number"
+        ],
+        "Loan Application": []
+      }
+    }
+  },
+  {
+    "case_id": "D005",
+    "name": "Blank voice answers must not be accepted",
+    "language": "Hindi",
+    "entrepreneur_profile": {
+      "name": "Deepak Yadav",
+      "available_capital": 40000,
+      "location": {
+        "address": "Village Bela, Bihar"
+      }
+    },
+    "business_shortlist": [
+      {
+        "business_category": "poultry farming",
+        "selected": true
+      }
+    ],
+    "financial_plan": {
+      "project_cost": 400000,
+      "loan_eligibility": 360000,
+      "scheme_tier": "term_loan"
+    },
+    "feasibility_record": {
+      "verdict": "marginal"
+    },
+    "dummy_user_responses": {
+      "Udyam Registration": {
+        "aadhaar_number": ""
+      },
+      "KYC": {
+        "aadhaar_number": "",
+        "phone_number": "   "
+      },
+      "Loan Application": {}
+    },
+    "expected": {
+      "document_status": {
+        "Udyam Registration": "pending",
+        "KYC": "pending",
+        "Loan Application": "complete"
+      },
+      "form_data": {
+        "Udyam Registration": {
+          "applicant_name": "Deepak Yadav",
+          "business_category": "poultry farming",
+          "business_address": "Village Bela, Bihar",
+          "investment_amount": 400000
+        },
+        "KYC": {
+          "applicant_name": "Deepak Yadav",
+          "residential_address": "Village Bela, Bihar"
+        },
+        "Loan Application": {
+          "applicant_name": "Deepak Yadav",
+          "business_category": "poultry farming",
+          "project_cost": 400000,
+          "loan_eligibility": 360000,
+          "scheme_tier": "term_loan",
+          "margin_capital": 40000,
+          "feasibility_verdict": "marginal"
+        }
+      },
+      "missing_required_after_collection": {
+        "Udyam Registration": [
+          "aadhaar_number"
+        ],
+        "KYC": [
+          "aadhaar_number",
+          "phone_number"
+        ],
+        "Loan Application": []
+      }
+    }
+  },
+  {
+    "case_id": "D006",
+    "name": "English language, minimal profile, voice collection",
+    "language": "English",
+    "entrepreneur_profile": {
+      "name": "Farida Khatoon",
+      "available_capital": 10000,
+      "location": {
+        "address": "Village Chakia, Bihar"
+      }
+    },
+    "business_shortlist": [
+      {
+        "business_category": "papad making",
+        "selected": true
+      }
+    ],
+    "financial_plan": {
+      "project_cost": 100000,
+      "loan_eligibility": 90000,
+      "scheme_tier": "micro_finance"
+    },
+    "feasibility_record": {
+      "verdict": "viable"
+    },
+    "dummy_user_responses": {
+      "Udyam Registration": {
+        "aadhaar_number": "678901234567"
+      },
+      "KYC": {
+        "phone_number": "9001122334"
+      },
+      "Loan Application": {}
+    },
+    "expected": {
+      "document_status": {
+        "Udyam Registration": "complete",
+        "KYC": "complete",
+        "Loan Application": "complete"
+      },
+      "form_data": {
+        "Udyam Registration": {
+          "applicant_name": "Farida Khatoon",
+          "aadhaar_number": "678901234567",
+          "business_category": "papad making",
+          "business_address": "Village Chakia, Bihar",
+          "investment_amount": 100000
+        },
+        "KYC": {
+          "applicant_name": "Farida Khatoon",
+          "aadhaar_number": "678901234567",
+          "residential_address": "Village Chakia, Bihar",
+          "phone_number": "9001122334"
+        },
+        "Loan Application": {
+          "applicant_name": "Farida Khatoon",
+          "business_category": "papad making",
+          "project_cost": 100000,
+          "loan_eligibility": 90000,
+          "scheme_tier": "micro_finance",
+          "margin_capital": 10000,
+          "feasibility_verdict": "viable"
+        }
+      },
+      "missing_required_after_collection": {
+        "Udyam Registration": [],
+        "KYC": [],
+        "Loan Application": []
+      }
+    }
+  },
+  {
+    "case_id": "D007",
+    "name": "Explicitly selected business candidate",
+    "language": "Hindi",
+    "entrepreneur_profile": {
+      "name": "Nirmala Devi",
+      "aadhaar_number": "789012345678",
+      "phone_number": "9765432109",
+      "available_capital": 25000,
+      "location": {
+        "address": "Village Harnaut, Bihar"
+      }
+    },
+    "business_shortlist": [
+      {
+        "business_category": "candle making",
+        "selected": false
+      },
+      {
+        "business_category": "incense stick manufacturing",
+        "selected": true
+      }
+    ],
+    "financial_plan": {
+      "project_cost": 250000,
+      "loan_eligibility": 225000,
+      "scheme_tier": "micro_finance"
+    },
+    "feasibility_record": {
+      "verdict": "viable"
+    },
+    "dummy_user_responses": {
+      "Udyam Registration": {},
+      "KYC": {},
+      "Loan Application": {}
+    },
+    "expected": {
+      "document_status": {
+        "Udyam Registration": "complete",
+        "KYC": "complete",
+        "Loan Application": "complete"
+      },
+      "form_data": {
+        "Udyam Registration": {
+          "applicant_name": "Nirmala Devi",
+          "aadhaar_number": "789012345678",
+          "business_category": "incense stick manufacturing",
+          "business_address": "Village Harnaut, Bihar",
+          "investment_amount": 250000
+        },
+        "KYC": {
+          "applicant_name": "Nirmala Devi",
+          "aadhaar_number": "789012345678",
+          "residential_address": "Village Harnaut, Bihar",
+          "phone_number": "9765432109"
+        },
+        "Loan Application": {
+          "applicant_name": "Nirmala Devi",
+          "business_category": "incense stick manufacturing",
+          "project_cost": 250000,
+          "loan_eligibility": 225000,
+          "scheme_tier": "micro_finance",
+          "margin_capital": 25000,
+          "feasibility_verdict": "viable"
+        }
+      },
+      "missing_required_after_collection": {
+        "Udyam Registration": [],
+        "KYC": [],
+        "Loan Application": []
+      }
+    }
+  },
+  {
+    "case_id": "D008",
+    "name": "No feasibility record — loan application remains pending",
+    "language": "Hindi",
+    "entrepreneur_profile": {
+      "name": "Suresh Paswan",
+      "aadhaar_number": "890123456789",
+      "phone_number": "9345612780",
+      "available_capital": 60000,
+      "location": {
+        "address": "Village Barh, Bihar"
+      }
+    },
+    "business_shortlist": [
+      {
+        "business_category": "cycle repair shop",
+        "selected": true
+      }
+    ],
+    "financial_plan": {
+      "project_cost": 600000,
+      "loan_eligibility": 540000,
+      "scheme_tier": "term_loan"
+    },
+    "feasibility_record": null,
+    "dummy_user_responses": {
+      "Udyam Registration": {},
+      "KYC": {},
+      "Loan Application": {}
+    },
+    "expected": {
+      "document_status": {
+        "Udyam Registration": "complete",
+        "KYC": "complete",
+        "Loan Application": "pending"
+      },
+      "form_data": {
+        "Udyam Registration": {
+          "applicant_name": "Suresh Paswan",
+          "aadhaar_number": "890123456789",
+          "business_category": "cycle repair shop",
+          "business_address": "Village Barh, Bihar",
+          "investment_amount": 600000
+        },
+        "KYC": {
+          "applicant_name": "Suresh Paswan",
+          "aadhaar_number": "890123456789",
+          "residential_address": "Village Barh, Bihar",
+          "phone_number": "9345612780"
+        },
+        "Loan Application": {
+          "applicant_name": "Suresh Paswan",
+          "business_category": "cycle repair shop",
+          "project_cost": 600000,
+          "loan_eligibility": 540000,
+          "scheme_tier": "term_loan",
+          "margin_capital": 60000
+        }
+      },
+      "missing_required_after_collection": {
+        "Udyam Registration": [],
+        "KYC": [],
+        "Loan Application": [
+          "feasibility_verdict"
+        ]
+      }
+    }
+  }
+]
