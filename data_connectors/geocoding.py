@@ -12,6 +12,23 @@ that policy: https://operations.osmfoundation.org/policies/nominatim/
 Self-hosting Nominatim is the documented follow-up for real production
 volume; swap NOMINATIM_BASE_URL to point at a self-hosted instance when
 that's ready.
+
+LGD DISAMBIGUATION -- API STATUS (see IMPLEMENTATION_PLAN.md Section 3):
+the government's real LGD data can be reached two ways. LGD_API_ENABLED
+turns on a live call to the NAPIX LGD API (dev.napix.gov.in); NAPIX is a
+subscribe-and-approve government API-exchange platform, not an instant
+self-serve key like data.gov.in -- getting a working lgd_api_key requires
+registering on the portal and being granted access to that specific API
+product, and I could not reach napix.gov.in from this build environment to
+confirm the exact endpoint path or response shape, so
+_lookup_lgd_via_api() below is written against NAPIX's documented general
+request pattern (subscriber key + JSON) and should be checked against your
+own Consumer Guidelines PDF once you have access, not trusted blind. The
+simpler, unconditionally-free alternative is downloading the real LGD
+directory CSV from lgdirectory.gov.in and pointing LGD_DATA_PATH at it --
+that path needs no API and no approval. Either way, when neither is
+configured (or the live call fails), this module falls back to whatever
+LGD_DATA_PATH points at, exactly as before.
 """
 from __future__ import annotations
 
@@ -72,10 +89,69 @@ def _lgd_table() -> list[dict]:
     return _LGD_TABLE
 
 
-def _disambiguate_with_lgd(query: str, candidates: list[dict]) -> dict:
+# Sentinel distinguishing "no fixture given -> hit the real network" from
+# "fixture explicitly given as None -> simulate the API being reachable but
+# finding no match" -- a plain `None` default can't tell those apart.
+_NO_FIXTURE = object()
+
+
+def _lookup_lgd_via_api(village_name: str, *, offline_fixture=_NO_FIXTURE) -> Optional[dict]:
+    """
+    Live lookup against the NAPIX LGD API.
+
+    UNVERIFIED ENDPOINT SHAPE: written against NAPIX's documented general
+    request pattern (subscriber key in an `Authorization` header, JSON
+    response) because napix.gov.in could not be reached from this build
+    environment to confirm the real path/params/response fields for this
+    specific API product -- confirm against your NAPIX Consumer Guidelines
+    PDF once you have subscriber access and adjust the request/parsing below
+    if it differs. Returns None (never raises) on any failure, so a bad or
+    unconfirmed integration degrades to the local CSV table rather than
+    breaking geocoding.
+    """
+    if offline_fixture is not _NO_FIXTURE:
+        return offline_fixture
+
+    try:
+        resp = requests.get(
+            f"{settings.lgd_api_base_url}/village/search",
+            params={"name": village_name},
+            headers={"Authorization": f"Bearer {settings.lgd_api_key}"},
+            timeout=10,
+        )
+        resp.raise_for_status()
+        results = resp.json().get("results") or resp.json().get("data") or []
+        return results[0] if results else None
+    except Exception:
+        logger.warning(
+            "NAPIX LGD API lookup failed for %r; falling back to local LGD_DATA_PATH table. "
+            "This endpoint's shape is unverified -- see this module's docstring.",
+            village_name,
+            exc_info=True,
+        )
+        return None
+
+
+def _disambiguate_with_lgd(
+    query: str, candidates: list[dict], *, lgd_api_fixture=_NO_FIXTURE
+) -> dict:
     """When Nominatim returns more than one candidate for an ambiguous place
-    name, prefer the one whose district/state also matches an LGD row for
-    that village name."""
+    name, prefer the one whose district/state also matches a real LGD
+    record for that village name -- from the live NAPIX API when configured
+    and reachable, otherwise from the local LGD_DATA_PATH table."""
+    if settings.lgd_api_enabled and settings.lgd_api_key:
+        api_row = _lookup_lgd_via_api(query, offline_fixture=lgd_api_fixture)
+        if api_row:
+            district = str(api_row.get("district", "")).lower()
+            state = str(api_row.get("state", "")).lower()
+            lgd_code = api_row.get("lgd_code") or api_row.get("code")
+            for cand in candidates:
+                addr = cand.get("display_name", "").lower()
+                if district in addr and state in addr and lgd_code:
+                    cand = dict(cand)
+                    cand["_lgd_code"] = lgd_code
+                    return cand
+
     table = _lgd_table()
     if not table:
         return candidates[0]
@@ -94,7 +170,10 @@ def _disambiguate_with_lgd(query: str, candidates: list[dict]) -> dict:
 
 
 def geocode_location(
-    query: str, *, offline_fixture: Optional[list[dict]] = None
+    query: str,
+    *,
+    offline_fixture: Optional[list[dict]] = None,
+    lgd_api_fixture=_NO_FIXTURE,
 ) -> GeocodeResult:
     """
     Resolve a free-text village/block/district name to coordinates.
@@ -103,6 +182,7 @@ def geocode_location(
     hitting the network -- used by tests, and usable for any offline run
     where a pre-fetched result set is available (this also satisfies the
     Nominatim policy's mandatory-caching requirement for repeat queries).
+    `lgd_api_fixture` similarly injects a canned NAPIX LGD API response.
     """
     cache_key = query.strip().lower()
     if cache_key in _cache:
@@ -124,7 +204,11 @@ def geocode_location(
     if not candidates:
         raise ValueError(f"No geocoding match found for {query!r}")
 
-    chosen = _disambiguate_with_lgd(query, candidates) if len(candidates) > 1 else candidates[0]
+    chosen = (
+        _disambiguate_with_lgd(query, candidates, lgd_api_fixture=lgd_api_fixture)
+        if len(candidates) > 1
+        else candidates[0]
+    )
     lgd_code = chosen.get("_lgd_code")
 
     result = GeocodeResult(

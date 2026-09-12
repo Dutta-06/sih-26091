@@ -5,6 +5,8 @@
 **Status:** Draft v1
 **Date:** 2026-09-10
 
+> **Update, 2026-09-12:** Both agents are now built and tested (18 passing tests) as LangGraph nodes — see `README.md` for the code map. Real API integrations have since been added for two of the three fallback data sources flagged below: a data.gov.in client + SHRUG centroid loader for Census population (`python -m data_connectors.census --build-index`), and an optional NAPIX API path for LGD disambiguation (though NAPIX turned out to be a subscribe-and-approve government platform, not an instant free key like data.gov.in — the local LGD CSV remains the simpler, unconditionally-free option). The NABARD/KVIC sector corpus has no API at all and is still 100% manual curation. All three degrade gracefully to the original sample fixtures when unconfigured. See `README.md`'s "Making the population/geocoding data real" section for exact setup steps.
+
 ---
 
 ## 1. Why only two agents, and what that changes
