@@ -1,0 +1,38 @@
+[
+  {
+    "case_id": "case_sih_canonical_10L",
+    "description": "Problem statement worked example: Rs. 1,00,000 margin -> Rs. 10,00,000 project -> Rs. 9,00,000 loan -> Term Loan Scheme",
+    "inputs": {
+      "available_capital": 100000.0,
+      "location": "Bhadohi, Bhadohi, Uttar Pradesh",
+      "category": "Dairy Farming"
+    },
+    "expected_outputs": {
+      "project_cost": 1000000.0,
+      "loan_eligibility": 900000.0,
+      "scheme_tier": "term_loan",
+      "interest_rate": 0.08,
+      "tenure_years": 7,
+      "moratorium_months": 6,
+      "total_quarters": 28
+    }
+  },
+  {
+    "case_id": "case_micro_finance_120k",
+    "description": "Micro Finance case: Rs. 12,000 margin -> Rs. 1,20,000 project -> Rs. 1,08,000 loan -> Micro Finance Scheme",
+    "inputs": {
+      "available_capital": 12000.0,
+      "location": "Mirzapur, Uttar Pradesh",
+      "category": "Tailoring and Garment Repair"
+    },
+    "expected_outputs": {
+      "project_cost": 120000.0,
+      "loan_eligibility": 108000.0,
+      "scheme_tier": "micro_finance",
+      "interest_rate": 0.065,
+      "tenure_years": 3,
+      "moratorium_months": 3,
+      "total_quarters": 12
+    }
+  }
+]
