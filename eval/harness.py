@@ -66,7 +66,8 @@ def run_financial_cases(verbose: bool = False) -> tuple[int, int, list[str]]:
         name = case["name"]
         try:
             inputs = dict(case["input"])
-            inputs["scheme_terms"] = SchemeTerms(**inputs.pop("scheme_terms"))
+            if "scheme_terms" in inputs and inputs["scheme_terms"] is not None:
+                inputs["scheme_terms"] = SchemeTerms(**inputs.pop("scheme_terms"))
             plan = build_financial_plan(**inputs)
             actual = serialize_plan(plan)
             if verbose:
