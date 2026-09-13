@@ -1,4 +1,4 @@
-# rural-advisory-agents — Market Reach Agent + Opportunity Agent
+# Rural-advisory-agents — Market Reach Agent + Opportunity Agent
 
 A two-agent build extracted from the full *Hyper-Local Business Advisory and
 Financial Structuring Platform* design. This repository implements **only**
