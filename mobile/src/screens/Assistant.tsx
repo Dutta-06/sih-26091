@@ -2,6 +2,7 @@ import { Languages, Mic, RotateCcw, SendHorizontal, Sparkles } from "lucide-reac
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { tap } from "../lib/haptics";
+import { readWithModel, warmUpModel } from "../lib/nlp/client";
 import { useToolsUnlocked } from "../lib/tools";
 import { useI18n } from "../i18n";
 import { canListen, speak, voiceCapabilities } from "../lib/speech";
@@ -104,6 +105,9 @@ export default function Assistant() {
     return user;
   };
 
+  // Load the message model in the background while the conversation opens
+  useEffect(() => warmUpModel(), []);
+
   // Open the conversation (new chat, or a case that already has inputs).
   useEffect(() => {
     if (chat.length > 0) return;
@@ -153,7 +157,11 @@ export default function Assistant() {
     const clean = text.trim();
     if (!clean || busy) return;
     setDraft("");
-    void turn(clean, respond(clean, conv()));
+    setTyping(true);
+    void readWithModel(clean).then((reading) => {
+      setTyping(false);
+      return turn(clean, respond(clean, conv(), reading));
+    });
   };
 
   const answerSlot = (a: SlotAnswer) => {
@@ -185,7 +193,7 @@ export default function Assistant() {
       let r: ConvResult;
       if (slot === "name") {
         text = sample.name;
-        r = respond(text, local);
+        r = respond(text, local, await readWithModel(text));
       } else if (slot === "location_choice") {
         const code = sample.profile.locationCode;
         if (!code) break;
@@ -195,7 +203,7 @@ export default function Assistant() {
         const typed = sampleText(sample.profile, slot);
         if (!typed) break;
         text = typed;
-        r = respond(typed, local);
+        r = respond(typed, local, await readWithModel(typed));
       }
       const user = await turn(text, r);
       local = applyLocal(local, user, r);

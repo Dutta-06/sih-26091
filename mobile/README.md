@@ -8,6 +8,7 @@ changes with what the user types or does.
 | Stage | Module | Mirrors (backend) |
 |---|---|---|
 | Understanding messages: amounts, places, activities, reasons, intents; English, Hindi, Hinglish and, through vocabulary files, Bangla, Tamil, Telugu, Punjabi, Kannada and Marathi | `nlu.ts`, `lexicon.ts` | `orchestrator/router.py`, `language.py` |
+| On-device message model (multilingual-e5-small fine-tuned, int8 ONNX in a worker): name, place, amount, business and reason spans plus intent, merged with the rules | `nluModel.ts`, `../lib/nlp/*`, trained by `ml/nlu/` | — |
 | Location lookup with official-code disambiguation | `geo.ts` | `data_connectors/geocoding.py`, `census.py` |
 | Retrieval over sector reports, risk taxonomy and scheme guidelines (TF-IDF) | `retrieval.ts` | `rag/vector_store.py` |
 | Discovery ranking, 6 analyses, SWOT, red-team review, bounded rejection loop | `discovery.ts`, `intel/*`, `swot.ts`, `review.ts`, `feasibility.ts` | `module1_feasibility/*` |
@@ -36,6 +37,16 @@ its district headquarters.
 
 The screens carry no sample-data or demo labels; _meta.json and this README record what is synthetic. Outcome counts are shown as aseline (the synthetic seed) and ollow-up (records saved on the phone).
 
+## Message model (ml/nlu)
+- **Data:** per-language patterns, fillers and a separate hand-written test set in `ml/nlu/data/<lang>.json` (brief in
+  `ml/nlu/BRIEF.md`); `python ml/nlu/build_dataset.py` fills them with names, all districts, amounts and businesses.
+- **Training:** `python ml/nlu/train.py` (GPU optional) prunes the multilingual-e5-small vocabulary to the app's scripts
+  (~17.5k pieces), trains span tags + intent, exports ONNX and ships the smallest int8 variant within 0.01 of full
+  precision (`public/models/nlu/`, ~28 MB). The app tokenizer and runner are checked against Python in `src/lib/nlp/nlp.test.ts`.
+- **Result on the held-out hand-written messages (8 languages, 935 messages)** — what the chat keeps, rules alone vs rules + model:
+  place 13% → 89%, name 0% → 93%, intent 54% → 87%, reason 27% → 87% (`src/core/nluModel.test.ts`). Amounts and business
+  types stay rule-parsed. The rules remain the fallback when the model is slow or unavailable.
+
 ## Languages
 Eight app languages: English, Hindi, Bangla, Tamil, Telugu, Punjabi, Kannada and Marathi. English and Hindi strings
 are authored in `src/i18n/strings/`. The other six are in `src/i18n/locales/<code>.partN.json`, with the chat vocabulary
@@ -52,7 +63,7 @@ script. `en.json` is a flat export of the English dictionary. Retrieved scheme a
 ```bash
 npm install
 npm run dev          # http://localhost:5173
-npm test             # 350 tests: engine and backend parity, core pipeline, i18n coverage
+npm test             # 353 tests: engine and backend parity, core pipeline, i18n coverage
 python scripts/build_datapack.py          # rebuild the data pack (run from mobile/)
 python scripts/export_parity_c1.py        # refresh parity fixtures after backend changes (also c2, c3)
 ```

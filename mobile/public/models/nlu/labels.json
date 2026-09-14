@@ -1,0 +1,29 @@
+{
+ "tags": [
+  "O",
+  "B-NAME",
+  "I-NAME",
+  "B-LOC",
+  "I-LOC",
+  "B-AMT",
+  "I-AMT",
+  "B-ACT",
+  "I-ACT",
+  "B-REASON",
+  "I-REASON"
+ ],
+ "intents": [
+  "provide_info",
+  "greeting",
+  "raise_grievance",
+  "application_status",
+  "scheme_inquiry",
+  "monitoring",
+  "community",
+  "change_language",
+  "new_case",
+  "other"
+ ],
+ "maxLen": 72,
+ "base": "intfloat/multilingual-e5-small"
+}

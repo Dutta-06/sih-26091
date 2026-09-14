@@ -18,6 +18,7 @@ import { rankActivities } from "../../core/discovery";
 import { resolveLocation } from "../../core/geo";
 import { affordableProjectCost, catalogActivity, MARGIN_SHARE, SCHEME_MAX_PROJECT_COST } from "../../core/intel/catalog";
 import { classifyIntent, detectScript, extract } from "../../core/nlu";
+import { mergeExtraction, mergeIntent, type ModelReading } from "../../core/nluModel";
 import type { Intent, LocationCandidate, ProfileInput, Slot } from "../../core/types";
 import { buildPlan } from "../../engine/finance";
 import { rupees } from "../../lib/format";
@@ -251,7 +252,8 @@ const empty = (input: ConvInput, messages: ChatMessage[], extra: Partial<ConvRes
 });
 
 /** One user message through the rule pipeline. */
-export function respond(text: string, input: ConvInput): ConvResult {
+/** One user turn. `reading` is the on-device message model's reading of the text (null: rules only). */
+export function respond(text: string, input: ConvInput, reading: ModelReading | null = null): ConvResult {
   const message = text.trim();
   const pending = input.pendingSlot as PendingSlot | null;
   const coreSlot = pending === "location_choice" ? "location" : pending && (CORE_SLOTS as string[]).includes(pending) ? (pending as Slot) : null;
@@ -265,9 +267,20 @@ export function respond(text: string, input: ConvInput): ConvResult {
     pre.push(a("u1.lang.switched", { lang: `@u1.langName.${script}` }));
   }
 
-  const intent = classifyIntent(message);
-  const ext = extract(message, coreSlot);
-  const withLang = (r: ConvResult): ConvResult => ({ ...r, chatLang: r.chatLang ?? chatLang });
+  const merged = mergeExtraction(extract(message, coreSlot), reading, coreSlot);
+  const ext = merged.ext;
+  const intent = mergeIntent(classifyIntent(message), reading, ext);
+  // A name mentioned in passing ("I am Meena, from Coimbatore …") is kept when no name was given yet
+  const knownName = chatName(input.chat);
+  const withName = (r: ConvResult): ConvResult =>
+    merged.name && !knownName && !r.reset && !r.userVars.name
+      ? {
+          ...r,
+          userVars: { ...r.userVars, answered: [r.userVars.answered, "name"].filter(Boolean).join(","), name: merged.name },
+          messages: [a("u1.name.ok", { name: merged.name }), ...r.messages],
+        }
+      : r;
+  const withLang = (r: ConvResult): ConvResult => withName({ ...r, chatLang: r.chatLang ?? chatLang });
 
   if (intent === "new_case") return withLang(empty(input, [...pre, a("u1.newCase")], { reset: true, pendingSlot: null }));
   if (intent === "change_language" && ext.language) {

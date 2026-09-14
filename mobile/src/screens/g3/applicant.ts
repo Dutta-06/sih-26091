@@ -20,7 +20,7 @@ export interface Applicant {
 export function useApplicant(): [Applicant, (patch: Partial<Applicant>) => void] {
   const { state, set } = useStore();
   const chatName = useMemo(() => {
-    const m = [...state.chat].reverse().find((x) => x.from === "user" && x.vars?.answered === "name" && x.vars?.name);
+    const m = [...state.chat].reverse().find((x) => x.from === "user" && String(x.vars?.answered ?? "").split(",").includes("name") && x.vars?.name);
     return m ? String(m.vars!.name) : undefined;
   }, [state.chat]);
   const data = useMemo<Applicant>(() => ({ fullName: chatName, ...(state.applicant as Applicant) }), [state.applicant, chatName]);
