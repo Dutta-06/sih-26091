@@ -70,6 +70,8 @@ export interface JourneyState {
   events: CaseEvent[];
   /** Presenter clock offset so months of business can pass during a demo. */
   clockOffsetDays: number;
+  /** Which example person the presenter tools use (SAMPLE_PEOPLE index). */
+  sampleIndex: number;
   lastVisitAt: string | null;
   previousVisitAt: string | null;
 }
@@ -79,18 +81,31 @@ export const EMPTY_PROFILE: ProfileInput = {
   premises: null, category: null, womanOwned: false, shgMember: false,
 };
 
-/** Sample entrepreneur inputs for presenters (only inputs — every result is computed). */
-export const SAMPLE_PROFILE: ProfileInput = {
-  capital: 12_000, locationText: "Gopiganj, Bhadohi", locationCode: "184512", activityId: "handloom_weaving",
-  reason: "My neighbour earns well from handloom", skills: ["stitching", "embroidery"], assets: ["foot_pedal_machine"],
-  premises: "home", category: "obc", womanOwned: true, shgMember: false,
-};
+/** Example entrepreneurs for presenters across states (only inputs — every result is computed for their district). */
+export interface SamplePerson {
+  name: string;
+  profile: ProfileInput;
+}
+const person = (name: string, p: Partial<ProfileInput> & Pick<ProfileInput, "capital" | "locationText" | "activityId">): SamplePerson => ({
+  name,
+  profile: { locationCode: null, reason: "", skills: [], assets: [], premises: "home", category: null, womanOwned: false, shgMember: false, ...p },
+});
+export const SAMPLE_PEOPLE: SamplePerson[] = [
+  person("Sunita", { capital: 12_000, locationText: "Gopiganj, Bhadohi", locationCode: "184512", activityId: "handloom_weaving", reason: "My neighbour earns well from handloom", skills: ["stitching", "embroidery"], assets: ["foot_pedal_machine"], category: "obc", womanOwned: true }),
+  person("Lakshmi", { capital: 18_000, locationText: "Tiruppur, Tamil Nadu", activityId: "tailoring", reason: "Garment units here always need stitching", skills: ["stitching"], assets: ["electric_machine"], category: "obc", womanOwned: true, shgMember: true }),
+  person("Anjali", { capital: 15_000, locationText: "Murshidabad, West Bengal", activityId: "beauty_parlour", reason: "There is no parlour in my area", skills: ["beauty"], premises: "rented_shop", category: "sc", womanOwned: true }),
+  person("Gurpreet", { capital: 20_000, locationText: "Ludhiana, Punjab", activityId: "food_processing_home", reason: "People like my pickles", skills: ["cooking"], category: "general", womanOwned: true, shgMember: true }),
+  person("Ramesh", { capital: 40_000, locationText: "Nashik, Maharashtra", activityId: "dairy_farming", reason: "We have land and fodder", skills: ["livestock"], premises: "own_land", assets: ["cattle"], category: "general" }),
+  person("Irfan", { capital: 10_000, locationText: "Gaya, Bihar", activityId: "mobile_repair", reason: "I have repaired phones for two years", skills: ["repair"], premises: "rented_shop", category: "obc" }),
+];
+export const SAMPLE_PROFILE: ProfileInput = SAMPLE_PEOPLE[0].profile;
+export const samplePerson = (s: Pick<JourneyState, "sampleIndex">): SamplePerson => SAMPLE_PEOPLE[((s.sampleIndex ?? 0) % SAMPLE_PEOPLE.length + SAMPLE_PEOPLE.length) % SAMPLE_PEOPLE.length];
 
 export const initialState = (lang: Lang = "en"): JourneyState => ({
   lang, chatLang: lang, readAloud: false, onboarded: false, chat: [], pendingSlot: null, profile: EMPTY_PROFILE,
   chosenActivity: null, analysisSeen: false, documents: {}, appStage: "not_started", disbursedOn: null, milestonesDone: [],
   smsConsent: false, inbox: "monsoon_disruption", dataDeletedOn: null, interventionChosen: null, followUp: null, realOutcomes: [],
-  grievances: [], observations: [], joinedPool: false, applicant: {}, events: [], clockOffsetDays: 0, lastVisitAt: null, previousVisitAt: null,
+  grievances: [], observations: [], joinedPool: false, applicant: {}, events: [], clockOffsetDays: 0, lastVisitAt: null, previousVisitAt: null, sampleIndex: 0,
 });
 
 export const todayOf = (s: Pick<JourneyState, "clockOffsetDays">) => new Date(Date.now() + s.clockOffsetDays * 86_400_000).toISOString();
@@ -122,9 +137,11 @@ function checkpoint(state: JourneyState, to: DemoCheckpoint): JourneyState {
   const now = new Date();
   const monthsSinceJuly = (now.getUTCMonth() - 6 + 12) % 12; // 0 in July
   const monitoringDays = Math.round((monthsSinceJuly + 7) * 30.5);
-  const base: JourneyState = { ...initialState(state.lang), chatLang: state.chatLang, onboarded: true, lastVisitAt: new Date().toISOString() };
-  const profiled: JourneyState = { ...base, profile: SAMPLE_PROFILE, analysisSeen: true, events: [{ type: "profile_started", at: new Date(Date.now() - 300 * 86_400_000).toISOString() }] };
-  const chosen: JourneyState = { ...profiled, chosenActivity: "tailoring" };
+  const sample = samplePerson(state).profile;
+  const base: JourneyState = { ...initialState(state.lang), chatLang: state.chatLang, onboarded: true, lastVisitAt: new Date().toISOString(), sampleIndex: state.sampleIndex ?? 0 };
+  const profiled: JourneyState = { ...base, profile: sample, analysisSeen: true, events: [{ type: "profile_started", at: new Date(Date.now() - 300 * 86_400_000).toISOString() }] };
+  // Pursue what the review selected for this person (their own idea when it passed)
+  const chosen: JourneyState = { ...profiled, chosenActivity: computeCase(sessionInputs(profiled)).activityId ?? sample.activityId };
   const planned = computeCase(sessionInputs(chosen));
   const docsComplete = Object.fromEntries(planned.requiredDocs.map((d) => [d.id, "complete" as DocStatus]));
   const milestones = planned.roadmap.map((m) => m.id);
@@ -133,7 +150,7 @@ function checkpoint(state: JourneyState, to: DemoCheckpoint): JourneyState {
     case "start":
       return base;
     case "sample_profile":
-      return { ...base, profile: SAMPLE_PROFILE };
+      return { ...base, profile: sample };
     case "report":
       return profiled;
     case "plan":
@@ -152,12 +169,13 @@ function checkpoint(state: JourneyState, to: DemoCheckpoint): JourneyState {
       return { ...mon, interventionChosen: v.warning && best ? { type: best.type, month: v.warning.month } : null };
     }
     case "no_viable":
-      return { ...base, profile: { ...SAMPLE_PROFILE, capital: 2_500, activityId: "flour_mill" }, analysisSeen: true };
+      return { ...base, profile: { ...sample, capital: 2_500, activityId: "flour_mill" }, analysisSeen: true };
     case "returning":
       return { ...checkpoint(state, "application"), previousVisitAt: new Date(Date.now() - 23 * 86_400_000).toISOString() };
   }
 }
 
+export { reducer as reducerForTests };
 function reducer(state: JourneyState, action: Action): JourneyState {
   switch (action.type) {
     case "set":

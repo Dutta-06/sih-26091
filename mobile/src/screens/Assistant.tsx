@@ -6,7 +6,7 @@ import { useToolsUnlocked } from "../lib/tools";
 import { useI18n } from "../i18n";
 import { canListen, speak, voiceCapabilities } from "../lib/speech";
 import { useNav, type Route } from "../nav";
-import { EMPTY_PROFILE, SAMPLE_PROFILE, uid, useStore, type ChatMessage } from "../state/store";
+import { EMPTY_PROFILE, samplePerson, uid, useStore, type ChatMessage } from "../state/store";
 import { Chip, toast } from "../ui";
 import { Bubble, ProfileSummaryCard, TypingDots, VerdictCard, VoiceOverlay, type VerdictTarget } from "./g1/ChatParts";
 import {
@@ -176,6 +176,7 @@ export default function Assistant() {
   const runSample = async () => {
     if (busy) return;
     setSampleRunning(true);
+    const sample = samplePerson(state);
     let local = conv();
     if (local.pendingSlot === null) local = { ...local, pendingSlot: missingSlots(local.profile, answeredSlots(local.chat))[0] ?? null };
     for (let i = 0; i < 14 && local.pendingSlot !== null; i++) {
@@ -183,15 +184,15 @@ export default function Assistant() {
       let text: string;
       let r: ConvResult;
       if (slot === "name") {
-        text = tc("u1.ans.skip");
-        r = skipName(local);
+        text = sample.name;
+        r = respond(text, local);
       } else if (slot === "location_choice") {
-        const code = SAMPLE_PROFILE.locationCode;
+        const code = sample.profile.locationCode;
         if (!code) break;
         text = tc("u1.loc.code", { code });
         r = advance(local, { locationCode: code }, ["location"]);
       } else {
-        const typed = sampleText(SAMPLE_PROFILE, slot);
+        const typed = sampleText(sample.profile, slot);
         if (!typed) break;
         text = typed;
         r = respond(typed, local);

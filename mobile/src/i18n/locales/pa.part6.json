@@ -406,5 +406,7 @@
   "u4.anomaly.sales_gap.action": "ਕੀ ਕੰਮ ਬੰਦ ਸੀ? ਜੇ ਵਿਕਰੀ ਨਕਦ ਵਿੱਚ ਹੋਈ, ਤਾਂ ਉਸਨੂੰ ਜਮ੍ਹਾ ਕਰੋ ਤਾਂ ਜੋ ਤੁਹਾਡਾ ਰਿਕਾਰਡ ਪੂਰਾ ਰਹੇ।",
   "u4.anomaly.sales_slowdown.title": "ਇਸ ਮਹੀਨੇ ਵਿਕਰੀ ਧੀਮੀ",
   "u4.anomaly.sales_slowdown.body": "ਪਿਛਲੇ 2 ਹਫ਼ਤਿਆਂ ਵਿੱਚ {actual} ਆਏ, ਜੋ ਇਸ ਮੌਸਮ ਦੇ ਆਮ {expected} ਦਾ ਸਿਰਫ਼ {pct}% ਹੈ।",
-  "u4.anomaly.sales_slowdown.action": "ਮਹੀਨਾ ਖਤਮ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਕਦਮ ਚੁੱਕੋ: ਭਾਅ, ਸਮਾਨ ਤੇ ਆਪਣੇ ਨਿਯਮਿਤ ਗਾਹਕ ਜਾਂਚੋ।"
+  "u4.anomaly.sales_slowdown.action": "ਮਹੀਨਾ ਖਤਮ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਕਦਮ ਚੁੱਕੋ: ਭਾਅ, ਸਮਾਨ ਤੇ ਆਪਣੇ ਨਿਯਮਿਤ ਗਾਹਕ ਜਾਂਚੋ।",
+  "u1.more.person": "ਉਦਾਹਰਣ ਵਿਅਕਤੀ",
+  "u1.more.personNext": "ਅਗਲਾ"
 }

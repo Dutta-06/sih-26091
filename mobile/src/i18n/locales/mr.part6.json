@@ -406,5 +406,7 @@
   "u4.anomaly.sales_gap.action": "व्यवसाय बंद होता का? विक्री रोखीने झाली असेल, तर ती जमा करा जेणेकरून तुमचा रेकॉर्ड पूर्ण राहील.",
   "u4.anomaly.sales_slowdown.title": "या महिन्यात विक्री मंदावली",
   "u4.anomaly.sales_slowdown.body": "मागील 2 आठवड्यांत {actual} आले, जे या हंगामातील नेहमीच्या {expected} च्या फक्त {pct}% आहे.",
-  "u4.anomaly.sales_slowdown.action": "महिना संपण्यापूर्वी कृती करा: दर, माल आणि तुमचे नियमित ग्राहक तपासा."
+  "u4.anomaly.sales_slowdown.action": "महिना संपण्यापूर्वी कृती करा: दर, माल आणि तुमचे नियमित ग्राहक तपासा.",
+  "u1.more.person": "उदाहरण व्यक्ती",
+  "u1.more.personNext": "पुढील"
 }

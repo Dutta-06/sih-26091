@@ -406,5 +406,7 @@
   "u4.anomaly.sales_gap.action": "ব্যবসা কি বন্ধ ছিল? বিক্রি নগদে হয়ে থাকলে সেটা জমা দিন, যাতে আপনার রেকর্ড সম্পূর্ণ থাকে।",
   "u4.anomaly.sales_slowdown.title": "এই মাসে বিক্রি কমছে",
   "u4.anomaly.sales_slowdown.body": "গত ২ সপ্তাহে {actual} এসেছে, এই মৌসুমের সাধারণ {expected}-এর মাত্র {pct}%।",
-  "u4.anomaly.sales_slowdown.action": "মাস শেষ হওয়ার আগেই ব্যবস্থা নিন: দাম, মাল আর নিয়মিত ক্রেতাদের দেখে নিন।"
+  "u4.anomaly.sales_slowdown.action": "মাস শেষ হওয়ার আগেই ব্যবস্থা নিন: দাম, মাল আর নিয়মিত ক্রেতাদের দেখে নিন।",
+  "u1.more.person": "উদাহরণ ব্যক্তি",
+  "u1.more.personNext": "পরের জন"
 }

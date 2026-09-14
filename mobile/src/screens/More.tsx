@@ -7,7 +7,7 @@ import { ACTIVITIES } from "../data/activities";
 import { useI18n } from "../i18n";
 import { rupees } from "../lib/format";
 import { useNav, type Route, type Tab } from "../nav";
-import { todayOf, useStore, type DemoCheckpoint, type JourneyState } from "../state/store";
+import { SAMPLE_PEOPLE, samplePerson, todayOf, useStore, type DemoCheckpoint, type JourneyState } from "../state/store";
 import { Button, Card, ListRow, Reveal, Section, Segmented, Sheet, TabScreen, toast } from "../ui";
 import { chatName, placeOf, profileStarted } from "./g1/conversation";
 import { CHAT_LANG_LABEL } from "./w1/chatI18n";
@@ -140,6 +140,18 @@ export default function More() {
           <div className="flex items-start gap-3">
             <MonitorPlay className="mt-0.5 size-5 shrink-0 text-azure-800" />
             <p className="text-[13px] leading-snug text-ink-2">{t("more.presenterSub")}</p>
+          </div>
+          <div className="mt-3 flex items-center gap-2.5 rounded-2xl bg-white p-3 ring-1 ring-line">
+            <Users className="size-4.5 shrink-0 text-azure-800" />
+            <div className="min-w-0 flex-1">
+              <p className="text-[12px] text-ink-3">{t("u1.more.person")}</p>
+              <p className="text-[14px] font-semibold break-words">
+                {samplePerson(state).name} · {samplePerson(state).profile.locationText}
+              </p>
+            </div>
+            <Button size="md" variant="secondary" onClick={() => { tap(); set({ sampleIndex: (state.sampleIndex + 1) % SAMPLE_PEOPLE.length }); }}>
+              {t("u1.more.personNext")}
+            </Button>
           </div>
           <p className="mt-3 text-[12px] font-semibold text-ink-3">{t("u1.more.checkpoints")}</p>
           <div className="mt-2 grid grid-cols-2 gap-2">
