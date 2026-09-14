@@ -1,0 +1,2628 @@
+{
+ "sms": [
+  {
+   "message": "Dear Customer, Rs.350.00 credited to A/c XX4821 on 05-01-26 by UPI from ramesh.k@okaxis. UPI Ref 601234567890",
+   "result": {
+    "at": "2026-01-05T00:00:00+00:00",
+    "direction": "credit",
+    "amount": 350.0,
+    "channel": "upi",
+    "isLoanRepayment": false
+   }
+  },
+  {
+   "message": "Rs 1,200.00 deposited in A/c XX4821 by cash at CDM on 15-03-2026. Avl Bal Rs 8,420.00 -Bank",
+   "result": {
+    "at": "2026-03-15T00:00:00+00:00",
+    "direction": "credit",
+    "amount": 1200.0,
+    "channel": "cash_deposit",
+    "isLoanRepayment": false
+   }
+  },
+  {
+   "message": "A/c XX4821 debited by Rs 2,450.00 on 08Jan26 towards UPI payment to kapdaghar@ybl. Not you? Call 1800111109",
+   "result": {
+    "at": "2026-01-08T00:00:00+00:00",
+    "direction": "debit",
+    "amount": 2450.0,
+    "channel": "upi",
+    "isLoanRepayment": false
+   }
+  },
+  {
+   "message": "INR 3,100.00 debited from A/c XX4821 on 12-Feb-2026 via NEFT to SHREE TRADERS. Avl Bal INR 5,230.10",
+   "result": {
+    "at": "2026-02-12T00:00:00+00:00",
+    "direction": "debit",
+    "amount": 3100.0,
+    "channel": "neft_imps",
+    "isLoanRepayment": false
+   }
+  },
+  {
+   "message": "Rs 640.00 paid from A/c XX4821 on 12/03/2026 for electricity bill (BBPS). Thank you.",
+   "result": {
+    "at": "2026-03-12T00:00:00+00:00",
+    "direction": "debit",
+    "amount": 640.0,
+    "channel": "other",
+    "isLoanRepayment": false
+   }
+  },
+  {
+   "message": "Loan EMI of Rs 10,801.00 debited from A/c XX4821 on 28-06-26 via NACH for loan A/c XX7091.",
+   "result": {
+    "at": "2026-06-28T00:00:00+00:00",
+    "direction": "debit",
+    "amount": 10801.0,
+    "channel": "other",
+    "isLoanRepayment": true
+   }
+  },
+  {
+   "message": "Your OTP for transaction of Rs 5,000 is 482913. Do not share it with anyone.",
+   "result": null
+  },
+  {
+   "message": "Congratulations! You are pre-approved for a personal loan of Rs 2,00,000. Apply now!",
+   "result": null
+  },
+  {
+   "message": "Your EMI of Rs 10,801 will be debited on 30-09-2026. Maintain sufficient balance.",
+   "result": null
+  },
+  {
+   "message": "आपके खाते XX4821 में ₹500 credited हुए दिनांक 05-02-2026 UPI द्वारा",
+   "result": {
+    "at": "2026-02-05T00:00:00+00:00",
+    "direction": "credit",
+    "amount": 500.0,
+    "channel": "upi",
+    "isLoanRepayment": false
+   }
+  },
+  {
+   "message": "प्रिय ग्राहक, आपके खाते से Rs 2,000 debited किए गए 14-Mar-26 को ATM से",
+   "result": {
+    "at": "2026-03-14T00:00:00+00:00",
+    "direction": "debit",
+    "amount": 2000.0,
+    "channel": "atm",
+    "isLoanRepayment": false
+   }
+  },
+  {
+   "message": "₹५०० received in your account via UPI on ०७-०४-२०२६",
+   "result": {
+    "at": "2026-04-07T00:00:00+00:00",
+    "direction": "credit",
+    "amount": 500.0,
+    "channel": "upi",
+    "isLoanRepayment": false
+   }
+  },
+  {
+   "message": "Rs.750 credited to your a/c by IMPS",
+   "result": {
+    "at": null,
+    "direction": "credit",
+    "amount": 750.0,
+    "channel": "neft_imps",
+    "isLoanRepayment": false
+   }
+  },
+  {
+   "message": "Sent Rs.1,500.00 From HDFC Bank A/C x9087 To meena.s@oksbi On 21/05/26 Ref 612345678901",
+   "result": {
+    "at": "2026-05-21T00:00:00+00:00",
+    "direction": "debit",
+    "amount": 1500.0,
+    "channel": "upi",
+    "isLoanRepayment": false
+   }
+  },
+  {
+   "message": "Rs 4,000.00 withdrawn at ATM on 03-Jun-2026 from A/c XX4821. Avl bal Rs 1,230.00",
+   "result": {
+    "at": "2026-06-03T00:00:00+00:00",
+    "direction": "debit",
+    "amount": 4000.0,
+    "channel": "atm",
+    "isLoanRepayment": false
+   }
+  },
+  {
+   "message": "Purchase of INR 899.00 on card XX1234 at POS AMAZON on 2026-06-11. Avl Limit INR 45,000",
+   "result": {
+    "at": null,
+    "direction": "debit",
+    "amount": 899.0,
+    "channel": "card",
+    "isLoanRepayment": false
+   }
+  },
+  {
+   "message": "Avl Bal Rs 12,000.00 in A/c XX4821. Rs 300.00 Cr on 11-07-2026 UPI/ramesh",
+   "result": {
+    "at": "2026-07-11T00:00:00+00:00",
+    "direction": "credit",
+    "amount": 300.0,
+    "channel": "upi",
+    "isLoanRepayment": false
+   }
+  },
+  {
+   "message": "ECS instalment of Rs 3,200 debited on 31 Jul 2026 for loan a/c 55512",
+   "result": {
+    "at": "2026-07-31T00:00:00+00:00",
+    "direction": "debit",
+    "amount": 3200.0,
+    "channel": "other",
+    "isLoanRepayment": true
+   }
+  },
+  {
+   "message": "Request money of Rs 500 from anil@ybl. Pay via UPI app.",
+   "result": null
+  },
+  {
+   "message": "Rs 250.00 transferred to A/c XX1111 on 31-02-2026 via IMPS; valid date 01-03-2026",
+   "result": {
+    "at": "2026-03-01T00:00:00+00:00",
+    "direction": "debit",
+    "amount": 250.0,
+    "channel": "neft_imps",
+    "isLoanRepayment": false
+   }
+  },
+  {
+   "message": "Your a/c XX4821 is credited with INR 1,250.50 on 7 August 2026 NEFT from SCHOOL UNIFORM ORDER",
+   "result": {
+    "at": "2026-08-07T00:00:00+00:00",
+    "direction": "credit",
+    "amount": 1250.5,
+    "channel": "neft_imps",
+    "isLoanRepayment": false
+   }
+  },
+  {
+   "message": "Get a lucky draw win! Rs 10,000 cashback offer",
+   "result": null
+  },
+  {
+   "message": "Dr Rs 450 A/c XX4821 20-08-26 UPI/kavita88@paytm",
+   "result": {
+    "at": "2026-08-20T00:00:00+00:00",
+    "direction": "debit",
+    "amount": 450.0,
+    "channel": "upi",
+    "isLoanRepayment": false
+   }
+  },
+  {
+   "message": "Payment of Rs. 1,080.00 received from school via NEFT on 5-9-26",
+   "result": {
+    "at": "2026-09-05T00:00:00+00:00",
+    "direction": "credit",
+    "amount": 1080.0,
+    "channel": "neft_imps",
+    "isLoanRepayment": false
+   }
+  },
+  {
+   "message": "Hello, your balance is low.",
+   "result": null
+  },
+  {
+   "message": "Rs 12,000 spent on your debit card ending 4821 at SINGER SEWING on 10-Sep-26",
+   "result": {
+    "at": "2026-09-10T00:00:00+00:00",
+    "direction": "debit",
+    "amount": 12000.0,
+    "channel": "card",
+    "isLoanRepayment": false
+   }
+  }
+ ],
+ "monitoring": [
+  {
+   "name": "tailoring healthy then shock",
+   "capital": 12000,
+   "activity": "tailoring",
+   "disbursedOn": "2026-01-01",
+   "batches": [
+    [
+     {
+      "at": "2026-01-01T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 710.66,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-02T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 497.83,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-03T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 767.3,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-05T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 506.45,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-06T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 632.16,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-08T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 620.38,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-09T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 645.73,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-10T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 525.49,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-12T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 479.7,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-13T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 693.08,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-15T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 598.7,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-16T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 471.52,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-17T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 805.59,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-19T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 689.7,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-20T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 559.45,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-22T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 782.39,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-23T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 487.63,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-24T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 487.59,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-26T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 730.31,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-27T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 526.4,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-03T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 1500.0,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-11T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 1500.0,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-01-19T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 1500.0,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     }
+    ],
+    [
+     {
+      "at": "2026-03-01T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 859.23,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-02T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 527.89,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-03T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 833.84,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-05T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 877.47,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-06T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 658.77,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-08T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 521.06,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-09T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 813.26,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-10T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 878.04,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-12T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 588.31,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-13T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 784.16,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-15T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 816.07,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-16T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 538.67,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-17T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 760.82,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-19T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 723.44,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-20T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 850.38,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-22T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 580.56,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-23T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 585.11,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-24T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 825.71,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-26T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 673.08,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-27T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 701.36,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-03T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 1666.67,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-11T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 1666.67,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-19T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 1666.67,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-28T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 1950.0,
+      "channel": "other",
+      "isLoanRepayment": true
+     }
+    ],
+    [
+     {
+      "at": "2026-07-01T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 294.76,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-02T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 258.51,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-03T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 251.65,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-05T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 302.35,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-06T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 213.45,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-08T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 226.96,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-09T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 365.12,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-10T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 366.86,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-12T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 275.42,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-13T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 267.7,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-15T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 245.1,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-16T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 343.35,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-17T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 238.01,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-19T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 347.76,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-20T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 328.44,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-22T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 233.09,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-23T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 247.05,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-24T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 217.42,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-26T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 353.47,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-27T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 321.38,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-03T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 2666.67,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-11T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 2666.67,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-07-19T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 2666.67,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     }
+    ],
+    [
+     {
+      "at": "2026-08-01T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 619.98,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-08-05T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 754.9,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-08-10T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 947.29,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-08-15T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 597.99,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-08-19T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 872.26,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-08-24T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 672.61,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-08-03T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 2500.0,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-08-11T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 2500.0,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-08-19T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 2500.0,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     }
+    ]
+   ],
+   "expected": [
+    {
+     "days": 27,
+     "revenue": 12218.06,
+     "baseline": 11983.56,
+     "expenses": 4500.0,
+     "surplus": 7718.06,
+     "installmentDue": 519.29,
+     "status": "not_due",
+     "creditIndex": 93.3,
+     "score": 100.0,
+     "band": "healthy",
+     "earlyWarning": false,
+     "intervention": null
+    },
+    {
+     "days": 28,
+     "revenue": 14397.23,
+     "baseline": 13808.22,
+     "expenses": 5000.01,
+     "surplus": 9397.22,
+     "installmentDue": 538.52,
+     "status": "not_due",
+     "creditIndex": 92.8,
+     "score": 100.0,
+     "band": "healthy",
+     "earlyWarning": false,
+     "intervention": null
+    },
+    {
+     "days": 27,
+     "revenue": 5697.85,
+     "baseline": 10652.05,
+     "expenses": 8000.01,
+     "surplus": -2302.16,
+     "installmentDue": 3195.96,
+     "status": "unknown",
+     "creditIndex": 83.3,
+     "score": 36.1,
+     "band": "at_risk",
+     "earlyWarning": true,
+     "intervention": "repayment_counselling"
+    },
+    {
+     "days": 24,
+     "revenue": 4465.03,
+     "baseline": 10060.27,
+     "expenses": 7500.0,
+     "surplus": -3034.97,
+     "installmentDue": 2840.85,
+     "status": "unknown",
+     "creditIndex": 76.3,
+     "score": 32.0,
+     "band": "at_risk",
+     "earlyWarning": true,
+     "intervention": "repayment_counselling"
+    }
+   ]
+  },
+  {
+   "name": "dairy expense spike",
+   "capital": 50000,
+   "activity": "dairy_farming",
+   "disbursedOn": "2026-01-10",
+   "batches": [
+    [
+     {
+      "at": "2026-04-01T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1696.09,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-02T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1638.0,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-03T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1521.77,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-05T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2176.23,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-06T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1550.79,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-08T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2071.73,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-09T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2041.89,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-10T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2089.3,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-12T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2016.66,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-13T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1493.21,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-15T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1458.82,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-16T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1427.32,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-17T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2114.16,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-19T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1476.14,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-20T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1738.21,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-22T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2223.05,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-23T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2504.6,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-24T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2002.33,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-26T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2473.78,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-27T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2557.67,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-03T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 6666.67,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-11T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 6666.67,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-19T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 6666.67,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     }
+    ],
+    [
+     {
+      "at": "2026-05-01T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2082.58,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-02T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1684.49,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-03T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2265.87,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-05T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1540.78,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-06T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1755.37,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-08T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2207.93,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-09T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1744.9,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-10T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1261.21,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-12T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1586.97,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-13T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1878.08,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-15T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1966.31,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-16T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1693.22,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-17T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1970.35,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-19T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1431.42,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-20T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1781.57,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-22T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1501.35,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-23T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2187.17,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-24T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2260.69,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-26T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2215.65,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-27T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1322.49,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-03T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 11333.33,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-11T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 11333.33,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-19T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 11333.33,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     }
+    ],
+    [
+     {
+      "at": "2026-06-01T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1244.08,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-01T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 843.73,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-02T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1042.29,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-03T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 703.37,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-04T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 761.33,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-05T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1224.88,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-06T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 892.7,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-07T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 829.26,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-08T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 980.78,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-09T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 757.26,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-10T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 900.61,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-11T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 947.99,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-12T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 810.54,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-13T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1043.8,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-14T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1049.28,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-15T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1034.94,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-15T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 925.73,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-16T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1262.95,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-17T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1083.65,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-18T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1167.39,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-19T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 702.45,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-20T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1124.58,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-21T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1044.47,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-22T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1103.99,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-23T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 758.44,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-24T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 745.86,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-25T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1057.78,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-26T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 762.31,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-27T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1159.15,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-28T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 1180.97,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-03T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 4000.0,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-11T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 4000.0,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-19T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 4000.0,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     }
+    ]
+   ],
+   "expected": [
+    {
+     "days": 27,
+     "revenue": 38271.75,
+     "baseline": 35136.99,
+     "expenses": 20000.01,
+     "surplus": 18271.74,
+     "installmentDue": 2663.01,
+     "status": "not_due",
+     "creditIndex": 89.7,
+     "score": 100.0,
+     "band": "healthy",
+     "earlyWarning": false,
+     "intervention": null
+    },
+    {
+     "days": 27,
+     "revenue": 36338.4,
+     "baseline": 31438.36,
+     "expenses": 33999.99,
+     "surplus": 2338.41,
+     "installmentDue": 2663.01,
+     "status": "not_due",
+     "creditIndex": 92.9,
+     "score": 85.5,
+     "band": "healthy",
+     "earlyWarning": false,
+     "intervention": null
+    },
+    {
+     "days": 28,
+     "revenue": 29146.56,
+     "baseline": 30684.93,
+     "expenses": 12000.0,
+     "surplus": 17146.56,
+     "installmentDue": 2761.64,
+     "status": "not_due",
+     "creditIndex": 91.0,
+     "score": 97.7,
+     "band": "healthy",
+     "earlyWarning": false,
+     "intervention": null
+    }
+   ]
+  },
+  {
+   "name": "quarter overdue no disbursement date",
+   "capital": 12000,
+   "activity": "tailoring",
+   "disbursedOn": null,
+   "batches": [
+    [
+     {
+      "at": "2026-01-02T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 9000.0,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-14T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 8000.0,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-04-10T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 7000.0,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-03-01T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 6000.0,
+      "channel": "other",
+      "isLoanRepayment": false
+     }
+    ],
+    [
+     {
+      "at": "2026-05-01T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 400.0,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-05-03T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 300.0,
+      "channel": "upi",
+      "isLoanRepayment": false
+     }
+    ],
+    [
+     {
+      "at": "2026-06-01T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 900.0,
+      "channel": "upi",
+      "isLoanRepayment": true
+     },
+     {
+      "at": "2026-06-20T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 500.0,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-06-21T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 2500.0,
+      "channel": "upi",
+      "isLoanRepayment": false
+     }
+    ]
+   ],
+   "expected": [
+    {
+     "days": 99,
+     "revenue": 24000.0,
+     "baseline": 47835.62,
+     "expenses": 6000.0,
+     "surplus": 18000.0,
+     "installmentDue": 11718.52,
+     "status": "overdue",
+     "creditIndex": 8.0,
+     "score": 57.6,
+     "band": "watch",
+     "earlyWarning": true,
+     "intervention": "repayment_counselling"
+    },
+    {
+     "days": 7,
+     "revenue": 700.0,
+     "baseline": 3969.86,
+     "expenses": 0.0,
+     "surplus": 700.0,
+     "installmentDue": 828.58,
+     "status": "unknown",
+     "creditIndex": null,
+     "score": 39.6,
+     "band": "at_risk",
+     "earlyWarning": true,
+     "intervention": "repayment_counselling"
+    },
+    {
+     "days": 21,
+     "revenue": 2500.0,
+     "baseline": 8802.74,
+     "expenses": 500.0,
+     "surplus": 2000.0,
+     "installmentDue": 2485.75,
+     "status": "grace_period",
+     "creditIndex": 28.3,
+     "score": 41.6,
+     "band": "at_risk",
+     "earlyWarning": true,
+     "intervention": "repayment_counselling"
+    }
+   ]
+  },
+  {
+   "name": "outside scheme",
+   "capital": 600000,
+   "activity": "flour_mill",
+   "disbursedOn": null,
+   "batches": [
+    [
+     {
+      "at": "2026-02-01T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 18082.82,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-02T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 20221.0,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-03T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 16357.62,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-05T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 18814.44,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-06T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 15635.74,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-08T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 20210.7,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-09T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 15573.42,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-10T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 17380.68,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-12T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 15834.17,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-13T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 14263.53,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-15T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 23169.66,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-16T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 22142.44,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-17T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 21628.91,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-19T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 24444.53,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-20T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 20390.91,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-22T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 14886.18,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-23T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 18989.81,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-24T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 15036.88,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-26T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 16484.14,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-27T00:00:00+00:00",
+      "direction": "credit",
+      "amount": 15327.01,
+      "channel": "upi",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-03T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 66666.67,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-11T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 66666.67,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     },
+     {
+      "at": "2026-02-19T00:00:00+00:00",
+      "direction": "debit",
+      "amount": 66666.67,
+      "channel": "neft_imps",
+      "isLoanRepayment": false
+     }
+    ]
+   ],
+   "expected": [
+    {
+     "days": 27,
+     "revenue": 364874.59,
+     "baseline": 621369.86,
+     "expenses": 200000.01,
+     "surplus": 164874.58,
+     "installmentDue": 0.0,
+     "status": "unknown",
+     "creditIndex": 81.0,
+     "score": 59.1,
+     "band": "watch",
+     "earlyWarning": true,
+     "intervention": "pricing_adjustment"
+    }
+   ]
+  }
+ ],
+ "scoring": [
+  {
+   "days": 31,
+   "transactionsParsed": 40,
+   "revenue": 12000,
+   "baseline": 12000,
+   "expenses": 7000,
+   "surplus": 5000,
+   "installmentDue": 3000,
+   "status": "paid",
+   "score": 100.0,
+   "band": "healthy",
+   "earlyWarning": false,
+   "intervention": null
+  },
+  {
+   "days": 28,
+   "transactionsParsed": 20,
+   "revenue": 12000,
+   "baseline": 13000,
+   "expenses": 13000,
+   "surplus": -1000,
+   "installmentDue": 3000,
+   "status": "unknown",
+   "score": 53.5,
+   "band": "watch",
+   "earlyWarning": false,
+   "intervention": "repayment_counselling"
+  },
+  {
+   "days": 31,
+   "transactionsParsed": 12,
+   "revenue": 6000,
+   "baseline": 9000,
+   "expenses": 2500,
+   "surplus": 3500,
+   "installmentDue": 3000,
+   "status": "grace_period",
+   "score": 67.2,
+   "band": "watch",
+   "earlyWarning": true,
+   "intervention": "mentor_outreach"
+  },
+  {
+   "days": 30,
+   "transactionsParsed": 30,
+   "revenue": 6000,
+   "baseline": 12000,
+   "expenses": 5000,
+   "surplus": 1000,
+   "installmentDue": 0,
+   "status": "unknown",
+   "score": 53.1,
+   "band": "watch",
+   "earlyWarning": true,
+   "intervention": "supply_chain_change"
+  },
+  {
+   "days": 31,
+   "transactionsParsed": 30,
+   "revenue": 0,
+   "baseline": 0,
+   "expenses": 0,
+   "surplus": 0,
+   "installmentDue": 0,
+   "status": "unknown",
+   "score": null,
+   "band": null,
+   "earlyWarning": false,
+   "intervention": null
+  },
+  {
+   "days": 30,
+   "transactionsParsed": 30,
+   "revenue": 9000,
+   "baseline": 10000,
+   "expenses": 6000,
+   "surplus": 3000,
+   "installmentDue": 3000,
+   "status": "overdue",
+   "score": 63.8,
+   "band": "watch",
+   "earlyWarning": false,
+   "intervention": "repayment_counselling"
+  },
+  {
+   "days": 31,
+   "transactionsParsed": 30,
+   "revenue": 5000,
+   "baseline": 12000,
+   "expenses": 1000,
+   "surplus": 4000,
+   "installmentDue": 2000,
+   "status": "not_due",
+   "score": 73.8,
+   "band": "healthy",
+   "earlyWarning": true,
+   "intervention": "pricing_adjustment"
+  },
+  {
+   "days": 31,
+   "transactionsParsed": 30,
+   "revenue": 3000,
+   "baseline": 12000,
+   "expenses": 1000,
+   "surplus": 2000,
+   "installmentDue": 0,
+   "status": "unknown",
+   "score": 35.8,
+   "band": "at_risk",
+   "earlyWarning": true,
+   "intervention": "pricing_adjustment"
+  },
+  {
+   "days": 30,
+   "transactionsParsed": 30,
+   "revenue": 3000,
+   "baseline": 12000,
+   "expenses": 1000,
+   "surplus": 2000,
+   "installmentDue": 0,
+   "status": "unknown",
+   "score": 35.8,
+   "band": "at_risk",
+   "earlyWarning": true,
+   "intervention": "mentor_outreach"
+  }
+ ],
+ "priors": [
+  {
+   "activity": "tailoring",
+   "district": null,
+   "real": [],
+   "prior": 1.01,
+   "realRecords": 0,
+   "syntheticRecords": 24,
+   "dominant": true
+  },
+  {
+   "activity": "tailoring",
+   "district": "Sitapur",
+   "real": [
+    {
+     "catalog_id": "tailoring",
+     "district": "Sitapur",
+     "intervention_type": "pricing_adjustment",
+     "health_before": 45,
+     "health_after": 62,
+     "is_synthetic": false
+    },
+    {
+     "catalog_id": "tailoring",
+     "district": "Sitapur",
+     "intervention_type": "pricing_adjustment",
+     "health_before": 50,
+     "health_after": 58,
+     "is_synthetic": false
+    },
+    {
+     "catalog_id": "tailoring",
+     "district": "Lucknow",
+     "intervention_type": "repayment_counselling",
+     "health_before": 40,
+     "health_after": 38,
+     "is_synthetic": false
+    },
+    {
+     "catalog_id": "dairy_farming",
+     "district": "Sitapur",
+     "intervention_type": "supply_chain_change",
+     "health_before": 52,
+     "health_after": 49,
+     "is_synthetic": false
+    }
+   ],
+   "prior": 1.022,
+   "realRecords": 3,
+   "syntheticRecords": 24,
+   "dominant": true
+  },
+  {
+   "activity": "tailoring",
+   "district": "sitapur",
+   "real": [
+    {
+     "catalog_id": "tailoring",
+     "district": "Sitapur",
+     "intervention_type": "pricing_adjustment",
+     "health_before": 45,
+     "health_after": 62,
+     "is_synthetic": false
+    },
+    {
+     "catalog_id": "tailoring",
+     "district": "Sitapur",
+     "intervention_type": "pricing_adjustment",
+     "health_before": 50,
+     "health_after": 58,
+     "is_synthetic": false
+    },
+    {
+     "catalog_id": "tailoring",
+     "district": "Lucknow",
+     "intervention_type": "repayment_counselling",
+     "health_before": 40,
+     "health_after": 38,
+     "is_synthetic": false
+    },
+    {
+     "catalog_id": "dairy_farming",
+     "district": "Sitapur",
+     "intervention_type": "supply_chain_change",
+     "health_before": 52,
+     "health_after": 49,
+     "is_synthetic": false
+    }
+   ],
+   "prior": 1.022,
+   "realRecords": 3,
+   "syntheticRecords": 24,
+   "dominant": true
+  },
+  {
+   "activity": "dairy_farming",
+   "district": "Sitapur",
+   "real": [
+    {
+     "catalog_id": "tailoring",
+     "district": "Sitapur",
+     "intervention_type": "pricing_adjustment",
+     "health_before": 45,
+     "health_after": 62,
+     "is_synthetic": false
+    },
+    {
+     "catalog_id": "tailoring",
+     "district": "Sitapur",
+     "intervention_type": "pricing_adjustment",
+     "health_before": 50,
+     "health_after": 58,
+     "is_synthetic": false
+    },
+    {
+     "catalog_id": "tailoring",
+     "district": "Lucknow",
+     "intervention_type": "repayment_counselling",
+     "health_before": 40,
+     "health_after": 38,
+     "is_synthetic": false
+    },
+    {
+     "catalog_id": "dairy_farming",
+     "district": "Sitapur",
+     "intervention_type": "supply_chain_change",
+     "health_before": 52,
+     "health_after": 49,
+     "is_synthetic": false
+    }
+   ],
+   "prior": 0.98,
+   "realRecords": 1,
+   "syntheticRecords": 24,
+   "dominant": true
+  },
+  {
+   "activity": "beekeeping",
+   "district": null,
+   "real": [],
+   "prior": 1.017,
+   "realRecords": 0,
+   "syntheticRecords": 24,
+   "dominant": true
+  },
+  {
+   "activity": "unknown_activity",
+   "district": null,
+   "real": [],
+   "prior": 1.0,
+   "realRecords": 0,
+   "syntheticRecords": 0,
+   "dominant": false
+  }
+ ],
+ "grievances": [
+  {
+   "text": "My sewing machine is broken and the motor is not working",
+   "issue": "machinery_breakdown"
+  },
+  {
+   "text": "EMI kist bharne mein dikkat hai, loan ka paisa nahi hai",
+   "issue": "loan_repayment_stress"
+  },
+  {
+   "text": "Supplier ne kapda nahi bheja, raw material delay ho gaya",
+   "issue": "supply_delay"
+  },
+  {
+   "text": "Mandi rate gir gaya, daam bahut sasta hai, no buyers",
+   "issue": "pricing_collapse"
+  },
+  {
+   "text": "मशीन खराब हो गई है",
+   "issue": "machinery_breakdown"
+  },
+  {
+   "text": "किस्त नहीं भर पा रही, कर्ज बढ़ रहा है",
+   "issue": "loan_repayment_stress"
+  },
+  {
+   "text": "चारा देर से आया, माल की कमी",
+   "issue": "supply_delay"
+  },
+  {
+   "text": "दूध का भाव गिर गया",
+   "issue": "pricing_collapse"
+  },
+  {
+   "text": "I need help with something",
+   "issue": "other"
+  },
+  {
+   "text": "",
+   "issue": "other"
+  },
+  {
+   "text": "price and loan problem",
+   "issue": "loan_repayment_stress"
+  },
+  {
+   "text": "Feed stock late again; the delayed supply hurts",
+   "issue": "supply_delay"
+  },
+  {
+   "text": "machine repair kharab, rate low",
+   "issue": "machinery_breakdown"
+  },
+  {
+   "text": "the damage from late payments",
+   "issue": "supply_delay"
+  },
+  {
+   "text": "Repayment is late",
+   "issue": "loan_repayment_stress"
+  }
+ ],
+ "routes": [
+  {
+   "issue": "supply_delay",
+   "sector": null,
+   "role": "DIC / MSME facilitation desk",
+   "intervention": "supply_chain_change"
+  },
+  {
+   "issue": "supply_delay",
+   "sector": "animal_husbandry",
+   "role": "District livestock extension officer",
+   "intervention": "supply_chain_change"
+  },
+  {
+   "issue": "supply_delay",
+   "sector": "fisheries",
+   "role": "District fisheries extension officer",
+   "intervention": "supply_chain_change"
+  },
+  {
+   "issue": "supply_delay",
+   "sector": "agri_allied",
+   "role": "DIC / MSME facilitation desk",
+   "intervention": "supply_chain_change"
+  },
+  {
+   "issue": "supply_delay",
+   "sector": "textiles_apparel",
+   "role": "DIC / MSME facilitation desk",
+   "intervention": "supply_chain_change"
+  },
+  {
+   "issue": "pricing_collapse",
+   "sector": null,
+   "role": "DIC / MSME facilitation desk",
+   "intervention": "pricing_adjustment"
+  },
+  {
+   "issue": "pricing_collapse",
+   "sector": "animal_husbandry",
+   "role": "DIC / MSME facilitation desk",
+   "intervention": "pricing_adjustment"
+  },
+  {
+   "issue": "pricing_collapse",
+   "sector": "fisheries",
+   "role": "DIC / MSME facilitation desk",
+   "intervention": "pricing_adjustment"
+  },
+  {
+   "issue": "pricing_collapse",
+   "sector": "agri_allied",
+   "role": "Block agriculture extension officer (ATMA)",
+   "intervention": "pricing_adjustment"
+  },
+  {
+   "issue": "pricing_collapse",
+   "sector": "textiles_apparel",
+   "role": "DIC / MSME facilitation desk",
+   "intervention": "pricing_adjustment"
+  },
+  {
+   "issue": "machinery_breakdown",
+   "sector": null,
+   "role": "DIC / MSME facilitation desk",
+   "intervention": "mentor_outreach"
+  },
+  {
+   "issue": "machinery_breakdown",
+   "sector": "animal_husbandry",
+   "role": "District livestock extension officer",
+   "intervention": "mentor_outreach"
+  },
+  {
+   "issue": "machinery_breakdown",
+   "sector": "fisheries",
+   "role": "DIC / MSME facilitation desk",
+   "intervention": "mentor_outreach"
+  },
+  {
+   "issue": "machinery_breakdown",
+   "sector": "agri_allied",
+   "role": "DIC / MSME facilitation desk",
+   "intervention": "mentor_outreach"
+  },
+  {
+   "issue": "machinery_breakdown",
+   "sector": "textiles_apparel",
+   "role": "DIC / MSME facilitation desk",
+   "intervention": "mentor_outreach"
+  },
+  {
+   "issue": "loan_repayment_stress",
+   "sector": null,
+   "role": "SCA loan officer",
+   "intervention": "repayment_counselling"
+  },
+  {
+   "issue": "loan_repayment_stress",
+   "sector": "animal_husbandry",
+   "role": "SCA loan officer",
+   "intervention": "repayment_counselling"
+  },
+  {
+   "issue": "loan_repayment_stress",
+   "sector": "fisheries",
+   "role": "SCA loan officer",
+   "intervention": "repayment_counselling"
+  },
+  {
+   "issue": "loan_repayment_stress",
+   "sector": "agri_allied",
+   "role": "SCA loan officer",
+   "intervention": "repayment_counselling"
+  },
+  {
+   "issue": "loan_repayment_stress",
+   "sector": "textiles_apparel",
+   "role": "SCA loan officer",
+   "intervention": "repayment_counselling"
+  },
+  {
+   "issue": "other",
+   "sector": null,
+   "role": "Block-level enterprise mentor (SCA field staff)",
+   "intervention": "mentor_outreach"
+  },
+  {
+   "issue": "other",
+   "sector": "animal_husbandry",
+   "role": "Block-level enterprise mentor (SCA field staff)",
+   "intervention": "mentor_outreach"
+  },
+  {
+   "issue": "other",
+   "sector": "fisheries",
+   "role": "Block-level enterprise mentor (SCA field staff)",
+   "intervention": "mentor_outreach"
+  },
+  {
+   "issue": "other",
+   "sector": "agri_allied",
+   "role": "Block-level enterprise mentor (SCA field staff)",
+   "intervention": "mentor_outreach"
+  },
+  {
+   "issue": "other",
+   "sector": "textiles_apparel",
+   "role": "Block-level enterprise mentor (SCA field staff)",
+   "intervention": "mentor_outreach"
+  }
+ ],
+ "validators": [
+  {
+   "field": "phone_number",
+   "value": "9876543210",
+   "ok": true,
+   "result": "9876543210"
+  },
+  {
+   "field": "phone_number",
+   "value": "+91 98765 43210",
+   "ok": true,
+   "result": "9876543210"
+  },
+  {
+   "field": "phone_number",
+   "value": "919876543210",
+   "ok": true,
+   "result": "9876543210"
+  },
+  {
+   "field": "phone_number",
+   "value": "5876543210",
+   "ok": false,
+   "result": null
+  },
+  {
+   "field": "phone_number",
+   "value": "98765",
+   "ok": false,
+   "result": null
+  },
+  {
+   "field": "aadhaar_number",
+   "value": "2345 6789 0124",
+   "ok": true,
+   "result": "234567890124"
+  },
+  {
+   "field": "aadhaar_number",
+   "value": "123456789012",
+   "ok": false,
+   "result": null
+  },
+  {
+   "field": "aadhaar_number",
+   "value": "23456789",
+   "ok": false,
+   "result": null
+  },
+  {
+   "field": "aadhaar_number",
+   "value": "9999 9999 9999",
+   "ok": true,
+   "result": "999999999999"
+  },
+  {
+   "field": "pan_number",
+   "value": "abcde1234f",
+   "ok": true,
+   "result": "ABCDE1234F"
+  },
+  {
+   "field": "pan_number",
+   "value": "ABCDE 1234 F",
+   "ok": true,
+   "result": "ABCDE1234F"
+  },
+  {
+   "field": "pan_number",
+   "value": "ABCD1234F",
+   "ok": false,
+   "result": null
+  },
+  {
+   "field": "ifsc_code",
+   "value": "sbin0001234",
+   "ok": true,
+   "result": "SBIN0001234"
+  },
+  {
+   "field": "ifsc_code",
+   "value": "SBIN1001234",
+   "ok": false,
+   "result": null
+  },
+  {
+   "field": "ifsc_code",
+   "value": "HDFC0ABC123",
+   "ok": true,
+   "result": "HDFC0ABC123"
+  },
+  {
+   "field": "bank_account_number",
+   "value": "1234 5678 90",
+   "ok": true,
+   "result": "1234567890"
+  },
+  {
+   "field": "bank_account_number",
+   "value": "12345678",
+   "ok": false,
+   "result": null
+  },
+  {
+   "field": "bank_account_number",
+   "value": "123456789012345678",
+   "ok": true,
+   "result": "123456789012345678"
+  },
+  {
+   "field": "bank_account_number",
+   "value": "1234567890123456789",
+   "ok": false,
+   "result": null
+  },
+  {
+   "field": "pincode",
+   "value": "261001",
+   "ok": true,
+   "result": "261001"
+  },
+  {
+   "field": "pincode",
+   "value": "061001",
+   "ok": false,
+   "result": null
+  },
+  {
+   "field": "pincode",
+   "value": "26100",
+   "ok": false,
+   "result": null
+  },
+  {
+   "field": "udyam_registration_number",
+   "value": "udyam-up-45-0012345",
+   "ok": true,
+   "result": "UDYAM-UP-45-0012345"
+  },
+  {
+   "field": "udyam_registration_number",
+   "value": "UDYAM-UP-4-0012345",
+   "ok": false,
+   "result": null
+  },
+  {
+   "field": "full_name",
+   "value": "  Sunita   Devi ",
+   "ok": true,
+   "result": "Sunita Devi"
+  },
+  {
+   "field": "full_name",
+   "value": "S",
+   "ok": false,
+   "result": null
+  }
+ ],
+ "launch": [
+  {
+   "capital": 12000,
+   "activity": "tailoring",
+   "weeks": [
+    3,
+    4,
+    7,
+    9,
+    11
+   ],
+   "themes": [
+    "licensing",
+    "supplier_discovery",
+    "inventory",
+    "customer_acquisition",
+    "operations"
+   ],
+   "taskCounts": [
+    1,
+    3,
+    2,
+    3,
+    2
+   ]
+  },
+  {
+   "capital": 50000,
+   "activity": "dairy_farming",
+   "weeks": [
+    6,
+    10,
+    14,
+    19,
+    24
+   ],
+   "themes": [
+    "licensing",
+    "supplier_discovery",
+    "inventory",
+    "customer_acquisition",
+    "operations"
+   ],
+   "taskCounts": [
+    3,
+    4,
+    3,
+    3,
+    2
+   ]
+  },
+  {
+   "capital": 600000,
+   "activity": "flour_mill",
+   "weeks": [
+    3,
+    5,
+    7,
+    10,
+    12
+   ],
+   "themes": [
+    "licensing",
+    "supplier_discovery",
+    "inventory",
+    "customer_acquisition",
+    "operations"
+   ],
+   "taskCounts": [
+    3,
+    3,
+    2,
+    2,
+    2
+   ]
+  },
+  {
+   "capital": 15000,
+   "activity": "poultry_backyard",
+   "weeks": [
+    6,
+    10,
+    14,
+    19,
+    24
+   ],
+   "themes": [
+    "licensing",
+    "supplier_discovery",
+    "inventory",
+    "customer_acquisition",
+    "operations"
+   ],
+   "taskCounts": [
+    1,
+    3,
+    3,
+    3,
+    2
+   ]
+  }
+ ],
+ "policy": [
+  {
+   "tier": "micro_finance",
+   "documents": [
+    "Self-help group membership certificate, if applying through a group",
+    "Identity proof (Aadhaar card or voter ID)",
+    "Address proof",
+    "Recent passport-size photographs",
+    "Bank account passbook or cancelled cheque",
+    "Caste or community certificate, where the scheme targets a category",
+    "Income certificate",
+    "Project report with project cost and repayment plan",
+    "Quotations for machinery, equipment or animals to be purchased"
+   ],
+   "steps": [
+    "Confirm the business activity and the available margin money (your own contribution).",
+    "Check the scheme tier: the project cost decides whether the Micro Finance Scheme or the Term Loan Scheme applies.",
+    "Prepare a simple project report with the project cost, the capital expenditure and working capital split, and the repayment schedule.",
+    "Collect the required documents and self-attest the copies.",
+    "Complete the loan application form and submit it with the documents to the channelising agency or lending bank.",
+    "Attend verification: the agency checks the documents, may visit the business site and appraises the project report.",
+    "Receive the sanction letter stating the approved loan amount and terms.",
+    "Deposit or show proof of your margin contribution and sign the loan agreement.",
+    "Receive disbursement, usually paid directly to suppliers or into your bank account in stages.",
+    "Start repayment after the moratorium; keep receipts for every installment."
+   ],
+   "ruleHeadings": [
+    "Micro Finance Scheme key terms",
+    "Micro Finance loan cap",
+    "How the Micro Finance loan is repaid",
+    "Who the Micro Finance Scheme is for"
+   ]
+  },
+  {
+   "tier": "term_loan",
+   "documents": [
+    "Udyam registration certificate",
+    "Proof of business premises or land (ownership, lease or consent letter)",
+    "Licences applicable to the activity",
+    "Guarantor or security documents as asked by the lender",
+    "Identity proof (Aadhaar card or voter ID)",
+    "Address proof",
+    "Recent passport-size photographs",
+    "Bank account passbook or cancelled cheque",
+    "Caste or community certificate, where the scheme targets a category",
+    "Income certificate",
+    "Project report with project cost and repayment plan",
+    "Quotations for machinery, equipment or animals to be purchased"
+   ],
+   "steps": [
+    "Confirm the business activity and the available margin money (your own contribution).",
+    "Check the scheme tier: the project cost decides whether the Micro Finance Scheme or the Term Loan Scheme applies.",
+    "Prepare a simple project report with the project cost, the capital expenditure and working capital split, and the repayment schedule.",
+    "Collect the required documents and self-attest the copies.",
+    "Complete the loan application form and submit it with the documents to the channelising agency or lending bank.",
+    "Attend verification: the agency checks the documents, may visit the business site and appraises the project report.",
+    "Receive the sanction letter stating the approved loan amount and terms.",
+    "Deposit or show proof of your margin contribution and sign the loan agreement.",
+    "Receive disbursement, usually paid directly to suppliers or into your bank account in stages.",
+    "Start repayment after the moratorium; keep receipts for every installment."
+   ],
+   "ruleHeadings": [
+    "Term Loan Scheme key terms",
+    "How the Term Loan is repaid",
+    "Who the Term Loan Scheme is for",
+    "How the Term Loan project cost is split"
+   ]
+  },
+  {
+   "tier": null,
+   "documents": [],
+   "steps": [
+    "Confirm the business activity and the available margin money (your own contribution).",
+    "Check the scheme tier: the project cost decides whether the Micro Finance Scheme or the Term Loan Scheme applies.",
+    "Prepare a simple project report with the project cost, the capital expenditure and working capital split, and the repayment schedule.",
+    "Collect the required documents and self-attest the copies.",
+    "Complete the loan application form and submit it with the documents to the channelising agency or lending bank.",
+    "Attend verification: the agency checks the documents, may visit the business site and appraises the project report.",
+    "Receive the sanction letter stating the approved loan amount and terms.",
+    "Deposit or show proof of your margin contribution and sign the loan agreement.",
+    "Receive disbursement, usually paid directly to suppliers or into your bank account in stages.",
+    "Start repayment after the moratorium; keep receipts for every installment."
+   ],
+   "ruleHeadings": [
+    "Micro Finance Scheme key terms",
+    "Micro Finance loan cap",
+    "How the Micro Finance loan is repaid",
+    "Who the Micro Finance Scheme is for",
+    "Term Loan Scheme key terms",
+    "How the Term Loan is repaid",
+    "Who the Term Loan Scheme is for",
+    "How the Term Loan project cost is split"
+   ]
+  }
+ ]
+}
