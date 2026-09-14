@@ -20,7 +20,7 @@ export function EvidenceSection({ intel, district, activityId, i }: { intel: Int
         <Card>
           {quote ? (
             <div className="flex gap-2.5">
-              <Quote className="mt-0.5 size-4 shrink-0 text-forest-600" />
+              <Quote className="mt-0.5 size-4 shrink-0 text-azure-600" />
               <div className="min-w-0">
                 <p className="text-[14px] leading-snug text-ink-2">“{pick(quote.record.text)}”</p>
                 <p className="mt-1 text-xs text-ink-3">{pick(quote.record.who)}</p>
@@ -31,7 +31,7 @@ export function EvidenceSection({ intel, district, activityId, i }: { intel: Int
           )}
           <div className="mt-3 grid grid-cols-2 gap-2 rounded-2xl bg-cream p-3 text-center">
             <div>
-              <p className="tabular text-xl font-bold text-forest-800">{ev.usedCount}</p>
+              <p className="tabular text-xl font-bold text-azure-800">{ev.usedCount}</p>
               <p className="text-[11px] leading-tight text-ink-3">{t("g2.evidence.used")}</p>
             </div>
             <div>

@@ -30,7 +30,7 @@ export default function Outcome() {
     <Section title={t("w4.history.title")}>
       <OutcomeHistory />
       <div className="mt-3">
-        <Note tone="forest">{t("u4.history.note")}</Note>
+        <Note tone="azure">{t("u4.history.note")}</Note>
       </div>
     </Section>
   );
@@ -163,7 +163,7 @@ export default function Outcome() {
 
       <Reveal i={1}>
         <Card className="mt-3 grid grid-cols-2 gap-3">
-          <Stat label={t("u4.outcome.revenueIn", { month: monthLabel(after.month, lang, "short") })} value={rupees(after.revenue)} tone="forest" hint={pct !== null ? t("u4.monitoring.ofPlan", { pct }) : undefined} />
+          <Stat label={t("u4.outcome.revenueIn", { month: monthLabel(after.month, lang, "short") })} value={rupees(after.revenue)} tone="azure" hint={pct !== null ? t("u4.monitoring.ofPlan", { pct }) : undefined} />
           <Stat label={t("w4.outcome.planned")} value={rupees(after.planned)} />
         </Card>
       </Reveal>
@@ -182,7 +182,7 @@ export default function Outcome() {
                     tap();
                     setAnswer(a.id);
                   }}
-                  className={cx("flex min-h-20 w-full flex-col items-center justify-center gap-1.5 rounded-2xl text-[15px] font-semibold ring-2", answer === a.id ? "bg-forest-800 text-white ring-forest-800" : "bg-white text-forest-800 ring-line")}
+                  className={cx("flex min-h-20 w-full flex-col items-center justify-center gap-1.5 rounded-2xl text-[15px] font-semibold ring-2", answer === a.id ? "bg-azure-800 text-white ring-azure-800" : "bg-white text-azure-800 ring-line")}
                 >
                   <a.icon className="size-5" />
                   {t(`w4.outcome.answer.${a.id}`)}
@@ -194,30 +194,30 @@ export default function Outcome() {
         </Section>
       ) : (
         <Reveal i={3}>
-          <Card tone="forest" className="mt-6">
+          <Card tone="azure" className="mt-6">
             <div className="flex items-center gap-3">
               <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 260, damping: 14 }} className="grid size-11 shrink-0 place-items-center rounded-2xl bg-white/15">
                 <CheckCircle2 className="size-6" />
               </motion.span>
               <div className="min-w-0">
                 <p className="text-lg font-bold">{t("w4.outcome.recorded")}</p>
-                {state.followUp && <p className="text-[13px] text-forest-100">{t("w4.outcome.youSaid", { answer: t(`w4.outcome.answer.${state.followUp.answer}`) })}</p>}
+                {state.followUp && <p className="text-[13px] text-azure-100">{t("w4.outcome.youSaid", { answer: t(`w4.outcome.answer.${state.followUp.answer}`) })}</p>}
               </div>
             </div>
-            <p className="mt-3 text-[15px] leading-snug text-forest-100">{t("u4.outcome.recorded.body")}</p>
+            <p className="mt-3 text-[15px] leading-snug text-azure-100">{t("u4.outcome.recorded.body")}</p>
             <div className="mt-3 grid grid-cols-2 gap-2">
               <div className="rounded-xl bg-white/10 p-2.5">
-                <p className="text-xs text-forest-100">{t("w4.outcome.realRecords")}</p>
+                <p className="text-xs text-azure-100">{t("w4.outcome.realRecords")}</p>
                 <motion.p key={view.prior?.realRecords} initial={{ y: -8, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="tabular text-2xl font-bold">
                   {view.prior?.realRecords ?? 0}
                 </motion.p>
               </div>
               <div className="rounded-xl bg-white/10 p-2.5">
-                <p className="text-xs text-forest-100">{t("w4.outcome.syntheticRecords")}</p>
+                <p className="text-xs text-azure-100">{t("w4.outcome.syntheticRecords")}</p>
                 <p className="tabular text-2xl font-bold">{view.prior?.syntheticRecords ?? 0}</p>
               </div>
             </div>
-            {option && <p className="mt-2 text-[13px] text-forest-100">{t("u4.outcome.newRate", { step: t(`u4.intervention.${chosen.type}`), pct: Math.round(option.successRate * 100), real: option.real, synthetic: option.synthetic })}</p>}
+            {option && <p className="mt-2 text-[13px] text-azure-100">{t("u4.outcome.newRate", { step: t(`u4.intervention.${chosen.type}`), pct: Math.round(option.successRate * 100), real: option.real, synthetic: option.synthetic })}</p>}
             {view.prior?.isSyntheticDominant && (
               <p className="mt-2 flex items-start gap-1.5 text-xs leading-snug text-marigold-200">
                 <Database className="mt-px size-3.5 shrink-0" />

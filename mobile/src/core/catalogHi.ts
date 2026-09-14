@@ -2,7 +2,7 @@
  * Hindi for the free-text fields of data/reference/business_catalog.json (key inputs, buyers, licences, price units),
  * so catalog-derived items render in the app language. Unknown text falls back to the English source.
  */
-import type { Bi } from "../i18n";
+import { biFromKey, type Bi } from "../i18n";
 
 const HI: Record<string, string> = {
   "Animal insurance": "पशु बीमा",
@@ -115,7 +115,7 @@ const HI: Record<string, string> = {
 
 /** Bilingual form of a catalog string (Hindi falls back to the English source when not listed). */
 export function catalogBi(text: string): Bi {
-  return { en: text, hi: HI[text] ?? text };
+  return biFromKey(`catalog.${text.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "")}`, { en: text, hi: HI[text] ?? text });
 }
 
 export const catalogHi = (text: string): string => HI[text] ?? text;

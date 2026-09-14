@@ -21,7 +21,7 @@ export function Calculator({ plan, capital, savedCapital, onChange, onCommit }: 
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="text-[13px] text-ink-3">{t("plan.calc.savings")}</p>
-          <p className="tabular text-[32px] leading-tight font-bold text-forest-900">{rupees(capital)}</p>
+          <p className="tabular text-[32px] leading-tight font-bold text-azure-900">{rupees(capital)}</p>
         </div>
         <div className="pt-1">
           <TierBadge tier={plan.tier?.name ?? null} />
@@ -48,7 +48,7 @@ export function Calculator({ plan, capital, savedCapital, onChange, onCommit }: 
             {t("g3.plan.commit", { v: rupees(capital) })}
           </Button>
           {savedCapital > 0 && (
-            <button onClick={() => onChange(savedCapital)} className="inline-flex min-h-11 items-center gap-1.5 px-2 text-sm font-semibold text-forest-700 active:opacity-70">
+            <button onClick={() => onChange(savedCapital)} className="inline-flex min-h-11 items-center gap-1.5 px-2 text-sm font-semibold text-azure-700 active:opacity-70">
               <RotateCcw className="size-4" />
               {t("g3.plan.backToSaved", { v: rupees(savedCapital) })}
             </button>
@@ -61,7 +61,7 @@ export function Calculator({ plan, capital, savedCapital, onChange, onCommit }: 
           <UnlockBar plan={plan} />
           <div className="mt-4 grid grid-cols-3 gap-3 border-t border-line pt-4">
             <Stat label={t("plan.projectCost")} value={rupeesShort(plan.projectCost, lang)} />
-            <Stat label={t("plan.loan")} value={rupeesShort(plan.loan, lang)} tone="forest" />
+            <Stat label={t("plan.loan")} value={rupeesShort(plan.loan, lang)} tone="azure" />
             <Stat label={t("plan.instalmentShort")} value={rupeesShort(plan.regularInstallment, lang)} />
           </div>
           <div className="mt-3">
@@ -90,10 +90,10 @@ function UnlockBar({ plan }: { plan: Plan }) {
         {t("plan.unlock.title", { capital: rupees(plan.capital), project: rupees(plan.projectCost) })}
       </p>
       <div className="mt-3 flex h-9 overflow-hidden rounded-xl text-xs font-bold">
-        <motion.div animate={{ width: `${you}%` }} transition={{ type: "spring", stiffness: 200, damping: 30 }} className="grid min-w-9 place-items-center bg-marigold-500 text-forest-950">
+        <motion.div animate={{ width: `${you}%` }} transition={{ type: "spring", stiffness: 200, damping: 30 }} className="grid min-w-9 place-items-center bg-marigold-500 text-azure-950">
           {Math.round(you)}%
         </motion.div>
-        <div className="grid flex-1 place-items-center bg-forest-700 text-white">{Math.round(plan.loanPct)}%</div>
+        <div className="grid flex-1 place-items-center bg-azure-700 text-white">{Math.round(plan.loanPct)}%</div>
       </div>
       <div className="mt-2 flex justify-between gap-3 text-[13px]">
         <span className="flex items-center gap-1.5">
@@ -101,7 +101,7 @@ function UnlockBar({ plan }: { plan: Plan }) {
           {t("plan.unlock.you", { v: rupeesShort(plan.projectCost - plan.loan, lang) })}
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="size-2.5 rounded-full bg-forest-700" />
+          <span className="size-2.5 rounded-full bg-azure-700" />
           {t("plan.unlock.loan", { v: rupeesShort(plan.loan, lang) })}
         </span>
       </div>

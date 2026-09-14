@@ -23,9 +23,9 @@ export function SunriseArt() {
           />
         );
       })}
-      <path d="M0 110 Q60 86 120 104 T240 98 V150 H0Z" fill="#146C43" />
-      <path d="M0 126 Q70 108 140 122 T240 118 V150 H0Z" fill="#0A3A24" />
-      <path d="M30 150 L100 118 M70 150 L120 120 M120 150 L140 122 M175 150 L160 121 M220 150 L182 120" stroke="#198754" strokeWidth="2" opacity="0.7" />
+      <path d="M0 110 Q60 86 120 104 T240 98 V150 H0Z" fill="#0A8AA0" />
+      <path d="M0 126 Q70 108 140 122 T240 118 V150 H0Z" fill="#00596A" />
+      <path d="M30 150 L100 118 M70 150 L120 120 M120 150 L140 122 M175 150 L160 121 M220 150 L182 120" stroke="#0e9bb3" strokeWidth="2" opacity="0.7" />
     </svg>
   );
 }
@@ -35,8 +35,8 @@ export function VoiceArt() {
     <svg viewBox="0 0 240 150" className="h-36 w-auto" aria-hidden>
       <rect x="22" y="20" width="120" height="46" rx="18" fill="#FFFFFF" opacity="0.95" />
       <path d="M40 66 L36 80 L56 66Z" fill="#FFFFFF" opacity="0.95" />
-      <rect x="38" y="36" width="70" height="6" rx="3" fill="#BFE3CF" />
-      <rect x="38" y="48" width="46" height="6" rx="3" fill="#BFE3CF" />
+      <rect x="38" y="36" width="70" height="6" rx="3" fill="#B3E3EA" />
+      <rect x="38" y="48" width="46" height="6" rx="3" fill="#B3E3EA" />
       <rect x="96" y="80" width="122" height="46" rx="18" fill="#F2A516" />
       <path d="M200 126 L206 140 L184 126Z" fill="#F2A516" />
       {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
@@ -45,7 +45,7 @@ export function VoiceArt() {
           x={116 + i * 11}
           width="5"
           rx="2.5"
-          fill="#06291A"
+          fill="#00333B"
           animate={{ height: [8, 22, 8], y: [99, 92, 99] }}
           transition={{ duration: 0.9, repeat: Infinity, delay: i * 0.1, ease: "easeInOut" }}
         />
@@ -58,10 +58,10 @@ export function HonestArt() {
   return (
     <svg viewBox="0 0 240 150" className="h-36 w-auto" aria-hidden>
       <path d="M78 14 L130 30 V70 C130 104 106 126 78 136 C50 126 26 104 26 70 V30Z" fill="#FFFFFF" opacity="0.95" />
-      <motion.path d="M56 74 L72 90 L102 58" fill="none" stroke="#198754" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.8, delay: 0.3 }} />
-      <rect x="150" y="40" width="72" height="22" rx="11" fill="#D8EFE3" />
-      <circle cx="164" cy="51" r="4" fill="#198754" />
-      <rect x="174" y="48" width="38" height="6" rx="3" fill="#198754" opacity="0.6" />
+      <motion.path d="M56 74 L72 90 L102 58" fill="none" stroke="#0e9bb3" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.8, delay: 0.3 }} />
+      <rect x="150" y="40" width="72" height="22" rx="11" fill="#D4F0F4" />
+      <circle cx="164" cy="51" r="4" fill="#0e9bb3" />
+      <rect x="174" y="48" width="38" height="6" rx="3" fill="#0e9bb3" opacity="0.6" />
       <rect x="150" y="72" width="72" height="22" rx="11" fill="#FDEFD0" />
       <circle cx="164" cy="83" r="4" fill="#F2A516" />
       <rect x="174" y="80" width="38" height="6" rx="3" fill="#C77C02" opacity="0.6" />

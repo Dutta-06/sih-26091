@@ -1,6 +1,6 @@
 import catalog from "../../../data/reference/business_catalog.json";
 import type { ActivityEconomics } from "../engine/finance";
-import type { Bi } from "../i18n";
+import { biFromKey, type Bi } from "../i18n";
 
 /** Catalog entries (single source of truth shared with the Python backend) plus display names. */
 export interface Activity extends ActivityEconomics {
@@ -35,7 +35,7 @@ const DISPLAY: Record<string, { name: Bi; emoji: string }> = {
 export const ACTIVITIES: Record<string, Activity> = Object.fromEntries(
   catalog.activities
     .filter((a) => DISPLAY[a.id])
-    .map((a) => [a.id, { ...(a as unknown as Activity), ...DISPLAY[a.id] }]),
+    .map((a) => [a.id, { ...(a as unknown as Activity), ...DISPLAY[a.id], name: biFromKey(`activity.${a.id}`, DISPLAY[a.id].name) }]),
 );
 
 export const activity = (id: string): Activity => {

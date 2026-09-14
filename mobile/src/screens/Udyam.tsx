@@ -134,7 +134,7 @@ export default function Udyam() {
       ) : phase === "done" ? (
         <div className="mt-4 space-y-4">
           <UdyamSuccess fresh={fresh} number={applicant.udyamNumber ?? null} />
-          <Note tone="forest" icon={CheckCircle2}>
+          <Note tone="azure" icon={CheckCircle2}>
             {t("udyam.success.docNote")}
           </Note>
           <Button variant="ghost" className="w-full" onClick={() => pop()}>
@@ -160,7 +160,7 @@ export default function Udyam() {
                   .filter((f) => answers[f.id])
                   .map((f) => (
                     <motion.li key={f.id} initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} className="flex items-center gap-2 rounded-xl bg-white px-3 py-2 text-[13px] shadow-[var(--shadow-card)]">
-                      <CheckCircle2 className="size-4 shrink-0 text-forest-600" />
+                      <CheckCircle2 className="size-4 shrink-0 text-azure-600" />
                       <span className="shrink-0 text-ink-3">{t(`udyam.label.${f.id}`)}</span>
                       <span className="tabular min-w-0 flex-1 truncate text-right font-semibold">{shownValue(f, answers[f.id], t, applicant)}</span>
                     </motion.li>
@@ -172,7 +172,7 @@ export default function Udyam() {
       ) : (
         <>
           <div className="mt-4 space-y-2">
-            <Note tone="forest">{t("udyam.review.intro")}</Note>
+            <Note tone="azure">{t("udyam.review.intro")}</Note>
             {!place && (
               <Note tone="clay" icon={CircleAlert}>
                 {t("g3.form.noPlace")}

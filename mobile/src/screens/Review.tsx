@@ -29,7 +29,7 @@ export default function Review() {
     return (
       <Screen title={t("review.title")} subtitle={t("review.subtitle")}>
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="mt-6 text-center">
-          <CheckCircle2 className="mx-auto size-14 text-forest-600" />
+          <CheckCircle2 className="mx-auto size-14 text-azure-600" />
           <h2 className="mt-3 text-xl font-bold">{t(f.attempts.length ? "g2.review.passed" : "g2.review.nothing")}</h2>
           <p className="mx-auto mt-2 max-w-80 text-[14px] leading-snug text-ink-2">
             {f.attempts.length ? t("g2.review.passedSub", { name: pick(activityLabel(f.attempts[0].activityId).name) }) : f.constraints.map(mt).join(" ") || t("g2.review.nothingSub")}
@@ -169,7 +169,7 @@ export default function Review() {
       )}
 
       <div className="mt-4">
-        <Note tone="forest">{t("review.honest")}</Note>
+        <Note tone="azure">{t("review.honest")}</Note>
       </div>
       <Button variant="secondary" size="md" icon={ListOrdered} className="mt-3 w-full" onClick={() => push({ name: "shortlist" })}>
         {t("w2.seeRanked")}
@@ -245,7 +245,7 @@ function FindingDetail({ finding, attempt, capital }: { finding: ReviewFinding; 
           </div>
           <p className="tabular text-lg font-bold text-clay-700">{c.count ?? "—"}</p>
           <DensityRow label={t("report.yourArea")} value={c.densityPer10k} max={Math.max(c.densityPer10k ?? 0, bench.value ?? 0)} tone="clay" />
-          <DensityRow label={t(bench.scope === "state" ? "g2.comp.benchState" : "g2.comp.benchCatalog", { state: stateName })} value={bench.value} max={Math.max(c.densityPer10k ?? 0, bench.value ?? 0)} tone="forest" />
+          <DensityRow label={t(bench.scope === "state" ? "g2.comp.benchState" : "g2.comp.benchCatalog", { state: stateName })} value={bench.value} max={Math.max(c.densityPer10k ?? 0, bench.value ?? 0)} tone="azure" />
           {c.zScore !== null && <p className="tabular mt-1 text-xs text-ink-3">{t("w2.bench.z", { z: c.zScore.toFixed(1) })}</p>}
         </>,
       );
@@ -293,13 +293,13 @@ function Bar({ value }: { value: number }) {
   );
 }
 
-function DensityRow({ label, value, max, tone }: { label: string; value: number | null; max: number; tone: "clay" | "forest" }) {
+function DensityRow({ label, value, max, tone }: { label: string; value: number | null; max: number; tone: "clay" | "azure" }) {
   const scale = max * 1.15 || 1;
   return (
     <div className="mt-2 flex items-center gap-2">
       <span className="w-28 shrink-0 truncate text-[12px] text-ink-2">{label}</span>
       <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-ink-3/15">
-        <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: value === null ? 0 : value / scale }} style={{ originX: 0 }} transition={{ duration: 0.7 }} className={cx("h-full w-full rounded-full", tone === "clay" ? "bg-clay-600" : "bg-forest-600")} />
+        <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: value === null ? 0 : value / scale }} style={{ originX: 0 }} transition={{ duration: 0.7 }} className={cx("h-full w-full rounded-full", tone === "clay" ? "bg-clay-600" : "bg-azure-600")} />
       </div>
       <span className="tabular w-10 text-right text-[13px] font-semibold">{value === null ? "—" : value.toFixed(1)}</span>
     </div>
@@ -313,7 +313,7 @@ function AltCard({ alt, rejectedId }: { alt: FeasibilityAttempt; rejectedId: str
   const d = alt.preview.baseDscr ?? 0;
   const c = alt.intel.competitor;
   return (
-    <Card tone="forest" className="relative overflow-hidden">
+    <Card tone="azure" className="relative overflow-hidden">
       <Sparkles className="absolute top-3 right-3 size-5 text-marigold-500" />
       <div className="flex items-center gap-3">
         <span className="grid size-14 shrink-0 place-items-center rounded-2xl bg-white/10 text-3xl">{label.emoji}</span>
@@ -323,11 +323,11 @@ function AltCard({ alt, rejectedId }: { alt: FeasibilityAttempt; rejectedId: str
             <Badge tone="good" icon={ThumbsUp}>
               {t(`verdict.${alt.verdict}`)}
             </Badge>
-            {adj !== "none" && <span className="inline-flex items-center rounded-full bg-marigold-500 px-2.5 py-1 text-xs font-semibold text-forest-950">{t(`g2.review.adj.${adj}`)}</span>}
+            {adj !== "none" && <span className="inline-flex items-center rounded-full bg-marigold-500 px-2.5 py-1 text-xs font-semibold text-azure-950">{t(`g2.review.adj.${adj}`)}</span>}
           </div>
         </div>
       </div>
-      <p className="mt-3 text-[14px] leading-snug text-forest-50">
+      <p className="mt-3 text-[14px] leading-snug text-azure-50">
         {t(`g2.review.adjWhy.${adj}`, { from: pick(activityLabel(rejectedId).name), to: pick(label.name) })}
       </p>
       <div className="mt-3 flex items-center gap-3 rounded-2xl bg-white p-3 text-ink">
@@ -335,7 +335,7 @@ function AltCard({ alt, rejectedId }: { alt: FeasibilityAttempt; rejectedId: str
           <CoverageGauge value={d} size={112} />
         </div>
         <div className="min-w-0 space-y-1">
-          <p className="text-[13px] font-semibold text-forest-800">{t(d >= 1.25 ? "review.coverGood" : "g2.review.coverThin", { ratio: ratio(d), pct: Math.round(d * 100) })}</p>
+          <p className="text-[13px] font-semibold text-azure-800">{t(d >= 1.25 ? "review.coverGood" : "g2.review.coverThin", { ratio: ratio(d), pct: Math.round(d * 100) })}</p>
           <p className="tabular text-xs text-ink-3">
             {rupees(alt.preview.quarterlySurplus)} / {rupees(alt.preview.plan.regularInstallment)}
           </p>
@@ -371,15 +371,15 @@ function CompareTable({ a, b }: { a: FeasibilityAttempt; b: FeasibilityAttempt }
         <span className="truncate px-2 py-2.5 text-clay-700">
           {activityLabel(a.activityId).emoji} {t(`verdict.${a.verdict}`)}
         </span>
-        <span className="truncate px-2 py-2.5 text-forest-800">
+        <span className="truncate px-2 py-2.5 text-azure-800">
           {activityLabel(b.activityId).emoji} {t(`verdict.${b.verdict}`)}
         </span>
       </div>
       {rows.map((r) => (
         <div key={r.label} className="grid grid-cols-[1.3fr_1fr_1fr] items-center border-t border-line text-[14px]">
-          <span className="px-3 py-3 text-[13px] text-ink-2">{r.label}</span>
-          <span className={cx("tabular px-2 py-3 font-semibold", r.firstWorse ? "text-clay-700" : "text-ink")}>{r.first}</span>
-          <span className="tabular bg-forest-50 px-2 py-3 font-semibold text-forest-800">{r.alt}</span>
+          <span className="min-w-0 px-3 py-3 text-[13px] text-ink-2">{r.label}</span>
+          <span className={cx("tabular min-w-0 px-2 py-3 font-semibold", r.firstWorse ? "text-clay-700" : "text-ink")}>{r.first}</span>
+          <span className="tabular min-w-0 bg-azure-50 px-2 py-3 font-semibold text-azure-800">{r.alt}</span>
         </div>
       ))}
     </Card>

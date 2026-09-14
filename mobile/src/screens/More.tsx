@@ -1,14 +1,16 @@
+import { LANG_INFO } from "../i18n";
 import { Building2, CalendarClock, ChevronRight, ClipboardList, Flag, History, Inbox, Languages, ListChecks, MonitorPlay, RotateCcw, Rocket, ShieldCheck, Users, Volume2, Workflow } from "lucide-react";
 import { useState } from "react";
 import { tap } from "../lib/haptics";
 import { ACTIVITIES } from "../data/activities";
-import { useI18n, type Lang } from "../i18n";
+import { useI18n } from "../i18n";
 import { rupees } from "../lib/format";
 import { useNav, type Route, type Tab } from "../nav";
 import { todayOf, useStore, type DemoCheckpoint, type JourneyState } from "../state/store";
 import { Button, Card, ListRow, Reveal, Section, Segmented, Sheet, TabScreen } from "../ui";
 import { chatName, placeOf, profileStarted } from "./g1/conversation";
-import { CHAT_LANG_LABEL, useSetAppLang } from "./w1/chatI18n";
+import { CHAT_LANG_LABEL } from "./w1/chatI18n";
+import { LanguageSwitch } from "./w1/LanguageSwitch";
 
 const JUMPS: { to: DemoCheckpoint; tab: Tab; route?: Route }[] = [
   { to: "start", tab: "assistant" },
@@ -25,8 +27,7 @@ const JUMPS: { to: DemoCheckpoint; tab: Tab; route?: Route }[] = [
 
 export default function More() {
   const { t, pick, lang } = useI18n();
-  const { state, dispatch, set } = useStore();
-  const setLang = useSetAppLang();
+  const { state, dispatch, set } = useStore();
   const { push, goto } = useNav();
   const [confirmReset, setConfirmReset] = useState(false);
 
@@ -35,7 +36,7 @@ export default function More() {
   const place = placeOf(profile);
   const started = profileStarted(profile);
   const initials = (name ?? "").split(/\s+/).filter(Boolean).slice(0, 2).map((w) => [...w][0]).join("").toUpperCase();
-  const locale = lang === "hi" ? "hi-IN" : "en-IN";
+  const locale = LANG_INFO[lang].dateLocale;
   const demoDate = new Date(todayOf(state)).toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric", numberingSystem: "latn" });
 
   const jump = (j: (typeof JUMPS)[number]) => {
@@ -54,7 +55,7 @@ export default function More() {
     >
       <Reveal i={0}>
         <Card className="mt-3 flex items-center gap-4" onClick={() => goto("assistant")}>
-          <span className="grid size-16 shrink-0 place-items-center rounded-full bg-forest-800 text-xl font-bold text-white">
+          <span className="grid size-16 shrink-0 place-items-center rounded-full bg-azure-800 text-xl font-bold text-white">
             {initials || (profile.activityId ? ACTIVITIES[profile.activityId]?.emoji : "") || "?"}
           </span>
           <div className="min-w-0">
@@ -73,7 +74,7 @@ export default function More() {
                     </span>
                   )}
                   {profile.skills.map((k) => (
-                    <span key={k} className="rounded-full bg-forest-50 px-2.5 py-0.5 text-xs font-medium text-forest-800">
+                    <span key={k} className="rounded-full bg-azure-50 px-2.5 py-0.5 text-xs font-medium text-azure-800">
                       {t(`w1.skill.${k}`)}
                     </span>
                   ))}
@@ -92,7 +93,7 @@ export default function More() {
             icon={Languages}
             title={t("more.language")}
             subtitle={t("more.languageSub")}
-            right={<Segmented<Lang> value={lang} onChange={setLang} options={[{ value: "en", label: "EN" }, { value: "hi", label: "हिं" }]} />}
+            right={<LanguageSwitch />}
           />
           <ListRow
             icon={Volume2}
@@ -124,7 +125,7 @@ export default function More() {
       <Section title={t("more.presenter")}>
         <Card tone="sand">
           <div className="flex items-start gap-3">
-            <MonitorPlay className="mt-0.5 size-5 shrink-0 text-forest-800" />
+            <MonitorPlay className="mt-0.5 size-5 shrink-0 text-azure-800" />
             <p className="text-[13px] leading-snug text-ink-2">{t("more.presenterSub")}</p>
           </div>
           <p className="mt-3 text-[12px] font-semibold text-ink-3">{t("u1.more.checkpoints")}</p>
@@ -133,9 +134,9 @@ export default function More() {
               <button
                 key={j.to}
                 onClick={() => jump(j)}
-                className="flex min-h-12 items-center gap-2 rounded-2xl bg-white px-3 text-left text-[14px] font-medium text-forest-800 ring-1 ring-line active:bg-forest-50"
+                className="flex min-h-12 items-center gap-2 rounded-2xl bg-white px-3 text-left text-[14px] font-medium text-azure-800 ring-1 ring-line active:bg-azure-50"
               >
-                <span className="tabular grid size-6 shrink-0 place-items-center rounded-full bg-forest-100 text-xs font-bold">{i + 1}</span>
+                <span className="tabular grid size-6 shrink-0 place-items-center rounded-full bg-azure-100 text-xs font-bold">{i + 1}</span>
                 <span className="min-w-0 flex-1 leading-tight">{t(`more.jump.${j.to}`)}</span>
                 <ChevronRight className="size-4 shrink-0 text-ink-3" />
               </button>
@@ -144,7 +145,7 @@ export default function More() {
           <ClockControls state={state} demoDate={demoDate} onAdvance={(days) => dispatch({ type: "advanceClock", days })} />
           <div className="mt-3 rounded-2xl bg-white p-3 ring-1 ring-line">
             <div className="flex items-start gap-2.5">
-              <Inbox className="mt-0.5 size-4.5 shrink-0 text-forest-800" />
+              <Inbox className="mt-0.5 size-4.5 shrink-0 text-azure-800" />
               <div className="min-w-0">
                 <p className="text-[14px] font-semibold">{t("u1.more.inbox")}</p>
                 <p className="text-[12px] leading-snug text-ink-3">{t("u1.more.inboxSub")}</p>
@@ -210,7 +211,7 @@ function ClockControls({ state, demoDate, onAdvance }: { state: JourneyState; de
   return (
     <div className="mt-3 rounded-2xl bg-white p-3 ring-1 ring-line">
       <div className="flex items-start gap-2.5">
-        <CalendarClock className="mt-0.5 size-4.5 shrink-0 text-forest-800" />
+        <CalendarClock className="mt-0.5 size-4.5 shrink-0 text-azure-800" />
         <div className="min-w-0 flex-1">
           <p className="text-[14px] font-semibold">
             {t("u1.more.clock")}: <span className="tabular">{demoDate}</span>

@@ -62,7 +62,7 @@ export function OutcomeHistory() {
             <div className="text-right">
               {measured ? (
                 <>
-                  <p className={cx("tabular flex items-center justify-end gap-1 text-[15px] font-semibold", up ? "text-forest-700" : "text-clay-700")}>
+                  <p className={cx("tabular flex items-center justify-end gap-1 text-[15px] font-semibold", up ? "text-azure-700" : "text-clay-700")}>
                     {up ? <TrendingUp className="size-4" /> : <TrendingDown className="size-4" />}
                     {h.before} → {h.after}
                   </p>

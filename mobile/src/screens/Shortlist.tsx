@@ -72,7 +72,7 @@ export default function Shortlist() {
             const rejected = attempt && attempt.verdict !== "viable";
             return (
               <Reveal key={r.activityId} i={i + 1}>
-                <Card onClick={() => setOpen(r)} className={cx(!r.feasible && "opacity-60", isSelected && "ring-2 ring-forest-600", rejected && "ring-1 ring-clay-100")}>
+                <Card onClick={() => setOpen(r)} className={cx(!r.feasible && "opacity-60", isSelected && "ring-2 ring-azure-600", rejected && "ring-1 ring-clay-100")}>
                   <div className="flex items-center gap-3">
                     <span className="tabular w-5 shrink-0 text-center text-sm font-bold text-ink-3">{r.feasible ? feasible.indexOf(r) + 1 : "–"}</span>
                     <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-cream text-2xl">{label.emoji}</span>
@@ -100,7 +100,7 @@ export default function Shortlist() {
                       </div>
                     </div>
                     <div className="shrink-0 text-right">
-                      <p className={cx("tabular text-2xl leading-none font-bold", isSelected ? "text-forest-800" : "text-ink")}>{Math.round(r.score)}</p>
+                      <p className={cx("tabular text-2xl leading-none font-bold", isSelected ? "text-azure-800" : "text-ink")}>{Math.round(r.score)}</p>
                       <p className="text-[11px] text-ink-3">{t("shortlist.outOf")}</p>
                     </div>
                   </div>

@@ -11,13 +11,13 @@ export interface JourneyStep {
   index: number;
   /** i18n key suffix for the contextual call to action (home.cta.* / home.stageHint.*) */
   cta: string;
-  tone: "forest" | "clay";
+  tone: "azure" | "clay";
   target: { tab: Tab; route?: Route };
 }
 
 /** Derive the lifecycle stage and the single next action from the inputs and the computed case. */
 export function currentStep(s: JourneyState, view: CaseView): JourneyStep {
-  const step = (stage: Stage, cta: string, target: JourneyStep["target"], tone: JourneyStep["tone"] = "forest"): JourneyStep => ({
+  const step = (stage: Stage, cta: string, target: JourneyStep["target"], tone: JourneyStep["tone"] = "azure"): JourneyStep => ({
     stage,
     index: STAGES.indexOf(stage),
     cta,

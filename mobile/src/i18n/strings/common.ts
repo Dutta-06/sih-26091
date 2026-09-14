@@ -3,7 +3,7 @@ import type { Strings } from "../index";
 /** Shared UI vocabulary. Screen-specific strings live in their own files in this folder. */
 export const common: Strings = {
   en: {
-    "app.name": "Arambh",
+    "app.name": "Aashaudyami",
     "app.tagline": "From an idea to a steady income",
     "nav.home": "Home",
     "nav.assistant": "Assistant",
@@ -38,7 +38,7 @@ export const common: Strings = {
     "unit.km": "{n} km",
   },
   hi: {
-    "app.name": "आरंभ",
+    "app.name": "आशाउद्यमी",
     "app.tagline": "विचार से पक्की कमाई तक",
     "nav.home": "होम",
     "nav.assistant": "सहायक",

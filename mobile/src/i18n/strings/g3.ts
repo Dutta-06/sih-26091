@@ -102,7 +102,7 @@ const g3: Strings = {
     "scheme.docs": "Documents you'll need",
     "scheme.steps": "Application steps",
     "scheme.step.prepare": "Prepare documents",
-    "scheme.step.prepareSub": "Arambh fills the form from your conversation",
+    "scheme.step.prepareSub": "Aashaudyami fills the form from your conversation",
     "scheme.step.submit": "Submit to the district office",
     "scheme.step.submitSub": "Sent to the State Channelising Agency",
     "scheme.step.verify": "Officer verification",
@@ -117,9 +117,9 @@ const g3: Strings = {
     "scheme.faq.prepay.q": "Is there a penalty for paying early?",
     "scheme.faq.prepay.a": "In this summary of the guidelines, early repayment has no penalty and you save the remaining interest. Confirm the current rule with your district office.",
     "scheme.faq.decides.q": "Who decides if I am eligible?",
-    "scheme.faq.decides.a": "Eligibility and loan amounts follow fixed scheme rules, not AI. Arambh applies the same rules the officer uses, and the final decision is made by the agency officer.",
-    "scheme.faq.reject.q": "Why did Arambh advise against my first idea?",
-    "scheme.faq.reject.a": "If the numbers show the loan cannot be repaid, or the local market is already crowded, Arambh says so openly and suggests a nearby business that fits your skills better.",
+    "scheme.faq.decides.a": "Eligibility and loan amounts follow fixed scheme rules, not AI. Aashaudyami applies the same rules the officer uses, and the final decision is made by the agency officer.",
+    "scheme.faq.reject.q": "Why did Aashaudyami advise against my first idea?",
+    "scheme.faq.reject.a": "If the numbers show the loan cannot be repaid, or the local market is already crowded, Aashaudyami says so openly and suggests a nearby business that fits your skills better.",
 
     // Documents
     "docs.title": "Documents",
@@ -426,7 +426,7 @@ const g3: Strings = {
     "scheme.docs": "ज़रूरी कागज़ात",
     "scheme.steps": "आवेदन के चरण",
     "scheme.step.prepare": "कागज़ात तैयार करें",
-    "scheme.step.prepareSub": "आरंभ आपकी बातचीत से फ़ॉर्म भर देता है",
+    "scheme.step.prepareSub": "आशाउद्यमी आपकी बातचीत से फ़ॉर्म भर देता है",
     "scheme.step.submit": "ज़िला कार्यालय में जमा करें",
     "scheme.step.submitSub": "राज्य चैनलाइज़िंग एजेंसी को भेजा जाता है",
     "scheme.step.verify": "अधिकारी की जाँच",
@@ -441,9 +441,9 @@ const g3: Strings = {
     "scheme.faq.prepay.q": "जल्दी चुकाने पर जुर्माना लगता है?",
     "scheme.faq.prepay.a": "नियमों के इस सारांश के अनुसार जल्दी चुकाने पर कोई जुर्माना नहीं है और बाकी ब्याज बच जाता है। मौजूदा नियम ज़िला कार्यालय से पक्का कर लें।",
     "scheme.faq.decides.q": "मैं योग्य हूँ या नहीं, यह कौन तय करता है?",
-    "scheme.faq.decides.a": "योग्यता और लोन की रकम योजना के तय नियमों से निकलती है, AI से नहीं। आरंभ वही नियम लगाता है जो अधिकारी लगाते हैं, और आखिरी फ़ैसला एजेंसी के अधिकारी का होता है।",
-    "scheme.faq.reject.q": "आरंभ ने मेरा पहला विचार क्यों नहीं सुझाया?",
-    "scheme.faq.reject.a": "अगर हिसाब से लगे कि लोन नहीं चुक पाएगा या बाज़ार में पहले से बहुत लोग हैं, तो आरंभ साफ़ बताता है और आपके हुनर से मिलता-जुलता बेहतर काम सुझाता है।",
+    "scheme.faq.decides.a": "योग्यता और लोन की रकम योजना के तय नियमों से निकलती है, AI से नहीं। आशाउद्यमी वही नियम लगाता है जो अधिकारी लगाते हैं, और आखिरी फ़ैसला एजेंसी के अधिकारी का होता है।",
+    "scheme.faq.reject.q": "आशाउद्यमी ने मेरा पहला विचार क्यों नहीं सुझाया?",
+    "scheme.faq.reject.a": "अगर हिसाब से लगे कि लोन नहीं चुक पाएगा या बाज़ार में पहले से बहुत लोग हैं, तो आशाउद्यमी साफ़ बताता है और आपके हुनर से मिलता-जुलता बेहतर काम सुझाता है।",
 
     // Documents
     "docs.title": "कागज़ात",

@@ -1,3 +1,4 @@
+import { LANG_INFO } from "../../i18n";
 /**
  * G4 derived figures for the business lifecycle. Everything is computed from the on-device case (`useStore().view`)
  * and the user's own inputs/events; no result is typed in here.
@@ -22,7 +23,7 @@ export function activityLabel(id: string | null): { name: Bi | string; emoji: st
   return { name: words.charAt(0).toUpperCase() + words.slice(1), emoji: "🏪" };
 }
 
-const locale = (lang: Lang) => (lang === "hi" ? "hi-IN" : "en-IN");
+const locale = (lang: Lang) => (LANG_INFO[lang].dateLocale);
 
 /** "2026-07" → "July 2026" (or short "Jul"). */
 export function monthLabel(month: string, lang: Lang, style: "long" | "short" = "long"): string {
@@ -143,6 +144,6 @@ export function fmtMsg<M extends { key: string; vars?: Record<string, unknown> }
 }
 
 export const BAND_TONE ={ healthy: "good", watch: "warn", at_risk: "risk" } as const;
-export const RING_TONE = { healthy: "forest", watch: "marigold", at_risk: "clay" } as const;
+export const RING_TONE = { healthy: "azure", watch: "marigold", at_risk: "clay" } as const;
 export const STATUS_TONE = { paid: "good", not_due: "neutral", grace_period: "warn", overdue: "risk", unknown: "neutral" } as const;
 

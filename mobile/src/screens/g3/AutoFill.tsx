@@ -92,7 +92,7 @@ export function FieldInput({ field, inputMode, label, onSave, initial = "", sugg
           if (error) setError(null);
         }}
         aria-invalid={!!error}
-        className={`tabular min-h-12 w-full min-w-0 flex-1 rounded-xl bg-white px-3 text-[16px] ring-1 outline-none focus:ring-2 ${error ? "ring-clay-600" : "ring-line focus:ring-forest-600"}`}
+        className={`tabular min-h-12 w-full min-w-0 flex-1 rounded-xl bg-white px-3 text-[16px] ring-1 outline-none focus:ring-2 ${error ? "ring-clay-600" : "ring-line focus:ring-azure-600"}`}
       />
       {voice && canListen() && (
         <motion.button
@@ -100,7 +100,7 @@ export function FieldInput({ field, inputMode, label, onSave, initial = "", sugg
           whileTap={{ scale: 0.92 }}
           onClick={mic}
           aria-label={t("udyam.mic")}
-          className={`relative grid size-12 shrink-0 place-items-center rounded-full text-white ${listening ? "bg-clay-600" : "bg-forest-800"}`}
+          className={`relative grid size-12 shrink-0 place-items-center rounded-full text-white ${listening ? "bg-clay-600" : "bg-azure-800"}`}
         >
           {listening && <motion.span className="absolute inset-0 rounded-full bg-clay-600/40" animate={{ scale: [1, 1.5], opacity: [0.7, 0] }} transition={{ repeat: Infinity, duration: 1 }} />}
           <Mic className="relative size-5" />
@@ -166,7 +166,7 @@ export function AutoFill() {
               <p className="text-[15px] font-medium break-words">{v}</p>
             </div>
             {v !== dash && (
-              <span className="flex shrink-0 items-center gap-1 text-[11px] font-semibold text-forest-700">
+              <span className="flex shrink-0 items-center gap-1 text-[11px] font-semibold text-azure-700">
                 <Check className="size-3.5" />
                 {t("docs.form.auto")}
               </span>
@@ -188,8 +188,8 @@ export function AutoFill() {
       </ul>
       <AnimatePresence mode="wait">
         {next ? (
-          <motion.div key={next} initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} className="mt-3 rounded-2xl bg-forest-50 p-3.5 ring-1 ring-forest-100">
-            <p className="text-[11px] font-semibold tracking-wide text-forest-700 uppercase">{t("g3.form.left", { n: order.length - answeredCount })}</p>
+          <motion.div key={next} initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} className="mt-3 rounded-2xl bg-azure-50 p-3.5 ring-1 ring-azure-100">
+            <p className="text-[11px] font-semibold tracking-wide text-azure-700 uppercase">{t("g3.form.left", { n: order.length - answeredCount })}</p>
             <p className="mt-1 text-[15px] font-semibold">{t(`g3.form.q.${next}`)}</p>
             {next === "premises" ? (
               <div className="mt-3 flex flex-wrap gap-2">
@@ -229,7 +229,7 @@ export function AutoFill() {
             )}
           </motion.div>
         ) : (
-          <motion.p key="ready" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-3 flex items-center gap-2 rounded-2xl bg-forest-50 p-3 text-[15px] font-semibold text-forest-800">
+          <motion.p key="ready" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-3 flex items-center gap-2 rounded-2xl bg-azure-50 p-3 text-[15px] font-semibold text-azure-800">
             <Check className="size-5" />
             {t("docs.form.ready")}
           </motion.p>

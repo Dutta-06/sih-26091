@@ -19,12 +19,12 @@ function Locked() {
   return (
     <TabScreen header={<header className="safe-top px-5 pt-5 pb-1"><h1 className="text-2xl font-bold">{t("nav.business")}</h1></header>}>
       <Reveal>
-        <Card tone="forest" className="mt-3 p-5">
+        <Card tone="azure" className="mt-3 p-5">
           <motion.div initial={{ scale: 0.6, rotate: -12 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: "spring", stiffness: 260, damping: 14 }} className="grid size-14 place-items-center rounded-2xl bg-white/15">
             <Lock className="size-7" />
           </motion.div>
           <h2 className="mt-4 text-xl font-bold leading-snug">{t("business.locked.title")}</h2>
-          <p className="mt-1.5 text-[15px] leading-snug text-forest-100">{t("business.locked.body")}</p>
+          <p className="mt-1.5 text-[15px] leading-snug text-azure-100">{t("business.locked.body")}</p>
         </Card>
       </Reveal>
       <Section title={t("business.locked.unlocks")}>
@@ -142,7 +142,7 @@ export default function Business() {
                 <div className="min-w-0 flex-1">
                   <Badge tone={BAND_TONE[latest.band]}>{t(`u4.band.${latest.band}`)}</Badge>
                   <p className="mt-1.5 text-[15px] font-semibold">{t("business.health.title")}</p>
-                  <p className={cx("flex items-center gap-1 text-[13px]", trend === null ? "text-ink-3" : trend >= 0 ? "text-forest-700" : "text-clay-700")}>
+                  <p className={cx("flex items-center gap-1 text-[13px]", trend === null ? "text-ink-3" : trend >= 0 ? "text-azure-700" : "text-clay-700")}>
                     {trend !== null && (trend >= 0 ? <TrendingUp className="size-4 shrink-0" /> : <TrendingDown className="size-4 shrink-0" />)}
                     <span className="min-w-0">
                       {trend === null
@@ -178,7 +178,7 @@ export default function Business() {
               <p className="text-[13px] leading-snug text-ink-3">{t("u4.instalment.none")}</p>
             ) : "done" in instalment ? (
               <div className="flex items-center gap-3">
-                <IconBubble icon={CalendarCheck} tone="forest" />
+                <IconBubble icon={CalendarCheck} tone="azure" />
                 <p className="text-[15px] font-semibold">{t("u4.instalment.allDone", { n: instalment.total })}</p>
               </div>
             ) : (
@@ -200,7 +200,7 @@ export default function Business() {
                 {latest && <p className="mt-2 text-xs leading-snug text-ink-3">{t("u4.instalment.statusFrom", { month: monthLabel(latest.month, lang) })}</p>}
               </>
             )}
-            <p className="mt-2 text-[11px] font-medium text-forest-700">{t("business.rulesCue")}</p>
+            <p className="mt-2 text-[11px] font-medium text-azure-700">{t("business.rulesCue")}</p>
           </Card>
         </Reveal>
       </Section>
@@ -211,7 +211,7 @@ export default function Business() {
             <ListRow icon={LifeBuoy} tone="clay" title={t("business.grievance.title")} subtitle={t("u4.business.grievance.sub")} onClick={() => push({ name: "grievance" })} />
             <ListRow icon={Users} tone="sky" title={t("business.community.title")} subtitle={t("u4.business.community.sub")} onClick={() => push({ name: "community" })} />
             <ListRow icon={CalendarCheck} tone="marigold" title={t("w4.outcome.title")} subtitle={t("w4.business.outcome.sub")} onClick={() => push({ name: "outcome" })} />
-            <ListRow icon={ShieldCheck} tone="forest" title={t("w4.privacy.title")} subtitle={t("w4.business.privacy.sub")} onClick={() => push({ name: "privacy" })} />
+            <ListRow icon={ShieldCheck} tone="azure" title={t("w4.privacy.title")} subtitle={t("w4.business.privacy.sub")} onClick={() => push({ name: "privacy" })} />
           </Card>
         </Reveal>
       </Section>

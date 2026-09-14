@@ -1,5 +1,5 @@
 /**
- * Arambh UI primitives. Screens compose these; avoid ad-hoc colours and shadows in screens.
+ * Aashaudyami UI primitives. Screens compose these; avoid ad-hoc colours and shadows in screens.
  * Touch targets are ≥ 44px; text never below 12px; icons always paired with text for low-literacy users.
  */
 import { ChevronLeft, ChevronRight, Info, type LucideIcon } from "lucide-react";
@@ -33,16 +33,16 @@ export function Screen({
   children: ReactNode;
   footer?: ReactNode;
   right?: ReactNode;
-  tone?: "cream" | "forest";
+  tone?: "cream" | "azure";
   back?: boolean;
 }) {
   const { pop } = useNav();
   const { t } = useI18n();
-  const dark = tone === "forest";
+  const dark = tone === "azure";
   return (
-    <div className={cx("flex h-full flex-col", dark ? "bg-forest-800 text-white" : "bg-cream")}>
+    <div className={cx("flex h-full flex-col", dark ? "bg-azure-800 text-white" : "bg-cream")}>
       {(title || back) && (
-        <header className={cx("safe-top sticky top-0 z-10", dark ? "bg-forest-800" : "bg-cream")}>
+        <header className={cx("safe-top sticky top-0 z-10", dark ? "bg-azure-800" : "bg-cream")}>
           <div className="flex min-h-14 items-center gap-1 px-2">
             {back ? (
               <motion.button
@@ -59,7 +59,7 @@ export function Screen({
             )}
             <div className="min-w-0 flex-1">
               {title && <h1 className="truncate text-[17px] font-semibold leading-tight">{title}</h1>}
-              {subtitle && <p className={cx("truncate text-xs", dark ? "text-forest-100" : "text-ink-3")}>{subtitle}</p>}
+              {subtitle && <p className={cx("truncate text-xs", dark ? "text-azure-100" : "text-ink-3")}>{subtitle}</p>}
             </div>
             {right}
           </div>
@@ -95,10 +95,10 @@ export function Section({ title, action, children, className }: { title?: string
   );
 }
 
-export function Card({ children, className, onClick, tone = "white" }: { children: ReactNode; className?: string; onClick?: () => void; tone?: "white" | "forest" | "marigold" | "clay" | "sand" }) {
+export function Card({ children, className, onClick, tone = "white" }: { children: ReactNode; className?: string; onClick?: () => void; tone?: "white" | "azure" | "marigold" | "clay" | "sand" }) {
   const tones = {
     white: "bg-white",
-    forest: "bg-forest-800 text-white",
+    azure: "bg-azure-800 text-white",
     marigold: "bg-marigold-50 ring-1 ring-marigold-200",
     clay: "bg-clay-50 ring-1 ring-clay-100",
     sand: "bg-sand",
@@ -126,10 +126,10 @@ export function Button({
   ...rest
 }: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: ButtonVariant; icon?: LucideIcon; iconRight?: LucideIcon; size?: "md" | "lg" }) {
   const variants: Record<ButtonVariant, string> = {
-    primary: "bg-forest-800 text-white shadow-[var(--shadow-float)] active:bg-forest-900 disabled:bg-ink-3/40 disabled:shadow-none",
-    accent: "bg-marigold-500 text-forest-950 active:bg-marigold-600",
-    secondary: "bg-white text-forest-800 ring-1 ring-line active:bg-sand",
-    ghost: "text-forest-800 active:bg-forest-50",
+    primary: "bg-azure-800 text-white shadow-[var(--shadow-float)] active:bg-azure-900 disabled:bg-ink-3/40 disabled:shadow-none",
+    accent: "bg-marigold-500 text-azure-950 active:bg-marigold-600",
+    secondary: "bg-white text-azure-800 ring-1 ring-line active:bg-sand",
+    ghost: "text-azure-800 active:bg-azure-50",
     danger: "bg-clay-600 text-white active:bg-clay-700",
   };
   return (
@@ -159,7 +159,7 @@ export function Chip({ children, active, onClick, icon: Icon }: { children: Reac
       onClick={onClick}
       className={cx(
         "inline-flex min-h-10 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 text-sm font-medium",
-        active ? "bg-forest-800 text-white" : "bg-white text-forest-800 ring-1 ring-forest-200 active:bg-forest-50",
+        active ? "bg-azure-800 text-white" : "bg-white text-azure-800 ring-1 ring-azure-200 active:bg-azure-50",
       )}
     >
       {Icon && <Icon className="size-4" />}
@@ -170,7 +170,7 @@ export function Chip({ children, active, onClick, icon: Icon }: { children: Reac
 
 export function Toggle({ checked, onChange, label }: { checked: boolean; onChange: (v: boolean) => void; label?: string }) {
   return (
-    <button role="switch" aria-checked={checked} aria-label={label} onClick={() => onChange(!checked)} className={cx("relative h-8 w-14 shrink-0 rounded-full transition-colors", checked ? "bg-forest-700" : "bg-ink-3/30")}>
+    <button role="switch" aria-checked={checked} aria-label={label} onClick={() => onChange(!checked)} className={cx("relative h-8 w-14 shrink-0 rounded-full transition-colors", checked ? "bg-azure-700" : "bg-ink-3/30")}>
       <motion.span layout transition={{ type: "spring", stiffness: 500, damping: 32 }} className={cx("absolute top-1 size-6 rounded-full bg-white shadow", checked ? "right-1" : "left-1")} />
     </button>
   );
@@ -182,7 +182,7 @@ export function Segmented<T extends string>({ value, options, onChange }: { valu
     <div className="inline-flex rounded-full bg-sand p-1">
       {options.map((o) => (
         <button key={o.value} onClick={() => onChange(o.value)} className={cx("relative min-h-9 min-w-12 rounded-full px-3 text-sm font-semibold", value === o.value ? "text-white" : "text-ink-2")}>
-          {value === o.value && <motion.span layoutId={`seg-${options.map((x) => x.value).join()}`} className="absolute inset-0 rounded-full bg-forest-800" />}
+          {value === o.value && <motion.span layoutId={`seg-${options.map((x) => x.value).join()}`} className="absolute inset-0 rounded-full bg-azure-800" />}
           <span className="relative">{o.label}</span>
         </button>
       ))}
@@ -201,10 +201,10 @@ export function ConfidenceBadge({ value, compact }: { value: "real" | "estimated
       title={t(real ? "confidence.realHint" : "confidence.estimatedHint")}
       className={cx(
         "inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold",
-        real ? "bg-forest-100 text-forest-800" : "bg-marigold-100 text-marigold-600",
+        real ? "bg-azure-100 text-azure-800" : "bg-marigold-100 text-marigold-600",
       )}
     >
-      <span className={cx("size-1.5 rounded-full", real ? "bg-forest-600" : "bg-marigold-500")} />
+      <span className={cx("size-1.5 rounded-full", real ? "bg-azure-600" : "bg-marigold-500")} />
       {!compact && t(real ? "confidence.real" : "confidence.estimated")}
     </span>
   );
@@ -213,7 +213,7 @@ export function ConfidenceBadge({ value, compact }: { value: "real" | "estimated
 export function Badge({ children, tone = "neutral", icon: Icon }: { children: ReactNode; tone?: "neutral" | "good" | "warn" | "risk" | "info"; icon?: LucideIcon }) {
   const tones = {
     neutral: "bg-sand text-ink-2",
-    good: "bg-forest-100 text-forest-800",
+    good: "bg-azure-100 text-azure-800",
     warn: "bg-marigold-100 text-marigold-600",
     risk: "bg-clay-100 text-clay-700",
     info: "bg-sky-100 text-sky-700",
@@ -240,22 +240,22 @@ export function Stat({
   /** numbers count up on change (formatted with `format`); any other node renders as-is */
   value: ReactNode;
   hint?: ReactNode;
-  tone?: "ink" | "forest" | "light";
+  tone?: "ink" | "azure" | "light";
   format?: (n: number) => string;
 }) {
   return (
     <div className="min-w-0">
-      <p className={cx("text-xs", tone === "light" ? "text-forest-100" : "text-ink-3")}>{label}</p>
-      <p className={cx("tabular mt-0.5 truncate text-xl font-bold", tone === "forest" && "text-forest-800", tone === "light" && "text-white")}>
+      <p className={cx("text-xs", tone === "light" ? "text-azure-100" : "text-ink-3")}>{label}</p>
+      <p className={cx("tabular mt-0.5 truncate text-xl font-bold", tone === "azure" && "text-azure-800", tone === "light" && "text-white")}>
         {typeof value === "number" ? <CountUp value={value} format={format} /> : value}
       </p>
-      {hint && <div className={cx("mt-0.5 text-xs", tone === "light" ? "text-forest-100" : "text-ink-3")}>{hint}</div>}
+      {hint && <div className={cx("mt-0.5 text-xs", tone === "light" ? "text-azure-100" : "text-ink-3")}>{hint}</div>}
     </div>
   );
 }
 
-export function IconBubble({ icon: Icon, tone = "forest", size = "md" }: { icon: LucideIcon; tone?: "forest" | "marigold" | "clay" | "sky" | "sand"; size?: "sm" | "md" | "lg" }) {
-  const tones = { forest: "bg-forest-100 text-forest-800", marigold: "bg-marigold-100 text-marigold-600", clay: "bg-clay-100 text-clay-700", sky: "bg-sky-100 text-sky-700", sand: "bg-sand text-ink-2" };
+export function IconBubble({ icon: Icon, tone = "azure", size = "md" }: { icon: LucideIcon; tone?: "azure" | "marigold" | "clay" | "sky" | "sand"; size?: "sm" | "md" | "lg" }) {
+  const tones = { azure: "bg-azure-100 text-azure-800", marigold: "bg-marigold-100 text-marigold-600", clay: "bg-clay-100 text-clay-700", sky: "bg-sky-100 text-sky-700", sand: "bg-sand text-ink-2" };
   const sizes = { sm: "size-9 [&>svg]:size-4.5", md: "size-11 [&>svg]:size-5.5", lg: "size-14 [&>svg]:size-7" };
   return (
     <span className={cx("grid shrink-0 place-items-center rounded-2xl", tones[tone], sizes[size])}>
@@ -264,7 +264,7 @@ export function IconBubble({ icon: Icon, tone = "forest", size = "md" }: { icon:
   );
 }
 
-export function ListRow({ icon, title, subtitle, right, onClick, tone }: { icon?: LucideIcon; title: ReactNode; subtitle?: ReactNode; right?: ReactNode; onClick?: () => void; tone?: "forest" | "marigold" | "clay" | "sky" | "sand" }) {
+export function ListRow({ icon, title, subtitle, right, onClick, tone }: { icon?: LucideIcon; title: ReactNode; subtitle?: ReactNode; right?: ReactNode; onClick?: () => void; tone?: "azure" | "marigold" | "clay" | "sky" | "sand" }) {
   const inner = (
     <div className="flex min-h-14 items-center gap-3 py-2.5">
       {icon && <IconBubble icon={icon} tone={tone} size="sm" />}
@@ -284,8 +284,8 @@ export function ListRow({ icon, title, subtitle, right, onClick, tone }: { icon?
   );
 }
 
-export function Progress({ value, tone = "forest", className }: { value: number; tone?: "forest" | "marigold" | "clay"; className?: string }) {
-  const tones = { forest: "bg-forest-600", marigold: "bg-marigold-500", clay: "bg-clay-600" };
+export function Progress({ value, tone = "azure", className }: { value: number; tone?: "azure" | "marigold" | "clay"; className?: string }) {
+  const tones = { azure: "bg-azure-600", marigold: "bg-marigold-500", clay: "bg-clay-600" };
   return (
     <div className={cx("h-2 overflow-hidden rounded-full bg-ink-3/15", className)}>
       {/* scaleX (compositor-only) instead of width; rounded end is a minor trade-off while animating */}
@@ -301,14 +301,14 @@ export function Progress({ value, tone = "forest", className }: { value: number;
 }
 
 /** Circular score (0–100) used for health and feasibility scores. */
-export function Ring({ value, size = 96, stroke = 10, tone = "forest", label, sub }: { value: number; size?: number; stroke?: number; tone?: "forest" | "marigold" | "clay" | "light"; label?: ReactNode; sub?: ReactNode }) {
+export function Ring({ value, size = 96, stroke = 10, tone = "azure", label, sub }: { value: number; size?: number; stroke?: number; tone?: "azure" | "marigold" | "clay" | "light"; label?: ReactNode; sub?: ReactNode }) {
   const r = (size - stroke) / 2;
   const c = 2 * Math.PI * r;
-  const colors = { forest: "#198754", marigold: "#F2A516", clay: "#C2410C", light: "#FFFFFF" };
+  const colors = { azure: "#0e9bb3", marigold: "#F2A516", clay: "#C2410C", light: "#FFFFFF" };
   return (
     <div className="relative grid shrink-0 place-items-center" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="-rotate-90">
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={tone === "light" ? "rgb(255 255 255 / 0.2)" : "rgb(27 31 29 / 0.08)"} strokeWidth={stroke} />
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={tone === "light" ? "rgb(255 255 255 / 0.2)" : "rgb(20 37 42 / 0.08)"} strokeWidth={stroke} />
         <motion.circle
           cx={size / 2}
           cy={size / 2}
@@ -335,8 +335,8 @@ export function Ring({ value, size = 96, stroke = 10, tone = "forest", label, su
   );
 }
 
-export function Note({ children, icon: Icon = Info, tone = "sand" }: { children: ReactNode; icon?: LucideIcon; tone?: "sand" | "marigold" | "clay" | "forest" }) {
-  const tones = { sand: "bg-sand text-ink-2", marigold: "bg-marigold-50 text-marigold-600 ring-1 ring-marigold-200", clay: "bg-clay-50 text-clay-700 ring-1 ring-clay-100", forest: "bg-forest-50 text-forest-800 ring-1 ring-forest-100" };
+export function Note({ children, icon: Icon = Info, tone = "sand" }: { children: ReactNode; icon?: LucideIcon; tone?: "sand" | "marigold" | "clay" | "azure" }) {
+  const tones = { sand: "bg-sand text-ink-2", marigold: "bg-marigold-50 text-marigold-600 ring-1 ring-marigold-200", clay: "bg-clay-50 text-clay-700 ring-1 ring-clay-100", azure: "bg-azure-50 text-azure-800 ring-1 ring-azure-100" };
   return (
     <div className={cx("flex gap-2.5 rounded-2xl p-3 text-[13px] leading-snug", tones[tone])}>
       <Icon className="mt-0.5 size-4 shrink-0" />

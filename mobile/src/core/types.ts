@@ -142,7 +142,7 @@ export interface Extraction {
   premises?: ProfileInput["premises"];
   category?: ProfileInput["category"];
   shgMember?: boolean;
-  language?: "en" | "hi" | "bn" | "mr" | "ta";
+  language?: import("../i18n/languages").Lang;
 }
 
 /* ------------------------------------------------------------------ Location (src/core/geo.ts) */

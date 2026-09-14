@@ -133,7 +133,10 @@ describe("nlu extensions", () => {
     expect(detectScript("मुझे सिलाई का काम करना है")).toBe("hi");
     expect(detectScript("আমি দুধ বিক্রি করি")).toBe("bn");
     expect(detectScript("தையல்")).toBe("ta");
-    expect(detectScript("ಧಾರವಾಡ")).toBe("en");
+    expect(detectScript("ಧಾರವಾಡ")).toBe("kn");
+    expect(detectScript("ਪਿੰਡ")).toBe("pa");
+    expect(detectScript("గ్రామం")).toBe("te");
+    expect(detectScript("ગામ")).toBe("en"); // Gujarati is not an app language
     expect(detectScript("")).toBe("en");
   });
 });

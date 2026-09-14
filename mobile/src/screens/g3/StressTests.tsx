@@ -13,7 +13,7 @@ import { coverageTone } from "./util";
 
 const ICONS: Record<FinancialResult["scenarios"][number]["id"], LucideIcon> = { low_season: CloudRain, price_drop: TrendingDown, input_cost: Factory };
 
-const BUBBLE = { good: "forest", warn: "marigold", risk: "clay" } as const;
+const BUBBLE = { good: "azure", warn: "marigold", risk: "clay" } as const;
 
 export function CoverageCard({ preview, onExplain }: { preview: DebtServicePreview; onExplain?: () => void }) {
   const { t } = useI18n();
@@ -49,7 +49,7 @@ export function CoverageCard({ preview, onExplain }: { preview: DebtServicePrevi
           <RulesChip />
         </div>
         {onExplain && (
-          <button onClick={onExplain} className="mt-2 inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 text-sm font-semibold text-forest-800 underline underline-offset-2 active:bg-forest-50">
+          <button onClick={onExplain} className="mt-2 inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 text-sm font-semibold text-azure-800 underline underline-offset-2 active:bg-azure-50">
             <CalcIcon className="size-4" />
             {t("earn.link")}
           </button>
@@ -79,7 +79,7 @@ export function StressTests({ scenarios }: { scenarios: FinancialResult["scenari
                   <p className="text-[13px] leading-snug text-ink-3">{t(`g3.stress.${id}.desc`, vars)}</p>
                 </div>
                 <div className="text-right">
-                  <p className={cx("tabular text-xl font-bold", tone === "good" ? "text-forest-700" : tone === "warn" ? "text-marigold-600" : "text-clay-600")}>{ratio(result.minDscr)}</p>
+                  <p className={cx("tabular text-xl font-bold", tone === "good" ? "text-azure-700" : tone === "warn" ? "text-marigold-600" : "text-clay-600")}>{ratio(result.minDscr)}</p>
                   <p className="text-[11px] text-ink-3">{t("plan.stress.worst")}</p>
                 </div>
               </div>
@@ -129,7 +129,7 @@ function QuarterBars({ values }: { values: number[] }) {
                 initial={{ height: 0 }}
                 animate={{ height: h(v) }}
                 transition={{ delay: i * 0.08, type: "spring", stiffness: 140, damping: 20 }}
-                className={cx("w-full max-w-12 rounded-t-lg", tone === "good" ? "bg-forest-600" : tone === "warn" ? "bg-marigold-500" : "bg-clay-600")}
+                className={cx("w-full max-w-12 rounded-t-lg", tone === "good" ? "bg-azure-600" : tone === "warn" ? "bg-marigold-500" : "bg-clay-600")}
               />
             </div>
           );

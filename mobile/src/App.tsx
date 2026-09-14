@@ -52,9 +52,9 @@ function TabBar() {
               }}
               className="relative flex min-h-16 flex-1 flex-col items-center justify-center gap-1"
             >
-              {active && <motion.span layoutId="tab-pill" transition={{ type: "spring", stiffness: 500, damping: 38 }} className="absolute top-2 h-8 w-14 rounded-full bg-forest-100" />}
-              <Icon className={cx("relative size-5.5 transition-colors", active ? "text-forest-800" : "text-ink-3")} />
-              <span className={cx("relative text-[11px] font-medium transition-colors", active ? "text-forest-800" : "text-ink-3")}>{t(`nav.${name}`)}</span>
+              {active && <motion.span layoutId="tab-pill" transition={{ type: "spring", stiffness: 500, damping: 38 }} className="absolute top-2 h-8 w-14 rounded-full bg-azure-100" />}
+              <Icon className={cx("relative size-5.5 transition-colors", active ? "text-azure-800" : "text-ink-3")} />
+              <span className={cx("relative text-[11px] font-medium transition-colors", active ? "text-azure-800" : "text-ink-3")}>{t(`nav.${name}`)}</span>
             </motion.button>
           );
         })}
@@ -91,7 +91,7 @@ function Shell() {
   useEffect(() => {
     if (!Capacitor.isNativePlatform()) return;
     StatusBar.setStyle({ style: Style.Light }).catch(() => undefined);
-    StatusBar.setBackgroundColor({ color: "#FBF7EF" }).catch(() => undefined);
+    StatusBar.setBackgroundColor({ color: "#F5FAFB" }).catch(() => undefined);
     SplashScreen.hide().catch(() => undefined);
   }, []);
   return (

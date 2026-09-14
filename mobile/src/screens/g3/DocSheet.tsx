@@ -77,10 +77,10 @@ export function DocSheet({ doc, onClose, onSet }: { doc: { id: string; name: Bi 
                 initial={{ top: "8%" }}
                 animate={{ top: ["8%", "88%", "8%"] }}
                 transition={{ duration: 1.6, ease: "easeInOut" }}
-                className="absolute inset-x-3 h-1 rounded-full bg-forest-600 shadow-[0_0_16px_4px_rgb(25_135_84/0.6)]"
+                className="absolute inset-x-3 h-1 rounded-full bg-azure-600 shadow-[0_0_16px_4px_rgb(25_135_84/0.6)]"
               />
             ) : (
-              <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 400, damping: 18 }} className="absolute inset-0 grid place-items-center bg-forest-800/70">
+              <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 400, damping: 18 }} className="absolute inset-0 grid place-items-center bg-azure-800/70">
                 <CheckCircle2 className="size-16 text-white" />
               </motion.div>
             )}

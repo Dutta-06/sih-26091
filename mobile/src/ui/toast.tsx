@@ -45,9 +45,9 @@ const subscribe = (l: () => void) => {
 };
 
 const TONE: Record<ToastTone, { cls: string; icon: LucideIcon }> = {
-  success: { cls: "bg-forest-800 text-white", icon: CheckCircle2 },
+  success: { cls: "bg-azure-800 text-white", icon: CheckCircle2 },
   info: { cls: "bg-ink text-white", icon: Info },
-  warn: { cls: "bg-marigold-500 text-forest-950", icon: AlertTriangle },
+  warn: { cls: "bg-marigold-500 text-azure-950", icon: AlertTriangle },
 };
 
 export function Toaster() {

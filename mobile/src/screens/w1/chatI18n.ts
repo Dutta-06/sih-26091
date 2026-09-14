@@ -8,39 +8,32 @@
 import { useCallback, useMemo } from "react";
 import { ACTIVITIES } from "../../data/activities";
 import { CHAT_STRINGS } from "../../data/w1";
-import { useI18n, type Bi, type Lang, type Strings } from "../../i18n";
+import { DICTIONARIES, LANG_INFO, LANGS, pickText, useI18n, type Bi, type Lang } from "../../i18n";
 import { useStore, type ChatLang } from "../../state/store";
 
-const modules = import.meta.glob<{ default: Strings }>("../../i18n/strings/*.ts", { eager: true });
-const BASE: Record<Lang, Record<string, string>> = { en: {}, hi: {} };
-for (const mod of Object.values(modules)) {
-  if (!mod.default) continue;
-  Object.assign(BASE.en, mod.default.en);
-  Object.assign(BASE.hi, mod.default.hi);
-}
-
-export const CHAT_LANGS: ChatLang[] = ["en", "hi", "bn", "mr", "ta"];
-export const CHAT_LANG_LABEL: Record<ChatLang, string> = { en: "English", hi: "हिंदी", bn: "বাংলা", mr: "मराठी", ta: "தமிழ்" };
-export const CHAT_LANG_SHORT: Record<ChatLang, string> = { en: "EN", hi: "हिं", bn: "বাং", mr: "मरा", ta: "தமி" };
+export const CHAT_LANGS: ChatLang[] = [...LANGS];
+export const CHAT_LANG_LABEL: Record<ChatLang, string> = Object.fromEntries(LANGS.map((l) => [l, LANG_INFO[l].native])) as Record<ChatLang, string>;
+export const CHAT_LANG_SHORT: Record<ChatLang, string> = Object.fromEntries(LANGS.map((l) => [l, LANG_INFO[l].short])) as Record<ChatLang, string>;
 
 const inr = new Intl.NumberFormat("en-IN", { maximumFractionDigits: 2 });
 
+/** Conversation language table, then the older bn/mr/ta chat tables, then the UI language, then English. */
 function lookup(cl: ChatLang, ui: Lang, key: string): string {
-  if (cl === "en" || cl === "hi") return BASE[cl][key] ?? BASE.en[key] ?? key;
-  return CHAT_STRINGS[cl][key] ?? BASE[ui][key] ?? BASE.en[key] ?? key;
+  const legacy = (CHAT_STRINGS as Partial<Record<Lang, Record<string, string>>>)[cl];
+  return DICTIONARIES[cl][key] ?? legacy?.[key] ?? DICTIONARIES[ui][key] ?? DICTIONARIES.en[key] ?? key;
 }
 
 /** Activity display name in the conversation language (bn/mr/ta tables where present, else the UI language). */
 export function activityLabel(cl: ChatLang, ui: Lang, id: string): string {
   const a = ACTIVITIES[id];
   if (!a) return id;
-  if (cl === "en" || cl === "hi") return a.name[cl];
-  return CHAT_STRINGS[cl][`u1.act.${id}`] ?? a.name[ui];
+  const legacy = (CHAT_STRINGS as Partial<Record<Lang, Record<string, string>>>)[cl];
+  return a.name[cl] ?? legacy?.[`u1.act.${id}`] ?? pickText(a.name, cl === "en" ? "en" : ui === "en" ? cl : ui);
 }
 
 export function renderVar(cl: ChatLang, ui: Lang, v: unknown): string {
   if (typeof v === "number") return Math.abs(v) >= 1000 ? inr.format(v) : String(v);
-  if (v && typeof v === "object" && "en" in (v as object)) return (v as Bi)[cl === "hi" ? "hi" : cl === "en" ? "en" : ui];
+  if (v && typeof v === "object" && "en" in (v as object)) return (v as Bi)[cl] ?? pickText(v as Bi, ui);
   if (typeof v !== "string") return String(v ?? "");
   if (v.startsWith("@")) return v.split("|").map((p) => lookup(cl, ui, p.replace(/^@/, ""))).join(", ");
   if (v.startsWith("~act:")) return activityLabel(cl, ui, v.slice(5));
@@ -84,7 +77,7 @@ export function useFmt() {
 export function useSetAppLang() {
   const { state, set } = useStore();
   return useCallback(
-    (l: Lang) => set(state.chatLang === "en" || state.chatLang === "hi" ? { lang: l, chatLang: l } : { lang: l }),
+    (l: Lang) => set(state.chatLang === state.lang ? { lang: l, chatLang: l } : { lang: l }),
     [state.chatLang, set],
   );
 }

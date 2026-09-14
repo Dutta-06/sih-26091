@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { useEffect } from "react";
 import { useI18n } from "../../i18n";
 
-const COLORS = ["#F2A516", "#FFFFFF", "#BFE3CF", "#FBDC9C", "#198754", "#FDE3D3"];
+const COLORS = ["#F2A516", "#FFFFFF", "#B3E3EA", "#FBDC9C", "#0e9bb3", "#FDE3D3"];
 /** deterministic pseudo-random in [0,1) so renders stay pure */
 const rnd = (i: number, salt: number) => (((i + 1) * 9301 + salt * 49297) % 233280) / 233280;
 
@@ -16,7 +16,7 @@ export function Celebration({ kind, amount, onDone }: { kind: "sanctioned" | "di
   }, [onDone]);
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} onClick={onDone} className="absolute inset-0 z-50 overflow-hidden bg-forest-900/95 text-white">
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} onClick={onDone} className="absolute inset-0 z-50 overflow-hidden bg-azure-900/95 text-white">
       {kind === "sanctioned"
         ? Array.from({ length: 36 }, (_, i) => (
             <motion.span
@@ -31,7 +31,7 @@ export function Celebration({ kind, amount, onDone }: { kind: "sanctioned" | "di
         : Array.from({ length: 10 }, (_, i) => (
             <motion.span
               key={i}
-              className="absolute top-0 left-1/2 grid size-9 -ml-4.5 place-items-center rounded-full bg-marigold-500 text-forest-950 shadow"
+              className="absolute top-0 left-1/2 grid size-9 -ml-4.5 place-items-center rounded-full bg-marigold-500 text-azure-950 shadow"
               initial={{ y: -60, x: (rnd(i, 8) - 0.5) * 260, opacity: 0 }}
               animate={{ y: 300, x: 0, opacity: [0, 1, 1, 0], scale: [1, 1, 0.5] }}
               transition={{ duration: 1, delay: 0.2 + i * 0.14, ease: "easeIn" }}
@@ -50,10 +50,10 @@ export function Celebration({ kind, amount, onDone }: { kind: "sanctioned" | "di
           <motion.p initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.75, type: "spring" }} className="tabular mt-2 text-[44px] leading-none font-bold text-marigold-500">
             {amount}
           </motion.p>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} className="mt-3 text-[15px] text-forest-100">
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} className="mt-3 text-[15px] text-azure-100">
             {t(`app.celebrate.${kind}Sub`)}
           </motion.p>
-          <p className="mt-10 text-xs text-forest-100/70">{t("app.celebrate.tap")}</p>
+          <p className="mt-10 text-xs text-azure-100/70">{t("app.celebrate.tap")}</p>
         </div>
       </div>
     </motion.div>

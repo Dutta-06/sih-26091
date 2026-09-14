@@ -49,12 +49,12 @@ function niceScale(extentKm: number) {
 }
 
 const PIN_STYLE: Record<Pin["kind"], { bg: string; size: number }> = {
-  market: { bg: "#146C43", size: 7 },
-  haat: { bg: "#146C43", size: 7 },
-  transport: { bg: "#146C43", size: 6 },
+  market: { bg: "#0A8AA0", size: 7 },
+  haat: { bg: "#0A8AA0", size: 7 },
+  transport: { bg: "#0A8AA0", size: 6 },
   school: { bg: "#D48806", size: 5.5 },
   supplier: { bg: "#0369A1", size: 6.5 },
-  bank: { bg: "#146C43", size: 5.5 },
+  bank: { bg: "#0A8AA0", size: 5.5 },
   enterprise: { bg: "#C2410C", size: 4.5 },
   competitor: { bg: "#C2410C", size: 4.5 },
 };
@@ -130,7 +130,7 @@ export default function MapScreen() {
         ))}
       </div>
 
-      <div ref={viewport} className="relative mt-3 aspect-square w-full touch-none overflow-hidden rounded-[var(--radius-card)] bg-[#e7efdc] shadow-[var(--shadow-card)]">
+      <div ref={viewport} className="relative mt-3 aspect-square w-full touch-none overflow-hidden rounded-[var(--radius-card)] bg-[#e3eff0] shadow-[var(--shadow-card)]">
         <motion.div
           drag
           dragConstraints={viewport}
@@ -149,8 +149,8 @@ export default function MapScreen() {
                 <line y1={sy(k)} y2={sy(k)} x1={0} x2={VIEW} />
               </g>
             ))}
-            <circle cx={50} cy={50} r={radius * u} fill="#198754" fillOpacity="0.07" stroke="#198754" strokeOpacity="0.55" strokeWidth="0.4" strokeDasharray="1.6 1.2" />
-            <motion.circle cx={50} cy={50} r={3} fill="#198754" initial={{ scale: 0.4, opacity: 0.45 }} animate={{ scale: 2.2, opacity: 0 }} transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }} style={{ transformBox: "fill-box", originX: 0.5, originY: 0.5 }} />
+            <circle cx={50} cy={50} r={radius * u} fill="#0e9bb3" fillOpacity="0.07" stroke="#0e9bb3" strokeOpacity="0.55" strokeWidth="0.4" strokeDasharray="1.6 1.2" />
+            <motion.circle cx={50} cy={50} r={3} fill="#0e9bb3" initial={{ scale: 0.4, opacity: 0.45 }} animate={{ scale: 2.2, opacity: 0 }} transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }} style={{ transformBox: "fill-box", originX: 0.5, originY: 0.5 }} />
             {visible.map((p, i) => {
               const st = PIN_STYLE[p.kind];
               const r = (st.size / 2) * (selected?.key === p.key ? 1.3 : 1);
@@ -171,7 +171,7 @@ export default function MapScreen() {
                 </motion.g>
               );
             })}
-            <circle cx={50} cy={50} r={3.2} fill="#0A3A24" stroke="#fff" strokeWidth={0.8} />
+            <circle cx={50} cy={50} r={3.2} fill="#00596A" stroke="#fff" strokeWidth={0.8} />
           </svg>
           <span className="pointer-events-none absolute grid size-5 -translate-x-1/2 -translate-y-1/2 place-items-center text-white" style={{ left: "50%", top: "50%" }}>
             <Home className="size-3" />
@@ -190,9 +190,9 @@ export default function MapScreen() {
         <span className="pointer-events-none absolute bottom-2.5 left-2.5 rounded-full bg-ink/70 px-2.5 py-1 text-[11px] whitespace-nowrap text-white">{t("map.hint")}</span>
       </div>
 
-      <div className="mt-3 flex items-center gap-3 rounded-2xl bg-forest-50 p-3 ring-1 ring-forest-100">
-        <Building2 className="size-5 shrink-0 text-forest-800" />
-        <p className="min-w-0 flex-1 text-[14px] font-semibold text-forest-800">
+      <div className="mt-3 flex items-center gap-3 rounded-2xl bg-azure-50 p-3 ring-1 ring-azure-100">
+        <Building2 className="size-5 shrink-0 text-azure-800" />
+        <p className="min-w-0 flex-1 text-[14px] font-semibold text-azure-800">
           {intel.competitor.nearby.length
             ? t("map.summary", { n: intel.competitor.nearby.length, r: radius, name: activityId ? pick(activityLabel(activityId).name) : "", density: t(intel.competitor.saturation === "unknown" ? "g2.level.unknown" : `level.${intel.competitor.saturation}`) })
             : t("g2.map.noCompetitors", { r: radius })}
@@ -208,7 +208,7 @@ export default function MapScreen() {
       <div className="mt-3 rounded-[var(--radius-card)] bg-white p-4 shadow-[var(--shadow-card)]">
         <p className="mb-2 text-[13px] font-semibold tracking-wide text-ink-3 uppercase">{t("map.legend")}</p>
         <div className="grid grid-cols-2 gap-x-3 gap-y-2.5 text-[13px] text-ink-2">
-          <LegendItem color="#0A3A24" label={t("map.home", { name: homeName })} />
+          <LegendItem color="#00596A" label={t("map.home", { name: homeName })} />
           <LegendItem color="transparent" dashed label={t("map.reach", { r: radius })} />
           <LegendItem color={PIN_STYLE.market.bg} label={t("map.layer.markets")} />
           <LegendItem color={PIN_STYLE.competitor.bg} label={t("map.layer.competitors")} />
@@ -256,7 +256,7 @@ export default function MapScreen() {
 function LegendItem({ color, label, dashed }: { color: string; label: string; dashed?: boolean }) {
   return (
     <span className="flex min-w-0 items-center gap-2">
-      <span className={cx("size-3 shrink-0 rounded-full", dashed && "border-2 border-dashed border-forest-600 bg-forest-100")} style={dashed ? undefined : { background: color }} />
+      <span className={cx("size-3 shrink-0 rounded-full", dashed && "border-2 border-dashed border-azure-600 bg-azure-100")} style={dashed ? undefined : { background: color }} />
       <span className="truncate">{label}</span>
     </span>
   );

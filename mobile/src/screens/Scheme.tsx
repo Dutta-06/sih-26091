@@ -57,7 +57,7 @@ export default function Scheme() {
             const applies = plan.tier?.name === name;
             return (
               <Reveal key={name} i={i}>
-                <Card className={cx(applies && "ring-2 ring-forest-600")}>
+                <Card className={cx(applies && "ring-2 ring-azure-600")}>
                   <div className="flex items-center justify-between gap-2">
                     <p className="text-[17px] font-bold">{t(`plan.tier.${name}`)}</p>
                     {applies && (
@@ -96,7 +96,7 @@ export default function Scheme() {
             <ol className="space-y-3">
               {steps.map((s, i) => (
                 <li key={i} className="flex gap-3">
-                  <span className="tabular grid size-8 shrink-0 place-items-center rounded-full bg-forest-800 text-sm font-bold text-white">{i + 1}</span>
+                  <span className="tabular grid size-8 shrink-0 place-items-center rounded-full bg-azure-800 text-sm font-bold text-white">{i + 1}</span>
                   <div className="min-w-0">
                     <p className="text-[15px] font-semibold">{s.title}</p>
                     <p className="text-[13px] leading-snug text-ink-2">{s.body}</p>
@@ -119,7 +119,7 @@ export default function Scheme() {
               return (
                 <div key={`${r.source}-${r.heading}`} className="overflow-hidden rounded-2xl bg-white shadow-[var(--shadow-card)]">
                   <button onClick={() => setOpenRule(open ? null : i)} className="flex min-h-14 w-full items-center gap-3 px-4 text-left" aria-expanded={open}>
-                    <ScrollText className="size-5 shrink-0 text-forest-700" />
+                    <ScrollText className="size-5 shrink-0 text-azure-700" />
                     <span className="min-w-0 flex-1">
                       <span className="block text-[15px] font-semibold break-words">{r.heading}</span>
                       <span className="block text-[11px] text-ink-3">{fileName(r.source)}</span>
@@ -149,7 +149,7 @@ export default function Scheme() {
             <ul className="divide-y divide-line">
               {policy.documents.map((d) => (
                 <li key={d} className="flex min-h-11 items-center gap-2.5 py-1.5 text-[15px]">
-                  <FileText className="size-4.5 shrink-0 text-forest-700" />
+                  <FileText className="size-4.5 shrink-0 text-azure-700" />
                   <span className="min-w-0 break-words">{d}</span>
                 </li>
               ))}
@@ -167,8 +167,8 @@ export default function Scheme() {
             <ol className="relative">
               {policy.steps.map((s, i) => (
                 <li key={s} className="relative flex gap-3 pb-4 last:pb-0">
-                  {i < policy.steps.length - 1 && <span className="absolute top-6 bottom-0 left-[11px] w-0.5 bg-forest-100" />}
-                  <span className="relative mt-0.5 size-6 shrink-0 rounded-full border-4 border-forest-100 bg-forest-600" />
+                  {i < policy.steps.length - 1 && <span className="absolute top-6 bottom-0 left-[11px] w-0.5 bg-azure-100" />}
+                  <span className="relative mt-0.5 size-6 shrink-0 rounded-full border-4 border-azure-100 bg-azure-600" />
                   <p className="min-w-0 text-[14px] leading-snug">{s}</p>
                 </li>
               ))}

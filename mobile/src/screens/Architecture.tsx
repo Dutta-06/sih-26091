@@ -56,13 +56,13 @@ export default function Architecture() {
           </div>
         </Step>
         <Step i={2} n={3} icon={ShieldAlert} tone="clay" title={t("arch.s3")} body={t("arch.s3b")} />
-        <Step i={3} n={4} icon={Calculator} tone="forest" title={t("arch.s4")} body={t("arch.s4b")}>
+        <Step i={3} n={4} icon={Calculator} tone="azure" title={t("arch.s4")} body={t("arch.s4b")}>
           {plan?.eligible && (
             <>
               <div className="mt-2.5 rounded-xl bg-white/10 px-3 py-2 text-[13px] leading-snug">
                 {t("u1.arch.s4ex", { savings: rupees(plan.capital), loan: rupees(plan.loan), rate: ((plan.tier?.rate ?? 0) * 100).toFixed(1) })}
               </div>
-              <p className="mt-1.5 text-[11px] font-medium text-forest-100">{t("g1.rulesNotAi")}</p>
+              <p className="mt-1.5 text-[11px] font-medium text-azure-100">{t("g1.rulesNotAi")}</p>
             </>
           )}
         </Step>
@@ -82,7 +82,7 @@ export default function Architecture() {
                   { v: real, k: "real" },
                 ].map((s) => (
                   <div key={s.k}>
-                    <p className="tabular text-2xl font-bold text-forest-800">
+                    <p className="tabular text-2xl font-bold text-azure-800">
                       <CountUp value={s.v} />
                     </p>
                     <p className="mt-0.5 text-[12px] leading-snug text-ink-2">{t(`u1.arch.case.${s.k}`)}</p>
@@ -109,7 +109,7 @@ export default function Architecture() {
           {packCounts().map((s, i) => (
             <Reveal key={s.k} i={i}>
               <div className="h-full rounded-[var(--radius-card)] bg-white p-3 shadow-[var(--shadow-card)]">
-                <p className="tabular text-2xl font-bold text-forest-800">
+                <p className="tabular text-2xl font-bold text-azure-800">
                   <CountUp value={s.v} />
                 </p>
                 <p className="mt-1 text-[12px] leading-snug text-ink-2">{t(`u1.arch.stat.${s.k}`)}</p>
@@ -123,7 +123,7 @@ export default function Architecture() {
         <div className="flex flex-wrap gap-2">
           {SOURCES.map((s) => (
             <span key={s} className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-white px-3 text-[13px] font-medium ring-1 ring-line">
-              <span className="size-1.5 rounded-full bg-forest-600" />
+              <span className="size-1.5 rounded-full bg-azure-600" />
               {t(`arch.src.${s}`)}
             </span>
           ))}
@@ -136,32 +136,32 @@ export default function Architecture() {
   );
 }
 
-function Step({ i, n, icon: Icon, title, body, tone = "white", last, children }: { i: number; n: number; icon: LucideIcon; title: string; body: string; tone?: "white" | "forest" | "clay" | "marigold"; last?: boolean; children?: ReactNode }) {
+function Step({ i, n, icon: Icon, title, body, tone = "white", last, children }: { i: number; n: number; icon: LucideIcon; title: string; body: string; tone?: "white" | "azure" | "clay" | "marigold"; last?: boolean; children?: ReactNode }) {
   const { t } = useI18n();
   const tones = {
     white: "bg-white shadow-[var(--shadow-card)]",
-    forest: "bg-forest-800 text-white shadow-[var(--shadow-float)]",
+    azure: "bg-azure-800 text-white shadow-[var(--shadow-float)]",
     clay: "bg-clay-50 ring-1 ring-clay-100",
     marigold: "bg-marigold-50 ring-1 ring-marigold-200",
   };
-  const bubble = { white: "bg-forest-100 text-forest-800", forest: "bg-marigold-500 text-forest-950", clay: "bg-clay-600 text-white", marigold: "bg-marigold-500 text-forest-950" };
+  const bubble = { white: "bg-azure-100 text-azure-800", azure: "bg-marigold-500 text-azure-950", clay: "bg-clay-600 text-white", marigold: "bg-marigold-500 text-azure-950" };
   return (
     <Reveal i={i} className="relative flex gap-3 pb-3">
       <div className="flex w-10 shrink-0 flex-col items-center">
         <span className={cx("grid size-10 place-items-center rounded-full", bubble[tone])}>
           <Icon className="size-5" />
         </span>
-        {!last && <span className="mt-1 w-0.5 flex-1 rounded-full bg-forest-200" />}
+        {!last && <span className="mt-1 w-0.5 flex-1 rounded-full bg-azure-200" />}
         {last && (
-          <svg viewBox="0 0 40 60" className="mt-1 h-12 w-10 text-forest-600" aria-hidden>
+          <svg viewBox="0 0 40 60" className="mt-1 h-12 w-10 text-azure-600" aria-hidden>
             <path d="M20 0 V30 Q20 50 36 50" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 3" />
           </svg>
         )}
       </div>
       <div className={cx("min-w-0 flex-1 rounded-[var(--radius-card)] p-3.5", tones[tone])}>
-        <p className={cx("text-[11px] font-semibold tracking-wide uppercase", tone === "forest" ? "text-forest-100" : "text-ink-3")}>{t("arch.step", { n })}</p>
+        <p className={cx("text-[11px] font-semibold tracking-wide uppercase", tone === "azure" ? "text-azure-100" : "text-ink-3")}>{t("arch.step", { n })}</p>
         <p className="text-[16px] leading-snug font-semibold">{title}</p>
-        <p className={cx("mt-0.5 text-[13px] leading-snug", tone === "forest" ? "text-forest-100" : "text-ink-2")}>{body}</p>
+        <p className={cx("mt-0.5 text-[13px] leading-snug", tone === "azure" ? "text-azure-100" : "text-ink-2")}>{body}</p>
         {children}
       </div>
     </Reveal>

@@ -1,4 +1,4 @@
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState, type ReactNode } from "react";
 import { tap } from "../App";
@@ -6,6 +6,7 @@ import { useI18n, type Lang } from "../i18n";
 import { useStore } from "../state/store";
 import { cx } from "../ui";
 import { HonestArt, SunriseArt, VoiceArt } from "./g1/OnboardingArt";
+import { LanguageGrid } from "./w1/LanguageSwitch";
 
 const SLIDES = 3;
 
@@ -31,13 +32,13 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="safe-top safe-bottom relative flex h-full flex-col overflow-hidden bg-forest-800 text-white">
-      <div aria-hidden className="pointer-events-none absolute -top-24 -right-24 size-72 rounded-full bg-forest-700/60" />
-      <div aria-hidden className="pointer-events-none absolute -bottom-32 -left-20 size-80 rounded-full bg-forest-900/50" />
+    <div className="safe-top safe-bottom relative flex h-full flex-col overflow-hidden bg-azure-800 text-white">
+      <div aria-hidden className="pointer-events-none absolute -top-24 -right-24 size-72 rounded-full bg-azure-700/60" />
+      <div aria-hidden className="pointer-events-none absolute -bottom-32 -left-20 size-80 rounded-full bg-azure-900/50" />
 
       <div className="relative flex min-h-14 items-center justify-end px-3">
         {index < SLIDES - 1 && (
-          <button onClick={finish} className="min-h-11 rounded-full px-4 text-sm font-medium text-forest-100 active:bg-white/10">
+          <button onClick={finish} className="min-h-11 rounded-full px-4 text-sm font-medium text-azure-100 active:bg-white/10">
             {t("onb.skip")}
           </button>
         )}
@@ -64,32 +65,16 @@ export default function Onboarding() {
             {index === 0 && (
               <>
                 <div className="flex flex-1 flex-col items-center justify-center text-center">
-                  <SunriseArt />
-                  <h1 className="mt-5 text-5xl leading-tight font-bold">{t("onb.brandHi")}</h1>
+                  <div className="-mb-6 scale-75">
+                    <SunriseArt />
+                  </div>
+                  <h1 className="text-4xl leading-tight font-bold">{t("onb.brandHi")}</h1>
                   <p className="mt-1 text-lg font-semibold tracking-[0.2em] text-marigold-200 uppercase">{t("onb.brandEn")}</p>
-                  <p className="mt-3 max-w-72 text-[15px] text-forest-100">{t("app.tagline")}</p>
+                  <p className="mt-3 max-w-72 text-[15px] text-azure-100">{t("app.tagline")}</p>
                 </div>
-                <p className="mb-3 text-center text-sm text-forest-100">{t("onb.chooseLang")}</p>
-                <div className="grid grid-cols-2 gap-3 pb-4">
-                  {(["en", "hi"] as const).map((l) => (
-                    <motion.button
-                      key={l}
-                      whileTap={{ scale: 0.96 }}
-                      onClick={() => chooseLang(l)}
-                      className={cx(
-                        "relative flex min-h-24 flex-col items-start justify-end rounded-[var(--radius-card)] p-4 text-left transition-colors",
-                        lang === l ? "bg-white text-forest-900" : "bg-white/10 text-white ring-1 ring-white/20",
-                      )}
-                    >
-                      {lang === l && (
-                        <span className="absolute top-3 right-3 grid size-6 place-items-center rounded-full bg-forest-700 text-white">
-                          <Check className="size-4" />
-                        </span>
-                      )}
-                      <span className="text-2xl font-bold">{t(`g1.lang.${l}`)}</span>
-                      <span className={cx("text-xs", lang === l ? "text-ink-3" : "text-forest-100")}>{t(`g1.lang.${l}Sub`)}</span>
-                    </motion.button>
-                  ))}
+                <p className="mb-3 text-center text-sm text-azure-100">{t("onb.chooseLang")}</p>
+                <div className="pb-3">
+                  <LanguageGrid value={lang} onChange={chooseLang} tone="dark" compact />
                 </div>
               </>
             )}
@@ -110,7 +95,7 @@ export default function Onboarding() {
         <motion.button
           whileTap={{ scale: 0.97 }}
           onClick={() => (index === SLIDES - 1 ? finish() : go(index + 1))}
-          className="flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl bg-marigold-500 text-base font-semibold text-forest-950 active:bg-marigold-600"
+          className="flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl bg-marigold-500 text-base font-semibold text-azure-950 active:bg-marigold-600"
         >
           {index === SLIDES - 1 ? t("onb.begin") : t("action.next")}
           <ArrowRight className="size-5" />
@@ -125,7 +110,7 @@ function Slide({ art, title, body }: { art: ReactNode; title: string; body: stri
     <div className="flex flex-1 flex-col items-center justify-center text-center">
       {art}
       <h2 className="mt-8 max-w-80 text-[26px] leading-snug font-bold">{title}</h2>
-      <p className="mt-3 max-w-80 text-[15px] leading-relaxed text-forest-100">{body}</p>
+      <p className="mt-3 max-w-80 text-[15px] leading-relaxed text-azure-100">{body}</p>
     </div>
   );
 }

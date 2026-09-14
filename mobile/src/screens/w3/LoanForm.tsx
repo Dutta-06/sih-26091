@@ -93,7 +93,7 @@ export function LoanForm() {
               const ok = d.status === "complete";
               return (
                 <li key={d.id} className="flex items-center gap-2 text-[14px]">
-                  {ok ? <CheckCircle2 className="size-4 text-forest-600" /> : <CircleDashed className="size-4 text-marigold-600" />}
+                  {ok ? <CheckCircle2 className="size-4 text-azure-600" /> : <CircleDashed className="size-4 text-marigold-600" />}
                   <span className={ok ? "min-w-0" : "min-w-0 text-ink-3"}>{pick(d.name)}</span>
                   {!ok && <span className="text-[11px] font-semibold text-marigold-600">{t("loanform.notYet")}</span>}
                 </li>
@@ -108,7 +108,7 @@ export function LoanForm() {
       </Button>
       {sharedTo && (
         <div className="mt-3">
-          <Note tone="forest" icon={Send}>
+          <Note tone="azure" icon={Send}>
             {t("loanform.shared", { officer: officer, via: sharedTo })}
           </Note>
         </div>

@@ -9,6 +9,7 @@
  */
 import { ACTIVITIES } from "../data/activities";
 import catalog from "../../../data/reference/business_catalog.json";
+import { asciiDigits, districtNamesByScript, keyed, LEXICONS, numberWords, words } from "./lexicon";
 import type { Extraction, Intent, ProfileInput, Slot } from "./types";
 
 type Lang = NonNullable<Extraction["language"]>;
@@ -25,6 +26,14 @@ const KEYWORDS: { kw: string; id: string; re: RegExp }[] = CATALOG.flatMap((a) =
     return { kw, id: a.id, re: new RegExp(`(?<!${W})${esc(kw)}(?:s|es)?(?!${W})`, "u") };
   }),
 );
+
+const isAscii = (s: string) => /^[\x00-\x7F]+$/.test(s);
+/** Whole word for Latin keywords; word-start prefix for Indic keywords (case endings attach to the word). */
+const keywordRe = (kw: string) =>
+  isAscii(kw) ? new RegExp(`(?<!${W})${esc(kw)}(?:s|es)?(?!${W})`, "u") : new RegExp(`(?<![\\p{L}\\p{M}])${esc(kw)}`, "u");
+for (const [id, list] of Object.entries(keyed((l) => l.activities))) {
+  for (const kw of list) KEYWORDS.push({ kw, id, re: keywordRe(kw) });
+}
 
 /** Catalog id whose longest whole-word keyword occurs in text (catalog order breaks ties). */
 export function matchActivity(text: string | null | undefined): string | null {
@@ -44,6 +53,7 @@ const NUM = "(\\d+(?:[.,]\\d+)*)";
 const B = `(?!${W})`; // Python \b after a word character
 
 const NUMBER_WORDS: Record<string, number> = {
+  ...numberWords(),
   एक: 1, दो: 2, तीन: 3, चार: 4, पांच: 5, पाँच: 5, छह: 6, छः: 6, सात: 7, आठ: 8, नौ: 9, दस: 10, ग्यारह: 11, बारह: 12,
   तेरह: 13, चौदह: 14, पंद्रह: 15, पन्द्रह: 15, सोलह: 16, सत्रह: 17, अठारह: 18, उन्नीस: 19, बीस: 20, पच्चीस: 25, तीस: 30,
   पैंतीस: 35, चालीस: 40, पैंतालीस: 45, पचास: 50, साठ: 60, सत्तर: 70, अस्सी: 80, नब्बे: 90, डेढ़: 1.5, डेढ: 1.5, ढाई: 2.5,
@@ -51,8 +61,10 @@ const NUMBER_WORDS: Record<string, number> = {
   gyarah: 11, barah: 12, baarah: 12, pandrah: 15, bees: 20, pachchis: 25, tees: 30, chalis: 40, pachas: 50, pachaas: 50,
   saath: 60, sattar: 70, assi: 80, nabbe: 90, dedh: 1.5, dhai: 2.5,
 };
+const alt = (xs: string[]) => (xs.length ? "|" + xs.map(esc).join("|") : "");
+const LAKH_WORDS = words((l) => l.lakh);
 const WORD_RE = new RegExp(
-  `(?<!${W})(${Object.keys(NUMBER_WORDS).map(esc).join("|")})\\s*(लाख|lakhs?|हज़ार|हजार|hazaa?r|hajar)(?!${W})`,
+  `(?<![\\p{L}\\p{M}\\p{N}_])(${Object.keys(NUMBER_WORDS).sort((a, b) => b.length - a.length).map(esc).join("|")})\\s*(लाख|lakhs?|हज़ार|हजार|hazaa?r|hajar${alt(LAKH_WORDS)}${alt(words((l) => l.thousand))})(?![\\p{L}\\p{M}_])`,
   "u",
 );
 
@@ -64,21 +76,21 @@ const negativeAt = (t: string, m: RegExpExecArray) => {
 };
 
 export function extractCapital(text: string, expecting = false): number | null {
-  const t = text.replace(/[०-९০-৯]/g, (c) => DIGITS[c]).normalize("NFC").toLowerCase();
+  const t = asciiDigits(text.replace(/[०-९০-৯]/g, (c) => DIGITS[c])).normalize("NFC").toLowerCase();
   const accept = (v: number) => (Number.isFinite(v) && v > 0 ? v : null);
   for (const [pattern, mult] of [
-    [`${NUM}\\s*(?:crore|cr${B}|करोड़|करोड)`, 10_000_000],
-    [`${NUM}\\s*(?:lakhs?|lacs?|lac${B}|lakh|लाख)`, 100_000],
-    [`${NUM}\\s*(?:thousand|hazaa?r|hajar|हज़ार|हजार|k${B})`, 1_000],
+    [`${NUM}\\s*(?:crore|cr${B}|करोड़|करोड${alt(words((l) => l.crore))})`, 10_000_000],
+    [`${NUM}\\s*(?:lakhs?|lacs?|lac${B}|lakh|लाख${alt(LAKH_WORDS)})`, 100_000],
+    [`${NUM}\\s*(?:thousand|hazaa?r|hajar|हज़ार|हजार|k${B}${alt(words((l) => l.thousand))})`, 1_000],
   ] as const) {
     const m = new RegExp(pattern, "u").exec(t);
     if (m) return negativeAt(t, m) ? null : accept(num(m[1]) * mult);
   }
   const w = WORD_RE.exec(t);
-  if (w) return NUMBER_WORDS[w[1]] * (/लाख|lakh/.test(w[2]) ? 100_000 : 1_000);
+  if (w) return NUMBER_WORDS[w[1]] * (/लाख|lakh/.test(w[2]) || LAKH_WORDS.includes(w[2]) ? 100_000 : 1_000);
   const m =
     new RegExp(`(?:₹|rs\\.?|inr|rupees?)\\s*${NUM}`, "u").exec(t) ??
-    new RegExp(`${NUM}\\s*(?:rupees?|rs${B}|₹|रुपये|रुपए|rupaye)`, "u").exec(t);
+    new RegExp(`${NUM}\\s*(?:rupees?|rs${B}|₹|रुपये|रुपए|rupaye${alt(words((l) => l.rupee))})`, "u").exec(t);
   if (m) return negativeAt(t, m) ? null : accept(num(m[1]));
   for (const mm of t.matchAll(/\d{1,3}(?:,\d{2,3})+|\d+(?:\.\d+)?/g)) {
     if (t[mm.index - 1] === "-" && !/\d/.test(t[mm.index - 2] ?? "")) continue; // negative amount
@@ -101,6 +113,9 @@ const LANGUAGE_NAMES: [RegExp, Lang][] = [
   [/(?<![\p{L}_])(bengali|bangla|বাংলা|बंगाली)(?![\p{L}_])/u, "bn"],
   [/(?<![\p{L}_])(marathi|मराठी)(?![\p{L}_])/u, "mr"],
   [/(?<![\p{L}_])(tamil|தமிழ்|तमिल)(?![\p{L}_])/u, "ta"],
+  [/(?<![\p{L}_])(telugu|తెలుగు|तेलुगु)(?![\p{L}_])/u, "te"],
+  [/(?<![\p{L}_])(punjabi|panjabi|ਪੰਜਾਬੀ|पंजाबी)(?![\p{L}_])/u, "pa"],
+  [/(?<![\p{L}_])(kannada|ಕನ್ನಡ|कन्नड़)(?![\p{L}_])/u, "kn"],
 ];
 const isLanguageName = (s: string) => LANGUAGE_NAMES.some(([re]) => re.test(s.toLowerCase()));
 
@@ -138,13 +153,16 @@ export function extractLocation(text: string): string | null {
     // Python [ऀ-ॿ]+ is greedy over the whole block, so "में" itself never starts a match
     if (!matchActivity(m[1]) && !HINDI_PLACE_WORDS.has(m[1]) && !isLanguageName(m[1])) return m[1];
   }
+  // extension: a district named in another script (translation tables) → its English name for the gazetteer
+  const hay = text.normalize("NFC").toLowerCase();
+  for (const [name, en] of districtNamesByScript()) if (hay.includes(name)) return en;
   return null;
 }
 
 /* ------------------------------------------------------------------ reason */
 
 export function extractReason(text: string): string | null {
-  const m = /(?:\bbecause\b|\bsince\b|\bkyunki\b|\bkyonki\b|क्योंकि|कारण)\s*(.+?)(?:[.!?।]|$)/iu.exec(text);
+  const m = new RegExp(`(?:\\bbecause\\b|\\bsince\\b|\\bkyunki\\b|\\bkyonki\\b|क्योंकि|कारण${alt(words((l) => l.because))})\\s*(.+?)(?:[.!?।]|$)`, "iu").exec(text);
   const r = m?.[1]?.replace(/^[ ,]+|[ ,]+$/g, "");
   return m && m[1].trim() && r ? r : null;
 }
@@ -175,6 +193,19 @@ const CATEGORIES: [ProfileInput["category"], RegExp][] = [
 ];
 const SHG = cue(["shg", "self help group", "self-help group", "स्वयं सहायता समूह", "jeevika", "जीविका", "mahila samuh", "महिला समूह", "samuh", "समूह"]);
 
+// extension: other languages' vocabulary (Indic words match at word start, since case endings attach to them)
+const lexCue = (list: string[]) => {
+  const latin = list.filter(isAscii);
+  const indic = list.filter((x) => !isAscii(x));
+  const parts = [latin.length ? `(?:${latin.map(esc).join("|")})(?![\\p{L}\\p{M}_])` : "", indic.length ? `(?:${indic.map(esc).join("|")})` : ""].filter(Boolean);
+  return parts.length ? new RegExp(`(?<![\\p{L}\\p{M}_])(?:${parts.join("|")})`, "u") : /(?!)/;
+};
+for (const [id, list] of Object.entries(keyed((l) => l.skills))) SKILLS.push([id, lexCue(list)]);
+for (const [id, list] of Object.entries(keyed((l) => l.premises))) PREMISES.push([id as ProfileInput["premises"], lexCue(list)]);
+for (const [id, list] of Object.entries(keyed((l) => l.category))) CATEGORIES.push([id as ProfileInput["category"], lexCue(list)]);
+const LEX_SHG = lexCue(words((l) => l.shg));
+const NEGATION = words((l) => l.negation);
+
 /* ------------------------------------------------------------------ public API */
 
 export function extract(text: string, pendingSlot: Slot | null): Extraction {
@@ -192,7 +223,7 @@ export function extract(text: string, pendingSlot: Slot | null): Extraction {
   else if (pendingSlot === "reason" && message.trim() && capital === null) out.reason = message.trim();
 
   const lower = message.toLowerCase();
-  const skills = SKILLS.filter(([, re]) => re.test(lower)).map(([id]) => id);
+  const skills = [...new Set(SKILLS.filter(([, re]) => re.test(lower)).map(([id]) => id))];
   if (skills.length) out.skills = skills;
   const premises = PREMISES.find(([, re]) => re.test(lower));
   if (premises) out.premises = premises[0];
@@ -201,6 +232,7 @@ export function extract(text: string, pendingSlot: Slot | null): Extraction {
   const category = CATEGORIES.find(([, re]) => re.test(catText));
   if (category) out.category = category[0];
   if (SHG.test(lower)) out.shgMember = !/\b(not|no)\b[^.]*\b(shg|group)\b|नहीं[^।]*समूह|समूह[^।]*नहीं/u.test(lower);
+  else if (LEX_SHG.test(lower)) out.shgMember = !NEGATION.some((n) => lower.includes(n));
   const lang = LANGUAGE_NAMES.find(([re]) => re.test(lower));
   if (lang) out.language = lang[1];
   return out;
@@ -219,6 +251,17 @@ const CUES: Record<string, string[]> = {
   inquire_scheme: ["scheme", "subsidy", "guideline", "interest rate", "eligibility", "moratorium", "योजना", "yojana"],
   new_case: ["new case", "start over", "restart", "start again", "नया केस", "फिर से शुरू"],
 };
+const LEX_INTENTS = keyed((l) => l.intents);
+CUES.raise_grievance.push(...(LEX_INTENTS.raise_grievance ?? []));
+CUES.jump_application.push(...(LEX_INTENTS.application_status ?? []));
+CUES.inquire_scheme.push(...(LEX_INTENTS.scheme_inquiry ?? []));
+CUES.jump_monitoring.push(...(LEX_INTENTS.monitoring ?? []));
+CUES.new_case.push(...(LEX_INTENTS.new_case ?? []));
+const LEX_CHANGE_LANGUAGE = LEX_INTENTS.change_language ?? [];
+const LEX_COMMUNITY = LEX_INTENTS.community ?? [];
+const LEX_GREETINGS = words((l) => l.greetings);
+const LEX_LANGUAGE_NAMES: [string, Lang][] = [];
+for (const [code, lex] of Object.entries(LEXICONS)) for (const n of lex?.languageNames ?? []) LEX_LANGUAGE_NAMES.push([n.toLowerCase(), code as Lang]);
 const CHANGE_LANGUAGE = /(?:language|bhasha|भाषा|speak|talk|baat|बात|बोलो|बोलिए)/u;
 const COMMUNITY = /(?:community|other entrepreneurs|peer group|mentor|meet others|samudaay|समुदाय|दूसरे उद्यमी|मेंटर)/u;
 const GREETING = /^\s*(?:hi+|hello|hey|namaste|namaskar|नमस्ते|नमस्कार|good (?:morning|afternoon|evening)|राम राम|ram ram|pranam|प्रणाम)(?![\p{L}\p{M}])[\s!.,?।]*$/iu;
@@ -235,13 +278,13 @@ export function classifyIntent(text: string): Intent {
   if (hits.has("consent_monitoring")) return "monitoring";
   if (hits.has("new_case")) return "new_case";
   const e = extract(text, null);
-  if (e.language && CHANGE_LANGUAGE.test(lower)) return "change_language";
+  if (e.language && (CHANGE_LANGUAGE.test(lower) || LEX_CHANGE_LANGUAGE.some((w) => lower.includes(w)))) return "change_language";
   if (hasSlots(e)) return "provide_info"; // no case state → profile incomplete → slots win
   if (hits.has("jump_monitoring")) return "monitoring";
   if (hits.has("jump_application")) return "application_status";
   if (hits.has("inquire_scheme")) return "scheme_inquiry";
-  if (COMMUNITY.test(lower)) return "community";
-  if (GREETING.test(lower)) return "greeting";
+  if (COMMUNITY.test(lower) || LEX_COMMUNITY.some((w) => lower.includes(w))) return "community";
+  if (GREETING.test(lower) || LEX_GREETINGS.includes(lower.trim().replace(/[\s!.,?।]+$/u, ""))) return "greeting";
   if (e.skills || e.premises || e.category || e.shgMember !== undefined) return "provide_info";
   return "unknown";
 }
@@ -264,7 +307,7 @@ export function detectScript(text: string): Lang {
   let best: string | null = null;
   for (const [code, n] of counts) if (best === null || n > counts.get(best)!) best = code;
   if (best === "hi") return MARATHI.test(text) ? "mr" : "hi";
-  return best === "bn" || best === "ta" ? best : "en";
+  return best === "bn" || best === "ta" || best === "te" || best === "pa" || best === "kn" ? (best as Lang) : "en";
 }
 
 /** Python-parity helper: the backend's detect_language code (all scripts). */

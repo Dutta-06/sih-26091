@@ -10,11 +10,11 @@ export interface BarDatum {
   value: number;
   /** optional second stacked segment drawn on top */
   stack?: number;
-  tone?: "forest" | "marigold" | "clay" | "sand";
+  tone?: "azure" | "marigold" | "clay" | "sand";
   highlight?: boolean;
 }
 
-const FILL = { forest: "#198754", marigold: "#F2A516", clay: "#C2410C", sand: "#D9CFBC" };
+const FILL = { azure: "#0e9bb3", marigold: "#F2A516", clay: "#C2410C", sand: "#C5D7DB" };
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 export const BarChart = memo(function BarChart({
@@ -37,7 +37,7 @@ export const BarChart = memo(function BarChart({
       const h = (d.value / max) * (height - 4);
       const hs = ((d.stack ?? 0) / max) * (height - 4);
       const bw = w * 0.64;
-      return { x: i * w + w * 0.18, bw, h, hs, fill: FILL[d.tone ?? "forest"], dim: d.highlight === false, title: formatValue ? formatValue(d.value) : undefined };
+      return { x: i * w + w * 0.18, bw, h, hs, fill: FILL[d.tone ?? "azure"], dim: d.highlight === false, title: formatValue ? formatValue(d.value) : undefined };
     });
   }, [data, height, formatValue]);
   const every = Math.max(1, Math.ceil(data.length / maxLabels));
@@ -129,17 +129,17 @@ export const PlanVsActual = memo(function PlanVsActual({
       <svg viewBox={`0 0 ${W} ${height}`} className="w-full" style={{ height }}>
         <defs>
           <linearGradient id={gradId} x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#198754" stopOpacity="0.28" />
-            <stop offset="100%" stopColor="#198754" stopOpacity="0" />
+            <stop offset="0%" stopColor="#0e9bb3" stopOpacity="0.28" />
+            <stop offset="100%" stopColor="#0e9bb3" stopOpacity="0" />
           </linearGradient>
         </defs>
         {warnFrom !== undefined && <rect x={geo.x(warnFrom) - 10} y={0} width={W - geo.x(warnFrom) + 10} height={height} fill="#FDE3D3" opacity={0.55} rx={6} />}
         {geo.area && <motion.path d={geo.area} fill={`url(#${gradId})`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }} />}
-        <path d={geo.plannedLine} fill="none" stroke="#8A938E" strokeWidth={2} strokeDasharray="5 5" />
+        <path d={geo.plannedLine} fill="none" stroke="#7F9297" strokeWidth={2} strokeDasharray="5 5" />
         <motion.path
           d={geo.actualLine}
           fill="none"
-          stroke="#146C43"
+          stroke="#0A8AA0"
           strokeWidth={3}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -148,7 +148,7 @@ export const PlanVsActual = memo(function PlanVsActual({
           transition={{ duration: 0.9, ease: "easeInOut" }}
         />
         {geo.dots.map((d, i) => (
-          <circle key={i} cx={d.cx} cy={d.cy} r={3.5} fill={d.warn ? "#C2410C" : "#146C43"} stroke="white" strokeWidth={1.5} />
+          <circle key={i} cx={d.cx} cy={d.cy} r={3.5} fill={d.warn ? "#C2410C" : "#0A8AA0"} stroke="white" strokeWidth={1.5} />
         ))}
       </svg>
       <div className="mt-1 flex justify-between px-1 text-[10px] text-ink-3">
@@ -181,13 +181,13 @@ export const CoverageGauge = memo(function CoverageGauge({ value, size = 180 }: 
     <svg viewBox={`0 0 ${size} ${size / 2 + 12}`} className="w-full" style={{ maxWidth: size }}>
       <path d={bands.low} stroke="#F7C6A8" strokeWidth={14} fill="none" strokeLinecap="round" />
       <path d={bands.mid} stroke="#FBDC9C" strokeWidth={14} fill="none" />
-      <path d={bands.high} stroke="#BFE3CF" strokeWidth={14} fill="none" strokeLinecap="round" />
+      <path d={bands.high} stroke="#B3E3EA" strokeWidth={14} fill="none" strokeLinecap="round" />
       <motion.g style={{ transformBox: "fill-box", originX: 0.5, originY: 0.5 }} initial={{ rotate: -180 }} animate={{ rotate: deg }} transition={{ type: "spring", stiffness: 60, damping: 12 }}>
         {/* invisible counterweight keeps the group's box centred on the hub */}
         <line x1={cx - len} y1={cy} x2={cx} y2={cy} stroke="transparent" strokeWidth={4} />
-        <line x1={cx} y1={cy} x2={cx + len} y2={cy} stroke="#0A3A24" strokeWidth={4} strokeLinecap="round" />
+        <line x1={cx} y1={cy} x2={cx + len} y2={cy} stroke="#00596A" strokeWidth={4} strokeLinecap="round" />
       </motion.g>
-      <circle cx={cx} cy={cy} r={7} fill="#0A3A24" />
+      <circle cx={cx} cy={cy} r={7} fill="#00596A" />
     </svg>
   );
 });

@@ -1,6 +1,8 @@
 /** Pure language-tag matching for the voice engines (unit-tested). */
 
-const PREFERRED: Record<string, string> = { en: "en-IN", hi: "hi-IN", bn: "bn-IN", mr: "mr-IN", ta: "ta-IN" };
+import { LANG_INFO } from "../i18n/languages";
+
+const PREFERRED: Record<string, string> = Object.fromEntries(Object.values(LANG_INFO).map((l) => [l.code, l.speech]));
 
 /**
  * Pick the best tag an engine reports for an app language: exact Indian locale first, then any regional

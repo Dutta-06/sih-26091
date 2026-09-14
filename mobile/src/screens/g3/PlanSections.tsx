@@ -15,17 +15,17 @@ export function PlanHero({ plan, activityId, whatIf }: { plan: Plan; activityId:
   const tier = plan.tier;
   const act = activityDisplay(activityId);
   return (
-    <Card tone="forest" className="relative overflow-hidden">
+    <Card tone="azure" className="relative overflow-hidden">
       <div className="pointer-events-none absolute -top-14 -right-12 size-44 rounded-full bg-white/5" />
       <div className="relative flex items-start justify-between gap-2">
-        <p className="min-w-0 text-sm break-words text-forest-100">
+        <p className="min-w-0 text-sm break-words text-azure-100">
           {act.emoji} {t("plan.hero.title", { activity: pick(act.name) })}
         </p>
-        {whatIf && <span className="shrink-0 rounded-full bg-marigold-500 px-2 py-0.5 text-[11px] font-bold text-forest-950">{t("g3.plan.whatIfBadge")}</span>}
+        {whatIf && <span className="shrink-0 rounded-full bg-marigold-500 px-2 py-0.5 text-[11px] font-bold text-azure-950">{t("g3.plan.whatIfBadge")}</span>}
       </div>
       {plan.eligible && tier ? (
         <>
-          <p className="mt-3 text-xs text-forest-100">{t("plan.hero.loanLabel")}</p>
+          <p className="mt-3 text-xs text-azure-100">{t("plan.hero.loanLabel")}</p>
           <motion.p key={plan.loan} initial={{ opacity: 0.4, y: 4 }} animate={{ opacity: 1, y: 0 }} className="tabular text-[40px] leading-tight font-bold">
             {rupees(plan.loan)}
           </motion.p>
@@ -88,14 +88,14 @@ export function Budget({ plan, budget }: { plan: Plan; budget: FinancialResult["
               <span className="tabular shrink-0 font-semibold">{rupees(r.amount)}</span>
             </div>
             <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-ink-3/10">
-              <motion.div animate={{ width: `${plan.projectCost > 0 ? (r.amount / plan.projectCost) * 100 : 0}%` }} className="h-full rounded-full bg-forest-600" />
+              <motion.div animate={{ width: `${plan.projectCost > 0 ? (r.amount / plan.projectCost) * 100 : 0}%` }} className="h-full rounded-full bg-azure-600" />
             </div>
           </li>
         ))}
       </ul>
       <div className="mt-2 flex items-baseline justify-between border-t border-line pt-3">
         <span className="font-semibold">{t("plan.projectCost")}</span>
-        <span className="tabular text-lg font-bold text-forest-800">{rupees(plan.projectCost)}</span>
+        <span className="tabular text-lg font-bold text-azure-800">{rupees(plan.projectCost)}</span>
       </div>
       <div className="mt-3">
         <Note>{t("g3.plan.budgetNote", { wc: rupees(plan.workingCapital), capex: rupees(plan.capex) })}</Note>
@@ -107,7 +107,7 @@ export function Budget({ plan, budget }: { plan: Plan; budget: FinancialResult["
 export function Repayment({ plan }: { plan: Plan }) {
   const { t, lang } = useI18n();
   const [open, setOpen] = useState(false);
-  const data = plan.schedule.map((i) => ({ label: `Q${i.quarter}`, value: i.payment, tone: i.isMoratorium ? ("marigold" as const) : ("forest" as const) }));
+  const data = plan.schedule.map((i) => ({ label: `Q${i.quarter}`, value: i.payment, tone: i.isMoratorium ? ("marigold" as const) : ("azure" as const) }));
   return (
     <Card>
       <div className="mb-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-2">
@@ -116,7 +116,7 @@ export function Repayment({ plan }: { plan: Plan }) {
           {t("plan.schedule.legendMoratorium")}
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="size-2.5 rounded-sm bg-forest-600" />
+          <span className="size-2.5 rounded-sm bg-azure-600" />
           {t("plan.schedule.legendRegular")}
         </span>
       </div>
@@ -126,7 +126,7 @@ export function Repayment({ plan }: { plan: Plan }) {
       </p>
       <div className="mt-3 grid grid-cols-2 gap-3 border-t border-line pt-3">
         <Stat label={t("plan.schedule.totalInterest")} value={rupeesShort(plan.totalInterest, lang)} />
-        <Stat label={t("plan.schedule.totalRepayment")} value={rupeesShort(plan.totalRepayment, lang)} tone="forest" />
+        <Stat label={t("plan.schedule.totalRepayment")} value={rupeesShort(plan.totalRepayment, lang)} tone="azure" />
       </div>
       <Button variant="secondary" size="md" icon={Table2} className="mt-3 w-full" onClick={() => setOpen(true)}>
         {t("plan.schedule.open")}

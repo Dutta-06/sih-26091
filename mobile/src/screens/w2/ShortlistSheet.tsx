@@ -63,7 +63,7 @@ export function ShortlistSheet({
   return (
     <Sheet open onClose={onClose} title={`${label.emoji} ${pick(label.name)}`}>
       <div className="flex items-center gap-4">
-        <Ring value={item.score} size={84} tone={item.feasible ? "forest" : "clay"} sub={t("shortlist.outOf")} />
+        <Ring value={item.score} size={84} tone={item.feasible ? "azure" : "clay"} sub={t("shortlist.outOf")} />
         <div className="min-w-0 flex-1 space-y-1.5">
           <p className="text-[13px] text-ink-3">{item.feasible ? t("shortlist.rankOf", { rank, total }) : t("shortlist.notRanked")}</p>
           <p className="tabular text-lg font-bold">{t("shortlist.coverLabel", { cover: d === null ? "—" : ratio(d) })}</p>
@@ -98,7 +98,7 @@ export function ShortlistSheet({
       </div>
 
       <h4 className="mt-4 mb-2 px-1 text-[13px] font-semibold tracking-wide text-ink-3 uppercase">{t("shortlist.why")}</h4>
-      <Note tone={attempt && attempt.verdict !== "viable" ? "clay" : !item.feasible ? "clay" : selected ? "forest" : "sand"} icon={attempt && attempt.verdict !== "viable" ? ShieldX : undefined}>
+      <Note tone={attempt && attempt.verdict !== "viable" ? "clay" : !item.feasible ? "clay" : selected ? "azure" : "sand"} icon={attempt && attempt.verdict !== "viable" ? ShieldX : undefined}>
         {item.feasible ? t("shortlist.whyRanked", { strong: t(`shortlist.c.${strongest}`), weak: t(`shortlist.c.${weakest}`) }) : mt(item.infeasibleReason)}
         {attempt && attempt.verdict !== "viable" && (
           <span className="mt-1 block">

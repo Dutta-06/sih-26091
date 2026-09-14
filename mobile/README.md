@@ -1,4 +1,4 @@
-# Arambh mobile prototype
+# Aashaudyami mobile prototype
 
 An Android app (React + Capacitor) that runs the advisory platform **entirely on the phone**, with no network calls and no
 external APIs. The Python backend's logic is ported to TypeScript and runs over a bundled data pack, so every result
@@ -7,7 +7,7 @@ changes with what the user types or does.
 ## What runs on the device (`src/core/`)
 | Stage | Module | Mirrors (backend) |
 |---|---|---|
-| Understanding messages: amounts, places, activities, reasons, intents; English, Hindi and Hinglish | `nlu.ts` | `orchestrator/router.py`, `language.py` |
+| Understanding messages: amounts, places, activities, reasons, intents; English, Hindi, Hinglish and, through vocabulary files, Bangla, Tamil, Telugu, Punjabi, Kannada and Marathi | `nlu.ts`, `lexicon.ts` | `orchestrator/router.py`, `language.py` |
 | Location lookup with official-code disambiguation | `geo.ts` | `data_connectors/geocoding.py`, `census.py` |
 | Retrieval over sector reports, risk taxonomy and scheme guidelines (TF-IDF) | `retrieval.ts` | `rag/vector_store.py` |
 | Discovery ranking, 6 analyses, SWOT, red-team review, bounded rejection loop | `discovery.ts`, `intel/*`, `swot.ts`, `review.ts`, `feasibility.ts` | `module1_feasibility/*` |
@@ -26,6 +26,13 @@ else. Parity tests compare the TypeScript port with outputs exported from the Py
 
 The app says so wherever pack data is shown.
 
+## Languages
+Eight app languages: English, Hindi, Bangla, Tamil, Telugu, Punjabi, Kannada and Marathi. English and Hindi strings
+are authored in `src/i18n/strings/`. The other six are in `src/i18n/locales/<code>.partN.json`, with the chat vocabulary
+in `<code>.nlu.json`. Check a language with
+`node scripts/check_locales.mjs <en.json> <code>`, which reports missing keys, placeholders, untranslated text and
+script. `en.json` is a flat export of the English dictionary. Retrieved scheme and sector documents stay in English.
+
 ## Demo tips
 - **Presenter controls (More tab):** checkpoints that load sample inputs (results are still computed), a "months pass" clock, and a choice of sample SMS inbox (typical year or monsoon disruption).
 - **Voice:** uses the phone's own speech recognition and text-to-speech; you can always type.
@@ -35,7 +42,7 @@ The app says so wherever pack data is shown.
 ```bash
 npm install
 npm run dev          # http://localhost:5173
-npm test             # 312 tests: engine and backend parity, core pipeline, i18n coverage
+npm test             # 325 tests: engine and backend parity, core pipeline, i18n coverage
 python scripts/build_datapack.py          # rebuild the data pack (run from mobile/)
 python scripts/export_parity_c1.py        # refresh parity fixtures after backend changes (also c2, c3)
 ```
@@ -49,4 +56,4 @@ cd android; .\gradlew.bat assembleRelease
 Zipalign and sign `android/app/build/outputs/apk/release/app-release-unsigned.apk` with your keystore, using `apksigner`.
 The demo keystore lives outside the repo; never commit keystores.
 
-**Install:** copy `release/Arambh-demo.apk` to the phone, open it, allow "install unknown apps", and choose "Install anyway" if Play Protect asks.
+**Install:** copy `release/Aashaudyami-demo.apk` to the phone, open it, allow "install unknown apps", and choose "Install anyway" if Play Protect asks.

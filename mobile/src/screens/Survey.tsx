@@ -98,7 +98,7 @@ export default function Survey() {
     return (
       <Screen title={t("survey.title")}>
         <motion.div initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} transition={{ type: "spring", stiffness: 260, damping: 22 }} className="mt-10 text-center">
-          <CheckCircle2 className="mx-auto size-16 text-forest-600" />
+          <CheckCircle2 className="mx-auto size-16 text-azure-600" />
           <h2 className="mt-4 text-xl font-bold">{t("survey.thanks")}</h2>
           <p className="mx-auto mt-2 max-w-72 text-[15px] leading-snug text-ink-2">{t("survey.thanksSub", { n: tally.mineCount, place: place ? pick(place.district.name) : "—" })}</p>
           <div className="mt-6 flex flex-col gap-2">
@@ -140,7 +140,7 @@ export default function Survey() {
               [tally.residents, "g2.survey.residents"],
             ].map(([n, key]) => (
               <div key={key}>
-                <p className="tabular text-xl font-bold text-forest-800">{n}</p>
+                <p className="tabular text-xl font-bold text-azure-800">{n}</p>
                 <p className="text-[11px] leading-tight text-ink-3">{t(key as string)}</p>
               </div>
             ))}
@@ -247,7 +247,7 @@ export default function Survey() {
               whileTap={{ scale: 0.92 }}
               onClick={toggleVoice}
               disabled={!canListen()}
-              className={cx("grid size-13 shrink-0 place-items-center rounded-full text-white disabled:bg-ink-3/40", voice === "recording" ? "bg-clay-600" : "bg-forest-800")}
+              className={cx("grid size-13 shrink-0 place-items-center rounded-full text-white disabled:bg-ink-3/40", voice === "recording" ? "bg-clay-600" : "bg-azure-800")}
               aria-label={t("survey.voice")}
             >
               {voice === "recording" ? <Square className="size-5" /> : <Mic className="size-6" />}
@@ -263,7 +263,7 @@ export default function Survey() {
             onChange={(e) => setNote(e.target.value)}
             rows={2}
             placeholder={t("survey.f.notePh")}
-            className="mt-3 w-full rounded-2xl bg-cream p-3 text-[15px] ring-1 ring-line outline-none focus:ring-forest-600"
+            className="mt-3 w-full rounded-2xl bg-cream p-3 text-[15px] ring-1 ring-line outline-none focus:ring-azure-600"
           />
         </Card>
       </Section>

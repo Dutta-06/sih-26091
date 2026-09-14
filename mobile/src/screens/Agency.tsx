@@ -48,8 +48,8 @@ export default function Agency() {
     return (
       <Screen title={t("agency.title")} subtitle={t("u4.agency.subtitleLoading")}>
         {disclosure}
-        <Card tone="forest" className="mt-3">
-          <p className="text-[13px] text-forest-100">{t("u4.agency.computing", { pct: Math.round(progress * 100) })}</p>
+        <Card tone="azure" className="mt-3">
+          <p className="text-[13px] text-azure-100">{t("u4.agency.computing", { pct: Math.round(progress * 100) })}</p>
           <div className="mt-2 h-2 overflow-hidden rounded-full bg-white/20">
             <div className="h-full rounded-full bg-marigold-500 transition-[width]" style={{ width: `${progress * 100}%` }} />
           </div>
@@ -64,18 +64,18 @@ export default function Agency() {
   }
 
   const pipeline = [
-    { key: "viable", value: m.byClass.viable, tone: "forest" as const },
+    { key: "viable", value: m.byClass.viable, tone: "azure" as const },
     { key: "redirected", value: m.byClass.redirected, tone: "marigold" as const },
     { key: "no_option", value: m.byClass.no_option, tone: "clay" as const },
   ];
-  const DOT = { forest: "bg-forest-600", marigold: "bg-marigold-500", clay: "bg-clay-600" };
+  const DOT = { azure: "bg-azure-600", marigold: "bg-marigold-500", clay: "bg-clay-600" };
   const maxDistrict = Math.max(1, ...m.districts.map((d) => d.total));
 
   return (
     <Screen title={t("agency.title")} subtitle={t("u4.agency.subtitle", { n: m.total, d: m.districts.length })}>
       {disclosure}
       <Reveal>
-        <Card tone="forest" className="mt-3 grid grid-cols-2 gap-x-4 gap-y-4">
+        <Card tone="azure" className="mt-3 grid grid-cols-2 gap-x-4 gap-y-4">
           <Stat tone="light" label={t("u4.agency.applicants")} value={num.format(m.total)} />
           <Stat tone="light" label={t("u4.agency.loanVolume")} value={rupeesShort(m.loanVolume, lang)} />
           <Stat tone="light" label={t("u4.agency.avgCoverage")} value={m.avgCoverage === null ? "—" : ratio(m.avgCoverage)} />
@@ -88,7 +88,7 @@ export default function Agency() {
           <div className="flex items-start gap-3">
             <IconBubble icon={Shuffle} tone="marigold" />
             <div className="min-w-0">
-              <p className="tabular text-2xl font-bold text-forest-950">{num.format(m.byClass.redirected)}</p>
+              <p className="tabular text-2xl font-bold text-azure-950">{num.format(m.byClass.redirected)}</p>
               <p className="text-[15px] font-semibold leading-snug">{t("u4.agency.redirected")}</p>
               <p className="mt-1 text-[13px] leading-snug text-ink-2">{t("u4.agency.redirected.sub")}</p>
             </div>
@@ -161,7 +161,7 @@ export default function Agency() {
                       <span className="tabular shrink-0 text-[13px] font-semibold">{rupeesShort(d.loan, lang)}</span>
                     </div>
                     <div className="mt-1.5 flex h-2 overflow-hidden rounded-full bg-line" style={{ width: `${(d.total / maxDistrict) * 100}%` }}>
-                      <div className="h-full bg-forest-600" style={{ width: `${(d.viable / d.total) * 100}%` }} />
+                      <div className="h-full bg-azure-600" style={{ width: `${(d.viable / d.total) * 100}%` }} />
                       <div className="h-full bg-marigold-500" style={{ width: `${(d.redirected / d.total) * 100}%` }} />
                       <div className="h-full bg-clay-600" style={{ width: `${(d.noOption / d.total) * 100}%` }} />
                     </div>
@@ -188,7 +188,7 @@ export default function Agency() {
 
       <div className="mt-4 grid gap-2">
         <Note tone="marigold" icon={FlaskConical}>{t("u4.agency.method", { n: m.total, lo: rupees(COHORT_CAPITAL_RANGE[0]), hi: rupees(COHORT_CAPITAL_RANGE[1]), share: Math.round(DISBURSED_SHARE * 100) })}</Note>
-        <Note tone="forest">{t("agency.note")}</Note>
+        <Note tone="azure">{t("agency.note")}</Note>
       </div>
     </Screen>
   );

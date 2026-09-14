@@ -37,9 +37,9 @@ function Timeline({ status, ticket }: { status: GrievanceTicket["status"]; ticke
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.15 * i, type: "spring", stiffness: 400, damping: 18 }}
-                className={cx("mt-0.5 size-4 shrink-0 rounded-full ring-2", done ? "bg-forest-600 ring-forest-600" : current ? "bg-white ring-marigold-500" : "bg-white ring-line")}
+                className={cx("mt-0.5 size-4 shrink-0 rounded-full ring-2", done ? "bg-azure-600 ring-azure-600" : current ? "bg-white ring-marigold-500" : "bg-white ring-line")}
               />
-              {i < STEPS.length - 1 && <span className={cx("my-0.5 w-0.5 flex-1", i < at ? "bg-forest-600" : "bg-line")} />}
+              {i < STEPS.length - 1 && <span className={cx("my-0.5 w-0.5 flex-1", i < at ? "bg-azure-600" : "bg-line")} />}
             </div>
             <div className="pb-3">
               <p className={cx("text-[13px] leading-snug", done ? "font-semibold text-ink" : current ? "font-medium text-marigold-600" : "text-ink-3")}>{t(`grievance.step.${s}`)}</p>
@@ -131,13 +131,13 @@ export default function Grievance() {
       <AnimatePresence mode="wait" initial={false}>
         {submitted ? (
           <motion.div key="done" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-            <Card tone="forest" className="mt-2">
+            <Card tone="azure" className="mt-2">
               <div className="flex items-center justify-between gap-3">
-                <p className="text-[13px] text-forest-100">{t("grievance.ticket")}</p>
+                <p className="text-[13px] text-azure-100">{t("grievance.ticket")}</p>
                 <span className="tabular rounded-full bg-white/15 px-2.5 py-1 text-xs font-bold">{submitted.id}</span>
               </div>
               <p className="mt-2 text-lg font-bold leading-snug">{t("grievance.logged")}</p>
-              <p className="mt-1 text-[13px] leading-snug text-forest-100 [overflow-wrap:anywhere]">“{submitted.text}”</p>
+              <p className="mt-1 text-[13px] leading-snug text-azure-100 [overflow-wrap:anywhere]">“{submitted.text}”</p>
             </Card>
             <Card className="mt-3">
               <div className="flex flex-wrap items-center gap-2">
@@ -193,7 +193,7 @@ export default function Grievance() {
                     aria-label={t("grievance.speak")}
                     aria-pressed={listening}
                     onClick={toggleVoice}
-                    className={cx("relative grid size-13 shrink-0 place-items-center rounded-full text-white", listening ? "bg-clay-600" : "bg-forest-800")}
+                    className={cx("relative grid size-13 shrink-0 place-items-center rounded-full text-white", listening ? "bg-clay-600" : "bg-azure-800")}
                   >
                     {listening && <motion.span className="absolute inset-0 rounded-full bg-clay-600" animate={{ scale: [1, 1.6], opacity: [0.5, 0] }} transition={{ duration: 1.1, repeat: Infinity }} />}
                     <Mic className="relative size-6" />

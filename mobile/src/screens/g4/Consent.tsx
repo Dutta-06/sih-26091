@@ -42,7 +42,7 @@ export function ConsentCard({ tabRoot }: { tabRoot?: boolean }) {
             }}
           />
         </div>
-        <button onClick={() => push({ name: "privacy" })} className="mt-2 ml-14 inline-flex min-h-9 items-center gap-0.5 text-[13px] font-semibold text-forest-700">
+        <button onClick={() => push({ name: "privacy" })} className="mt-2 ml-14 inline-flex min-h-9 items-center gap-0.5 text-[13px] font-semibold text-azure-700">
           {t("w4.privacy.link")}
           <ChevronRight className="size-4" />
         </button>

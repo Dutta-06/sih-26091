@@ -6,7 +6,7 @@ import type { Strings } from "../index";
  */
 const w1: Strings = {
   en: {
-    "w1.assistant.status": "Works offline · 5 languages · voice",
+    "w1.assistant.status": "Works offline · 8 languages · voice",
     "w1.skill.stitching": "Stitching",
     "w1.skill.embroidery": "Embroidery",
     "w1.skill.weaving": "Weaving",
@@ -28,7 +28,7 @@ const w1: Strings = {
     "w1.voicePreview": "Voice not available",
 
     /* conversation */
-    "u1.greet": "Namaste! I am Arambh. I will help you check whether a business can work where you live, and find the right government loan. I ask one question at a time, and you can tell me several things at once.",
+    "u1.greet": "Namaste! I am Aashaudyami. I will help you check whether a business can work where you live, and find the right government loan. I ask one question at a time, and you can tell me several things at once.",
     "u1.greetCase": "Welcome back. I have the details of this case.",
     "u1.greetBack": "Namaste! Let's continue.",
     "u1.ask.name": "What should I call you? You can skip this.",
@@ -68,6 +68,9 @@ const w1: Strings = {
     "u1.langName.bn": "Bengali",
     "u1.langName.mr": "Marathi",
     "u1.langName.ta": "Tamil",
+    "u1.langName.te": "Telugu",
+    "u1.langName.pa": "Punjabi",
+    "u1.langName.kn": "Kannada",
     "u1.intent.grievance": "Sorry about the trouble. Raise a complaint here and it goes to the right mentor.",
     "u1.intent.application": "Your loan application status is here.",
     "u1.intent.scheme": "The scheme rules, explained simply, are here.",
@@ -197,7 +200,7 @@ const w1: Strings = {
     "u1.an.exhausted": "No option passed the review",
     "u1.an.exhaustedSub": "{n} options were checked with your inputs. This is an honest no — see what would change it.",
     "u1.an.constraint": "The analysis could not start",
-    "u1.an.noProfile": "Tell Arambh about yourself first — the analysis needs your savings and business idea.",
+    "u1.an.noProfile": "Tell Aashaudyami about yourself first — the analysis needs your savings and business idea.",
     "u1.an.cta.report": "Open the report",
     "u1.an.cta.review": "See why & the alternative",
     "u1.an.cta.noViable": "See what would change it",
@@ -304,14 +307,14 @@ const w1: Strings = {
 
     /* languages */
     "w1.lang.title": "Languages & voice",
-    "w1.lang.subtitle": "How Arambh talks with you",
+    "w1.lang.subtitle": "How Aashaudyami talks with you",
     "w1.lang.app": "App language",
     "w1.lang.fullUi": "All screens",
     "w1.lang.chat": "Conversation language",
     "w1.lang.chatTitle": "Conversation language",
     "w1.lang.coverFull": "Conversation, voice and all screens",
     "w1.lang.coverChat": "Assistant conversation and voice",
-    "w1.lang.note": "Bengali, Marathi and Tamil currently cover the assistant conversation and voice. Other screens show Hindi or English.",
+    "w1.lang.note": "Every screen, the conversation and read-aloud are available in all 8 languages. Official scheme documents are shown in English.",
     "w1.lang.voice": "Voice",
     "w1.lang.readAloud": "Read messages aloud automatically",
     "w1.lang.readAloudSub": "Helpful if reading is hard. Tap the speaker on any message too.",
@@ -324,7 +327,7 @@ const w1: Strings = {
     "u1.lang.listenYes": "Available on this phone — tap the mic in the conversation",
     "u1.lang.listenNo": "Not available on this phone — type instead",
     "u1.lang.ttsNone": "This phone has no text-to-speech voice, so messages cannot be read aloud.",
-    "u1.lang.onDevice": "Uses this phone's own speech services; Arambh sends nothing to the internet.",
+    "u1.lang.onDevice": "Uses this phone's own speech services; Aashaudyami sends nothing to the internet.",
 
     /* architecture */
     "u1.arch.pack": "Data pack on this phone",
@@ -347,7 +350,7 @@ const w1: Strings = {
     "u1.arch.s4ex": "This case: {savings} own money → {loan} loan at {rate}%",
   },
   hi: {
-    "w1.assistant.status": "बिना इंटरनेट · 5 भाषाएँ · आवाज़",
+    "w1.assistant.status": "बिना इंटरनेट · 8 भाषाएँ · आवाज़",
     "w1.skill.stitching": "सिलाई",
     "w1.skill.embroidery": "कढ़ाई",
     "w1.skill.weaving": "बुनाई",
@@ -368,7 +371,7 @@ const w1: Strings = {
     "w1.speak": "पढ़कर सुनाएँ",
     "w1.voicePreview": "आवाज़ उपलब्ध नहीं",
 
-    "u1.greet": "नमस्ते! मैं आरंभ हूँ। मैं जाँचने में मदद करूँगा कि आपके इलाके में कौन-सा काम चल सकता है, और सही सरकारी लोन ढूँढूँगा। मैं एक बार में एक सवाल पूछता हूँ, और आप एक साथ कई बातें भी बता सकते हैं।",
+    "u1.greet": "नमस्ते! मैं आशाउद्यमी हूँ। मैं जाँचने में मदद करूँगा कि आपके इलाके में कौन-सा काम चल सकता है, और सही सरकारी लोन ढूँढूँगा। मैं एक बार में एक सवाल पूछता हूँ, और आप एक साथ कई बातें भी बता सकते हैं।",
     "u1.greetCase": "फिर से स्वागत है। इस केस की जानकारी मेरे पास है।",
     "u1.greetBack": "नमस्ते! चलिए आगे बढ़ते हैं।",
     "u1.ask.name": "मैं आपको किस नाम से बुलाऊँ? चाहें तो छोड़ सकते हैं।",
@@ -408,6 +411,9 @@ const w1: Strings = {
     "u1.langName.bn": "बांग्ला",
     "u1.langName.mr": "मराठी",
     "u1.langName.ta": "तमिल",
+    "u1.langName.te": "तेलुगु",
+    "u1.langName.pa": "पंजाबी",
+    "u1.langName.kn": "कन्नड़",
     "u1.intent.grievance": "परेशानी के लिए माफ़ी। यहाँ शिकायत दर्ज करें, यह सही मेंटर तक जाएगी।",
     "u1.intent.application": "आपके लोन आवेदन की स्थिति यहाँ है।",
     "u1.intent.scheme": "योजना के नियम आसान भाषा में यहाँ हैं।",
@@ -536,7 +542,7 @@ const w1: Strings = {
     "u1.an.exhausted": "कोई विकल्प जाँच में पास नहीं हुआ",
     "u1.an.exhaustedSub": "आपकी जानकारी के साथ {n} विकल्प जाँचे गए। यह सच्चा ‘नहीं’ है — देखें क्या बदलने से बात बनेगी।",
     "u1.an.constraint": "जाँच शुरू नहीं हो सकी",
-    "u1.an.noProfile": "पहले आरंभ को अपने बारे में बताइए — जाँच के लिए बचत और काम का विचार चाहिए।",
+    "u1.an.noProfile": "पहले आशाउद्यमी को अपने बारे में बताइए — जाँच के लिए बचत और काम का विचार चाहिए।",
     "u1.an.cta.report": "रिपोर्ट खोलें",
     "u1.an.cta.review": "कारण और विकल्प देखें",
     "u1.an.cta.noViable": "देखें क्या बदलना होगा",
@@ -639,14 +645,14 @@ const w1: Strings = {
     "w1.more.surveySub": "अपने गाँव में जो दिखता है, बताइए",
 
     "w1.lang.title": "भाषा और आवाज़",
-    "w1.lang.subtitle": "आरंभ आपसे कैसे बात करे",
+    "w1.lang.subtitle": "आशाउद्यमी आपसे कैसे बात करे",
     "w1.lang.app": "ऐप की भाषा",
     "w1.lang.fullUi": "सभी स्क्रीन",
     "w1.lang.chat": "बातचीत की भाषा",
     "w1.lang.chatTitle": "बातचीत की भाषा",
     "w1.lang.coverFull": "बातचीत, आवाज़ और सभी स्क्रीन",
     "w1.lang.coverChat": "सहायक से बातचीत और आवाज़",
-    "w1.lang.note": "बांग्ला, मराठी और तमिल अभी सहायक की बातचीत और आवाज़ में हैं। बाकी स्क्रीन हिंदी या अंग्रेज़ी में दिखती हैं।",
+    "w1.lang.note": "हर स्क्रीन, बातचीत और पढ़कर सुनाना सभी 8 भाषाओं में है। सरकारी योजना के दस्तावेज़ अंग्रेज़ी में दिखते हैं।",
     "w1.lang.voice": "आवाज़",
     "w1.lang.readAloud": "संदेश अपने आप पढ़कर सुनाएँ",
     "w1.lang.readAloudSub": "पढ़ने में मुश्किल हो तो काम आएगा। किसी भी संदेश पर स्पीकर भी दबा सकते हैं।",
@@ -659,7 +665,7 @@ const w1: Strings = {
     "u1.lang.listenYes": "इस फ़ोन पर उपलब्ध — बातचीत में माइक दबाएँ",
     "u1.lang.listenNo": "इस फ़ोन पर उपलब्ध नहीं — लिखकर बताएँ",
     "u1.lang.ttsNone": "इस फ़ोन में पढ़कर सुनाने वाली आवाज़ नहीं है।",
-    "u1.lang.onDevice": "फ़ोन की अपनी आवाज़ सेवाएँ इस्तेमाल होती हैं; आरंभ इंटरनेट पर कुछ नहीं भेजता।",
+    "u1.lang.onDevice": "फ़ोन की अपनी आवाज़ सेवाएँ इस्तेमाल होती हैं; आशाउद्यमी इंटरनेट पर कुछ नहीं भेजता।",
 
     "u1.arch.pack": "इस फ़ोन पर डेटा पैक",
     "u1.arch.packSub": "साथ आई तालिकाओं से अभी गिना गया",

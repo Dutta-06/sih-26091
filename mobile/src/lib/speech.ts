@@ -9,12 +9,13 @@
 import { Capacitor, type PluginListenerHandle } from "@capacitor/core";
 import { SpeechRecognition } from "@capacitor-community/speech-recognition";
 import { TextToSpeech } from "@capacitor-community/text-to-speech";
+import { LANG_INFO, type Lang } from "../i18n/languages";
 import { pickLanguageTag } from "./speechLang";
 
-export type SpeechLang = "en" | "hi" | "bn" | "mr" | "ta";
+export type SpeechLang = Lang;
 export { pickLanguageTag };
 
-export const SPEECH_TAGS: Record<SpeechLang, string> = { en: "en-IN", hi: "hi-IN", bn: "bn-IN", mr: "mr-IN", ta: "ta-IN" };
+export const SPEECH_TAGS: Record<SpeechLang, string> = Object.fromEntries(Object.values(LANG_INFO).map((l) => [l.code, l.speech])) as Record<SpeechLang, string>;
 const ALL_LANGS = Object.keys(SPEECH_TAGS) as SpeechLang[];
 
 const native = () => Capacitor.isNativePlatform();

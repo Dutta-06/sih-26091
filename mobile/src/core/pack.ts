@@ -5,6 +5,7 @@
  * standing in for real downloads (`_meta.json` → synthetic_sample: true). Callers label values read from these
  * tables "real" (they occupy the place of a real open source); state reference values are "estimated".
  */
+import { biFromKey } from "../i18n";
 import type { Bi } from "../i18n";
 import type {
   OutcomeRecord,
@@ -65,7 +66,7 @@ export const packMeta = (): PackMeta => metaJson as PackMeta;
 
 let _districts: PackDistrict[] | null = null;
 export function districts(): PackDistrict[] {
-  return (_districts ??= districtsJson as unknown as PackDistrict[]);
+  return (_districts ??= (districtsJson as unknown as PackDistrict[]).map((d) => ({ ...d, name: biFromKey(`place.district.${d.id}`, d.name) })));
 }
 
 /** District by id (case-insensitive id or English name). */

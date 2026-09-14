@@ -29,7 +29,7 @@ export function Bubble({ message, children }: { message: ChatMessage; children?:
           <div
             className={cx(
               "max-w-[78%] rounded-3xl px-4 py-2.5 text-[15px] leading-snug break-words whitespace-pre-line",
-              mine ? "rounded-br-lg bg-forest-800 text-white" : "rounded-bl-lg bg-white text-ink shadow-[var(--shadow-card)]",
+              mine ? "rounded-br-lg bg-azure-800 text-white" : "rounded-bl-lg bg-white text-ink shadow-[var(--shadow-card)]",
             )}
           >
             {text}
@@ -47,7 +47,7 @@ export function TypingDots() {
     <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="flex justify-start" aria-label={tc("assistant.typing")}>
       <div className="flex items-center gap-1.5 rounded-3xl rounded-bl-lg bg-white px-4 py-3.5 shadow-[var(--shadow-card)]">
         {[0, 1, 2].map((i) => (
-          <motion.span key={i} className="size-2 rounded-full bg-forest-600" animate={{ y: [0, -4, 0], opacity: [0.4, 1, 0.4] }} transition={{ duration: 0.9, repeat: Infinity, delay: i * 0.15 }} />
+          <motion.span key={i} className="size-2 rounded-full bg-azure-600" animate={{ y: [0, -4, 0], opacity: [0.4, 1, 0.4] }} transition={{ duration: 0.9, repeat: Infinity, delay: i * 0.15 }} />
         ))}
       </div>
     </motion.div>
@@ -77,7 +77,7 @@ export function ProfileSummaryCard({ profile, name, started, onRun }: { profile:
       value: placeText,
       sub: place ? (
         <span className="flex flex-wrap items-center gap-1.5">
-          {place.lgd && <span className="tabular rounded-full bg-forest-50 px-2 py-0.5 text-[11px] font-semibold text-forest-800">{tc("u1.loc.code", { code: place.lgd })}</span>}
+          {place.lgd && <span className="tabular rounded-full bg-azure-50 px-2 py-0.5 text-[11px] font-semibold text-azure-800">{tc("u1.loc.code", { code: place.lgd })}</span>}
           <ConfidenceBadge value={place.method === "village_table" ? "real" : "estimated"} compact />
         </span>
       ) : undefined,
@@ -94,7 +94,7 @@ export function ProfileSummaryCard({ profile, name, started, onRun }: { profile:
       <div className="mt-2 divide-y divide-line">
         {rows.map((r) => (
           <div key={r.label} className="flex items-start gap-3 py-2">
-            <r.icon className="mt-0.5 size-4.5 shrink-0 text-forest-700" />
+            <r.icon className="mt-0.5 size-4.5 shrink-0 text-azure-700" />
             <div className="min-w-0 flex-1">
               <p className="text-xs text-ink-3">{r.label}</p>
               <p className="text-[15px] leading-snug font-medium break-words">{r.value}</p>
@@ -148,9 +148,9 @@ export function VerdictCard({ stale, feasibility, onOpen, onRerun }: { stale: bo
   const alt = first && selected && selected.activityId !== first.activityId ? selected : null;
   return (
     <div className="w-[90%] space-y-2">
-      {first && (<div className={cx("rounded-[var(--radius-card)] p-4", first.verdict === "viable" ? "bg-forest-50 ring-1 ring-forest-100" : "bg-clay-50 ring-1 ring-clay-100")}>
+      {first && (<div className={cx("rounded-[var(--radius-card)] p-4", first.verdict === "viable" ? "bg-azure-50 ring-1 ring-azure-100" : "bg-clay-50 ring-1 ring-clay-100")}>
         <div className="flex items-center gap-2">
-          {first.verdict === "viable" ? <ShieldCheck className="size-5 text-forest-700" /> : <ShieldAlert className="size-5 text-clay-700" />}
+          {first.verdict === "viable" ? <ShieldCheck className="size-5 text-azure-700" /> : <ShieldAlert className="size-5 text-clay-700" />}
           <Badge tone={tone}>{tc(`verdict.${first.verdict}`)}</Badge>
         </div>
         <p className="mt-2 text-[17px] leading-snug font-semibold">
@@ -166,12 +166,12 @@ export function VerdictCard({ stale, feasibility, onOpen, onRerun }: { stale: bo
         <p className="mt-1.5 text-[11px] font-medium text-ink-3">{tc("g1.rulesNotAi")}</p>
       </div>)}
       {alt && (
-        <div className="rounded-[var(--radius-card)] bg-forest-800 p-4 text-white shadow-[var(--shadow-float)]">
+        <div className="rounded-[var(--radius-card)] bg-azure-800 p-4 text-white shadow-[var(--shadow-float)]">
           <p className="flex items-center gap-2 text-[16px] leading-snug font-semibold">
             <Sparkles className="size-5 shrink-0 text-marigold-200" />
             {tc("u1.v.alt", { idea: `${ACTIVITIES[alt.activityId]?.emoji ?? ""} ${actName(alt.activityId)}` })}
           </p>
-          <p className="mt-1 text-[13px] text-forest-100">{tc("u1.v.altSub", { n: attempts.indexOf(alt) + 1, score: Math.round(alt.score) })}</p>
+          <p className="mt-1 text-[13px] text-azure-100">{tc("u1.v.altSub", { n: attempts.indexOf(alt) + 1, score: Math.round(alt.score) })}</p>
           <Button className="mt-3 w-full" variant="accent" iconRight={ArrowRight} onClick={() => onOpen("review")}>
             {tc("u1.jump.review")}
           </Button>
@@ -250,14 +250,14 @@ export function VoiceOverlay({ open, onFinal, onClose }: { open: boolean; onFina
   return (
     <AnimatePresence>
       {open && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="safe-top safe-bottom absolute inset-0 z-50 flex flex-col bg-forest-900/97 text-white">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="safe-top safe-bottom absolute inset-0 z-50 flex flex-col bg-azure-900/97 text-white">
           <div className="flex justify-end p-3">
             <button aria-label={tc("action.close")} onClick={onClose} className="grid size-11 place-items-center rounded-full active:bg-white/10">
               <X className="size-6" />
             </button>
           </div>
           <div className="flex flex-1 flex-col items-center justify-center px-8 text-center">
-            <p className="text-sm font-medium text-forest-100">{error ? tc(ERR_KEY[error]) : tc("u1.voice.listening")}</p>
+            <p className="text-sm font-medium text-azure-100">{error ? tc(ERR_KEY[error]) : tc("u1.voice.listening")}</p>
             <div className="mt-8 flex h-24 items-center gap-1.5">
               {Array.from({ length: 18 }, (_, i) => (
                 <motion.span
@@ -274,7 +274,7 @@ export function VoiceOverlay({ open, onFinal, onClose }: { open: boolean; onFina
                   “{partial}”
                 </motion.p>
               ) : (
-                <p className="text-[14px] text-forest-100">{tc("u1.voice.hint", { lang: CHAT_LANG_LABEL[cl] })}</p>
+                <p className="text-[14px] text-azure-100">{tc("u1.voice.hint", { lang: CHAT_LANG_LABEL[cl] })}</p>
               )}
             </div>
           </div>

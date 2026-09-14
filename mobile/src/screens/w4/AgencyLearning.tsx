@@ -24,20 +24,20 @@ export function OutcomeLearning() {
     <Section title={t("w4.agency.learning")}>
       <Card>
         <div className="grid grid-cols-2 gap-3">
-          <Stat label={t("w4.agency.real")} value={real} tone="forest" />
+          <Stat label={t("w4.agency.real")} value={real} tone="azure" />
           <Stat label={t("w4.agency.synthetic")} value={synthetic} />
         </div>
 
         <p className="mt-4 text-[13px] font-semibold text-ink-2">{t("u4.agency.share")}</p>
         <div className="mt-2 flex items-center gap-2 text-[13px]">
-          <div className="flex h-3.5 flex-1 overflow-hidden rounded-full bg-forest-600">
+          <div className="flex h-3.5 flex-1 overflow-hidden rounded-full bg-azure-600">
             <motion.div initial={{ width: 0 }} animate={{ width: `${share}%` }} transition={{ duration: 0.6, ease: "easeOut" }} className="h-full bg-marigold-500" />
           </div>
           <span className="tabular w-10 shrink-0 text-right font-semibold">{share}%</span>
         </div>
         <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-2">
           <span className="flex items-center gap-1.5"><span className="size-2.5 rounded-full bg-marigold-500" />{t("w4.agency.legend.synthetic")}</span>
-          <span className="flex items-center gap-1.5"><span className="size-2.5 rounded-full bg-forest-600" />{t("w4.agency.legend.real")}</span>
+          <span className="flex items-center gap-1.5"><span className="size-2.5 rounded-full bg-azure-600" />{t("w4.agency.legend.real")}</span>
         </div>
 
         <p className="mt-4 text-[13px] font-semibold text-ink-2">{t("u4.agency.success")}</p>
@@ -50,7 +50,7 @@ export function OutcomeLearning() {
                 </p>
                 <span className="tabular text-[15px] font-semibold">{p.pct === null ? "—" : `${p.pct}%`}</span>
               </div>
-              {p.pct !== null && <Progress value={p.pct} tone={p.pct >= 65 ? "forest" : "marigold"} className="mt-1.5" />}
+              {p.pct !== null && <Progress value={p.pct} tone={p.pct >= 65 ? "azure" : "marigold"} className="mt-1.5" />}
             </div>
           ))}
         </div>

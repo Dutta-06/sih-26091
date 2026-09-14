@@ -69,7 +69,7 @@ export default function Analysis() {
 
   return (
     <Screen
-      tone="forest"
+      tone="azure"
       title={attempt ? t("u1.an.title", { idea: pick(ACTIVITIES[attempt.activityId]?.name ?? { en: attempt.activityId, hi: attempt.activityId }) }) : t("u1.an.titleIdle")}
       subtitle={placeName}
       right={
@@ -80,7 +80,7 @@ export default function Analysis() {
         )
       }
     >
-      <p className="mt-1 text-center text-[13px] text-forest-100">{t(done ? "u1.an.done" : "u1.an.running")}</p>
+      <p className="mt-1 text-center text-[13px] text-azure-100">{t(done ? "u1.an.done" : "u1.an.running")}</p>
 
       {attempt && (
         <div className="mt-3">
@@ -95,7 +95,7 @@ export default function Analysis() {
             <span className="tabular grid size-7 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-bold">{k + 1}</span>
             <div className="min-w-0 flex-1">
               <p className="truncate text-[14px] font-semibold">{name(a.activityId)}</p>
-              <p className="text-[12px] leading-snug text-forest-100">{a.findings[0] ? fmt(a.findings[0].msg) : t("u1.an.redteamNone")}</p>
+              <p className="text-[12px] leading-snug text-azure-100">{a.findings[0] ? fmt(a.findings[0].msg) : t("u1.an.redteamNone")}</p>
             </div>
             <Badge tone={verdictTone(a.verdict)}>{t(`verdict.${a.verdict}`)}</Badge>
           </motion.div>
@@ -184,25 +184,25 @@ function AttemptView({ attempt, index, local, finished, name }: { attempt: Feasi
           {t("u1.an.trying", { idea: name(attempt.activityId) })}
         </motion.div>
       )}
-      <p className="mb-2 px-1 text-[11px] font-semibold tracking-wide text-forest-100 uppercase">{t("u1.an.attempt", { n: index + 1, max: MAX_ATTEMPTS })}</p>
+      <p className="mb-2 px-1 text-[11px] font-semibold tracking-wide text-azure-100 uppercase">{t("u1.an.attempt", { n: index + 1, max: MAX_ATTEMPTS })}</p>
       <div className="space-y-2">
         {AGENT_ORDER.map((id, i) => {
           const ok = at(AGENT_AT(i));
           const Icon = AGENT_ICONS[id];
           return (
             <div key={id} className={cx("flex min-h-14 items-center gap-3 rounded-2xl px-3 py-2.5 transition-colors", ok ? "bg-white/10" : "bg-white/5")}>
-              <span className="grid size-8 shrink-0 place-items-center text-forest-100">
+              <span className="grid size-8 shrink-0 place-items-center text-azure-100">
                 <Icon className="size-5" />
               </span>
               <div className="min-w-0 flex-1">
                 <p className="text-[14px] font-semibold">{t(`u1.agent.${id}`)}</p>
                 <AnimatePresence mode="wait">
                   {ok ? (
-                    <motion.p key="f" initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} className="text-[13px] leading-snug break-words text-forest-100">
+                    <motion.p key="f" initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} className="text-[13px] leading-snug break-words text-azure-100">
                       {fmt(findingLine(attempt.intel, id))}
                     </motion.p>
                   ) : (
-                    <motion.p key="w" exit={{ opacity: 0 }} className="text-[13px] text-forest-100/60">
+                    <motion.p key="w" exit={{ opacity: 0 }} className="text-[13px] text-azure-100/60">
                       {t("u1.an.reading")}
                     </motion.p>
                   )}
@@ -224,7 +224,7 @@ function AttemptView({ attempt, index, local, finished, name }: { attempt: Feasi
         <Phase show={at(SWOT_AT)} busy={!at(REDTEAM_AT)} icon={<Combine className="size-5" />} title={t("u1.an.swot")}>
           <p>{t("u1.an.swotSub", { s: swot.strengths.length, w: swot.weaknesses.length, o: swot.opportunities.length, t: swot.threats.length })}</p>
           {at(REDTEAM_AT) && (swot.strengths[0] || swot.threats[0]) && (
-            <p className="mt-0.5 text-forest-100/80">{[swot.strengths[0], swot.threats[0]].filter(Boolean).map((m) => fmt(m)).join(" · ")}</p>
+            <p className="mt-0.5 text-azure-100/80">{[swot.strengths[0], swot.threats[0]].filter(Boolean).map((m) => fmt(m)).join(" · ")}</p>
           )}
         </Phase>
         <Phase show={at(REDTEAM_AT)} busy={!at(VERDICT_AT)} clay icon={<ShieldAlert className="size-5" />} title={t("u1.an.redteam")}>
@@ -262,8 +262,8 @@ function Phase({ show, busy, icon, title, children, clay }: { show: boolean; bus
       animate={{ opacity: 1, y: 0 }}
       className={cx("flex min-h-14 items-start gap-3 rounded-2xl px-3 py-2.5", clay ? "bg-clay-600/25 ring-1 ring-clay-600/60" : "bg-white/10")}
     >
-      <span className={cx("mt-0.5 grid size-8 shrink-0 place-items-center rounded-full", clay ? "bg-clay-600 text-white" : "bg-marigold-500 text-forest-950")}>{icon}</span>
-      <div className="min-w-0 flex-1 text-[13px] leading-snug text-forest-100">
+      <span className={cx("mt-0.5 grid size-8 shrink-0 place-items-center rounded-full", clay ? "bg-clay-600 text-white" : "bg-marigold-500 text-azure-950")}>{icon}</span>
+      <div className="min-w-0 flex-1 text-[13px] leading-snug text-azure-100">
         <p className="text-[14px] font-semibold text-white">{title}</p>
         {children}
       </div>

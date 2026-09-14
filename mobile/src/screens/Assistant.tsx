@@ -240,13 +240,13 @@ export default function Assistant() {
     <div className="relative flex h-full flex-col bg-cream">
       <header className="safe-top border-b border-line bg-cream/95 backdrop-blur">
         <div className="flex min-h-15 items-center gap-2 px-4 py-2">
-          <span className="grid size-10 shrink-0 place-items-center rounded-full bg-forest-800 text-white">
+          <span className="grid size-10 shrink-0 place-items-center rounded-full bg-azure-800 text-white">
             <Sparkles className="size-5" />
           </span>
           <div className="min-w-0 flex-1">
             <h1 className="text-[17px] leading-tight font-semibold">{t("app.name")}</h1>
             <p className="flex items-center gap-1.5 truncate text-xs text-ink-3">
-              <span className="size-2 shrink-0 rounded-full bg-forest-600" />
+              <span className="size-2 shrink-0 rounded-full bg-azure-600" />
               {t("w1.assistant.status")}
             </p>
           </div>
@@ -256,7 +256,7 @@ export default function Assistant() {
               tap();
               setLangSheet(true);
             }}
-            className="flex min-h-11 items-center gap-1 rounded-full bg-white px-3 text-sm font-semibold text-forest-800 ring-1 ring-line active:bg-sand"
+            className="flex min-h-11 items-center gap-1 rounded-full bg-white px-3 text-sm font-semibold text-azure-800 ring-1 ring-line active:bg-sand"
           >
             <Languages className="size-4" />
             {CHAT_LANG_SHORT[cl]}
@@ -268,7 +268,7 @@ export default function Assistant() {
               tap();
               set({ chat: [], pendingSlot: null, profile: EMPTY_PROFILE, analysisSeen: false, chosenActivity: null });
             }}
-            className="grid size-11 place-items-center rounded-full text-forest-800 active:bg-sand disabled:opacity-40"
+            className="grid size-11 place-items-center rounded-full text-azure-800 active:bg-sand disabled:opacity-40"
           >
             <RotateCcw className="size-4.5" />
           </button>
@@ -319,10 +319,10 @@ export default function Assistant() {
             placeholder={tc("assistant.inputPh")}
             disabled={sampleRunning}
             maxLength={300}
-            className="min-h-12 min-w-0 flex-1 rounded-full bg-white px-4 text-[15px] ring-1 ring-line outline-none placeholder:text-ink-3 focus:ring-forest-600 disabled:opacity-60"
+            className="min-h-12 min-w-0 flex-1 rounded-full bg-white px-4 text-[15px] ring-1 ring-line outline-none placeholder:text-ink-3 focus:ring-azure-600 disabled:opacity-60"
           />
           {draft.trim() ? (
-            <motion.button whileTap={{ scale: 0.92 }} aria-label={tc("assistant.send")} disabled={busy} onClick={() => sendText(draft)} className="grid size-12 shrink-0 place-items-center rounded-full bg-forest-800 text-white disabled:opacity-50">
+            <motion.button whileTap={{ scale: 0.92 }} aria-label={tc("assistant.send")} disabled={busy} onClick={() => sendText(draft)} className="grid size-12 shrink-0 place-items-center rounded-full bg-azure-800 text-white disabled:opacity-50">
               <SendHorizontal className="size-5" />
             </motion.button>
           ) : (
@@ -335,7 +335,7 @@ export default function Assistant() {
                 if (!stt) toast(tc("u1.voice.noStt"), { tone: "info" });
                 else setListening(true);
               }}
-              className="grid size-12 shrink-0 place-items-center rounded-full bg-marigold-500 text-forest-950 disabled:bg-ink-3/20 disabled:text-ink-3"
+              className="grid size-12 shrink-0 place-items-center rounded-full bg-marigold-500 text-azure-950 disabled:bg-ink-3/20 disabled:text-ink-3"
             >
               <Mic className="size-5.5" />
             </motion.button>

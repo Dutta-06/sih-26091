@@ -12,7 +12,7 @@ import { Badge, Button, Card, Chip, ConfidenceBadge, cx, IconBubble, Note, Revea
 import { activityLabel } from "./g4/model";
 
 const TOPICS: PackFeedback["topic"][] = ["demand", "pricing", "supply", "seasonality", "competition", "other"];
-const AVATAR_TONES = ["bg-forest-200 text-forest-900", "bg-marigold-200 text-forest-950", "bg-sky-100 text-sky-700", "bg-clay-100 text-clay-700"];
+const AVATAR_TONES = ["bg-azure-200 text-azure-900", "bg-marigold-200 text-azure-950", "bg-sky-100 text-sky-700", "bg-clay-100 text-clay-700"];
 const MAX_AVATARS = 7;
 const SURVEY_OPTIONS = 4;
 
@@ -82,7 +82,7 @@ export default function Community() {
       }
     >
       <Reveal>
-        <Card tone="forest" className="mt-2">
+        <Card tone="azure" className="mt-2">
           <div className="flex flex-wrap items-center gap-2">
             {pool.discountPct > 0 ? <Badge tone="warn">{t("community.pool.badge", { pct: pool.discountPct })}</Badge> : <Badge tone="neutral">{t("u4.pool.notReady", { target: pool.target })}</Badge>}
             <ConfidenceBadge value={pool.confidence} />
@@ -93,21 +93,21 @@ export default function Community() {
           <div className="mt-4 flex -space-x-2">
             <AnimatePresence initial={false}>
               {avatars.map((i) => (
-                <motion.span key={i} initial={{ scale: 0, y: 10 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0 }} transition={{ type: "spring", stiffness: 420, damping: 16, delay: i * 0.05 }} className={cx("grid size-10 place-items-center rounded-full text-base ring-2 ring-forest-800", AVATAR_TONES[i % AVATAR_TONES.length])}>
+                <motion.span key={i} initial={{ scale: 0, y: 10 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0 }} transition={{ type: "spring", stiffness: 420, damping: 16, delay: i * 0.05 }} className={cx("grid size-10 place-items-center rounded-full text-base ring-2 ring-azure-800", AVATAR_TONES[i % AVATAR_TONES.length])}>
                   {act.emoji}
                 </motion.span>
               ))}
               {pool.peers > MAX_AVATARS && (
-                <span className="grid size-10 place-items-center rounded-full bg-white/20 text-xs font-bold ring-2 ring-forest-800">+{pool.peers - MAX_AVATARS}</span>
+                <span className="grid size-10 place-items-center rounded-full bg-white/20 text-xs font-bold ring-2 ring-azure-800">+{pool.peers - MAX_AVATARS}</span>
               )}
               {state.joinedPool && (
-                <motion.span key="you" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} className="grid size-10 place-items-center rounded-full bg-marigold-500 text-[11px] font-bold text-forest-950 ring-2 ring-forest-800">
+                <motion.span key="you" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} className="grid size-10 place-items-center rounded-full bg-marigold-500 text-[11px] font-bold text-azure-950 ring-2 ring-azure-800">
                   {t("u4.pool.you")}
                 </motion.span>
               )}
             </AnimatePresence>
           </div>
-          <div className="mt-4 flex items-center justify-between text-[13px] text-forest-100">
+          <div className="mt-4 flex items-center justify-between text-[13px] text-azure-100">
             <span>{t("u4.pool.progress", { n: members, target: pool.target })}</span>
             <span className="tabular font-semibold text-white">{Math.round(readiness * 100)}%</span>
           </div>
@@ -115,7 +115,7 @@ export default function Community() {
             <motion.div animate={{ width: `${readiness * 100}%` }} transition={{ type: "spring", stiffness: 120, damping: 18 }} className="h-full rounded-full bg-marigold-500" />
           </div>
           {pool.limitations.map((l, i) => (
-            <p key={i} className="mt-2 text-xs leading-snug text-forest-100">{tm(l)}</p>
+            <p key={i} className="mt-2 text-xs leading-snug text-azure-100">{tm(l)}</p>
           ))}
         </Card>
       </Reveal>
@@ -131,7 +131,7 @@ export default function Community() {
               </div>
             ))}
           </div>
-          <p className="mt-3 rounded-xl bg-forest-50 px-3 py-2 text-[13px] leading-snug text-forest-800">
+          <p className="mt-3 rounded-xl bg-azure-50 px-3 py-2 text-[13px] leading-snug text-azure-800">
             {pool.discountPct > 0
               ? saving !== null ? t("u4.pool.saving", { pct: pool.discountPct, stock: rupees(stock), amount: rupees(saving) }) : t("community.pool.saving", { pct: pool.discountPct })
               : t("u4.pool.noSaving", { target: pool.target })}
@@ -196,10 +196,10 @@ export default function Community() {
                   const active = vote === id;
                   const n = mentions(id);
                   return (
-                    <button key={id} disabled={voted} onClick={() => setVote(id)} className={cx("relative min-h-12 overflow-hidden rounded-2xl px-3.5 text-left text-[15px] ring-1", active ? "ring-2 ring-forest-600" : "ring-line", !voted && "active:bg-sand")}>
+                    <button key={id} disabled={voted} onClick={() => setVote(id)} className={cx("relative min-h-12 overflow-hidden rounded-2xl px-3.5 text-left text-[15px] ring-1", active ? "ring-2 ring-azure-600" : "ring-line", !voted && "active:bg-sand")}>
                       <span className="relative flex items-center justify-between gap-2">
                         <span className={cx("min-w-0", active && "font-semibold")}>{activityLabel(id).emoji} {pick(activityLabel(id).name)}</span>
-                        {voted && <span className="tabular shrink-0 text-[13px] font-semibold text-forest-800">{t("u4.poll.mentions", { n })}</span>}
+                        {voted && <span className="tabular shrink-0 text-[13px] font-semibold text-azure-800">{t("u4.poll.mentions", { n })}</span>}
                       </span>
                     </button>
                   );

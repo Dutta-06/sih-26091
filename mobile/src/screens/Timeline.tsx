@@ -1,3 +1,4 @@
+import { LANG_INFO } from "../i18n";
 import {
   Banknote,
   BellRing,
@@ -44,7 +45,7 @@ const ICONS: Partial<Record<TimelineKind, LucideIcon>> = {
   counsellor_request: Headset,
 };
 
-const DOT = { forest: "bg-forest-100 text-forest-800", marigold: "bg-marigold-100 text-marigold-600", clay: "bg-clay-100 text-clay-700", sky: "bg-sky-100 text-sky-700" };
+const DOT = { azure: "bg-azure-100 text-azure-800", marigold: "bg-marigold-100 text-marigold-600", clay: "bg-clay-100 text-clay-700", sky: "bg-sky-100 text-sky-700" };
 
 /** Case history: every recorded event with its real (demo-clock) timestamp; each links to its screen. */
 export default function Timeline() {
@@ -53,7 +54,7 @@ export default function Timeline() {
   const { state } = useStore();
   const { push, goto, switchTab } = useNav();
   const items = timelineItems(state);
-  const locale = lang === "hi" ? "hi-IN" : "en-IN";
+  const locale = LANG_INFO[lang].dateLocale;
   const month = (iso: string) => new Date(iso).toLocaleDateString(locale, { month: "long", year: "numeric", numberingSystem: "latn" });
   const day = (iso: string) => new Date(iso).toLocaleString(locale, { day: "numeric", month: "short", hour: "numeric", minute: "2-digit", numberingSystem: "latn" });
 
@@ -68,7 +69,7 @@ export default function Timeline() {
   return (
     <Screen title={t("w1.tl.title")} subtitle={t("w1.tl.subtitle", { n: items.length })}>
       <div className="mt-2">
-        <Note icon={History} tone="forest">
+        <Note icon={History} tone="azure">
           {t("w1.tl.saved")}
         </Note>
       </div>
@@ -107,10 +108,10 @@ export default function Timeline() {
             );
           })}
           <li className="relative flex items-center gap-3 pt-3">
-            <span className="relative z-[1] grid size-10 shrink-0 place-items-center rounded-full bg-forest-800 text-white ring-4 ring-cream">
+            <span className="relative z-[1] grid size-10 shrink-0 place-items-center rounded-full bg-azure-800 text-white ring-4 ring-cream">
               <span className="size-2.5 animate-pulse rounded-full bg-marigold-500" />
             </span>
-            <span className="text-[14px] font-semibold text-forest-800">
+            <span className="text-[14px] font-semibold text-azure-800">
               {t("w1.tl.now")} · <span className="tabular">{new Date(todayOf(state)).toLocaleDateString(locale, { day: "numeric", month: "short", year: "numeric", numberingSystem: "latn" })}</span>
             </span>
           </li>

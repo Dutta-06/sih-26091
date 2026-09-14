@@ -25,7 +25,7 @@ export default function Warning() {
       <Screen title={t("warning.title")}>
         <Reveal>
           <div className="mt-10 grid place-items-center text-center">
-            <IconBubble icon={ShieldCheck} tone="forest" size="lg" />
+            <IconBubble icon={ShieldCheck} tone="azure" size="lg" />
             <p className="mt-3 text-lg font-semibold">{t("u4.warning.none.title")}</p>
             <p className="mt-1 max-w-80 text-[15px] leading-snug text-ink-3">
               {lc.latest ? t("u4.warning.none.body", { n: lc.done.length, month: monthLabel(lc.latest.month, lang) }) : t("u4.warning.none.noData")}
@@ -64,12 +64,12 @@ export default function Warning() {
       >
         <div className="grid min-h-[70%] place-items-center text-center">
           <div>
-            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 260, damping: 14 }} className="mx-auto grid size-20 place-items-center rounded-full bg-forest-100">
-              <CheckCircle2 className="size-10 text-forest-700" />
+            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 260, damping: 14 }} className="mx-auto grid size-20 place-items-center rounded-full bg-azure-100">
+              <CheckCircle2 className="size-10 text-azure-700" />
             </motion.div>
             <Reveal i={2}>
               <h2 className="mt-5 text-xl font-bold">{t("warning.success.title")}</h2>
-              <p className="mt-1 text-[15px] font-medium text-forest-800">{t(`u4.intervention.${chosen.type}`)}</p>
+              <p className="mt-1 text-[15px] font-medium text-azure-800">{t(`u4.intervention.${chosen.type}`)}</p>
               <p className="mx-auto mt-3 max-w-80 text-[15px] leading-snug text-ink-2">
                 {lc.afterSnap ? t("u4.warning.success.ready", { month: monthLabel(lc.afterSnap.month, lang) }) : t("u4.warning.success.wait", { month })}
               </p>
@@ -151,7 +151,7 @@ export default function Warning() {
                     <span className="text-ink-2">{t(`u4.component.${c}`)}</span>
                     <span className="tabular font-semibold">{v === null ? t("u4.component.na") : `${Math.round(v * 100)}%`}</span>
                   </div>
-                  {v !== null && <Progress value={v * 100} tone={v >= 0.8 ? "forest" : v >= 0.5 ? "marigold" : "clay"} className="mt-1" />}
+                  {v !== null && <Progress value={v * 100} tone={v >= 0.8 ? "azure" : v >= 0.5 ? "marigold" : "clay"} className="mt-1" />}
                 </div>
               );
             })}
@@ -196,7 +196,7 @@ export default function Warning() {
                     tap();
                     setChoice(o.type);
                   }}
-                  className={cx("block w-full rounded-[var(--radius-card)] bg-white p-4 text-left shadow-[var(--shadow-card)] ring-2 transition-colors", active ? "ring-forest-600" : "ring-transparent")}
+                  className={cx("block w-full rounded-[var(--radius-card)] bg-white p-4 text-left shadow-[var(--shadow-card)] ring-2 transition-colors", active ? "ring-azure-600" : "ring-transparent")}
                 >
                   <div className="flex items-start gap-3">
                     <IconBubble icon={look.icon} tone={look.tone} size="sm" />
@@ -208,11 +208,11 @@ export default function Warning() {
                       <p className="mt-1.5 text-[15px] font-semibold leading-snug">{t(`u4.intervention.${o.type}`)}</p>
                       <p className="mt-0.5 text-[13px] leading-snug text-ink-3">{t(`u4.intervention.${o.type}.body`)}</p>
                       <div className="mt-2.5 rounded-xl bg-sand/70 px-2.5 py-2">
-                        <p className={cx("text-[13px] font-semibold", i === 0 ? "text-forest-700" : "text-ink-2")}>
+                        <p className={cx("text-[13px] font-semibold", i === 0 ? "text-azure-700" : "text-ink-2")}>
                           {t("u4.evidence.rate", { pct: Math.round(o.successRate * 100), n: o.improved, total: o.total })}
                         </p>
                         <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-ink-3/15">
-                          <div className={cx("h-full rounded-full", i === 0 ? "bg-forest-600" : "bg-ink-3/60")} style={{ width: `${Math.round(o.successRate * 100)}%` }} />
+                          <div className={cx("h-full rounded-full", i === 0 ? "bg-azure-600" : "bg-ink-3/60")} style={{ width: `${Math.round(o.successRate * 100)}%` }} />
                         </div>
                         <p className="mt-1.5 flex items-start gap-1 text-[11px] font-medium leading-snug text-marigold-600">
                           <Database className="mt-px size-3 shrink-0" />
@@ -220,7 +220,7 @@ export default function Warning() {
                         </p>
                       </div>
                     </div>
-                    <span className={cx("mt-1 grid size-6 shrink-0 place-items-center rounded-full ring-2", active ? "bg-forest-600 ring-forest-600" : "ring-line")}>
+                    <span className={cx("mt-1 grid size-6 shrink-0 place-items-center rounded-full ring-2", active ? "bg-azure-600 ring-azure-600" : "ring-line")}>
                       {active && <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} className="size-2.5 rounded-full bg-white" />}
                     </span>
                   </div>
@@ -231,7 +231,7 @@ export default function Warning() {
                         e.stopPropagation();
                         push({ name: "community" });
                       }}
-                      className="mt-2 ml-12 inline-flex min-h-9 items-center text-[13px] font-semibold text-forest-700"
+                      className="mt-2 ml-12 inline-flex min-h-9 items-center text-[13px] font-semibold text-azure-700"
                     >
                       {t("u4.warning.poolLink", { n: view.pool.peers })}
                     </span>

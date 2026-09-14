@@ -3,13 +3,14 @@ import { computeCase, type CaseView, type SessionInputs } from "../core/session"
 import { transition, type AppEvent } from "../core/tracker";
 import type { AppStage, DocStatus, GrievanceTicket, OutcomeRecord, ProfileInput } from "../core/types";
 import type { Lang } from "../i18n";
+import { isLang } from "../i18n/languages";
 
 /**
  * Persistent case state. It holds ONLY what the user entered and did (inputs + events).
  * Everything the screens show is derived on the device by `computeCase` (see `useCase()`).
  */
 export type { AppStage, DocStatus };
-export type ChatLang = "en" | "hi" | "bn" | "mr" | "ta";
+export type ChatLang = Lang;
 export type Intervention = OutcomeRecord["intervention_type"];
 
 export interface ChatMessage {
@@ -193,7 +194,7 @@ function reducer(state: JourneyState, action: Action): JourneyState {
   }
 }
 
-const KEY = "arambh.case.v3";
+const KEY = "aashaudyami.case.v1";
 
 function load(): JourneyState {
   if (import.meta.env.DEV) {
@@ -201,7 +202,8 @@ function load(): JourneyState {
     const params = new URLSearchParams(location.hash.split("?")[1] ?? "");
     const jump = params.get("jump") as DemoCheckpoint | null;
     if (jump) {
-      const lang = params.get("lang") === "hi" ? "hi" : "en";
+      const requested = params.get("lang");
+      const lang = isLang(requested) ? requested : "en";
       const s = reducer(initialState(lang), { type: "jump", to: jump });
       const extra = params.get("state");
       return { ...s, ...(extra ? JSON.parse(extra) : {}), clockOffsetDays: Number(params.get("clock") ?? s.clockOffsetDays) };

@@ -30,12 +30,15 @@ describe("nlu parity with orchestrator/router + language", () => {
       const e = extract(c.text, c.pending as Slot | null);
       const o = OVERRIDES[c.text] ?? {};
       expect(e.capital ?? null).toBe(c.capital);
-      expect(e.activityId ?? null).toBe(c.activityId);
+      // Languages beyond English/Hindi are understood through the app's lexicons (the backend has none):
+      // parity is only required where the backend found an activity.
+      if (c.activityId !== null || !/[ঀ-෿]/.test(c.text)) expect(e.activityId ?? null).toBe(c.activityId);
       expect(e.locationText ?? null).toBe("locationText" in o ? o.locationText : c.locationText);
       expect(e.reason ?? null).toBe(c.reason);
-      expect(classifyIntent(c.text)).toBe(o.intent ?? c.intent);
+      const lexiconLanguage = /[ঀ-෿]/.test(c.text); // understood via app lexicons, not the backend
+      if (!lexiconLanguage || c.intent !== "unknown") expect(classifyIntent(c.text)).toBe(o.intent ?? c.intent);
       expect(detectLanguageCode(c.text)).toBe(c.language);
-      expect(detectScript(c.text)).toBe(["hi", "bn", "ta"].includes(c.language) ? c.language : "en");
+      expect(detectScript(c.text)).toBe(["hi", "bn", "ta", "te", "pa", "kn"].includes(c.language) ? c.language : "en");
     });
   }
 });

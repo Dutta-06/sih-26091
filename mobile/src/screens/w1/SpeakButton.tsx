@@ -35,12 +35,12 @@ export function SpeakButton({ text }: { text: string }) {
         whileTap={{ scale: 0.9 }}
         aria-label={tc("w1.speak")}
         onClick={onClick}
-        className={cx("grid size-9 place-items-center rounded-full transition-colors", active ? "bg-forest-100 text-forest-800" : "text-ink-3 active:bg-sand")}
+        className={cx("grid size-9 place-items-center rounded-full transition-colors", active ? "bg-azure-100 text-azure-800" : "text-ink-3 active:bg-sand")}
       >
         {active ? (
           <span className="flex h-4 items-center gap-0.5">
             {[0, 1, 2, 3].map((i) => (
-              <motion.span key={i} className="w-0.5 rounded-full bg-forest-700" animate={{ height: [4, 14, 4] }} transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.12 }} />
+              <motion.span key={i} className="w-0.5 rounded-full bg-azure-700" animate={{ height: [4, 14, 4] }} transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.12 }} />
             ))}
           </span>
         ) : (
@@ -53,7 +53,7 @@ export function SpeakButton({ text }: { text: string }) {
             initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="absolute right-0 bottom-full mb-1 rounded-full bg-forest-800 px-2.5 py-1 text-[11px] font-medium whitespace-nowrap text-white"
+            className="absolute right-0 bottom-full mb-1 rounded-full bg-azure-800 px-2.5 py-1 text-[11px] font-medium whitespace-nowrap text-white"
           >
             {tc("w1.voicePreview")}
           </motion.span>

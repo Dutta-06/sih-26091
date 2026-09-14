@@ -4,30 +4,45 @@
 @import "@fontsource/noto-sans-devanagari/500.css";
 @import "@fontsource/noto-sans-devanagari/600.css";
 @import "@fontsource/noto-sans-devanagari/700.css";
+@import "@fontsource/noto-sans-bengali/400.css";
+@import "@fontsource/noto-sans-bengali/600.css";
+@import "@fontsource/noto-sans-bengali/700.css";
+@import "@fontsource/noto-sans-tamil/400.css";
+@import "@fontsource/noto-sans-tamil/600.css";
+@import "@fontsource/noto-sans-tamil/700.css";
+@import "@fontsource/noto-sans-telugu/400.css";
+@import "@fontsource/noto-sans-telugu/600.css";
+@import "@fontsource/noto-sans-telugu/700.css";
+@import "@fontsource/noto-sans-gurmukhi/400.css";
+@import "@fontsource/noto-sans-gurmukhi/600.css";
+@import "@fontsource/noto-sans-gurmukhi/700.css";
+@import "@fontsource/noto-sans-kannada/400.css";
+@import "@fontsource/noto-sans-kannada/600.css";
+@import "@fontsource/noto-sans-kannada/700.css";
 
 /*
- * Arambh design tokens. Warm, trustworthy, rural-first:
- * forest green = growth and trust, marigold = warmth and attention, cream ground, terracotta for risk.
+ * Aashaudyami design tokens. Warm, trustworthy, rural-first:
+ * azure green = growth and trust, marigold = warmth and attention, cream ground, terracotta for risk.
  */
 @theme {
-  --font-sans: "Inter Variable", "Noto Sans Devanagari", system-ui, sans-serif;
+  --font-sans: "Inter Variable", "Noto Sans Devanagari", "Noto Sans Bengali", "Noto Sans Tamil", "Noto Sans Telugu", "Noto Sans Gurmukhi", "Noto Sans Kannada", system-ui, sans-serif;
 
-  --color-cream: #fbf7ef;
-  --color-sand: #f3ecdf;
-  --color-line: #e8e0d1;
+  --color-cream: #f5fafb;
+  --color-sand: #e9f2f4;
+  --color-line: #d9e6e9;
 
-  --color-ink: #1b1f1d;
-  --color-ink-2: #4b5550;
-  --color-ink-3: #8a938e;
+  --color-ink: #14252a;
+  --color-ink-2: #445a60;
+  --color-ink-3: #7f9297;
 
-  --color-forest-950: #06291a;
-  --color-forest-900: #0a3a24;
-  --color-forest-800: #0f5132;
-  --color-forest-700: #146c43;
-  --color-forest-600: #198754;
-  --color-forest-200: #bfe3cf;
-  --color-forest-100: #d8efe3;
-  --color-forest-50: #eef8f2;
+  --color-azure-950: #00333b;
+  --color-azure-900: #00596a;
+  --color-azure-800: #007b8f;
+  --color-azure-700: #0a8aa0;
+  --color-azure-600: #0e9bb3;
+  --color-azure-200: #b3e3ea;
+  --color-azure-100: #d4f0f4;
+  --color-azure-50: #ecf8fa;
 
   --color-marigold-600: #c77c02;
   --color-marigold-500: #f2a516;
@@ -44,8 +59,8 @@
   --color-sky-100: #dbe7fe;
 
   --radius-card: 1.25rem;
-  --shadow-card: 0 1px 2px rgb(27 31 29 / 0.04), 0 4px 16px rgb(27 31 29 / 0.06);
-  --shadow-float: 0 8px 28px rgb(15 81 50 / 0.18);
+  --shadow-card: 0 1px 2px rgb(20 37 42 / 0.04), 0 4px 16px rgb(20 37 42 / 0.06);
+  --shadow-float: 0 8px 28px rgb(0 123 143 / 0.22);
 }
 
 html,
@@ -70,8 +85,24 @@ body {
   user-select: none;
 }
 
-:lang(hi) {
+:lang(hi),
+:lang(mr),
+:lang(bn),
+:lang(ta),
+:lang(te),
+:lang(pa),
+:lang(kn) {
   line-height: 1.55;
+}
+
+/* Dravidian and Bangla words run long (agglutination); let them break rather than push past narrow screens */
+:lang(ta),
+:lang(te),
+:lang(kn),
+:lang(bn),
+:lang(mr),
+:lang(pa) {
+  overflow-wrap: anywhere;
 }
 
 input,
@@ -121,7 +152,7 @@ a,
 .skeleton {
   position: relative;
   overflow: hidden;
-  background: rgb(27 31 29 / 0.07);
+  background: rgb(20 37 42 / 0.07);
 }
 .skeleton::after {
   content: "";
@@ -164,7 +195,7 @@ a,
 /* On a desktop browser, present the app inside a phone-sized column. */
 @media (min-width: 640px) {
   body {
-    background: #e9e3d6;
+    background: #dde9ec;
   }
   #root {
     max-width: 420px;

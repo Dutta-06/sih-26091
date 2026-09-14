@@ -1,3 +1,4 @@
+import { LANG_INFO } from "../i18n";
 import { ClipboardList, Mic, Plus, Quote, Star, Users } from "lucide-react";
 import type { PackFeedback } from "../core/types";
 import { useI18n } from "../i18n";
@@ -42,7 +43,7 @@ export default function Evidence() {
       }
     >
       <div className="mt-2">
-        <Note tone="forest">{t("evidence.intro", { n: ev.pack.length, used: ev.usedCount })}</Note>
+        <Note tone="azure">{t("evidence.intro", { n: ev.pack.length, used: ev.usedCount })}</Note>
       </div>
       {!place && (
         <div className="mt-2">
@@ -100,7 +101,7 @@ function PackCard({ e }: { e: PackEvidence }) {
   return (
     <Card>
       <div className="flex items-center gap-3">
-        <IconBubble icon={r.kind === "funded_entrepreneur" ? Quote : Users} tone="forest" size="sm" />
+        <IconBubble icon={r.kind === "funded_entrepreneur" ? Quote : Users} tone="azure" size="sm" />
         <div className="min-w-0 flex-1">
           <p className="truncate text-[14px] font-semibold">{pick(r.who)}</p>
           <p className="text-xs text-ink-3">
@@ -138,7 +139,7 @@ function PackCard({ e }: { e: PackEvidence }) {
 function MyObservation({ o }: { o: Observation }) {
   const { t, lang } = useI18n();
   const use = observationUse(o);
-  const date = new Date(o.at).toLocaleDateString(lang === "hi" ? "hi-IN" : "en-IN", { day: "numeric", month: "short" });
+  const date = new Date(o.at).toLocaleDateString(LANG_INFO[lang].dateLocale, { day: "numeric", month: "short" });
   let body: string = o.text;
   let voice = false;
   let rating = 0;

@@ -37,7 +37,7 @@ function MetaFooter({ meta }: { meta: IntelMeta }) {
   if (!meta.limitations.length && !meta.sources.length) return null;
   return (
     <div className="mt-3 border-t border-line pt-2">
-      <button onClick={() => setOpen((o) => !o)} className="flex min-h-10 w-full items-center justify-between text-left text-[13px] font-semibold text-forest-800">
+      <button onClick={() => setOpen((o) => !o)} className="flex min-h-10 w-full items-center justify-between text-left text-[13px] font-semibold text-azure-800">
         {t("g2.meta.toggle", { l: meta.limitations.length, s: meta.sources.length })}
         <ArrowRight className={cx("size-4 transition-transform", open && "rotate-90")} />
       </button>
@@ -78,7 +78,7 @@ function LocalReportsLink({ n }: { n: number }) {
   const { push } = useNav();
   if (!n) return null;
   return (
-    <button onClick={() => push({ name: "evidence" })} className="mt-3 flex min-h-10 items-center gap-1 text-[13px] font-semibold text-forest-800 active:opacity-70">
+    <button onClick={() => push({ name: "evidence" })} className="mt-3 flex min-h-10 items-center gap-1 text-[13px] font-semibold text-azure-800 active:opacity-70">
       <Users className="size-4" />
       {t("w2.localReports", { n })}
       <ArrowRight className="size-4" />
@@ -107,7 +107,7 @@ export function MarketSection({ intel, i }: { intel: Intel; i: number }) {
             const Icon = PLACE_ICON[p.poi.kind] ?? Store;
             return (
               <div key={p.poi.id} className="flex min-h-12 items-center gap-3 py-2">
-                <IconBubble icon={Icon} tone={p.poi.kind === "school" ? "marigold" : "forest"} size="sm" />
+                <IconBubble icon={Icon} tone={p.poi.kind === "school" ? "marigold" : "azure"} size="sm" />
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-[14px] leading-snug">{pick(p.poi.name)}</p>
                   <p className="text-xs text-ink-3">{t(`map.type.${p.poi.kind}`)}</p>
@@ -166,7 +166,7 @@ export function CompetitorSection({ attempt, stateName, i }: { attempt: Feasibil
   const c = attempt.intel.competitor;
   const bench = competitorBenchmark(attempt.intel, attempt.activityId);
   const rows = [
-    { label: t(c.tier === "overpass" ? "report.yourArea" : "g2.comp.districtRegistered"), v: c.densityPer10k, tone: "forest" as const },
+    { label: t(c.tier === "overpass" ? "report.yourArea" : "g2.comp.districtRegistered"), v: c.densityPer10k, tone: "azure" as const },
     ...(c.tier === "overpass" ? [{ label: t("g2.comp.districtRegistered"), v: c.districtPer10k, tone: "marigold" as const }] : []),
     { label: t("w2.bench.stateAvg", { state: stateName }), v: c.statePer10k, tone: "clay" as const },
     ...(bench.scope === "catalog" ? [{ label: t("g2.comp.benchCatalog"), v: bench.value, tone: "clay" as const }] : []),
@@ -177,7 +177,7 @@ export function CompetitorSection({ attempt, stateName, i }: { attempt: Feasibil
   return (
     <SectionCard title={t("report.competitors")} meta={c} i={i}>
       <div className="grid grid-cols-2 gap-3">
-        <Stat label={t(c.tier === "udyam" ? "g2.comp.countDistrict" : "g2.comp.countRadius", { r: attempt.intel.marketReach.radiusKm })} value={c.count ?? "—"} tone="forest" />
+        <Stat label={t(c.tier === "udyam" ? "g2.comp.countDistrict" : "g2.comp.countRadius", { r: attempt.intel.marketReach.radiusKm })} value={c.count ?? "—"} tone="azure" />
         <Stat label={t("report.saturationLabel")} value={<Badge tone={lvlTone(c.saturation)}>{t(lvlKey(c.saturation))}</Badge>} />
       </div>
       <p className="mt-4 mb-1.5 text-xs font-semibold text-ink-3">{t("g2.comp.tiers")}</p>
@@ -197,7 +197,7 @@ export function CompetitorSection({ attempt, stateName, i }: { attempt: Feasibil
         </div>
       ))}
       <div className="mt-3">
-        <Note tone={z !== null && z >= 1 ? "marigold" : "forest"}>
+        <Note tone={z !== null && z >= 1 ? "marigold" : "azure"}>
           {t(wording)} {z !== null && <span className="tabular text-xs opacity-80">{t("g2.comp.z", { z: z.toFixed(1), scope: t(`g2.comp.scope.${bench.scope}`) })}</span>}
         </Note>
       </div>
@@ -230,7 +230,7 @@ export function PricingSection({ intel, i }: { intel: Intel; i: number }) {
               <ConfidenceBadge value={pt.confidence} compact />
             </div>
             <div className="relative mt-2 h-1.5 rounded-full bg-ink-3/15">
-              <div className="absolute inset-y-0 min-w-1.5 rounded-full bg-forest-600" style={{ left: `${(pt.low / max) * 100}%`, width: `${((pt.high - pt.low) / max) * 100}%` }} />
+              <div className="absolute inset-y-0 min-w-1.5 rounded-full bg-azure-600" style={{ left: `${(pt.low / max) * 100}%`, width: `${((pt.high - pt.low) / max) * 100}%` }} />
             </div>
           </div>
         ))
@@ -258,13 +258,13 @@ export function RiskSection({ intel, i }: { intel: Intel; i: number }) {
         <Stat label={t("g2.risk.hub")} value={r.hubKm === null ? "—" : t("unit.km", { n: r.hubKm })} hint={r.hubName ? pick(r.hubName) : t("g2.risk.hubUnknown")} />
       </div>
       <p className="mt-4 mb-1 text-xs font-semibold text-ink-3">{t(`g2.risk.season.${r.seasonalBasis}`)}</p>
-      <BarChart height={80} data={r.seasonalIndex.map((v, m) => ({ label: MONTHS[m].slice(0, 1), value: v, tone: low.has(m) ? "clay" : "forest" }))} formatValue={(v) => `${v.toFixed(2)}×`} />
+      <BarChart height={80} data={r.seasonalIndex.map((v, m) => ({ label: MONTHS[m].slice(0, 1), value: v, tone: low.has(m) ? "clay" : "azure" }))} formatValue={(v) => `${v.toFixed(2)}×`} />
       <p className="mt-1 text-xs text-ink-3">{r.lowMonths.length ? t("g2.risk.lowMonths", { months: r.lowMonths.map((m) => MONTHS[m]).join(", ") }) : t("g2.risk.noLowMonths")}</p>
       <div className="mt-3 space-y-2.5">
         {r.flags.map((f) => (
           <div key={f.id} className="rounded-2xl bg-cream p-3">
             <div className="flex items-start gap-2">
-              <AlertTriangle className={cx("mt-0.5 size-4 shrink-0", f.severity === "high" ? "text-clay-600" : f.severity === "medium" ? "text-marigold-500" : "text-forest-600")} />
+              <AlertTriangle className={cx("mt-0.5 size-4 shrink-0", f.severity === "high" ? "text-clay-600" : f.severity === "medium" ? "text-marigold-500" : "text-azure-600")} />
               <span className="min-w-0 flex-1 text-[15px] font-semibold leading-snug">{mt(f.title)}</span>
               <Badge tone={levelTone(f.severity)}>{t("report.riskLevel", { level: t(`level.${f.severity}`) })}</Badge>
             </div>
@@ -272,7 +272,7 @@ export function RiskSection({ intel, i }: { intel: Intel; i: number }) {
             <div className="mt-2 flex items-start gap-2 text-[13px]">
               {f.mitigation ? (
                 <>
-                  <span className="shrink-0 font-semibold text-forest-800">{t("report.mitigation")}:</span>
+                  <span className="shrink-0 font-semibold text-azure-800">{t("report.mitigation")}:</span>
                   <span className="min-w-0 flex-1 text-ink-2">{f.mitigation}</span>
                 </>
               ) : (
@@ -289,7 +289,7 @@ export function RiskSection({ intel, i }: { intel: Intel; i: number }) {
 }
 
 const ROLE_ICON = { input: Package, enterprise: Factory, logistics: Truck, buyer: Users } as const;
-const ROLE_TONE = { input: "sky", enterprise: "forest", logistics: "sand", buyer: "marigold" } as const;
+const ROLE_TONE = { input: "sky", enterprise: "azure", logistics: "sand", buyer: "marigold" } as const;
 
 export function SupplySection({ intel, i }: { intel: Intel; i: number }) {
   const { t, pick } = useI18n();
@@ -307,7 +307,7 @@ export function SupplySection({ intel, i }: { intel: Intel; i: number }) {
         if (!nodes.length) return null;
         return (
           <div key={role}>
-            {ri > 0 && <div className="ml-[21px] h-4 w-0.5 bg-forest-200" />}
+            {ri > 0 && <div className="ml-[21px] h-4 w-0.5 bg-azure-200" />}
             <div className="flex items-start gap-3">
               <IconBubble icon={ROLE_ICON[role]} tone={ROLE_TONE[role]} />
               <div className="min-w-0 flex-1">
@@ -331,7 +331,7 @@ export function SupplySection({ intel, i }: { intel: Intel; i: number }) {
         {spof.size ? (
           <Note tone="marigold">{t("g2.supply.spof", { nodes: [...spof].map(labelOf).join(", ") })}</Note>
         ) : (
-          <Note tone="forest">{t("g2.supply.noSpof")}</Note>
+          <Note tone="azure">{t("g2.supply.noSpof")}</Note>
         )}
       </div>
     </SectionCard>
@@ -342,7 +342,7 @@ export function SwotSection({ swot, i }: { swot: Swot; i: number }) {
   const { t } = useI18n();
   const mt = useMsg();
   const cells = [
-    { key: "strengths", cls: "bg-forest-50 ring-forest-100 text-forest-800" },
+    { key: "strengths", cls: "bg-azure-50 ring-azure-100 text-azure-800" },
     { key: "weaknesses", cls: "bg-clay-50 ring-clay-100 text-clay-700" },
     { key: "opportunities", cls: "bg-sky-100/60 ring-sky-100 text-sky-700" },
     { key: "threats", cls: "bg-marigold-50 ring-marigold-200 text-marigold-600" },

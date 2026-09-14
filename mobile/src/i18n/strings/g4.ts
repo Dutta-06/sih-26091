@@ -5,7 +5,7 @@ const g4: Strings = {
   en: {
     // Business hub
     "business.locked.title": "Your business hub opens after the loan",
-    "business.locked.body": "Once your loan is disbursed, Arambh stays with you: a launch plan, income tracking and help when things go wrong.",
+    "business.locked.body": "Once your loan is disbursed, Aashaudyami stays with you: a launch plan, income tracking and help when things go wrong.",
     "business.locked.unlocks": "What unlocks",
     "business.locked.roadmap": "Launch roadmap",
     "business.locked.roadmap.sub": "Week-by-week steps before your first repayment",
@@ -127,12 +127,12 @@ const g4: Strings = {
     "agency.title": "Lender dashboard (SCA view)",
     "agency.districts": "Districts",
     "agency.casesN": "{n} cases",
-    "agency.note": "Agencies pay per active case for monitoring and early warnings: this is how Arambh earns while staying free for entrepreneurs.",
+    "agency.note": "Agencies pay per active case for monitoring and early warnings: this is how Aashaudyami earns while staying free for entrepreneurs.",
   },
   hi: {
     // Business hub
     "business.locked.title": "लोन मिलने के बाद आपका व्यवसाय केंद्र खुलेगा",
-    "business.locked.body": "लोन की रकम मिलते ही आरंभ आपके साथ रहेगा: शुरुआत की योजना, कमाई पर नज़र और मुश्किल में मदद।",
+    "business.locked.body": "लोन की रकम मिलते ही आशाउद्यमी आपके साथ रहेगा: शुरुआत की योजना, कमाई पर नज़र और मुश्किल में मदद।",
     "business.locked.unlocks": "क्या-क्या खुलेगा",
     "business.locked.roadmap": "शुरुआत की योजना",
     "business.locked.roadmap.sub": "पहली किस्त से पहले हफ़्ते-दर-हफ़्ते काम",
@@ -254,7 +254,7 @@ const g4: Strings = {
     "agency.title": "लोन देने वालों का डैशबोर्ड (SCA)",
     "agency.districts": "ज़िले",
     "agency.casesN": "{n} केस",
-    "agency.note": "एजेंसियाँ निगरानी और चेतावनी के लिए हर चालू केस का शुल्क देती हैं: इसी से आरंभ कमाता है और उद्यमियों के लिए मुफ़्त रहता है।",
+    "agency.note": "एजेंसियाँ निगरानी और चेतावनी के लिए हर चालू केस का शुल्क देती हैं: इसी से आशाउद्यमी कमाता है और उद्यमियों के लिए मुफ़्त रहता है।",
   },
 };
 

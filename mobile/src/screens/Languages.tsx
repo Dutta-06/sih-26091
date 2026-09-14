@@ -1,11 +1,12 @@
 import { Check, Info, Mic, MicOff, Volume2, VolumeX } from "lucide-react";
 import { useEffect, useState } from "react";
 import { tap } from "../lib/haptics";
-import { useI18n, type Lang } from "../i18n";
+import { useI18n } from "../i18n";
 import { speak, voiceCapabilities, type VoiceCapabilities } from "../lib/speech";
 import { useStore, type ChatLang } from "../state/store";
 import { Button, Card, cx, ListRow, Note, Reveal, Section, Screen, Toggle } from "../ui";
 import { CHAT_LANG_LABEL, CHAT_LANGS, translateChat, useSetAppLang } from "./w1/chatI18n";
+import { LanguageGrid } from "./w1/LanguageSwitch";
 
 /** Languages & voice (TDD 4.3): app language, conversation language and read-aloud. */
 export default function Languages() {
@@ -37,25 +38,7 @@ export default function Languages() {
     <Screen title={t("w1.lang.title")} subtitle={t("w1.lang.subtitle")}>
       <Section title={t("w1.lang.app")}>
         <Reveal i={0}>
-          <div className="grid grid-cols-2 gap-3">
-            {(["en", "hi"] as Lang[]).map((l) => (
-              <button
-                key={l}
-                onClick={() => {
-                  tap();
-                  setAppLang(l);
-                }}
-                className={cx(
-                  "relative flex min-h-20 flex-col items-start justify-end rounded-[var(--radius-card)] p-4 text-left",
-                  lang === l ? "bg-forest-800 text-white shadow-[var(--shadow-float)]" : "bg-white shadow-[var(--shadow-card)]",
-                )}
-              >
-                {lang === l && <Check className="absolute top-3 right-3 size-5" />}
-                <span className="text-xl font-bold">{CHAT_LANG_LABEL[l]}</span>
-                <span className={cx("text-xs", lang === l ? "text-forest-100" : "text-ink-3")}>{t("w1.lang.fullUi")}</span>
-              </button>
-            ))}
-          </div>
+          <LanguageGrid value={lang} onChange={setAppLang} />
         </Reveal>
       </Section>
 
@@ -68,11 +51,11 @@ export default function Languages() {
                 title={<span lang={l} className="text-[16px] font-semibold">{CHAT_LANG_LABEL[l]}</span>}
                 subtitle={
                   <span className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
-                    <span>{t(l === "en" || l === "hi" ? "w1.lang.coverFull" : "w1.lang.coverChat")}</span>
+                    <span>{t("w1.lang.coverFull")}</span>
                     {caps === null ? (
                       <span className="text-ink-3">{t("u1.lang.checking")}</span>
                     ) : caps.languages.includes(l) ? (
-                      <span className="inline-flex items-center gap-1 font-medium text-forest-700">
+                      <span className="inline-flex items-center gap-1 font-medium text-azure-700">
                         <Volume2 className="size-3.5" />
                         {t("u1.lang.speaks")}
                       </span>
@@ -89,7 +72,7 @@ export default function Languages() {
                   set({ chatLang: l as ChatLang });
                 }}
                 right={
-                  <span className={cx("grid size-7 place-items-center rounded-full", state.chatLang === l ? "bg-forest-800 text-white" : "ring-2 ring-line")}>
+                  <span className={cx("grid size-7 place-items-center rounded-full", state.chatLang === l ? "bg-azure-800 text-white" : "ring-2 ring-line")}>
                     {state.chatLang === l && <Check className="size-4" />}
                   </span>
                 }
@@ -118,7 +101,7 @@ export default function Languages() {
             <div className="mt-2 border-t border-line pt-1">
               <ListRow
                 icon={caps?.stt === false ? MicOff : Mic}
-                tone={caps?.stt === false ? "clay" : "forest"}
+                tone={caps?.stt === false ? "clay" : "azure"}
                 title={t("u1.lang.listen")}
                 subtitle={caps === null ? t("u1.lang.checking") : t(caps.stt ? "u1.lang.listenYes" : "u1.lang.listenNo")}
               />

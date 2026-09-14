@@ -1,3 +1,4 @@
+import { LANG_INFO } from "../i18n";
 import { Banknote, Check, ClipboardList, FileCheck2, FlaskConical, Rocket, ShieldCheck, UserRoundCheck, XCircle } from "lucide-react";
 import { motion } from "motion/react";
 import { useCallback, useState } from "react";
@@ -35,7 +36,7 @@ export default function Application() {
   const place = placeOf(view);
   const ref = applicationRef(place?.district.id, state.events);
   const allDocsComplete = !!view.documents?.complete;
-  const fmt = new Intl.DateTimeFormat(lang === "hi" ? "hi-IN-u-nu-latn" : "en-IN", { day: "numeric", month: "short", year: "numeric" });
+  const fmt = new Intl.DateTimeFormat(LANG_INFO[lang].dateLocale, { day: "numeric", month: "short", year: "numeric" });
   const officer = tm({ key: "c3.role.sca_loan_officer" });
 
   if (!act || !plan) {
@@ -72,11 +73,11 @@ export default function Application() {
         ) : undefined
       }
     >
-      <Card tone={rejected ? "clay" : "forest"} className="mt-2">
-        <p className={cx("text-sm break-words", rejected ? "text-ink-2" : "text-forest-100")}>
+      <Card tone={rejected ? "clay" : "azure"} className="mt-2">
+        <p className={cx("text-sm break-words", rejected ? "text-ink-2" : "text-azure-100")}>
           {act.emoji} {pick(act.name)}
         </p>
-        <p className={cx("mt-2 text-xs", rejected ? "text-ink-2" : "text-forest-100")}>
+        <p className={cx("mt-2 text-xs", rejected ? "text-ink-2" : "text-azure-100")}>
           {t(rejected ? "g3.app.amountRejected" : disbursed ? "app.amountDisbursed" : idx >= 3 ? "app.amountSanctioned" : "app.amountRequested")}
         </p>
         <p className="tabular text-[36px] leading-tight font-bold">{plan.eligible ? rupees(plan.loan) : "—"}</p>
@@ -137,13 +138,13 @@ export default function Application() {
               const at = dates[s];
               return (
                 <li key={s} className="relative flex gap-3 pb-5 last:pb-0">
-                  {i < STAGE_ORDER.length - 1 && <span className={cx("absolute top-10 bottom-0 left-[19px] w-0.5", i < idx ? "bg-forest-600" : "bg-line")} />}
+                  {i < STAGE_ORDER.length - 1 && <span className={cx("absolute top-10 bottom-0 left-[19px] w-0.5", i < idx ? "bg-azure-600" : "bg-line")} />}
                   <motion.span
                     animate={isCurrent ? { scale: [1, 1.08, 1] } : { scale: 1 }}
                     transition={isCurrent ? { repeat: Infinity, duration: 1.8 } : undefined}
                     className={cx(
                       "relative grid size-10 shrink-0 place-items-center rounded-full",
-                      isDone ? "bg-forest-600 text-white" : isCurrent ? "bg-marigold-500 text-forest-950 ring-4 ring-marigold-100" : isRejectedHere ? "bg-clay-600 text-white" : "bg-sand text-ink-3",
+                      isDone ? "bg-azure-600 text-white" : isCurrent ? "bg-marigold-500 text-azure-950 ring-4 ring-marigold-100" : isRejectedHere ? "bg-clay-600 text-white" : "bg-sand text-ink-3",
                     )}
                   >
                     {isDone ? <Check className="size-5" /> : isRejectedHere ? <XCircle className="size-5" /> : <Icon className="size-5" />}
@@ -165,7 +166,7 @@ export default function Application() {
                     </p>
                     {s === "under_verification" && (isCurrent || isDone) && (
                       <p className="mt-1 flex items-center gap-1.5 text-[13px] text-ink-2">
-                        <UserRoundCheck className="size-4 text-forest-700" />
+                        <UserRoundCheck className="size-4 text-azure-700" />
                         {officer}
                         {place ? ` · ${pick(place.district.name)}` : ""}
                       </p>
@@ -180,7 +181,7 @@ export default function Application() {
 
       {disbursed && plan.eligible ? (
         <div className="mt-4">
-          <Note tone="forest" icon={Banknote}>
+          <Note tone="azure" icon={Banknote}>
             {t("app.disbursedNote", { v: rupees(plan.loan) })}
           </Note>
         </div>

@@ -32,12 +32,12 @@ export default function NoViable() {
   // SHG path: members pooling the same savings as this entrepreneur to reach the target capital (ceil(target / own)).
   const members = target && capital > 0 ? Math.ceil(target.capital / capital) : null;
 
-  const paths: { icon: LucideIcon; tone: "forest" | "marigold" | "sky" | "sand"; title: string; sub: string; onClick?: () => void }[] = [];
+  const paths: { icon: LucideIcon; tone: "azure" | "marigold" | "sky" | "sand"; title: string; sub: string; onClick?: () => void }[] = [];
   if (target) {
     const label = activityLabel(target.activityId);
     paths.push({
       icon: PiggyBank,
-      tone: "forest",
+      tone: "azure",
       title: t("noViable.path.save", { more: rupees(target.more), name: pick(label.name), capital: rupees(target.capital) }),
       sub: t(target.confirmed ? "noViable.path.saveSub" : "g2.noViable.saveUnconfirmed", { project: rupees(target.project), cover: target.dscr === null ? "—" : ratio(target.dscr) }),
     });
@@ -76,7 +76,7 @@ export default function NoViable() {
     >
       {hasSelection && (
         <div className="mt-2">
-          <Note tone="forest" icon={CheckCircle2}>
+          <Note tone="azure" icon={CheckCircle2}>
             {t("g2.noViable.hasSelection", { name: pick(activityLabel(f.selected!.activityId).name) })}{" "}
             <button className="font-semibold underline" onClick={() => push({ name: "report" })}>
               {t("review.viewReport")}
@@ -86,9 +86,9 @@ export default function NoViable() {
       )}
 
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ type: "spring", stiffness: 220, damping: 24 }} className="mt-2">
-        <Card className="bg-forest-50 shadow-none ring-1 ring-forest-100">
-          <Sprout className="size-9 text-forest-600" />
-          <h2 className="mt-2 text-xl leading-snug font-bold text-forest-900">{t(f.attempts.length ? "noViable.headline" : f.exhausted ? "g2.noViable.headlineNoneFit" : "g2.noViable.headlineNoAttempt")}</h2>
+        <Card className="bg-azure-50 shadow-none ring-1 ring-azure-100">
+          <Sprout className="size-9 text-azure-600" />
+          <h2 className="mt-2 text-xl leading-snug font-bold text-azure-900">{t(f.attempts.length ? "noViable.headline" : f.exhausted ? "g2.noViable.headlineNoneFit" : "g2.noViable.headlineNoAttempt")}</h2>
           <p className="mt-1.5 text-[14px] leading-snug text-ink-2">
             {capital <= 0 ? t("g2.noViable.leadNoCapital") : t(f.attempts.length ? "noViable.lead" : "g2.noViable.leadNoneFit", { savings: rupees(capital), project: rupees(project), n: f.attempts.length })}
           </p>
@@ -166,14 +166,14 @@ export default function NoViable() {
       </Section>
 
       <div className="mt-4">
-        <Note tone="forest" icon={HandHeart}>
+        <Note tone="azure" icon={HandHeart}>
           {t("noViable.honest")}
         </Note>
       </div>
       <PackNote />
 
       <Sheet open={sheet} onClose={() => setSheet(false)} title={t("noViable.sheet.title")}>
-        {requested ? <Note tone="forest">{t("noViable.sheet.done")}</Note> : <p className="text-[15px] leading-snug text-ink-2">{t("noViable.sheet.body", { district: place ? pick(place.district.name) : "—" })}</p>}
+        {requested ? <Note tone="azure">{t("noViable.sheet.done")}</Note> : <p className="text-[15px] leading-snug text-ink-2">{t("noViable.sheet.body", { district: place ? pick(place.district.name) : "—" })}</p>}
         <Button
           className="mt-4 w-full"
           icon={requested ? undefined : PhoneCall}

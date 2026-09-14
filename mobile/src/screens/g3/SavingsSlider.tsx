@@ -69,13 +69,13 @@ export function SavingsSlider({ value, onChange, label, marks, minLabel, maxLabe
       >
         <div className="absolute inset-x-0 top-1/2 h-3 -mt-1.5 overflow-hidden rounded-full bg-ink-3/15">
           <div className="absolute inset-y-0 right-0 bg-clay-100" style={{ left: `${toPos(LIMIT) * 100}%` }} />
-          <div className={cx("absolute inset-y-0 left-0 rounded-full transition-colors", outside ? "bg-clay-600" : "bg-forest-600")} style={{ width: `${pos}%` }} />
+          <div className={cx("absolute inset-y-0 left-0 rounded-full transition-colors", outside ? "bg-clay-600" : "bg-azure-600")} style={{ width: `${pos}%` }} />
         </div>
         {marks.map((m) => (
           <span key={m.value} className="absolute top-1/2 -mt-3 h-6 w-0.5 rounded bg-ink-3/40" style={{ left: `${toPos(m.value) * 100}%` }} />
         ))}
         <span
-          className={cx("absolute top-1/2 -mt-4 -ml-4 size-8 rounded-full bg-white shadow-[var(--shadow-float)] ring-4 transition-transform active:scale-110", outside ? "ring-clay-600" : "ring-forest-600")}
+          className={cx("absolute top-1/2 -mt-4 -ml-4 size-8 rounded-full bg-white shadow-[var(--shadow-float)] ring-4 transition-transform active:scale-110", outside ? "ring-clay-600" : "ring-azure-600")}
           style={{ left: `${pos}%` }}
         />
       </div>

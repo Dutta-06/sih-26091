@@ -62,7 +62,7 @@ export default function Report() {
       title={t("report.title")}
       subtitle={t("report.subtitle", { village: placeName, n: counts.total })}
       right={
-        <button aria-label={t("w2.seeRanked")} onClick={() => push({ name: "shortlist" })} className="flex min-h-11 items-center gap-1.5 rounded-full px-3 text-[13px] font-semibold text-forest-800 active:bg-sand">
+        <button aria-label={t("w2.seeRanked")} onClick={() => push({ name: "shortlist" })} className="flex min-h-11 items-center gap-1.5 rounded-full px-3 text-[13px] font-semibold text-azure-800 active:bg-sand">
           <ListOrdered className="size-5" />
           {t("w2.options")}
         </button>
@@ -118,27 +118,27 @@ export default function Report() {
       )}
 
       <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ type: "spring", stiffness: 240, damping: 22 }} className="mt-3">
-        <Card tone="forest">
+        <Card tone="azure">
           <div className="flex items-center gap-3">
             <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-white/10 text-2xl">{label.emoji}</span>
             <div className="min-w-0">
               <h2 className="text-lg leading-tight font-bold break-words">{pick(label.name)}</h2>
-              <p className="truncate text-[13px] text-forest-100">{placeName}</p>
+              <p className="truncate text-[13px] text-azure-100">{placeName}</p>
             </div>
           </div>
           <div className="mt-4 flex items-center gap-4">
             <Ring value={attempt.score} tone="light" size={92} sub={t("report.score")} />
             <div className="min-w-0 flex-1 space-y-2">
               <div>
-                <p className="text-xs text-forest-100">{t("report.verdict")}</p>
+                <p className="text-xs text-azure-100">{t("report.verdict")}</p>
                 <Badge tone={verdict.tone} icon={verdict.icon}>
                   {t(`verdict.${attempt.verdict}`)}
                 </Badge>
               </div>
               <div>
-                <p className="text-xs text-forest-100">{t("report.coverage")}</p>
+                <p className="text-xs text-azure-100">{t("report.coverage")}</p>
                 <p className="tabular text-xl font-bold">{attempt.preview.baseDscr === null ? "—" : ratio(attempt.preview.baseDscr)}</p>
-                <p className="flex items-center gap-1 text-[11px] text-forest-100">
+                <p className="flex items-center gap-1 text-[11px] text-azure-100">
                   <Calculator className="size-3" />
                   {t("review.rules")}
                 </p>
@@ -148,12 +148,12 @@ export default function Report() {
           <div className="mt-4 rounded-2xl bg-white/10 p-3">
             <p className="text-[13px] font-semibold">{t("report.analyses", { done: counts.total, total: counts.total })}</p>
             <div className="mt-2 flex h-2 overflow-hidden rounded-full">
-              <motion.div initial={{ width: 0 }} animate={{ width: `${(counts.real / counts.total) * 100}%` }} transition={{ duration: 0.8, delay: 0.2 }} className="bg-forest-200" />
+              <motion.div initial={{ width: 0 }} animate={{ width: `${(counts.real / counts.total) * 100}%` }} transition={{ duration: 0.8, delay: 0.2 }} className="bg-azure-200" />
               <motion.div initial={{ width: 0 }} animate={{ width: `${(counts.estimated / counts.total) * 100}%` }} transition={{ duration: 0.8, delay: 0.5 }} className="bg-marigold-500" />
             </div>
-            <div className="mt-2 flex gap-4 text-xs text-forest-50">
+            <div className="mt-2 flex gap-4 text-xs text-azure-50">
               <span className="flex items-center gap-1.5">
-                <span className="size-2 rounded-full bg-forest-200" />
+                <span className="size-2 rounded-full bg-azure-200" />
                 {t("report.realCount", { n: counts.real })}
               </span>
               <span className="flex items-center gap-1.5">

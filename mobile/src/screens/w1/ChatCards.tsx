@@ -34,19 +34,19 @@ export function LocationChoices({ query, selected, active, onPick }: { query: st
             onClick={() => c.lgd && onPick(c.lgd, label)}
             className={cx(
               "flex min-h-14 w-full items-center gap-3 rounded-2xl p-3 text-left transition-colors",
-              chosen ? "bg-forest-800 text-white" : "bg-white shadow-[var(--shadow-card)]",
+              chosen ? "bg-azure-800 text-white" : "bg-white shadow-[var(--shadow-card)]",
               !active && !chosen && "opacity-50",
             )}
           >
-            <MapPin className={cx("size-5 shrink-0", chosen ? "text-marigold-200" : "text-forest-700")} />
+            <MapPin className={cx("size-5 shrink-0", chosen ? "text-marigold-200" : "text-azure-700")} />
             <span className="min-w-0 flex-1">
               <span className="block text-[15px] leading-snug font-semibold break-words">{c.village ? pickc(c.village) : pickc(c.district.name)}</span>
-              <span className={cx("block text-[12px] leading-snug", chosen ? "text-forest-100" : "text-ink-3")}>
+              <span className={cx("block text-[12px] leading-snug", chosen ? "text-azure-100" : "text-ink-3")}>
                 {[c.block ? tc("u1.loc.block", { block: pickc(c.block) }) : null, pickc(c.district.name), c.district.state].filter(Boolean).join(" · ")}
               </span>
             </span>
             {c.lgd && (
-              <span className={cx("tabular shrink-0 rounded-full px-2 py-0.5 text-[11px] font-semibold", chosen ? "bg-white/15" : "bg-forest-50 text-forest-800")}>
+              <span className={cx("tabular shrink-0 rounded-full px-2 py-0.5 text-[11px] font-semibold", chosen ? "bg-white/15" : "bg-azure-50 text-azure-800")}>
                 {tc("u1.loc.code", { code: c.lgd })}
               </span>
             )}
@@ -80,7 +80,7 @@ export function SuggestionCard({ ids, profile, active, onPick }: { ids: string[]
             transition={{ delay: 0.06 * i }}
             disabled={!active}
             onClick={() => onPick(id)}
-            className={cx("flex min-h-13 w-full items-center gap-3 rounded-2xl p-3 text-left", chosen ? "bg-forest-800 text-white" : "bg-white shadow-[var(--shadow-card)]", !active && !chosen && "opacity-60")}
+            className={cx("flex min-h-13 w-full items-center gap-3 rounded-2xl p-3 text-left", chosen ? "bg-azure-800 text-white" : "bg-white shadow-[var(--shadow-card)]", !active && !chosen && "opacity-60")}
           >
             <span className="text-2xl" aria-hidden>
               {a.emoji}
@@ -88,7 +88,7 @@ export function SuggestionCard({ ids, profile, active, onPick }: { ids: string[]
             <span className="min-w-0 flex-1">
               <span className="block text-[15px] leading-snug font-semibold">{actName(id)}</span>
               {profile.capital > 0 && (
-                <span className={cx("tabular block text-[12px]", chosen ? "text-forest-100" : "text-ink-3")}>
+                <span className={cx("tabular block text-[12px]", chosen ? "text-azure-100" : "text-ink-3")}>
                   {rupees(a.min_project_cost)} / {rupees(affordable)}
                 </span>
               )}
@@ -126,9 +126,9 @@ export function JumpCard({ intent, onOpen }: { intent: JumpIntent; onOpen: () =>
       }}
       className="flex w-[80%] items-center gap-3 rounded-[var(--radius-card)] bg-white p-3 text-left shadow-[var(--shadow-card)]"
     >
-      <IconBubble icon={INTENT_ICONS[intent] ?? FileText} tone={intent === "grievance" || intent === "noViable" ? "clay" : "forest"} size="sm" />
-      <span className="min-w-0 flex-1 text-[15px] font-semibold text-forest-800">{tc(`u1.jump.${intent}`)}</span>
-      <span className="grid size-8 shrink-0 place-items-center rounded-full bg-forest-800 text-white">
+      <IconBubble icon={INTENT_ICONS[intent] ?? FileText} tone={intent === "grievance" || intent === "noViable" ? "clay" : "azure"} size="sm" />
+      <span className="min-w-0 flex-1 text-[15px] font-semibold text-azure-800">{tc(`u1.jump.${intent}`)}</span>
+      <span className="grid size-8 shrink-0 place-items-center rounded-full bg-azure-800 text-white">
         <ArrowRight className="size-4" />
       </span>
     </motion.button>
@@ -150,7 +150,7 @@ export function ChatLangSheet({ open, onClose }: { open: boolean; onClose: () =>
               set({ chatLang: l as ChatLang });
               onClose();
             }}
-            className={cx("flex min-h-13 items-center justify-between rounded-2xl px-4 text-left text-[16px] font-semibold", state.chatLang === l ? "bg-forest-800 text-white" : "bg-white ring-1 ring-line")}
+            className={cx("flex min-h-13 items-center justify-between rounded-2xl px-4 text-left text-[16px] font-semibold", state.chatLang === l ? "bg-azure-800 text-white" : "bg-white ring-1 ring-line")}
           >
             {CHAT_LANG_LABEL[l]}
             {state.chatLang === l && <Check className="size-5" />}

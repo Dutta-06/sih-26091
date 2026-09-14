@@ -23,8 +23,8 @@ export function PastTicket({ ticket: g, status }: { ticket: GrievanceTicket; sta
       <div className="mt-3 flex items-center" aria-label={t(`grievance.step.${STEPS[at]}`)}>
         {STEPS.map((s, i) => (
           <div key={s} className={cx("flex items-center", i < STEPS.length - 1 && "flex-1")}>
-            <span className={cx("size-2.5 shrink-0 rounded-full", i <= at ? "bg-forest-600" : "bg-line")} />
-            {i < STEPS.length - 1 && <span className={cx("mx-1 h-0.5 flex-1 rounded-full", i < at ? "bg-forest-600" : "bg-line")} />}
+            <span className={cx("size-2.5 shrink-0 rounded-full", i <= at ? "bg-azure-600" : "bg-line")} />
+            {i < STEPS.length - 1 && <span className={cx("mx-1 h-0.5 flex-1 rounded-full", i < at ? "bg-azure-600" : "bg-line")} />}
           </div>
         ))}
       </div>

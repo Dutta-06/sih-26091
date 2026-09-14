@@ -18,7 +18,7 @@ export default function Monitoring() {
   const [showAll, setShowAll] = useState(false);
 
   const manage = (
-    <button onClick={() => push({ name: "privacy" })} className="mx-auto mt-4 flex min-h-11 items-center gap-1.5 text-[15px] font-semibold text-forest-700">
+    <button onClick={() => push({ name: "privacy" })} className="mx-auto mt-4 flex min-h-11 items-center gap-1.5 text-[15px] font-semibold text-azure-700">
       <ShieldCheck className="size-4.5" />
       {t("w4.monitoring.manage")}
     </button>
@@ -94,7 +94,7 @@ export default function Monitoring() {
                   <Badge tone={BAND_TONE[latest.band]}>{t(`u4.band.${latest.band}`)}</Badge>
                 </div>
                 {trend !== null && (
-                  <p className={cx("mt-2 flex items-center gap-1 text-[13px] font-medium", trend >= 0 ? "text-forest-700" : "text-clay-700")}>
+                  <p className={cx("mt-2 flex items-center gap-1 text-[13px] font-medium", trend >= 0 ? "text-azure-700" : "text-clay-700")}>
                     {trend >= 0 ? <TrendingUp className="size-4 shrink-0" /> : <TrendingDown className="size-4 shrink-0" />}
                     {t(trend > 0 ? "u4.health.up" : trend < 0 ? "u4.health.down" : "u4.health.flat", { from: Math.round(previous!.score!), to: Math.round(latest.score), month: monthLabel(latest.month, lang) })}
                   </p>
@@ -127,7 +127,7 @@ export default function Monitoring() {
         <Reveal i={1}>
           <Card tone={lc.acted ? "sand" : "clay"} className="mt-3" onClick={() => push({ name: "warning" })}>
             <div className="flex items-center gap-3">
-              <IconBubble icon={lc.acted ? CheckCircle2 : AlertTriangle} tone={lc.acted ? "forest" : "clay"} />
+              <IconBubble icon={lc.acted ? CheckCircle2 : AlertTriangle} tone={lc.acted ? "azure" : "clay"} />
               <div className="min-w-0 flex-1">
                 <p className={cx("text-[15px] font-semibold", lc.acted ? "text-ink" : "text-clay-700")}>{t("u4.warning.headline", { month: monthLabel(warning.month, lang), pct: pctOfPlan(warning) ?? "—" })}</p>
                 <p className={cx("text-[13px]", lc.acted ? "text-ink-3" : "text-clay-700/80")}>
@@ -152,7 +152,7 @@ export default function Monitoring() {
                   warnFrom={warnIdx === chart.length - 1 ? warnIdx : undefined}
                 />
                 <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-2">
-                  <span className="flex items-center gap-1.5"><span className="h-1 w-4 rounded-full bg-forest-700" />{t("monitoring.chart.actual")}</span>
+                  <span className="flex items-center gap-1.5"><span className="h-1 w-4 rounded-full bg-azure-700" />{t("monitoring.chart.actual")}</span>
                   <span className="flex items-center gap-1.5"><span className="h-0 w-4 border-t-2 border-dashed border-ink-3" />{t("monitoring.chart.planned")}</span>
                 </div>
               </>
@@ -170,7 +170,7 @@ export default function Monitoring() {
             <div className="grid grid-cols-3 gap-3">
               <Stat label={t("monitoring.revenue")} value={rupees(shown.revenue)} hint={pctOfPlan(shown) !== null && latest ? t("u4.monitoring.ofPlan", { pct: pctOfPlan(shown)! }) : undefined} />
               <Stat label={t("monitoring.expenses")} value={rupees(shown.expenses)} />
-              <Stat label={t("monitoring.surplus")} value={rupees(shown.surplus)} tone={shown.surplus >= 0 ? "forest" : "ink"} />
+              <Stat label={t("monitoring.surplus")} value={rupees(shown.surplus)} tone={shown.surplus >= 0 ? "azure" : "ink"} />
             </div>
             {latest && current && (
               <p className="mt-3 rounded-xl bg-sand px-3 py-2 text-[13px] leading-snug text-ink-2">
@@ -194,7 +194,7 @@ export default function Monitoring() {
               </div>
               <Badge tone={STATUS_TONE[latest.status]}>{t(`u4.status.${latest.status}`)}</Badge>
             </div>
-            <p className="mt-2 text-[11px] font-medium text-forest-700">{t("business.rulesCue")}</p>
+            <p className="mt-2 text-[11px] font-medium text-azure-700">{t("business.rulesCue")}</p>
           </Card>
         </Reveal>
       )}
@@ -229,10 +229,10 @@ export default function Monitoring() {
               <ListRow
                 key={`${tx.at}-${i}`}
                 icon={credit ? ArrowDownLeft : ArrowUpRight}
-                tone={credit ? "forest" : tx.isLoanRepayment ? "marigold" : "sand"}
+                tone={credit ? "azure" : tx.isLoanRepayment ? "marigold" : "sand"}
                 title={tx.isLoanRepayment ? t("u4.tx.loan") : t(credit ? "u4.tx.in" : "u4.tx.out", { channel: t(`u4.channel.${tx.channel}`) })}
                 subtitle={dateLabel(tx.at, lang)}
-                right={<span className={cx("tabular text-[15px] font-semibold", credit ? "text-forest-700" : "text-ink-2")}>{credit ? "+" : "−"}{rupees(tx.amount)}</span>}
+                right={<span className={cx("tabular text-[15px] font-semibold", credit ? "text-azure-700" : "text-ink-2")}>{credit ? "+" : "−"}{rupees(tx.amount)}</span>}
               />
             );
           })}
@@ -243,7 +243,7 @@ export default function Monitoring() {
           </Button>
         )}
         <div className="mt-3 grid gap-2">
-          <Note tone="forest">{t("u4.monitoring.parsedNote")}</Note>
+          <Note tone="azure">{t("u4.monitoring.parsedNote")}</Note>
           <Note tone="marigold" icon={FlaskConical}>{t("u4.monitoring.sampleInbox", { kind: t(`u4.inbox.${state.inbox}`) })}</Note>
         </div>
         <Button variant="ghost" size="md" icon={Clock} className="mt-2 w-full" onClick={() => switchTab("more")}>

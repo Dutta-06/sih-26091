@@ -55,7 +55,7 @@ export default function Privacy() {
       <Reveal>
         <Card className="mt-2">
           <div className="flex items-start gap-3">
-            <IconBubble icon={on ? ShieldCheck : ShieldOff} tone={on ? "forest" : "sand"} />
+            <IconBubble icon={on ? ShieldCheck : ShieldOff} tone={on ? "azure" : "sand"} />
             <div className="min-w-0 flex-1">
               <p className="text-[15px] font-semibold">{t("w4.privacy.sms")}</p>
               <div className="mt-1">
@@ -76,7 +76,7 @@ export default function Privacy() {
         <Reveal i={1}>
           <Card className="divide-y divide-line py-1">
             {(Object.entries(STORED_FIELDS) as [keyof Transaction, LucideIcon][]).map(([field, icon]) => (
-              <ListRow key={field} icon={icon} tone="forest" title={t(`u4.field.${field}`)} subtitle={t(`u4.field.${field}.sub`)} right={<code className="text-[11px] text-ink-3">{field}</code>} />
+              <ListRow key={field} icon={icon} tone="azure" title={t(`u4.field.${field}`)} subtitle={t(`u4.field.${field}.sub`)} right={<code className="text-[11px] text-ink-3">{field}</code>} />
             ))}
           </Card>
           <p className="mt-2 px-1 text-[13px] leading-snug text-ink-3">{t("u4.privacy.storedNote", { n: Object.keys(STORED_FIELDS).length })}</p>
@@ -120,7 +120,7 @@ export default function Privacy() {
               <ListRow
                 key={`${c.at}-${i}`}
                 icon={c.granted ? CheckCircle2 : XCircle}
-                tone={c.granted ? "forest" : "clay"}
+                tone={c.granted ? "azure" : "clay"}
                 title={t(c.granted ? "w4.privacy.history.granted" : "w4.privacy.history.withdrawn")}
                 subtitle={dateLabel(c.at, lang, true)}
               />
@@ -153,7 +153,7 @@ export default function Privacy() {
                   <span className="line-through decoration-clay-600/60">{t("u4.privacy.deleted.tx", { n: Number(deletedEvent?.data?.transactions ?? 0) })}</span>
                   <Badge tone="risk">{t("w4.privacy.deleted.removed")}</Badge>
                 </p>
-                <p className="flex items-center gap-2 text-forest-800">
+                <p className="flex items-center gap-2 text-azure-800">
                   <CheckCircle2 className="size-4 shrink-0" />
                   <span>{t("w4.privacy.deleted.loan")}</span>
                   <Badge tone="good">{t("w4.privacy.deleted.kept")}</Badge>
@@ -168,7 +168,7 @@ export default function Privacy() {
       <Sheet open={confirmDelete} onClose={() => setConfirmDelete(false)} title={t("w4.privacy.confirm.title")}>
         <p className="text-[15px] leading-snug text-ink-2">{t("u4.privacy.confirm.body", { n: txCount, months: monthsCount })}</p>
         <div className="mt-3">
-          <Note tone="forest">{t("w4.privacy.confirm.loan")}</Note>
+          <Note tone="azure">{t("w4.privacy.confirm.loan")}</Note>
         </div>
         <div className="mt-4 grid gap-2">
           <Button variant="danger" icon={Trash2} onClick={erase}>

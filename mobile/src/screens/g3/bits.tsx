@@ -9,7 +9,7 @@ import { cx } from "../../ui";
 export function RulesChip({ light }: { light?: boolean }) {
   const { t } = useI18n();
   return (
-    <span className={cx("inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold", light ? "bg-white/12 text-forest-50 ring-1 ring-white/20" : "bg-forest-50 text-forest-800 ring-1 ring-forest-100")}>
+    <span className={cx("inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold", light ? "bg-white/12 text-azure-50 ring-1 ring-white/20" : "bg-azure-50 text-azure-800 ring-1 ring-azure-100")}>
       <Lock className="size-3" />
       {t("plan.rulesChip")}
     </span>
@@ -27,7 +27,7 @@ export function PackNote({ uses = "pack" }: { uses?: "pack" | "rules" }) {
 export function TierBadge({ tier, light }: { tier: TierName | null; light?: boolean }) {
   const { t } = useI18n();
   const key = tier ?? "outside";
-  const tone = tier === "micro_finance" ? (light ? "bg-marigold-500 text-forest-950" : "bg-forest-100 text-forest-800") : tier === "term_loan" ? "bg-sky-100 text-sky-700" : "bg-clay-100 text-clay-700";
+  const tone = tier === "micro_finance" ? (light ? "bg-marigold-500 text-azure-950" : "bg-azure-100 text-azure-800") : tier === "term_loan" ? "bg-sky-100 text-sky-700" : "bg-clay-100 text-clay-700";
   return (
     <span className="relative inline-grid overflow-hidden">
       <AnimatePresence mode="popLayout" initial={false}>

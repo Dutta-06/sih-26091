@@ -1,3 +1,4 @@
+import { LANG_INFO } from "../i18n";
 import { Calculator, MessageCircleHeart, Scale } from "lucide-react";
 import { Fragment } from "react";
 import { useI18n } from "../i18n";
@@ -43,7 +44,7 @@ export default function Earnings() {
   const season = seasonView(view);
   const inst = plan.regularInstallment;
   const drop = preview.breakEvenDropPct;
-  const monthName = new Intl.DateTimeFormat(lang === "hi" ? "hi-IN" : "en-IN", { month: "long", timeZone: "UTC" });
+  const monthName = new Intl.DateTimeFormat(LANG_INFO[lang].dateLocale, { month: "long", timeZone: "UTC" });
   const months = (idx: number[]) => idx.map((m) => monthName.format(new Date(Date.UTC(2000, m, 1)))).join(", ");
 
   // Shown-only adjustments: the last applied=false value is the "more hopeful" local figure.
@@ -154,10 +155,10 @@ export default function Earnings() {
 
   return (
     <Screen title={t("earn.title")} subtitle={`${act.emoji} ${pick(act.name)}`}>
-      <Card tone="forest" className="mt-2">
-        <p className="text-sm text-forest-100">{t("earn.hero.label")}</p>
+      <Card tone="azure" className="mt-2">
+        <p className="text-sm text-azure-100">{t("earn.hero.label")}</p>
         <p className="tabular text-[34px] leading-tight font-bold">{rupees(preview.annualRevenue)}</p>
-        <p className="text-[13px] text-forest-100">{t("earn.hero.sub", { surplus: rupees(preview.quarterlySurplus) })}</p>
+        <p className="text-[13px] text-azure-100">{t("earn.hero.sub", { surplus: rupees(preview.quarterlySurplus) })}</p>
         <div className="mt-2">
           <RulesChip light />
         </div>
@@ -182,7 +183,7 @@ export default function Earnings() {
           <Reveal>
             <Card tone="sand">
               <div className="flex items-center gap-2">
-                <Scale className="size-5 text-forest-700" />
+                <Scale className="size-5 text-azure-700" />
                 <p className="text-[15px] font-semibold">{t("earn.used.head")}</p>
               </div>
               <Rows

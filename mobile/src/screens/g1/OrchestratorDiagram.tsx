@@ -48,7 +48,7 @@ export function OrchestratorDiagram({ done }: { done: Record<AgentId, boolean> }
 
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <motion.span aria-hidden className="absolute inset-0 rounded-full bg-marigold-500" animate={allDone ? { scale: 1, opacity: 0 } : { scale: [1, 1.6], opacity: [0.4, 0] }} transition={{ duration: 1.4, repeat: allDone ? 0 : Infinity }} />
-        <span className={cx("relative grid size-18 place-items-center rounded-full shadow-[var(--shadow-float)] transition-colors", allDone ? "bg-marigold-500 text-forest-950" : "bg-white text-forest-800")}>
+        <span className={cx("relative grid size-18 place-items-center rounded-full shadow-[var(--shadow-float)] transition-colors", allDone ? "bg-marigold-500 text-azure-950" : "bg-white text-azure-800")}>
           <Network className="size-8" />
         </span>
       </div>
@@ -61,16 +61,16 @@ export function OrchestratorDiagram({ done }: { done: Record<AgentId, boolean> }
               initial={{ scale: 0.6, opacity: 0 }}
               animate={{ scale: n.done ? [1.18, 1] : 1, opacity: 1 }}
               transition={{ type: "spring", stiffness: 400, damping: 18 }}
-              className={cx("relative grid size-12 place-items-center rounded-full ring-2 transition-colors", n.done ? "bg-forest-600 text-white ring-marigold-500" : "bg-forest-900 text-forest-100 ring-white/20")}
+              className={cx("relative grid size-12 place-items-center rounded-full ring-2 transition-colors", n.done ? "bg-azure-600 text-white ring-marigold-500" : "bg-azure-900 text-azure-100 ring-white/20")}
             >
               <Icon className="size-5" />
               {n.done && (
-                <span className="absolute -right-1 -bottom-1 grid size-5 place-items-center rounded-full bg-marigold-500 text-forest-950">
+                <span className="absolute -right-1 -bottom-1 grid size-5 place-items-center rounded-full bg-marigold-500 text-azure-950">
                   <Check className="size-3.5" strokeWidth={3} />
                 </span>
               )}
             </motion.span>
-            <span className="mt-1 text-center text-[11px] leading-tight font-medium text-forest-100">{t(`u1.agent.${n.id}`)}</span>
+            <span className="mt-1 text-center text-[11px] leading-tight font-medium text-azure-100">{t(`u1.agent.${n.id}`)}</span>
           </div>
         );
       })}

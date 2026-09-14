@@ -9,7 +9,7 @@ import { AutoFill } from "./g3/AutoFill";
 import { DocSheet } from "./g3/DocSheet";
 
 const STATUS = {
-  complete: { icon: CheckCircle2, tone: "forest", badge: "good" },
+  complete: { icon: CheckCircle2, tone: "azure", badge: "good" },
   pending: { icon: Clock, tone: "marigold", badge: "warn" },
   missing: { icon: CircleAlert, tone: "clay", badge: "risk" },
 } as const;
@@ -70,7 +70,7 @@ export default function Documents() {
       }
     >
       <Card className="mt-2 flex items-center gap-4">
-        <Ring value={(done / total) * 100} tone={left === 0 ? "forest" : "marigold"} label={`${done}/${total}`} sub={t("docs.ringSub")} />
+        <Ring value={(done / total) * 100} tone={left === 0 ? "azure" : "marigold"} label={`${done}/${total}`} sub={t("docs.ringSub")} />
         <div className="min-w-0">
           <p className="text-[17px] leading-snug font-semibold">{left === 0 ? t("docs.allDone") : t("docs.progress", { n: left })}</p>
           <p className="mt-1 text-[13px] leading-snug text-ink-3">{t("docs.progressSub")}</p>
@@ -96,7 +96,7 @@ export default function Documents() {
                     icon={cfg.icon}
                     tone={cfg.tone}
                     title={pick(d.name)}
-                    subtitle={<span className="font-semibold text-forest-700">{t("docs.udyam.help")}</span>}
+                    subtitle={<span className="font-semibold text-azure-700">{t("docs.udyam.help")}</span>}
                     right={<Badge tone={cfg.badge}>{t(`status.${s}`)}</Badge>}
                     onClick={() => push({ name: "udyam" })}
                   />
@@ -123,7 +123,7 @@ export default function Documents() {
       </Section>
 
       <div className="mt-4">
-        <Note tone="forest">{t("docs.privacy")}</Note>
+        <Note tone="azure">{t("docs.privacy")}</Note>
       </div>
 
       <DocSheet doc={openDoc} onClose={() => setOpenId(null)} onSet={(id, status) => dispatch({ type: "doc", id, status })} />

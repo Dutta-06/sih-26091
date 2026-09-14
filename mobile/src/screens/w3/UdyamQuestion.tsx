@@ -21,7 +21,7 @@ export function UdyamQuestion({ field, onAnswer }: { field: Field; onAnswer: (va
       <motion.div key={field.id} initial={{ opacity: 0, x: 28 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -28 }} transition={{ duration: 0.25 }}>
         <Card>
           <div className="flex items-center justify-between gap-2">
-            <p className="text-[11px] font-semibold tracking-wide text-forest-700 uppercase">{t(`udyam.section.${field.section}`)}</p>
+            <p className="text-[11px] font-semibold tracking-wide text-azure-700 uppercase">{t(`udyam.section.${field.section}`)}</p>
             {field.source !== "ask" && (
               <Badge tone="info" icon={Sparkles}>
                 {t(`udyam.auto.${field.source}`)}
@@ -34,8 +34,8 @@ export function UdyamQuestion({ field, onAnswer }: { field: Field; onAnswer: (va
             <OtpStep onDone={() => onAnswer("verified")} />
           ) : field.kind === "auto" ? (
             <>
-              <div className="mt-3 rounded-2xl bg-forest-50 p-3.5 ring-1 ring-forest-100">
-                <p className="tabular text-[20px] leading-snug font-bold break-words text-forest-800">{field.auto}</p>
+              <div className="mt-3 rounded-2xl bg-azure-50 p-3.5 ring-1 ring-azure-100">
+                <p className="tabular text-[20px] leading-snug font-bold break-words text-azure-800">{field.auto}</p>
                 {field.hint && <p className="mt-1 text-[13px] leading-snug text-ink-2">{field.hint}</p>}
               </div>
               <Button className="mt-4 w-full" icon={Check} onClick={() => onAnswer("auto")}>
@@ -79,7 +79,7 @@ function OtpStep({ onDone }: { onDone: () => void }) {
         <p className="mt-1 text-[13px] text-ink-3">{t("g3.udyam.aadhaarAsk")}</p>
         <FieldInput field="aadhaar_number" inputMode="numeric" label={t("udyam.otp.aadhaar")} onSave={(v) => update({ aadhaarLast4: v.slice(-4) })} />
         <p className="mt-2 flex items-center gap-1.5 text-[12px] text-ink-3">
-          <ShieldCheck className="size-4 text-forest-700" />
+          <ShieldCheck className="size-4 text-azure-700" />
           {t("udyam.otp.privacy")}
         </p>
       </>
@@ -111,7 +111,7 @@ function OtpStep({ onDone }: { onDone: () => void }) {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25 + i * 0.12 }}
-                className="tabular grid h-12 flex-1 place-items-center rounded-xl bg-white text-xl font-bold ring-1 ring-forest-200"
+                className="tabular grid h-12 flex-1 place-items-center rounded-xl bg-white text-xl font-bold ring-1 ring-azure-200"
               >
                 {d}
               </motion.span>

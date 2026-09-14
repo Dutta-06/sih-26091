@@ -8,11 +8,11 @@ export const COMPONENT_MAX: Record<keyof ScoreBreakdown, number> = { capitalFit:
 export const COMPONENTS = Object.keys(COMPONENT_MAX) as (keyof ScoreBreakdown)[];
 
 export const COMPONENT_COLOR: Record<keyof ScoreBreakdown, string> = {
-  capitalFit: "bg-forest-800",
-  repayment: "bg-forest-500",
+  capitalFit: "bg-azure-800",
+  repayment: "bg-azure-500",
   skills: "bg-sky-700",
   localDemand: "bg-marigold-500",
-  outcomes: "bg-forest-200",
+  outcomes: "bg-azure-200",
 };
 
 /** Stacked breakdown bar: each segment's width is its points out of 100. */
