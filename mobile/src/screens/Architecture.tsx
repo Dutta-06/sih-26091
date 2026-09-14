@@ -9,7 +9,7 @@ import { ConfidenceBadge, CountUp, cx, Reveal, Screen, Section } from "../ui";
 import { profileComplete } from "./g1/conversation";
 import { AGENT_ORDER } from "./g1/findings";
 
-const SOURCES = ["census", "lgd", "osm", "agmarknet", "udyam", "secc", "osrm"];
+const SOURCES = ["census", "lgd", "osm", "overture", "indiapost", "ifsc", "openmeteo", "agmarknet", "udyam", "secc", "osrm"];
 
 /** Counts over the bundled data pack, computed from the loaders (not typed). */
 function packCounts() {

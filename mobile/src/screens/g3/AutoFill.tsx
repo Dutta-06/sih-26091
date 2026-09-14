@@ -4,6 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { tap } from "../../App";
 import { canListen, listen } from "../../lib/speech";
 import { maskAccount, validateField, type Field } from "../../core/documents";
+import { bankBranch, ifscLoaded, pinArea } from "../../core/openData";
+import { district as packDistrict } from "../../core/pack";
+import type { PackDistrict } from "../../core/types";
 import { useI18n } from "../../i18n";
 import { rupees } from "../../lib/format";
 import { useStore } from "../../state/store";
@@ -34,7 +37,7 @@ const TEXT_QUESTIONS: TextQuestion[] = [
 const PREMISES = ["home", "rented_shop", "own_land"] as const;
 
 /** One validated text answer (core validateField); shows the core's error message. */
-export function FieldInput({ field, inputMode, label, onSave, initial = "", suggestions = [], voice = false, saveLabel }: { field: Field; inputMode: "text" | "numeric" | "tel"; label: string; onSave: (value: string) => void; initial?: string; suggestions?: string[]; voice?: boolean; saveLabel?: string }) {
+export function FieldInput({ field, inputMode, label, onSave, initial = "", suggestions = [], voice = false, saveLabel, check }: { field: Field; inputMode: "text" | "numeric" | "tel"; label: string; onSave: (value: string) => void; initial?: string; suggestions?: string[]; voice?: boolean; saveLabel?: string; check?: (value: string) => string | null }) {
   const { t, tm, lang } = useI18n();
   const [value, setValue] = useState(initial);
   const [error, setError] = useState<string | null>(null);
@@ -61,6 +64,8 @@ export function FieldInput({ field, inputMode, label, onSave, initial = "", sugg
   const save = () => {
     const r = validateField(field, value);
     if (!r.ok) return setError(tm(r.error));
+    const problem = check?.(r.value ?? value);
+    if (problem) return setError(problem);
     setError(null);
     onSave(r.value ?? value);
   };
@@ -178,6 +183,7 @@ export function AutoFill() {
             <div className="min-w-0">
               <p className="text-[11px] text-ink-3">{t(`g3.form.q.${id}.label`)}</p>
               <p className="tabular text-[15px] font-medium break-words">{shownOf(id)}</p>
+              <AnswerNote id={id} value={shownOf(id)} placeDistrict={place?.district ?? null} />
             </div>
             <button onClick={() => setEditing(id)} aria-label={t("g3.form.edit")} className="flex min-h-11 shrink-0 items-center gap-1 px-1 text-[11px] font-semibold text-sky-700">
               <Pencil className="size-3.5" />
@@ -218,6 +224,7 @@ export function AutoFill() {
                       inputMode={q.inputMode}
                       label={t(`g3.form.q.${next}.label`)}
                       initial={q.id === "fullName" || q.id === "ifsc" || q.id === "pincode" ? q.shown(applicant) ?? "" : ""}
+                      check={q.id === "ifsc" ? (v) => (ifscLoaded() && !bankBranch(v) ? t("g3.form.ifscUnknown") : null) : undefined}
                       onSave={(v) => {
                         update(q.store(v));
                         setEditing(null);
@@ -238,4 +245,21 @@ export function AutoFill() {
       <p className="mt-2 text-[11px] leading-snug text-ink-3">{t("g3.form.privacy")}</p>
     </Card>
   );
+}
+
+/** Checks against the bundled open data: the bank branch of an IFSC code, the district of a PIN code. */
+function AnswerNote({ id, value, placeDistrict }: { id: QuestionId; value: string; placeDistrict: PackDistrict | null }) {
+  const { t, pick } = useI18n();
+  if (id === "ifsc") {
+    const b = bankBranch(value);
+    return b ? <p className="text-[12px] text-azure-700">{b.bank}, {b.branch} · {b.district}{b.upi ? " · UPI" : ""}</p> : null;
+  }
+  if (id === "pincode") {
+    const area = pinArea(value);
+    const d = area?.district ? packDistrict(area.district) : null;
+    if (!area || !d) return null;
+    if (placeDistrict && d.id !== placeDistrict.id) return <p className="text-[12px] text-clay-700">{t("g3.form.pinOther", { district: pick(d.name), case: pick(placeDistrict.name) })}</p>;
+    return <p className="text-[12px] text-azure-700">{area.office} · {pick(d.name)}</p>;
+  }
+  return null;
 }

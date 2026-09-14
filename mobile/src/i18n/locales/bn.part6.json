@@ -408,5 +408,17 @@
   "u4.anomaly.sales_slowdown.body": "গত ২ সপ্তাহে {actual} এসেছে, এই মৌসুমের সাধারণ {expected}-এর মাত্র {pct}%।",
   "u4.anomaly.sales_slowdown.action": "মাস শেষ হওয়ার আগেই ব্যবস্থা নিন: দাম, মাল আর নিয়মিত ক্রেতাদের দেখে নিন।",
   "u1.more.person": "উদাহরণ ব্যক্তি",
-  "u1.more.personNext": "পরের জন"
+  "u1.more.personNext": "পরের জন",
+  "u1.loc.villageCensus": "পেয়েছি: {village}, {block}, {district} জেলা (২০১১ জনগণনার গ্রাম)। স্থানীয় যাচাই এই গ্রাম ধরে হবে।",
+  "u1.loc.pincode": "{district} জেলায় {office} ডাকঘরের এলাকা পেয়েছি। স্থানীয় যাচাই এই পিন এলাকার মাঝখান ধরে হবে।",
+  "core.c1.geo.pincode": "পিন কোড {pin} দিয়ে জায়গা নেওয়া ({office} ডাকঘর এলাকার মাঝখান), নির্দিষ্ট গ্রাম নয়।",
+  "c2.comp.mappedRelative": "অনলাইনে মানচিত্রে থাকা ব্যবসা থেকে গোনা ও রাজ্যের গড়ের সঙ্গে তুলনা; ছোট অনানুষ্ঠানিক ব্যবসা প্রায়ই বাদ পড়ে।",
+  "g3.form.ifscUnknown": "এই IFSC কোডের কোনো ব্যাংক শাখা নেই। পাসবই বা চেকে দেখে মিলিয়ে নিন।",
+  "g3.form.pinOther": "এই পিন কোড {district} জেলার, {case}-এর নয়।",
+  "c2.risk.rain.title": "বৃষ্টির উপর নির্ভর",
+  "c2.risk.rain.detail": "এখানে বছরের {share}% বৃষ্টি ({annual} মিমি) জুন–সেপ্টেম্বরে হয়, {dry} মাস প্রায় শুকনো থাকে আর বছরে বছরে বৃষ্টি প্রায় {cv}% ওঠানামা করে। পশুখাদ্য, জল আর ক্রেতার আয় বৃষ্টির উপর চলে।",
+  "arch.src.overture": "Overture Maps",
+  "arch.src.indiapost": "India Post PIN",
+  "arch.src.ifsc": "Razorpay IFSC",
+  "arch.src.openmeteo": "Open-Meteo"
 }

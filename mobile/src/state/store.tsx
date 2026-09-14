@@ -1,4 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useReducer, type ReactNode } from "react";
+import { climateKey, type ClimateSummary } from "../core/climate";
+import { fetchClimate } from "../lib/online";
 import { computeCase, type CaseView, type SessionInputs } from "../core/session";
 import { transition, type AppEvent } from "../core/tracker";
 import type { AppStage, DocStatus, GrievanceTicket, OutcomeRecord, ProfileInput } from "../core/types";
@@ -72,6 +74,8 @@ export interface JourneyState {
   clockOffsetDays: number;
   /** Which example person the presenter tools use (SAMPLE_PEOPLE index). */
   sampleIndex: number;
+  /** Rainfall summaries fetched online (Open-Meteo), kept so the analysis works offline afterwards. */
+  climate: Record<string, ClimateSummary>;
   lastVisitAt: string | null;
   previousVisitAt: string | null;
 }
@@ -105,7 +109,7 @@ export const initialState = (lang: Lang = "en"): JourneyState => ({
   lang, chatLang: lang, readAloud: false, onboarded: false, chat: [], pendingSlot: null, profile: EMPTY_PROFILE,
   chosenActivity: null, analysisSeen: false, documents: {}, appStage: "not_started", disbursedOn: null, milestonesDone: [],
   smsConsent: false, inbox: "monsoon_disruption", dataDeletedOn: null, interventionChosen: null, followUp: null, realOutcomes: [],
-  grievances: [], observations: [], joinedPool: false, applicant: {}, events: [], clockOffsetDays: 0, lastVisitAt: null, previousVisitAt: null, sampleIndex: 0,
+  grievances: [], observations: [], joinedPool: false, applicant: {}, events: [], clockOffsetDays: 0, lastVisitAt: null, previousVisitAt: null, sampleIndex: 0, climate: {},
 });
 
 export const todayOf = (s: Pick<JourneyState, "clockOffsetDays">) => new Date(Date.now() + s.clockOffsetDays * 86_400_000).toISOString();
@@ -120,6 +124,7 @@ export type Action =
   | { type: "event"; event: Omit<CaseEvent, "at"> }
   | { type: "advanceClock"; days: number }
   | { type: "reset" }
+  | { type: "climate"; key: string; summary: ClimateSummary }
   | { type: "jump"; to: DemoCheckpoint };
 
 export type DemoCheckpoint = "start" | "sample_profile" | "report" | "plan" | "application" | "launched" | "monitoring" | "followup" | "no_viable" | "returning";
@@ -138,7 +143,7 @@ function checkpoint(state: JourneyState, to: DemoCheckpoint): JourneyState {
   const monthsSinceJuly = (now.getUTCMonth() - 6 + 12) % 12; // 0 in July
   const monitoringDays = Math.round((monthsSinceJuly + 7) * 30.5);
   const sample = samplePerson(state).profile;
-  const base: JourneyState = { ...initialState(state.lang), chatLang: state.chatLang, onboarded: true, lastVisitAt: new Date().toISOString(), sampleIndex: state.sampleIndex ?? 0 };
+  const base: JourneyState = { ...initialState(state.lang), chatLang: state.chatLang, onboarded: true, lastVisitAt: new Date().toISOString(), sampleIndex: state.sampleIndex ?? 0, climate: state.climate ?? {} };
   const profiled: JourneyState = { ...base, profile: sample, analysisSeen: true, events: [{ type: "profile_started", at: new Date(Date.now() - 300 * 86_400_000).toISOString() }] };
   // Pursue what the review selected for this person (their own idea when it passed)
   const chosen: JourneyState = { ...profiled, chosenActivity: computeCase(sessionInputs(profiled)).activityId ?? sample.activityId };
@@ -205,6 +210,8 @@ function reducer(state: JourneyState, action: Action): JourneyState {
       return withEvent(state, action.event);
     case "advanceClock":
       return { ...state, clockOffsetDays: state.clockOffsetDays + action.days };
+    case "climate":
+      return { ...state, climate: { ...(state.climate ?? {}), [action.key]: action.summary } };
     case "reset":
       return { ...initialState(state.lang), onboarded: true, chatLang: state.chatLang };
     case "jump":
@@ -244,7 +251,7 @@ export function sessionInputs(s: JourneyState): SessionInputs {
   return {
     profile: s.profile, chosenActivity: s.chosenActivity, appStage: s.appStage, documents: s.documents, disbursedOn: s.disbursedOn,
     smsConsent: s.smsConsent, inbox: s.inbox, dataDeletedOn: s.dataDeletedOn, interventionChosen: s.interventionChosen,
-    realOutcomes: s.realOutcomes, grievances: s.grievances, today: todayOf(s).slice(0, 10),
+    realOutcomes: s.realOutcomes, grievances: s.grievances, today: todayOf(s).slice(0, 10), climate: s.climate,
   };
 }
 
@@ -272,6 +279,20 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const inputsKey = JSON.stringify(inputs);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const view = useMemo(() => computeCase(inputs), [inputsKey]);
+  // Rainfall climate for the case location, fetched once online (Open-Meteo, no key) and kept with the case
+  const place = view.location.chosen;
+  const climateCell = place && place.method !== "state_centroid" ? climateKey(place.lat, place.lon) : null;
+  useEffect(() => {
+    if (!place || !climateCell || state.climate?.[climateCell]) return;
+    let alive = true;
+    void fetchClimate(place.lat, place.lon).then((summary) => {
+      if (alive && summary) dispatch({ type: "climate", key: climateCell, summary });
+    });
+    return () => {
+      alive = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [climateCell]);
   const value = useMemo(() => ({ state, dispatch, set, view }), [state, set, view]);
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

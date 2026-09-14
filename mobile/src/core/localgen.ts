@@ -4,9 +4,9 @@
  * The data pack carries detailed village / POI / Udyam tables for a few districts (scripts/build_datapack.py). Every
  * other Census 2011 district (data/india_districts.json: real name, state, centroid, population, area) gets the same
  * kinds of tables generated deterministically from its own figures, with the same rules as the Python builder:
- *  - settlements: a disc of GEN_RADIUS_KM around the district centre holding density × disc area people; the
- *    headquarters town takes HQ_SHARE of them, villages share the rest (log-normal sizes), names from the region's
- *    place-name parts (data/regions.json);
+ *  - settlements: the district's Census 2011 villages (open data) plus the headquarters standing for the towns; without
+ *    the open data, a disc of GEN_RADIUS_KM around the centre holding density × disc area people (HQ_SHARE in the
+ *    headquarters, log-normal villages named from the region's place-name parts, data/regions.json);
  *  - places: headquarters mandi, bazaar, bus stand, railway station, banks (incl. the state's regional rural bank),
  *    schools and input suppliers; per settlement a school, bank, bus stop, weekly haat and suppliers by size;
  *  - enterprises: Poisson counts at the catalog typical_density_per_10k × the district craft-cluster factor, tagged
@@ -17,6 +17,7 @@
 import catalog from "../../../data/reference/business_catalog.json";
 import gen from "./data/gen_content.json";
 import regions from "./data/regions.json";
+import { openVillagesOfDistrict } from "./openData";
 import { prng } from "./sms";
 import type { PackDistrict, PackPoi, PackVillage } from "./types";
 
@@ -105,8 +106,16 @@ export function clusterFactor(district: PackDistrict, activityId: string): numbe
 
 const cache = new Map<string, LocalTables>();
 
-export function localTables(d: PackDistrict): LocalTables {
-  const hit = cache.get(d.id);
+/** Which generated places are wanted (open data covers the rest); decided once per district. */
+export interface GenerateOnly {
+  activity: (id: string) => boolean;
+  kind: (kind: PackPoi["kind"]) => boolean;
+}
+const ALL: GenerateOnly = { activity: () => true, kind: () => true };
+
+export function localTables(d: PackDistrict, only: GenerateOnly = ALL): LocalTables {
+  const key = `${d.id}|${only === ALL ? "all" : "uncovered"}`;
+  const hit = cache.get(key);
   if (hit) return hit;
   const rng = new Rng(`26091-local-${d.id}`);
   const region = regionOf(d.state);
@@ -115,12 +124,20 @@ export function localTables(d: PackDistrict): LocalTables {
   const density = d.areaSqKm > 0 ? d.population / d.areaSqKm : 400;
   const discPop = Math.min(d.population, density * Math.PI * GEN_RADIUS_KM ** 2, MAX_DISC_POP);
 
-  // settlements
+  // settlements: the district's real Census 2011 villages when the open data is loaded, else a generated disc
   const settlements: PackVillage[] = [];
   const block: Pair = [hq[0], hq[1]];
-  settlements.push({ lgd: `g-${d.id}-0`, name: { en: hq[0], hi: hq[1] }, block: { en: block[0], hi: block[1] }, district: d.id, lat: d.lat, lon: d.lon, population: Math.round(discPop * HQ_SHARE) });
-  const rest = discPop * (1 - HQ_SHARE);
-  const n = Math.max(18, Math.min(140, Math.round(rest / 3200)));
+  const census = openVillagesOfDistrict(d.id);
+  if (census && census.length) {
+    const rural = census.reduce((t, v) => t + v.population, 0);
+    // the towns are not in the village table: the headquarters stands for the urban population
+    settlements.push({ lgd: `g-${d.id}-0`, name: { en: hq[0], hi: hq[1] }, block: { en: block[0], hi: block[1] }, district: d.id, lat: d.lat, lon: d.lon, population: Math.max(0, Math.min(MAX_DISC_POP, d.population - rural)) });
+    settlements.push(...census);
+  } else {
+    settlements.push({ lgd: `g-${d.id}-0`, name: { en: hq[0], hi: hq[1] }, block: { en: block[0], hi: block[1] }, district: d.id, lat: d.lat, lon: d.lon, population: Math.round(discPop * HQ_SHARE) });
+  }
+  const rest = census && census.length ? 0 : discPop * (1 - HQ_SHARE);
+  const n = rest > 0 ? Math.max(18, Math.min(140, Math.round(rest / 3200))) : 0;
   const sizes = Array.from({ length: n }, () => Math.exp(rng.gauss(Math.log(2800), 0.55)));
   const total = sizes.reduce((a, b) => a + b, 0);
   const used = new Set<string>([hq[0].toLowerCase()]);
@@ -143,7 +160,7 @@ export function localTables(d: PackDistrict): LocalTables {
   // places
   const pois: PackPoi[] = [];
   const add = (en: string, hi: string, kind: PackPoi["kind"], tags: [string, string][], [lat, lon]: [number, number]) =>
-    pois.push({ id: `g${d.id}-${pois.length + 1}`, name: { en, hi }, kind, tags, lat, lon });
+    only.kind(kind) && pois.push({ id: `g${d.id}-${pois.length + 1}`, name: { en, hi }, kind, tags, lat, lon });
   const person = (): Pair => rng.pick(region.surnames);
   add(`${hq[0]} Krishi Utpadan Mandi`, `${hq[1]} कृषि उत्पादन मंडी`, "market", [["amenity", "marketplace"], ["market", "mandi"]], jitter(rng, d.lat, d.lon, 1.2));
   add(`${hq[0]} Main Bazaar`, `${hq[1]} मुख्य बाज़ार`, "market", [["amenity", "marketplace"]], jitter(rng, d.lat, d.lon, 0.5));
@@ -185,6 +202,7 @@ export function localTables(d: PackDistrict): LocalTables {
       }
     }
     for (const a of ACTIVITIES) {
+      if (!only.activity(a.id)) continue;
       const lam = (v.population / 10_000) * a.typical_density_per_10k * clusterFactor(d, a.id) * vr.uniform(0.85, 1.15);
       const count = vr.poisson(lam);
       for (let k = 0; k < count; k++) {
@@ -192,13 +210,13 @@ export function localTables(d: PackDistrict): LocalTables {
         const tag = tags.length === 1 || vr.random() < 0.7 ? tags[0] : tags[1 + vr.int(tags.length - 1)];
         const [len, lhi] = TAG_LABELS[`${tag[0]}=${tag[1]}`] ?? [a.id, a.id];
         const p = vr.pick(region.surnames);
-        add(`${p[0]} ${len}`, `${p[1]} ${lhi}`, "enterprise", [tag], jitter(vr, v.lat, v.lon, isHq ? 2.5 : 0.8));
+        add(`${p[0]} ${len}`, `${p[1]} ${lhi}`, "enterprise", [tag, ["activity", a.id]], jitter(vr, v.lat, v.lon, isHq ? 2.5 : 0.8));
       }
     }
   }
 
   const tables = { settlements, pois };
-  cache.set(d.id, tables);
+  cache.set(key, tables);
   return tables;
 }
 

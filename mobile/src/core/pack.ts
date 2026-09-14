@@ -32,6 +32,9 @@ import stateRefJson from "./data/state_reference.json";
 import healthJson from "./data/health_thresholds.json";
 import indiaJson from "./data/india_districts.json";
 import { GEN_RADIUS_KM, localTables, localUdyam } from "./localgen";
+import { openPlacesLoaded, openPlacesNear, openVillagesLoaded, openVillagesNear } from "./openData";
+import placeCategoriesJson from "./data/open_place_categories.json";
+import placeCountsJson from "./data/open_place_counts.json";
 
 export interface PackMeta {
   synthetic_sample: boolean;
@@ -98,9 +101,78 @@ export function isDetailed(id: string): boolean {
   return _detailed!.has(id);
 }
 
-/** Districts without detailed tables whose generated disc can reach within radiusKm of the point. */
+/** Districts without detailed tables whose generated tables can reach within radiusKm of the point. */
 function generatedNear(lat: number, lon: number, radiusKm: number): PackDistrict[] {
-  return districts().filter((d) => !isDetailed(d.id) && distanceKm(lat, lon, d.lat, d.lon) <= radiusKm + GEN_RADIUS_KM);
+  const reach = (d: PackDistrict) => (openVillagesLoaded() ? Math.max(GEN_RADIUS_KM, 1.4 * Math.sqrt(Math.max(1, d.areaSqKm) / Math.PI)) : GEN_RADIUS_KM);
+  return districts().filter((d) => !isDetailed(d.id) && distanceKm(lat, lon, d.lat, d.lon) <= radiusKm + reach(d));
+}
+
+/* ------------------------------------------------------------------ real places coverage (Overture Maps) */
+
+const PLACE_CATEGORIES = placeCategoriesJson as Record<string, { kind: string; activities: string[] }>;
+const PLACE_COUNTS = placeCountsJson as Record<string, Record<string, number>>;
+/** A state needs this many mapped places of an activity before mapped places stand for that activity there. */
+export const MIN_STATE_MAPPED = 40;
+/** Fewer mapped places of a kind than this in a district keeps the generated ones of that kind. */
+const MIN_DISTRICT_KIND: Record<string, number> = { bank: 3, school: 10, transport: 2, supplier: 3, market: 1 };
+
+/** Mapped places in a district: per activity and per place kind. */
+const _mapped = new Map<string, { activities: Record<string, number>; kinds: Record<string, number> }>();
+export function mappedCounts(districtId: string): { activities: Record<string, number>; kinds: Record<string, number> } {
+  const hit = _mapped.get(districtId);
+  if (hit) return hit;
+  const activities: Record<string, number> = {};
+  const kinds: Record<string, number> = {};
+  for (const [cat, n] of Object.entries(PLACE_COUNTS[districtId] ?? {})) {
+    const meta = PLACE_CATEGORIES[cat];
+    if (!meta) continue;
+    kinds[meta.kind] = (kinds[meta.kind] ?? 0) + n;
+    if (meta.kind === "enterprise") for (const a of meta.activities) activities[a] = (activities[a] ?? 0) + n;
+  }
+  const out = { activities, kinds };
+  _mapped.set(districtId, out);
+  return out;
+}
+
+let _stateMapped: Map<string, { activities: Record<string, number>; population: number }> | null = null;
+/** Mapped places per activity and population over all districts of a state. */
+export function stateMapped(state: string): { activities: Record<string, number>; population: number } {
+  if (!_stateMapped) {
+    _stateMapped = new Map();
+    for (const d of districts()) {
+      const s = _stateMapped.get(d.state) ?? { activities: {}, population: 0 };
+      s.population += d.population;
+      for (const [a, n] of Object.entries(mappedCounts(d.id).activities)) s.activities[a] = (s.activities[a] ?? 0) + n;
+      _stateMapped.set(d.state, s);
+    }
+  }
+  return _stateMapped.get(state) ?? { activities: {}, population: 0 };
+}
+
+const _generated = new Map<string, PackPoi[]>();
+/** A district's generated places that mapped places do not replace (cached). */
+function generatedPlaces(d: PackDistrict): PackPoi[] {
+  let list = _generated.get(d.id);
+  if (!list) {
+    const covered = openPlacesLoaded();
+    const tables = localTables(d, covered ? {
+      activity: (id) => (stateMapped(d.state).activities[id] ?? 0) < MIN_STATE_MAPPED,
+      kind: (k) => k === "enterprise" || MIN_DISTRICT_KIND[k] === undefined || (mappedCounts(d.id).kinds[k] ?? 0) < MIN_DISTRICT_KIND[k],
+    } : undefined);
+    _generated.set(d.id, (list = tables.pois.filter((poi) => keepGenerated(poi, d))));
+  }
+  return list;
+}
+
+/** Generated places are kept only where mapped places do not cover their activity (state) or kind (district). */
+function keepGenerated(poi: PackPoi, d: PackDistrict): boolean {
+  if (!openPlacesLoaded()) return true;
+  if (poi.kind === "enterprise") {
+    const activity = poi.tags.find(([k]) => k === "activity")?.[1];
+    return !activity || (stateMapped(d.state).activities[activity] ?? 0) < MIN_STATE_MAPPED;
+  }
+  const min = MIN_DISTRICT_KIND[poi.kind];
+  return min === undefined || (mappedCounts(d.id).kinds[poi.kind] ?? 0) < min;
 }
 
 /** District by id (case-insensitive id or English name). */
@@ -144,22 +216,53 @@ export function distanceKm(lat1: number, lon1: number, lat2: number, lon2: numbe
   return 2 * R * Math.asin(Math.sqrt(a));
 }
 
-/** Villages (detailed tables and generated settlements) within radiusKm. */
+/** Villages within radiusKm: detailed pack villages, and Census 2011 villages elsewhere (generated settlements without them). */
+const _settlements = new Map<string, PackVillage[]>();
 export function settlementsNear(lat: number, lon: number, radiusKm: number): PackVillage[] {
-  const all = [...villages(), ...generatedNear(lat, lon, radiusKm).flatMap((d) => localTables(d).settlements)];
-  return all.filter((v) => distanceKm(lat, lon, v.lat, v.lon) <= radiusKm);
+  const key = `${lat.toFixed(4)},${lon.toFixed(4)},${radiusKm},${openVillagesLoaded()}`;
+  const hit = _settlements.get(key);
+  if (hit) return hit;
+  if (_settlements.size > 40) _settlements.delete(_settlements.keys().next().value!);
+  const result = settlementsNearUncached(lat, lon, radiusKm);
+  _settlements.set(key, result);
+  return result;
 }
 
-/** POIs within radiusKm, nearest first. */
+function settlementsNearUncached(lat: number, lon: number, radiusKm: number): PackVillage[] {
+  const detailed = villages().filter((v) => distanceKm(lat, lon, v.lat, v.lon) <= radiusKm);
+  if (openVillagesLoaded()) return [...detailed, ...openVillagesNear(lat, lon, radiusKm, (id) => !isDetailed(id))];
+  const generated = generatedNear(lat, lon, radiusKm).flatMap((d) => localTables(d).settlements);
+  return [...detailed, ...generated.filter((v) => distanceKm(lat, lon, v.lat, v.lon) <= radiusKm)];
+}
+
+/**
+ * POIs within radiusKm, nearest first: detailed pack POIs; elsewhere real mapped places (Overture Maps) plus generated
+ * places for activities and kinds the mapped places do not cover.
+ */
 export function poisNear(lat: number, lon: number, radiusKm: number, filter?: (p: PackPoi) => boolean): { poi: PackPoi; km: number }[] {
-  const out: { poi: PackPoi; km: number }[] = [];
-  const candidates = [...pois(), ...generatedNear(lat, lon, radiusKm).flatMap((d) => localTables(d).pois)];
-  for (const poi of candidates) {
-    if (filter && !filter(poi)) continue;
-    const km = distanceKm(lat, lon, poi.lat, poi.lon);
-    if (km <= radiusKm) out.push({ poi, km: Math.round(km * 100) / 100 });
+  const all = nearCache(`${lat.toFixed(4)},${lon.toFixed(4)},${radiusKm}`, () => {
+    const out: { poi: PackPoi; km: number }[] = [];
+    const real = openPlacesNear(lat, lon, radiusKm).filter((p) => !isDetailed(p.district)).map((p) => p.poi);
+    const candidates = [...pois(), ...real, ...generatedNear(lat, lon, radiusKm).flatMap(generatedPlaces)];
+    for (const poi of candidates) {
+      const km = distanceKm(lat, lon, poi.lat, poi.lon);
+      if (km <= radiusKm) out.push({ poi, km: Math.round(km * 100) / 100 });
+    }
+    return out.sort((a, b) => a.km - b.km || a.poi.id.localeCompare(b.poi.id));
+  });
+  return filter ? all.filter((p) => filter(p.poi)) : all;
+}
+
+/** Recent radius queries (the case is recomputed often for the same place). */
+const _near = new Map<string, { poi: PackPoi; km: number }[]>();
+function nearCache(key: string, compute: () => { poi: PackPoi; km: number }[]): { poi: PackPoi; km: number }[] {
+  let hit = _near.get(key);
+  if (!hit) {
+    hit = compute();
+    if (_near.size > 40) _near.delete(_near.keys().next().value!);
+    _near.set(key, hit);
   }
-  return out.sort((a, b) => a.km - b.km || a.poi.id.localeCompare(b.poi.id));
+  return hit;
 }
 
 const UDYAM = udyamJson as Record<string, Record<string, number>>;

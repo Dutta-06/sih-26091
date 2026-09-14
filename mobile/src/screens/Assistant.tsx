@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { tap } from "../lib/haptics";
 import { readWithModel, warmUpModel } from "../lib/nlp/client";
+import { withOnlinePlace } from "../lib/onlinePlace";
 import { useToolsUnlocked } from "../lib/tools";
 import { useI18n } from "../i18n";
 import { canListen, speak, voiceCapabilities } from "../lib/speech";
@@ -158,10 +159,12 @@ export default function Assistant() {
     if (!clean || busy) return;
     setDraft("");
     setTyping(true);
-    void readWithModel(clean).then((reading) => {
-      setTyping(false);
-      return turn(clean, respond(clean, conv(), reading));
-    });
+    void readWithModel(clean)
+      .then(async (reading) => ({ reading, text: await withOnlinePlace(clean, conv(), reading) }))
+      .then(({ reading, text }) => {
+        setTyping(false);
+        return turn(clean, respond(text, conv(), text === clean ? reading : null));
+      });
   };
 
   const answerSlot = (a: SlotAnswer) => {

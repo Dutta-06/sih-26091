@@ -154,7 +154,7 @@ export interface LocationCandidate {
   district: PackDistrict;
   lat: number;
   lon: number;
-  method: "village_table" | "district_table" | "state_centroid";
+  method: "village_table" | "pincode" | "district_table" | "state_centroid";
 }
 
 export interface ResolvedLocation {

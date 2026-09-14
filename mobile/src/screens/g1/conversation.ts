@@ -151,7 +151,9 @@ function locationTurn(profile: ProfileInput): { messages: ChatMessage[]; code: s
 }
 
 export function confirmPlace(c: LocationCandidate): ChatMessage {
+  if (c.method === "village_table" && c.village && c.block && c.lgd?.startsWith("c")) return a("u1.loc.villageCensus", { village: bi(c.village), block: bi(c.block), district: bi(c.district.name) });
   if (c.method === "village_table" && c.village && c.block) return a("u1.loc.village", { village: bi(c.village), block: bi(c.block), district: bi(c.district.name), lgd: c.lgd ?? "" });
+  if (c.method === "pincode" && c.village) return a("u1.loc.pincode", { office: bi(c.village), district: bi(c.district.name) });
   if (c.method === "district_table") return a("u1.loc.district", { district: bi(c.district.name) });
   return a("u1.loc.state", { state: bi(c.district.name) });
 }

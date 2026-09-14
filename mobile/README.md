@@ -35,7 +35,25 @@ other district gets local tables generated on the phone from its own figures (`s
 rural banks from `regions.json`, known craft clusters as density factors). A location typed anywhere in India resolves to
 its district headquarters.
 
-The screens carry no sample-data or demo labels; _meta.json and this README record what is synthetic. Outcome counts are shown as aseline (the synthetic seed) and ollow-up (records saved on the phone).
+The screens carry no sample-data or demo labels; _meta.json and this README record what is synthetic. Outcome counts are shown as `baseline` (the synthetic seed) and `follow-up` (records saved on the phone).
+
+## Open data (`public/data/`, no keys)
+Bundled and loaded at start-up (about 18 MB compressed); if a file fails to load the app falls back to the generated tables.
+
+| File | Source | Licence | What it adds |
+|---|---|---|---|
+| `villages.bin.gz` | Census of India 2011 village directory with coordinates, via [datameet](https://github.com/datameet) / ramSeraph | CC0 | 645,805 villages for place matching; 116 post-2011 districts added to `india_districts.json` |
+| `places.bin.gz` | [Overture Maps](https://overturemaps.org) places | CDLA-Permissive-2.0 | 432,975 mapped shops, banks, schools and services; competitor density vs the state |
+| `pincodes.json.gz` | India Post PIN directory (data.gov.in) | CC0 / GODL | PIN code → area centre and district, in chat and forms |
+| `ifsc.json.gz` | [Razorpay IFSC](https://github.com/razorpay/ifsc) | MIT | IFSC → bank and branch check in the loan form |
+
+Rebuild: `python scripts/build_open_villages.py` then `python scripts/build_open_places.py` (input paths at the top of each script).
+
+**Online, optional, no key** (`src/lib/online.ts`); every call has a timeout and the app works without it:
+- [Open-Meteo](https://open-meteo.com) historical weather (ERA5, CC BY 4.0): ten years of daily rain at the location → rainfall risk for rain-fed businesses.
+- [Photon](https://photon.komoot.io) (komoot), then [Nominatim](https://nominatim.org) — OpenStreetMap data © OpenStreetMap contributors (ODbL): only for a place the bundled tables do not know; the result is snapped to the nearest Census village or district.
+
+Keyed sources for later: data.gov.in (Agmarknet prices, Udyam), Bhuvan, Mappls, Bhashini.
 
 ## Message model (ml/nlu)
 - **Data:** per-language patterns, fillers and a separate hand-written test set in `ml/nlu/data/<lang>.json` (brief in

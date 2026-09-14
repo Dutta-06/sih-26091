@@ -6,6 +6,7 @@
  * punctuation as separators). Repeated village names yield several candidates; a district, block or state named
  * in the same text narrows them, otherwise the user chooses (chosenLgd). Only a village-table match is "real".
  */
+import { villageById, villagesStartingWith, pinArea } from "./openData";
 import { district as packDistrict, districts, stateReference, villages } from "./pack";
 import type { LocationCandidate, Msg, PackDistrict, PackVillage, ResolvedLocation } from "./types";
 
@@ -80,6 +81,12 @@ const markUsed = (used: Set<number>, h: Hit<unknown>) => {
   for (let i = 0; i < h.n; i++) used.add(h.start + i);
 };
 
+/** Words after a name that mark it as a block, tehsil or district rather than a village. */
+const ADMIN_WORDS = new Set(["block", "tehsil", "tahsil", "taluka", "taluk", "mandal", "district", "jila", "zila", "ब्लॉक", "तहसील", "तालुका", "जिला", "जिले", "मंडल"]);
+
+/** A common village name ("Rampur") can match hundreds of villages: offer the most populous few and ask for the district. */
+const MAX_CHOICES = 6;
+
 function villageCandidate(v: PackVillage): LocationCandidate {
   return { lgd: v.lgd, village: v.name, block: v.block, district: packDistrict(v.district)!, lat: v.lat, lon: v.lon, method: "village_table" };
 }
@@ -135,8 +142,30 @@ export function resolveLocation(text: string, chosenLgd?: string | null): Resolv
     limitations,
   });
 
-  // 1. village table (longest name wins; repeated names give several candidates)
-  let vHits = longest(matchNames(hay, query, villages(), (v) => [v.name.en, v.name.hi], used));
+  // 0. a PIN code is explicit: India Post area centre
+  const pin = /(?<!\d)[1-9]\d{5}(?!\d)/.exec(query)?.[0];
+  const area = pin ? pinArea(pin) : null;
+  const pinDistrict = area?.district ? packDistrict(area.district) : null;
+  if (area && pinDistrict) {
+    const office = area.office.replace(/\s+(S\.?O|B\.?O|H\.?O)\.?$/i, "").trim();
+    limitations.push({ key: "core.c1.geo.pincode", vars: { pin: area.pin, office } });
+    const c: LocationCandidate = { lgd: null, village: { en: office, hi: office }, block: null, district: pinDistrict, lat: area.lat, lon: area.lon, method: "pincode" };
+    return done([c], c);
+  }
+
+  // 1. village tables: detailed pack villages and every Census 2011 village (longest name wins; repeats give candidates)
+  const villagePool = [...villages(), ...villagesStartingWith(hay)];
+  // Village names that are also district names ("Delhi", "Allahabad") or are followed by an administrative word
+  // ("Shahganj block") are not villages here, unless the message says more than the district name.
+  const districtRuns = matchNames(hay, query, districts(), districtNames, new Set());
+  const overlaps = (a: Hit<unknown>, b: Hit<unknown>) => a.start < b.start + b.n && b.start < a.start + a.n;
+  const villageHits = matchNames(hay, query, villagePool, (v) => [v.name.en, v.name.hi], used).filter((h) => {
+    if (ADMIN_WORDS.has(hay[h.start + h.n] ?? "")) return false;
+    return !districtRuns.some((d) => overlaps(d, h) && (d.item.id !== h.item.district || hay.length <= d.n));
+  });
+  let vHits = longest(villageHits);
+  const firstStart = Math.min(...vHits.map((h) => h.start));
+  vHits = vHits.filter((h) => h.start === firstStart); // "Gopiganj, Shahganj": the village is named first
   for (const h of vHits) markUsed(used, h);
 
   // context stated alongside the village: district, block, state
@@ -154,14 +183,14 @@ export function resolveLocation(text: string, chosenLgd?: string | null): Resolv
       if (byBlock.length) narrowed = byBlock;
     }
     if (narrowed.length) {
-      const candidates = narrowed.map((h) => villageCandidate(h.item)).sort((a, b) => (a.lgd! < b.lgd! ? -1 : 1));
-      if (candidates.length === 1) return done(candidates, candidates[0]);
-      const pick = chosenLgd ? candidates.find((c) => c.lgd === chosenLgd) ?? null : null;
-      if (!pick) {
-        if (chosenLgd) limitations.push({ key: "core.c1.geo.choice_invalid", vars: { lgd: chosenLgd } });
-        limitations.push({ key: "core.c1.geo.ambiguous", vars: { name: narrowed[0].item.name.en, count: candidates.length } });
-      }
-      return done(candidates, pick);
+      const all = narrowed.map((h) => villageCandidate(h.item));
+      if (all.length === 1) return done(all, all[0]);
+      const pick = chosenLgd ? all.find((c) => c.lgd === chosenLgd) ?? null : null;
+      if (pick) return done([pick], pick);
+      if (chosenLgd) limitations.push({ key: "core.c1.geo.choice_invalid", vars: { lgd: chosenLgd } });
+      limitations.push({ key: "core.c1.geo.ambiguous", vars: { name: narrowed[0].item.name.en, count: all.length } });
+      const byPop = [...narrowed].sort((a, b) => b.item.population - a.item.population).slice(0, MAX_CHOICES).map((h) => villageCandidate(h.item));
+      return done(byPop.sort((a, b) => (a.lgd! < b.lgd! ? -1 : 1)), null);
     }
     limitations.push({ key: "core.c1.geo.village_not_in_district", vars: { name: vHits[0].item.name.en } });
     vHits = [];
@@ -169,7 +198,7 @@ export function resolveLocation(text: string, chosenLgd?: string | null): Resolv
 
   // chosen code without a text match (e.g. the UI kept the LGD from an earlier turn)
   if (chosenLgd) {
-    const v = villages().find((x) => x.lgd === chosenLgd);
+    const v = villages().find((x) => x.lgd === chosenLgd) ?? villageById(chosenLgd);
     if (v) return done([villageCandidate(v)], villageCandidate(v));
   }
 

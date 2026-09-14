@@ -75,6 +75,9 @@ const negativeAt = (t: string, m: RegExpExecArray) => {
   return t[i - 1] === "-" && !/\d/.test(t[i - 2] ?? "");
 };
 
+/** A six-digit PIN code introduced by a cue word ("pin code 641001", "पिन 221303"). */
+const PIN_RE = /(?:pin|पिन|pincode|postal code|post office|डाक)[^\d]{0,12}(?<!\d)([1-9]\d{5})(?!\d)/iu;
+
 export function extractCapital(text: string, expecting = false): number | null {
   const t = asciiDigits(text.replace(/[०-९০-৯]/g, (c) => DIGITS[c])).normalize("NFC").toLowerCase();
   const accept = (v: number) => (Number.isFinite(v) && v > 0 ? v : null);
@@ -94,6 +97,7 @@ export function extractCapital(text: string, expecting = false): number | null {
   if (m) return negativeAt(t, m) ? null : accept(num(m[1]));
   for (const mm of t.matchAll(/\d{1,3}(?:,\d{2,3})+|\d+(?:\.\d+)?/g)) {
     if (t[mm.index - 1] === "-" && !/\d/.test(t[mm.index - 2] ?? "")) continue; // negative amount
+    if (PIN_RE.test(t.slice(Math.max(0, mm.index - 20), mm.index + mm[0].length + 1))) continue; // PIN code
     const value = num(mm[0]);
     if (value >= 5_000 || (expecting && value > 0)) return value;
   }
@@ -217,7 +221,8 @@ export function extract(text: string, pendingSlot: Slot | null): Extraction {
   if (capital !== null) out.capital = capital;
   const activityId = matchActivity(message);
   if (activityId) out.activityId = activityId;
-  let location = extractLocation(message);
+  const pin = PIN_RE.exec(asciiDigits(message))?.[1];
+  let location = pin ?? extractLocation(message);
   if (location === null && pendingSlot === "location" && capital === null && activityId === null) location = cleanLocation(message);
   if (location) out.locationText = location;
   const reason = extractReason(message);

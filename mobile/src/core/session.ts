@@ -6,6 +6,7 @@
  * (6 analyses → SWOT → red-team review → alternatives) → financial plan → documents/application →
  * launch roadmap & pooled procurement → consented SMS monitoring → health snapshots → interventions/outcomes.
  */
+import { useClimates, type ClimateSummary } from "./climate";
 import { buildFinancial, catalogEntry, type FinancialOutput } from "./financial";
 import { checklist, requiredDocuments } from "./documents";
 import { runFeasibility, runIntel, type FeasibilityOutcome } from "./feasibility";
@@ -37,6 +38,8 @@ export interface SessionInputs {
   realOutcomes: OutcomeRecord[];
   grievances: GrievanceTicket[];
   today: string; // ISO date (device clock + presenter offset)
+  /** Rainfall summaries fetched online for the case location (Open-Meteo), by 0.25° cell. */
+  climate?: Record<string, ClimateSummary>;
 }
 
 export interface CaseView {
@@ -104,6 +107,7 @@ export function finishedMonths<T extends { month: string }>(health: T[], today: 
 }
 
 export function computeCase(inputs: SessionInputs): CaseView {
+  useClimates(inputs.climate);
   const { profile } = inputs;
   const location = resolveLocation(profile.locationText, profile.locationCode);
   const place = location.chosen ?? (location.candidates.length === 1 ? location.candidates[0] : null);

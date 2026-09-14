@@ -408,5 +408,17 @@
   "u4.anomaly.sales_slowdown.body": "मागील 2 आठवड्यांत {actual} आले, जे या हंगामातील नेहमीच्या {expected} च्या फक्त {pct}% आहे.",
   "u4.anomaly.sales_slowdown.action": "महिना संपण्यापूर्वी कृती करा: दर, माल आणि तुमचे नियमित ग्राहक तपासा.",
   "u1.more.person": "उदाहरण व्यक्ती",
-  "u1.more.personNext": "पुढील"
+  "u1.more.personNext": "पुढील",
+  "u1.loc.villageCensus": "सापडले: {village}, {block}, {district} जिल्हा (जनगणना 2011 मधील गाव). स्थानिक तपासणी याच गावावरून होईल.",
+  "u1.loc.pincode": "{district} जिल्ह्यात {office} डाकघराचा भाग सापडला. स्थानिक तपासणी या पिन भागाच्या मध्यावरून होईल.",
+  "core.c1.geo.pincode": "पिन कोड {pin} वरून ठिकाण घेतले ({office} डाकघर भागाचा मध्य), नेमके गाव नाही.",
+  "c2.comp.mappedRelative": "ऑनलाइन नकाशावरील व्यवसायांवरून मोजले आणि राज्याच्या सरासरीशी तुलना केली; छोटे अनौपचारिक व्यवसाय अनेकदा सुटतात.",
+  "g3.form.ifscUnknown": "या IFSC कोडची कोणतीही बँक शाखा नाही. पासबुक किंवा चेकवर पाहून तपासा.",
+  "g3.form.pinOther": "हा पिन कोड {district} जिल्ह्याचा आहे, {case} चा नाही.",
+  "c2.risk.rain.title": "पावसावर अवलंबून",
+  "c2.risk.rain.detail": "येथे वर्षातील {share}% पाऊस ({annual} मिमी) जून–सप्टेंबरमध्ये पडतो, {dry} महिने जवळपास कोरडे असतात आणि दरवर्षी पाऊस सुमारे {cv}% कमी-जास्त होतो. चारा, पाणी आणि ग्राहकांचे उत्पन्न पावसावर चालते.",
+  "arch.src.overture": "Overture Maps",
+  "arch.src.indiapost": "India Post PIN",
+  "arch.src.ifsc": "Razorpay IFSC",
+  "arch.src.openmeteo": "Open-Meteo"
 }

@@ -6,5 +6,5 @@ export default defineConfig({
   base: "./", // assets load from the Android WebView's local file server
   plugins: [react(), tailwindcss()],
   build: { target: "es2020", assetsInlineLimit: 0 },
-  test: { environment: "node" },
+  test: { environment: "node", setupFiles: ["src/test/openData.setup.ts"] },
 });

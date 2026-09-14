@@ -19,7 +19,8 @@
  * z (Poisson): expected = benchmark × population / 10k; z = (count − expected) / √expected.
  * Saturation: density / benchmark ≤ 0.75 low, ≤ 1.25 medium, else high; unknown when either is missing.
  */
-import { district as packDistrict, poisNear, udyam, udyamState } from "../pack";
+import { openPlacesLoaded, openPlacesNear } from "../openData";
+import { district as packDistrict, isDetailed, mappedCounts, MIN_STATE_MAPPED, poisNear, stateMapped, udyam, udyamState } from "../pack";
 import type { CompetitorIntel, LocationCandidate, Saturation } from "../types";
 import { type CatalogActivity, msg, RADIUS_KM, round, src, usableCoords } from "./catalog";
 import { populationWithinRadius } from "./marketReach";
@@ -51,6 +52,33 @@ export function competitorIntel(activity: CatalogActivity, location: LocationCan
   }
   const d = location.district;
   const districtRow = packDistrict(d.id);
+
+  // Mapped places (Overture Maps): where the state has enough of them for this activity, the district's density is
+  // compared with the state's in the same source, which cancels how unevenly businesses are mapped.
+  const state = districtRow ? stateMapped(districtRow.state) : null;
+  const stateCount = state?.activities[activity.id] ?? 0;
+  if (districtRow && state && openPlacesLoaded() && !isDetailed(districtRow.id) && stateCount >= MIN_STATE_MAPPED && state.population > 0) {
+    const districtCount = mappedCounts(districtRow.id).activities[activity.id] ?? 0;
+    const coords = usableCoords(location);
+    const ids = new Set(openPlacesNear(location.lat, location.lon, RADIUS_KM).filter((p) => p.activities.includes(activity.id)).map((p) => p.poi.id));
+    intel.nearby = coords ? poisNear(coords.lat, coords.lon, RADIUS_KM, (p) => ids.has(p.id)) : [];
+    intel.tier = "overpass";
+    intel.tiersAttempted = [{ tier: "udyam", status: "no_data" }, { tier: "overpass", status: "used" }, { tier: "web_search", status: "unavailable" }];
+    intel.count = districtCount;
+    intel.districtPer10k = per10k(districtCount, districtRow.population);
+    intel.statePer10k = per10k(stateCount, state.population);
+    intel.densityPer10k = intel.districtPer10k;
+    intel.zScore = poissonZ(districtCount, districtRow.population, intel.statePer10k);
+    intel.saturation = classifySaturation(intel.districtPer10k, intel.statePer10k);
+    intel.confidence = "real";
+    intel.sources.push(src(
+      `Overture Maps places: ${districtCount} mapped in the district, ${stateCount} in ${districtRow.state}; ${intel.nearby.length} within ${RADIUS_KM} km`,
+      `ओवरचर मैप्स स्थान: ज़िले में ${districtCount}, ${districtRow.state} में ${stateCount}; ${RADIUS_KM} किमी में ${intel.nearby.length}`,
+      "real",
+    ));
+    intel.limitations.push(msg("c2.comp.mappedRelative"));
+    return intel;
+  }
 
   // Tier 1: Udyam (district scope)
   const districtCount = districtRow ? udyam(districtRow.id, activity.nic_class) : null;

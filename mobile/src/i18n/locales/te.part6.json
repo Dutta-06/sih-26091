@@ -408,5 +408,17 @@
   "u4.anomaly.sales_slowdown.body": "గత 2 వారాల్లో {actual} వచ్చింది, ఇది ఈ సీజన్‌కు సాధారణ {expected}లో కేవలం {pct}%.",
   "u4.anomaly.sales_slowdown.action": "నెల ముగిసేలోపు చర్య తీసుకోండి: ధరలు, స్టాక్ మరియు మీ రెగ్యులర్ కొనుగోలుదారులను తనిఖీ చేయండి.",
   "u1.more.person": "ఉదాహరణ వ్యక్తి",
-  "u1.more.personNext": "తర్వాతి"
+  "u1.more.personNext": "తర్వాతి",
+  "u1.loc.villageCensus": "దొరికింది: {village}, {block}, {district} జిల్లా (2011 జనగణన గ్రామం). స్థానిక తనిఖీలు ఈ గ్రామం ఆధారంగా జరుగుతాయి.",
+  "u1.loc.pincode": "{district} జిల్లాలో {office} పోస్టాఫీసు ప్రాంతం దొరికింది. స్థానిక తనిఖీలు ఈ పిన్ ప్రాంతం మధ్యభాగం ఆధారంగా జరుగుతాయి.",
+  "core.c1.geo.pincode": "పిన్ కోడ్ {pin} ద్వారా ప్రదేశం ({office} పోస్టాఫీసు ప్రాంతం మధ్య), ఖచ్చితమైన గ్రామం కాదు.",
+  "c2.comp.mappedRelative": "ఆన్‌లైన్ మ్యాప్‌లో ఉన్న వ్యాపారాల నుంచి లెక్కించి రాష్ట్ర సగటుతో పోల్చాం; చిన్న అనధికారిక వ్యాపారాలు తరచూ ఉండవు.",
+  "g3.form.ifscUnknown": "ఈ IFSC కోడ్‌తో ఏ బ్యాంక్ శాఖా లేదు. పాస్‌బుక్ లేదా చెక్కుపై చూసి సరిచూడండి.",
+  "g3.form.pinOther": "ఈ పిన్ కోడ్ {district} జిల్లాది, {case}ది కాదు.",
+  "c2.risk.rain.title": "వర్షంపై ఆధారపడుతుంది",
+  "c2.risk.rain.detail": "ఇక్కడ ఏడాది వర్షంలో {share}% ({annual} మి.మీ.) జూన్–సెప్టెంబర్‌లో పడుతుంది, {dry} నెలలు దాదాపు పొడిగా ఉంటాయి, ఏటా వర్షం సుమారు {cv}% మారుతుంది. మేత, నీరు, కొనుగోలుదారుల ఆదాయం వర్షంపై ఆధారపడతాయి.",
+  "arch.src.overture": "Overture Maps",
+  "arch.src.indiapost": "India Post PIN",
+  "arch.src.ifsc": "Razorpay IFSC",
+  "arch.src.openmeteo": "Open-Meteo"
 }

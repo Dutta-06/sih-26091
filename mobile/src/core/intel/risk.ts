@@ -9,6 +9,7 @@
  *    taxonomy entries retrieved from the entrepreneur's own stated reason.
  *  - Local feedback flags from pack feedback ratings.
  */
+import { climateAt, rainRisk, RAIN_SENSITIVE } from "../climate";
 import { districts, feedback, docs, poisNear } from "../pack";
 import { haversineKm } from "../geo";
 import { retrieve } from "../retrieval";
@@ -111,7 +112,7 @@ export function riskIntel(activity: CatalogActivity, location: LocationCandidate
   let hubKm: number | null = null;
   let hubName: RiskIntel["hubName"] = null;
   let routeRisk: Level = "medium";
-  if (!location || location.method !== "village_table") {
+  if (!location || (location.method !== "village_table" && location.method !== "pincode")) {
     limitations.push(msg("c2.risk.routeCoarse"));
   } else {
     const here = { lat: location.lat, lon: location.lon };
@@ -185,10 +186,22 @@ export function riskIntel(activity: CatalogActivity, location: LocationCandidate
   });
   sources.push(src(`Risk taxonomy: ${structural.length} entries matched`, `जोखिम सूची: ${structural.length} मेल`, "estimated"));
 
+  // Rainfall (Open-Meteo, fetched online and kept with the case) for rain-fed activities
+  const climate = location ? climateAt(location.lat, location.lon) : null;
+  const rainFlags: RiskFlagIntel[] = [];
+  if (climate && RAIN_SENSITIVE.has(activity.id)) {
+    rainFlags.push({
+      id: "rainfall_dependence", category: "seasonal", severity: rainRisk(climate), title: msg("c2.risk.rain.title"),
+      detail: msg("c2.risk.rain.detail", { share: Math.round(climate.monsoonShare * 100), dry: climate.dryMonths, cv: Math.round(climate.yearToYearCv * 100), annual: climate.annualMm }),
+      mitigation: null, confidence: "real",
+    });
+    sources.push(src(`Open-Meteo daily rainfall (ERA5), ${climate.years}, fetched ${climate.fetchedOn}`, `ओपन-मेटियो दैनिक वर्षा (ERA5), ${climate.years}, ${climate.fetchedOn} को लिया`, "real"));
+  }
+
   const fb = location ? feedbackFlags(feedback(location.district.id, activity.id)) : [];
   if (fb.length) sources.push(src(`Local feedback records: ${fb.length}`, `स्थानीय प्रतिक्रिया रिकॉर्ड: ${fb.length}`, "real"));
 
-  const flags = [routeFlag, seasonalFlag, ...structural, ...fb].sort((a, b) => RANK[b.severity] - RANK[a.severity]);
+  const flags = [routeFlag, seasonalFlag, ...rainFlags, ...structural, ...fb].sort((a, b) => RANK[b.severity] - RANK[a.severity]);
   return {
     confidence: "estimated", // route distance is always an estimate on device, so the combined analysis is too
     sources, limitations, overall: overallSeverity(flags), hubKm, hubName,

@@ -43,7 +43,7 @@ export function mergeExtraction(rules: Extraction, m: ModelReading | null, pendi
     }
   }
   const amt = best(m, "AMT");
-  if (ext.capital === undefined && amt) {
+  if (ext.capital === undefined && amt && !(/^\s*[1-9]\d{5}\s*$/.test(amt) && ext.locationText?.trim() === amt.trim())) {
     const v = extractCapital(amt, true);
     if (v !== null) {
       ext.capital = v;

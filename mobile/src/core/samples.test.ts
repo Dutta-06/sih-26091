@@ -4,7 +4,7 @@ import { initialState, reducerForTests, SAMPLE_PEOPLE, sessionInputs, type DemoC
 
 describe("example people across states", () => {
   for (const [i, p] of SAMPLE_PEOPLE.entries()) {
-    it(`${p.name} (${p.profile.locationText}) runs the whole journey`, () => {
+    it(`${p.name} (${p.profile.locationText}) runs the whole journey`, { timeout: 30_000 }, () => {
       const at = (to: DemoCheckpoint) =>
         computeCase(sessionInputs(reducerForTests({ ...initialState(), sampleIndex: i }, { type: "jump", to })));
       const report = at("report");

@@ -408,5 +408,17 @@
   "u4.anomaly.sales_slowdown.body": "ਪਿਛਲੇ 2 ਹਫ਼ਤਿਆਂ ਵਿੱਚ {actual} ਆਏ, ਜੋ ਇਸ ਮੌਸਮ ਦੇ ਆਮ {expected} ਦਾ ਸਿਰਫ਼ {pct}% ਹੈ।",
   "u4.anomaly.sales_slowdown.action": "ਮਹੀਨਾ ਖਤਮ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਕਦਮ ਚੁੱਕੋ: ਭਾਅ, ਸਮਾਨ ਤੇ ਆਪਣੇ ਨਿਯਮਿਤ ਗਾਹਕ ਜਾਂਚੋ।",
   "u1.more.person": "ਉਦਾਹਰਣ ਵਿਅਕਤੀ",
-  "u1.more.personNext": "ਅਗਲਾ"
+  "u1.more.personNext": "ਅਗਲਾ",
+  "u1.loc.villageCensus": "ਮਿਲ ਗਿਆ: {village}, {block}, {district} ਜ਼ਿਲ੍ਹਾ (ਜਨਗਣਨਾ 2011 ਦਾ ਪਿੰਡ)। ਸਥਾਨਕ ਜਾਂਚ ਇਸੇ ਪਿੰਡ ਨਾਲ ਹੋਵੇਗੀ।",
+  "u1.loc.pincode": "{district} ਜ਼ਿਲ੍ਹੇ ਵਿੱਚ {office} ਡਾਕਘਰ ਦਾ ਇਲਾਕਾ ਮਿਲਿਆ। ਸਥਾਨਕ ਜਾਂਚ ਇਸ ਪਿੰਨ ਇਲਾਕੇ ਦੇ ਵਿਚਕਾਰਲੇ ਹਿੱਸੇ ਨਾਲ ਹੋਵੇਗੀ।",
+  "core.c1.geo.pincode": "ਪਿੰਨ ਕੋਡ {pin} ਨਾਲ ਥਾਂ ਲਈ ({office} ਡਾਕਘਰ ਇਲਾਕੇ ਦਾ ਵਿਚਕਾਰ), ਸਹੀ ਪਿੰਡ ਨਹੀਂ।",
+  "c2.comp.mappedRelative": "ਔਨਲਾਈਨ ਨਕਸ਼ੇ 'ਤੇ ਦਰਜ ਕਾਰੋਬਾਰਾਂ ਤੋਂ ਗਿਣਿਆ ਅਤੇ ਰਾਜ ਦੀ ਔਸਤ ਨਾਲ ਮਿਲਾਇਆ; ਛੋਟੇ ਗੈਰ-ਰਸਮੀ ਕੰਮ ਅਕਸਰ ਛੁੱਟ ਜਾਂਦੇ ਹਨ।",
+  "g3.form.ifscUnknown": "ਇਸ IFSC ਕੋਡ ਦੀ ਕੋਈ ਬੈਂਕ ਸ਼ਾਖਾ ਨਹੀਂ ਹੈ। ਪਾਸਬੁੱਕ ਜਾਂ ਚੈੱਕ 'ਤੇ ਦੇਖ ਕੇ ਜਾਂਚੋ।",
+  "g3.form.pinOther": "ਇਹ ਪਿੰਨ ਕੋਡ {district} ਜ਼ਿਲ੍ਹੇ ਦਾ ਹੈ, {case} ਦਾ ਨਹੀਂ।",
+  "c2.risk.rain.title": "ਮੀਂਹ 'ਤੇ ਨਿਰਭਰ",
+  "c2.risk.rain.detail": "ਇੱਥੇ ਸਾਲ ਦਾ {share}% ਮੀਂਹ ({annual} ਮਿ.ਮੀ.) ਜੂਨ–ਸਤੰਬਰ ਵਿੱਚ ਪੈਂਦਾ ਹੈ, {dry} ਮਹੀਨੇ ਲਗਭਗ ਸੁੱਕੇ ਰਹਿੰਦੇ ਹਨ ਅਤੇ ਹਰ ਸਾਲ ਮੀਂਹ ਲਗਭਗ {cv}% ਘੱਟ-ਵੱਧ ਹੁੰਦਾ ਹੈ। ਚਾਰਾ, ਪਾਣੀ ਅਤੇ ਗਾਹਕਾਂ ਦੀ ਕਮਾਈ ਮੀਂਹ 'ਤੇ ਚੱਲਦੀ ਹੈ।",
+  "arch.src.overture": "Overture Maps",
+  "arch.src.indiapost": "India Post PIN",
+  "arch.src.ifsc": "Razorpay IFSC",
+  "arch.src.openmeteo": "Open-Meteo"
 }
