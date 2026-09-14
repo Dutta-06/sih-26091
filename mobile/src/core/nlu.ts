@@ -117,7 +117,9 @@ const LANGUAGE_NAMES: [RegExp, Lang][] = [
   [/(?<![\p{L}_])(punjabi|panjabi|ਪੰਜਾਬੀ|पंजाबी)(?![\p{L}_])/u, "pa"],
   [/(?<![\p{L}_])(kannada|ಕನ್ನಡ|कन्नड़)(?![\p{L}_])/u, "kn"],
 ];
-const isLanguageName = (s: string) => LANGUAGE_NAMES.some(([re]) => re.test(s.toLowerCase()));
+/** Place names that contain a language name ("Tamil Nadu") are not language requests. */
+const withoutPlaceNames = (s: string) => s.replace(/tamil\s*nadu|तमिल\s*नाडु|தமிழ்\s*நாடு/giu, " ");
+const isLanguageName = (s: string) => LANGUAGE_NAMES.some(([re]) => re.test(withoutPlaceNames(s.toLowerCase())));
 
 function cleanLocation(candidate: string): string | null {
   const out: string[] = [];
@@ -233,7 +235,7 @@ export function extract(text: string, pendingSlot: Slot | null): Extraction {
   if (category) out.category = category[0];
   if (SHG.test(lower)) out.shgMember = !/\b(not|no)\b[^.]*\b(shg|group)\b|नहीं[^।]*समूह|समूह[^।]*नहीं/u.test(lower);
   else if (LEX_SHG.test(lower)) out.shgMember = !NEGATION.some((n) => lower.includes(n));
-  const lang = LANGUAGE_NAMES.find(([re]) => re.test(lower));
+  const lang = LANGUAGE_NAMES.find(([re]) => re.test(withoutPlaceNames(lower)));
   if (lang) out.language = lang[1];
   return out;
 }

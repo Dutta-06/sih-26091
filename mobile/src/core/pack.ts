@@ -1,6 +1,9 @@
 /**
  * Typed loaders over the bundled data pack (src/core/data/*.json, written by scripts/build_datapack.py).
  *
+ * Coverage: every Census 2011 district (data/india_districts.json, scripts/build_india_districts.py). A few districts
+ * carry detailed village / POI / Udyam / feedback tables; the others get generated local tables (core/localgen.ts).
+ *
  * The open-data tables (villages, POIs, Udyam counts, price series, feedback) are a deterministic SAMPLE pack
  * standing in for real downloads (`_meta.json` → synthetic_sample: true). Callers label values read from these
  * tables "real" (they occupy the place of a real open source); state reference values are "estimated".
@@ -27,6 +30,8 @@ import docsJson from "./data/docs.json";
 import outcomeJson from "./data/outcome_seed.json";
 import stateRefJson from "./data/state_reference.json";
 import healthJson from "./data/health_thresholds.json";
+import indiaJson from "./data/india_districts.json";
+import { GEN_RADIUS_KM, localTables, localUdyam } from "./localgen";
 
 export interface PackMeta {
   synthetic_sample: boolean;
@@ -64,9 +69,38 @@ const lc = (s: string) => s.trim().toLowerCase();
 
 export const packMeta = (): PackMeta => metaJson as PackMeta;
 
+type IndiaRow = [string, string, string, number, number, number, number, number, 0 | 1];
+const norm = (s: string) => lc(s).replace(/[^\p{L}\p{M}\p{N}]+/gu, " ").trim();
+
 let _districts: PackDistrict[] | null = null;
+let _detailed: Set<string> | null = null;
+/** Detailed pack districts first, then every other Census 2011 district (generated local tables). */
 export function districts(): PackDistrict[] {
-  return (_districts ??= (districtsJson as unknown as PackDistrict[]).map((d) => ({ ...d, name: biFromKey(`place.district.${d.id}`, d.name) })));
+  if (_districts) return _districts;
+  const detailed = (districtsJson as unknown as PackDistrict[]).map((d) => ({ ...d, name: biFromKey(`place.district.${d.id}`, d.name) }));
+  _detailed = new Set(detailed.map((d) => d.id));
+  const taken = new Set(detailed.flatMap((d) => [d.name.en, ...d.aliases].map((a) => `${lc(d.state)}|${norm(a)}`)));
+  const rest: PackDistrict[] = [];
+  for (const [id, name, state, lat, lon, population, areaSqKm] of indiaJson as unknown as IndiaRow[]) {
+    const plain = name.replace(/\s*\(.*\)\s*/, "").trim();
+    const inner = /\((.*)\)/.exec(name)?.[1];
+    const variants = [name, plain, inner].filter((x): x is string => !!x);
+    if (variants.some((v) => taken.has(`${lc(state)}|${norm(v)}`)) || _detailed.has(id)) continue;
+    const aliases = [...new Set(variants.map(norm))];
+    rest.push({ id, name: biFromKey(`place.district.${id}`, { en: plain, hi: plain }), aliases, state, lat, lon, population, areaSqKm });
+  }
+  return (_districts = [...detailed, ...rest]);
+}
+
+/** True for districts with detailed pack tables (villages, POIs, Udyam extract, feedback). */
+export function isDetailed(id: string): boolean {
+  districts();
+  return _detailed!.has(id);
+}
+
+/** Districts without detailed tables whose generated disc can reach within radiusKm of the point. */
+function generatedNear(lat: number, lon: number, radiusKm: number): PackDistrict[] {
+  return districts().filter((d) => !isDetailed(d.id) && distanceKm(lat, lon, d.lat, d.lon) <= radiusKm + GEN_RADIUS_KM);
 }
 
 /** District by id (case-insensitive id or English name). */
@@ -110,10 +144,17 @@ export function distanceKm(lat1: number, lon1: number, lat2: number, lon2: numbe
   return 2 * R * Math.asin(Math.sqrt(a));
 }
 
+/** Villages (detailed tables and generated settlements) within radiusKm. */
+export function settlementsNear(lat: number, lon: number, radiusKm: number): PackVillage[] {
+  const all = [...villages(), ...generatedNear(lat, lon, radiusKm).flatMap((d) => localTables(d).settlements)];
+  return all.filter((v) => distanceKm(lat, lon, v.lat, v.lon) <= radiusKm);
+}
+
 /** POIs within radiusKm, nearest first. */
 export function poisNear(lat: number, lon: number, radiusKm: number, filter?: (p: PackPoi) => boolean): { poi: PackPoi; km: number }[] {
   const out: { poi: PackPoi; km: number }[] = [];
-  for (const poi of pois()) {
+  const candidates = [...pois(), ...generatedNear(lat, lon, radiusKm).flatMap((d) => localTables(d).pois)];
+  for (const poi of candidates) {
     if (filter && !filter(poi)) continue;
     const km = distanceKm(lat, lon, poi.lat, poi.lon);
     if (km <= radiusKm) out.push({ poi, km: Math.round(km * 100) / 100 });
@@ -134,7 +175,7 @@ function nicMatches(code: string, prefix: string): boolean {
 /** Registered enterprises in a district for the NIC class/prefix; null when the district is not in the extract. */
 export function udyam(districtId: string, nicPrefix: string): number | null {
   const d = district(districtId);
-  const table = d ? UDYAM[d.id] : undefined;
+  const table = d ? UDYAM[d.id] ?? (isDetailed(d.id) ? undefined : localUdyam(d)) : undefined;
   if (!table || nicPrefix.replace(/\D/g, "").length < 2) return null;
   let count = 0;
   for (const [nic, c] of Object.entries(table)) if (nicMatches(nic, nicPrefix)) count += c;
@@ -143,7 +184,7 @@ export function udyam(districtId: string, nicPrefix: string): number | null {
 
 /** State total over the pack districts in that state (count + their population); null when none are covered. */
 export function udyamState(state: string, nicPrefix: string): { count: number; population: number } | null {
-  const ds = districts().filter((d) => lc(d.state) === lc(state) && UDYAM[d.id]);
+  const ds = districts().filter((d) => lc(d.state) === lc(state) && (UDYAM[d.id] || !isDetailed(d.id)));
   if (!ds.length) return null;
   let count = 0;
   let population = 0;
@@ -198,7 +239,32 @@ type StateRefFile = {
   national_average_density: number;
   districts: Record<string, { state: string; lat: number; lon: number; aliases?: string[] }>;
 };
-export const stateReference = (): StateRefFile => stateRefJson as unknown as StateRefFile;
+let _stateRef: StateRefFile | null = null;
+/**
+ * State reference from the repository, completed for states and union territories it lacks (Delhi, Goa, the
+ * North-East, J&K, …) with Census 2011 density and a population-weighted centre from the district table.
+ */
+export function stateReference(): StateRefFile {
+  if (_stateRef) return _stateRef;
+  const base = stateRefJson as unknown as StateRefFile;
+  const states = { ...base.states };
+  const byState = new Map<string, IndiaRow[]>();
+  for (const row of indiaJson as unknown as IndiaRow[]) byState.set(row[2], [...(byState.get(row[2]) ?? []), row]);
+  const HIGH = new Set(["Delhi", "Goa", "Chandigarh", "Puducherry"]);
+  for (const [state, rows] of byState) {
+    if (states[state]) continue;
+    const pop = rows.reduce((t, r) => t + r[5], 0);
+    const area = rows.reduce((t, r) => t + r[6], 0);
+    states[state] = {
+      density: Math.round(pop / Math.max(1, area)),
+      lat: Math.round((rows.reduce((t, r) => t + r[3] * r[5], 0) / pop) * 100) / 100,
+      lon: Math.round((rows.reduce((t, r) => t + r[4] * r[5], 0) / pop) * 100) / 100,
+      purchasing_power: HIGH.has(state) ? "high" : "medium",
+      aliases: [],
+    };
+  }
+  return (_stateRef = { ...base, states });
+}
 
 const normName = (s: string) => lc(s).replace(/-/g, " ").split(/\s+/).filter(Boolean).join(" ");
 

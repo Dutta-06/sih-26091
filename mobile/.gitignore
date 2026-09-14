@@ -10,3 +10,6 @@ android/local.properties
 android/app/src/main/assets/public/
 release/
 *.tsbuildinfo
+
+# downloaded source data for scripts/build_india_districts.py
+scripts/cache/

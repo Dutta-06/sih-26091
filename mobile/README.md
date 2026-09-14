@@ -27,6 +27,13 @@ else. Parity tests compare the TypeScript port with outputs exported from the Py
 - **Copied from the repo:** state reference, scheme guidelines, risk taxonomy, sector corpus, the synthetic outcome seed and the health thresholds.
 - **Synthetic sample tables** (`_meta.json` → `synthetic_sample: true`), standing in for downloads of Census/LGD, OpenStreetMap, Udyam and Agmarknet: 9 districts, 290 villages (including repeated names), about 6,000 points of interest, enterprise counts and 36-month price series.
 
+**All of India:** `india_districts.json` (built by `scripts/build_india_districts.py` from the Census 2011 district abstract and
+district boundaries) lists all 639 Census 2011 districts with real names, state, centre, population and area; 63 are placed
+approximately because they were created after the boundary data. The nine detailed districts keep their tables. Every
+other district gets local tables generated on the phone from its own figures (`src/core/localgen.ts`, names and regional
+rural banks from `regions.json`, known craft clusters as density factors). A location typed anywhere in India resolves to
+its district headquarters.
+
 The screens carry no sample-data or demo labels; _meta.json and this README record what is synthetic. Outcome counts are shown as aseline (the synthetic seed) and ollow-up (records saved on the phone).
 
 ## Languages
@@ -37,7 +44,7 @@ in `<code>.nlu.json`. Check a language with
 script. `en.json` is a flat export of the English dictionary. Retrieved scheme and sector documents stay in English.
 
 ## Demo tips
-- **Presenter controls:** tap the version line in More 7 times to show them (tap 7 times again to hide). They offer checkpoints that load sample inputs (results are still computed), a "months pass" clock, and a choice of sample SMS inbox (typical year or monsoon disruption).
+- **Presenter controls:** tap the version line in More 7 times to show them (tap 7 times again to hide). Pick one of six example people (Bhadohi, Tiruppur, Murshidabad, Ludhiana, Nashik, Gaya); the controls offer checkpoints that load sample inputs (results are still computed), a "months pass" clock, and a choice of sample SMS inbox (typical year or monsoon disruption).
 - **Voice:** uses the phone's own speech recognition and text-to-speech; you can always type.
 - **Outcome records:** real records are saved on the phone when the user answers a follow-up; seed records appear as baseline counts.
 
@@ -45,7 +52,7 @@ script. `en.json` is a flat export of the English dictionary. Retrieved scheme a
 ```bash
 npm install
 npm run dev          # http://localhost:5173
-npm test             # 342 tests: engine and backend parity, core pipeline, i18n coverage
+npm test             # 350 tests: engine and backend parity, core pipeline, i18n coverage
 python scripts/build_datapack.py          # rebuild the data pack (run from mobile/)
 python scripts/export_parity_c1.py        # refresh parity fixtures after backend changes (also c2, c3)
 ```

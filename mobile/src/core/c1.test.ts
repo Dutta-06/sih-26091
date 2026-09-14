@@ -3,19 +3,49 @@ import fixtures from "./__fixtures__/c1.json";
 import { resolveLocation, haversineKm } from "./geo";
 import { classifyIntent, detectScript, extract } from "./nlu";
 import {
-  district, districts, docs, feedback, healthThresholds, outcomeSeed, packMeta, poisNear, priceSeries, stateRef, udyam,
-  udyamState, villages,
+  district, districts, docs, feedback, healthThresholds, isDetailed, outcomeSeed, packMeta, poisNear, priceSeries, settlementsNear,
+  stateRef, udyam, udyamState, villages,
 } from "./pack";
 import { retrieve } from "./retrieval";
 import catalog from "../../../data/reference/business_catalog.json";
 
+describe("all-India coverage", () => {
+  it("reads a place with a language word in it as a place, not a language request", () => {
+    const e = extract("I am Meena, I live in Coimbatore, Tamil Nadu and have 15000 rupees saved, I want to start a tea stall", null);
+    expect(e.locationText).toBe("Coimbatore, Tamil Nadu");
+    expect(e.language).toBeUndefined();
+    expect(resolveLocation(e.locationText!).chosen?.district.name.en).toBe("Coimbatore");
+    expect(extract("tamil mein baat karo", null).language).toBe("ta");
+  });
+
+  it("resolves districts anywhere and generates consistent local tables", () => {
+    for (const [q, state] of [["Tiruppur, Tamil Nadu", "Tamil Nadu"], ["Murshidabad", "West Bengal"], ["Hyderabad", "Telangana"], ["Central Delhi", "Delhi"], ["Kamrup, Assam", "Assam"]] as const) {
+      const r = resolveLocation(q);
+      expect(r.chosen?.method, q).toBe("district_table");
+      expect(r.chosen!.district.state).toBe(state);
+      const near = settlementsNear(r.chosen!.lat, r.chosen!.lon, 10);
+      expect(near.length).toBeGreaterThan(5);
+      expect(poisNear(r.chosen!.lat, r.chosen!.lon, 10).some((p) => p.poi.kind === "bank")).toBe(true);
+      expect(udyam(r.chosen!.district.id, "1410")).toBeGreaterThan(0);
+    }
+    // deterministic: the same district always gets the same tables
+    const a = poisNear(11.1, 77.34, 5).map((p) => p.poi.id).join();
+    expect(poisNear(11.1, 77.34, 5).map((p) => p.poi.id).join()).toBe(a);
+    // states missing from the repository reference are completed from the district table
+    expect(stateRef("Goa")?.density).toBeGreaterThan(100);
+  });
+});
+
 describe("pack", () => {
-  it("is flagged as a synthetic sample and covers the nine reference districts", () => {
+  it("is flagged as a synthetic sample, covers every Census 2011 district and details nine of them", () => {
     expect(packMeta().synthetic_sample).toBe(true);
-    expect(districts().map((d) => d.id).sort()).toEqual(
+    expect(districts().filter((d) => isDetailed(d.id)).map((d) => d.id).sort()).toEqual(
       ["bhadohi", "dharwad", "gaya", "jaunpur", "mirzapur", "muzaffarpur", "nashik", "prayagraj", "varanasi"],
     );
-    for (const d of districts()) {
+    expect(districts().length).toBeGreaterThan(630);
+    expect(new Set(districts().map((d) => d.id)).size).toBe(districts().length);
+    expect(districts().filter((d) => /allahabad|bhadohi/i.test(d.name.en))).toHaveLength(1); // merged into the detailed rows
+    for (const d of districts().filter((x) => isDetailed(x.id))) {
       const n = villages().filter((v) => v.district === d.id).length;
       expect(n).toBeGreaterThanOrEqual(25);
       expect(n).toBeLessThanOrEqual(40);
@@ -49,13 +79,13 @@ describe("pack", () => {
     expect(udyam("nowhere", "1410")).toBeNull();
     const up = udyamState("Uttar Pradesh", "1410")!;
     expect(up.population).toBeGreaterThan(10_000_000);
-    expect(udyamState("Kerala", "1410")).toBeNull();
+    expect(udyamState("Kerala", "1410")!.population).toBeGreaterThan(30_000_000); // generated for every district
     const wheat = priceSeries("Wheat", "Uttar Pradesh")!;
     expect(wheat.months).toHaveLength(36);
     expect(wheat.months[35].month).toBe("2026-06");
     expect(wheat.months[0].month).toBe("2023-07");
     expect(priceSeries("Wheat", "Kerala")).toBeNull();
-    for (const d of districts()) {
+    for (const d of districts().filter((x) => isDetailed(x.id))) {
       const f = feedback(d.id, null);
       expect(f.length).toBeGreaterThanOrEqual(3);
       expect(f.length).toBeLessThanOrEqual(6);

@@ -10,8 +10,7 @@
  *    everywhere, because no sourced per-sector figure exists in the repo.
  *  - HOUSEHOLD_SIZE 4.8 (≈ Census 2011 all-India average).
  */
-import { poisNear, stateRef, villages } from "../pack";
-import { haversineKm } from "../geo";
+import { poisNear, settlementsNear, stateRef } from "../pack";
 import type { LocationCandidate, MarketReachIntel, PackPoi } from "../types";
 import { msg, RADIUS_KM, src, usableCoords } from "./catalog";
 
@@ -37,7 +36,7 @@ export interface PopulationEstimate {
 
 /** census.population_within_radius → state_density_estimate fallback. */
 export function populationWithinRadius(lat: number, lon: number, radiusKm: number, state: string | null): PopulationEstimate {
-  const hits = villages().filter((v) => haversineKm({ lat, lon }, v) <= radiusKm);
+  const hits = settlementsNear(lat, lon, radiusKm);
   if (hits.length) return { population: hits.reduce((s, v) => s + v.population, 0), confidence: "real", villages: hits.length };
   const ref = state ? stateRef(state) : null;
   if (!ref) return { population: null, confidence: "estimated", villages: 0 };
