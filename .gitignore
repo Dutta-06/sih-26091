@@ -18,6 +18,11 @@ env/
 *.db
 *.sqlite3
 
+# Generated runtime data (session snapshots, indexes, synthetic seed inserts)
+data/runtime/
+data/vector_store/
+config/.env
+
 # Testing and caches
 .pytest_cache/
 .coverage

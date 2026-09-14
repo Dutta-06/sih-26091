@@ -1,9 +1,28 @@
-pydantic>=2.7.0
-langgraph>=0.1.0
-langchain-core>=0.2.0
-fastapi>=0.110.0
-uvicorn>=0.29.0
-networkx>=3.2.0
-httpx>=0.27.0
-pytest>=8.0.0
-python-dotenv>=1.0.0
+# Orchestration and schemas
+langgraph>=1.0,<2
+langchain-core>=0.3
+pydantic>=2.7
+pydantic-settings>=2.2
+python-dotenv>=1.0
+
+# API and CLI
+fastapi>=0.110
+uvicorn>=0.29
+python-multipart>=0.0.9
+rich>=13
+
+# Data connectors and analysis
+httpx>=0.27
+requests>=2.31
+networkx>=3.2
+numpy>=1.26
+pandas>=2.1
+scikit-learn>=1.4
+pypdf>=4.0
+
+# Tests
+pytest>=8.0
+
+# Optional (not required to run):
+#   statsmodels            - used for seasonal decomposition when installed (numpy fallback otherwise)
+#   transformers, torch    - AI4Bharat IndicTrans2 / Indic ASR (set INDIC_TRANSLATION_ENABLED=true)
