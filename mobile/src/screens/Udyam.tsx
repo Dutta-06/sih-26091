@@ -8,7 +8,7 @@ import { useNav } from "../nav";
 import { useStore } from "../state/store";
 import { Button, Card, Note, Progress, Screen, Section, Segmented } from "../ui";
 import { useApplicant } from "./g3/applicant";
-import { PackNote } from "./g3/bits";
+import { RulesNote } from "./g3/bits";
 import { placeOf, udyamNumber } from "./g3/model";
 import { activityDisplay } from "./g3/util";
 import { LoanForm } from "./w3/LoanForm";
@@ -202,8 +202,7 @@ export default function Udyam() {
         </>
       )}
 
-      <p className="mt-6 px-2 text-center text-[11px] leading-snug text-ink-3">{t("g3.udyam.simulated")}</p>
-      <PackNote uses="rules" />
+      <RulesNote />
     </Screen>
   );
 }

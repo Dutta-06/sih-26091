@@ -2,12 +2,13 @@ import { LANG_INFO } from "../i18n";
 import { Building2, CalendarClock, ChevronRight, ClipboardList, Flag, History, Inbox, Languages, ListChecks, MonitorPlay, RotateCcw, Rocket, ShieldCheck, Users, Volume2, Workflow } from "lucide-react";
 import { useState } from "react";
 import { tap } from "../lib/haptics";
+import { setToolsUnlocked, useToolsUnlocked } from "../lib/tools";
 import { ACTIVITIES } from "../data/activities";
 import { useI18n } from "../i18n";
 import { rupees } from "../lib/format";
 import { useNav, type Route, type Tab } from "../nav";
 import { todayOf, useStore, type DemoCheckpoint, type JourneyState } from "../state/store";
-import { Button, Card, ListRow, Reveal, Section, Segmented, Sheet, TabScreen } from "../ui";
+import { Button, Card, ListRow, Reveal, Section, Segmented, Sheet, TabScreen, toast } from "../ui";
 import { chatName, placeOf, profileStarted } from "./g1/conversation";
 import { CHAT_LANG_LABEL } from "./w1/chatI18n";
 import { LanguageSwitch } from "./w1/LanguageSwitch";
@@ -27,9 +28,20 @@ const JUMPS: { to: DemoCheckpoint; tab: Tab; route?: Route }[] = [
 
 export default function More() {
   const { t, pick, lang } = useI18n();
-  const { state, dispatch, set } = useStore();
+  const { state, dispatch, set } = useStore();
   const { push, goto } = useNav();
   const [confirmReset, setConfirmReset] = useState(false);
+  const tools = useToolsUnlocked();
+  const [versionTaps, setVersionTaps] = useState(0);
+  const tapVersion = () => {
+    const n = versionTaps + 1;
+    setVersionTaps(n >= 7 ? 0 : n);
+    if (n >= 7) {
+      tap();
+      setToolsUnlocked(!tools);
+      toast(t(tools ? "more.tools.off" : "more.tools.on"));
+    }
+  };
 
   const profile = state.profile;
   const name = chatName(state.chat);
@@ -122,6 +134,7 @@ export default function More() {
         </Card>
       </Section>
 
+      {tools && (
       <Section title={t("more.presenter")}>
         <Card tone="sand">
           <div className="flex items-start gap-3">
@@ -167,12 +180,19 @@ export default function More() {
           </Button>
         </Card>
       </Section>
+      )}
+
+      {!tools && (
+        <Button variant="secondary" size="md" icon={RotateCcw} className="mt-6 w-full text-clay-700" onClick={() => setConfirmReset(true)}>
+          {t("more.reset")}
+        </Button>
+      )}
 
       <div className="mt-8 flex flex-col items-center gap-1 text-center text-xs text-ink-3">
-        <span className="flex items-center gap-1.5">
+        <button type="button" onClick={tapVersion} className="flex min-h-8 items-center gap-1.5 px-2">
           <Rocket className="size-3.5" />
-          {t("more.version", { v: "0.1.0" })}
-        </span>
+          {t("more.version", { v: "1.0" })}
+        </button>
         <span className="flex items-center gap-1.5">
           <Flag className="size-3.5" />
           {t("more.footer")}

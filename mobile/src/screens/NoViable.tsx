@@ -10,7 +10,6 @@ import { useStore } from "../state/store";
 import { Badge, Button, Card, IconBubble, Note, Reveal, Screen, Section, Sheet } from "../ui";
 import { activityLabel, cheapestViable, placeOf } from "./g2/feasibility";
 import { useMsg } from "./g2/msg";
-import { PackNote } from "./g2/ReportSections";
 
 export default function NoViable() {
   const { t, pick } = useI18n();
@@ -170,7 +169,6 @@ export default function NoViable() {
           {t("noViable.honest")}
         </Note>
       </div>
-      <PackNote />
 
       <Sheet open={sheet} onClose={() => setSheet(false)} title={t("noViable.sheet.title")}>
         {requested ? <Note tone="azure">{t("noViable.sheet.done")}</Note> : <p className="text-[15px] leading-snug text-ink-2">{t("noViable.sheet.body", { district: place ? pick(place.district.name) : "—" })}</p>}

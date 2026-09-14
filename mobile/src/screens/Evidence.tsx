@@ -6,7 +6,6 @@ import { useNav } from "../nav";
 import { useStore, type Observation } from "../state/store";
 import { Badge, Button, Card, ConfidenceBadge, cx, IconBubble, levelTone, Note, Reveal, Screen, Section } from "../ui";
 import { activityLabel, caseIntel, placeOf } from "./g2/feasibility";
-import { PackNote } from "./g2/ReportSections";
 import { evidenceFor, observationUse, parseFeedback, parseSurvey, type PackEvidence } from "./w2/evidence";
 
 function Stars({ n }: { n: number }) {
@@ -90,7 +89,6 @@ export default function Evidence() {
           </div>
         )}
       </Section>
-      <PackNote />
     </Screen>
   );
 }

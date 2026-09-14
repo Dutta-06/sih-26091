@@ -1,5 +1,5 @@
 import { LANG_INFO } from "../i18n";
-import { Banknote, Check, ClipboardList, FileCheck2, FlaskConical, Rocket, ShieldCheck, UserRoundCheck, XCircle } from "lucide-react";
+import { Banknote, Check, ClipboardList, FileCheck2, Rocket, ShieldCheck, UserRoundCheck, XCircle } from "lucide-react";
 import { motion } from "motion/react";
 import { useCallback, useState } from "react";
 import { tap } from "../App";
@@ -9,7 +9,7 @@ import { rupees } from "../lib/format";
 import { useNav } from "../nav";
 import { useStore } from "../state/store";
 import { Badge, Button, Card, ListRow, Note, Section, Screen, cx } from "../ui";
-import { PackNote, RulesChip } from "./g3/bits";
+import { RulesNote, RulesChip } from "./g3/bits";
 import { Celebration } from "./g3/Celebration";
 import { applicationRef, officerEvents, placeOf, stageDates, stageIndex, STAGE_ORDER } from "./g3/model";
 import { activityDisplay } from "./g3/util";
@@ -190,7 +190,7 @@ export default function Application() {
           <Section>
             <Card tone="marigold">
               <div className="flex items-center gap-2">
-                <FlaskConical className="size-5 text-marigold-600" />
+                <UserRoundCheck className="size-5 text-marigold-600" />
                 <p className="text-[15px] font-semibold">{t("app.demo.title")}</p>
               </div>
               <p className="mt-1 text-[13px] leading-snug text-ink-2">{t("g3.app.demo.body", { officer })}</p>
@@ -206,7 +206,7 @@ export default function Application() {
         )
       )}
 
-      <PackNote uses="rules" />
+      <RulesNote />
       {celebrate && <Celebration kind={celebrate} amount={rupees(plan.loan)} onDone={endCelebration} />}
     </Screen>
   );

@@ -11,7 +11,6 @@ import { useStore } from "../state/store";
 import { Badge, Card, cx, Note, Reveal, Screen, Section } from "../ui";
 import { activityLabel, placeOf } from "./g2/feasibility";
 import { useMsg } from "./g2/msg";
-import { PackNote } from "./g2/ReportSections";
 import { ScoreBar, ScoreLegend } from "./w2/ScoreBar";
 import { ShortlistSheet } from "./w2/ShortlistSheet";
 
@@ -123,7 +122,6 @@ export default function Shortlist() {
           })}
         </div>
       </Section>
-      <PackNote />
       <ShortlistSheet
         item={open}
         rank={open && open.feasible ? feasible.indexOf(open) + 1 : 0}

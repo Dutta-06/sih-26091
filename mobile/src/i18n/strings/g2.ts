@@ -141,8 +141,6 @@ const g2: Strings = {
     "report.legendEst": "Worked out from planning assumptions. Check locally before you rely on it.",
     "report.ctaPlan": "See loan plan",
     "report.ctaReview": "See why {name} was not recommended",
-    "g2.pack.sample": "Sample data pack on this phone ({villages} villages, {pois} places) — stands in for Census, map and registry downloads; not observed values.",
-    "g2.pack.real": "Data pack on this phone.",
 
     // Map
     "map.title": "Market map",
@@ -315,8 +313,6 @@ const g2: Strings = {
     "report.legendEst": "योजना के अनुमानों से निकाली गई। भरोसा करने से पहले स्थानीय स्तर पर जाँच लें।",
     "report.ctaPlan": "लोन योजना देखें",
     "report.ctaReview": "{name} की सलाह क्यों नहीं दी, देखें",
-    "g2.pack.sample": "इस फ़ोन पर नमूना डेटा पैक ({villages} गाँव, {pois} जगहें) — जनगणना, नक्शे और रजिस्टर की जगह पर; असली देखे गए आँकड़े नहीं।",
-    "g2.pack.real": "इस फ़ोन पर डेटा पैक।",
 
     "map.title": "बाज़ार का नक्शा",
     "map.subtitle": "{village} के आस-पास {r} किमी",

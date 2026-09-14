@@ -1,4 +1,4 @@
-import { AlertTriangle, FlaskConical, Shuffle } from "lucide-react";
+import { AlertTriangle, Shuffle, Users } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cachedPortfolio, COHORT_CAPITAL_RANGE, computePortfolioChunked, DISBURSED_SHARE, type PortfolioMetrics } from "../core/portfolio";
 import { district } from "../core/pack";
@@ -39,7 +39,7 @@ export default function Agency() {
   const disclosure = (
     <Reveal>
       <div className="mt-2">
-        <Badge tone="info" icon={FlaskConical}>{t("u4.agency.synthetic")}</Badge>
+        <Badge tone="info" icon={Users}>{t("u4.agency.synthetic")}</Badge>
       </div>
     </Reveal>
   );
@@ -187,7 +187,7 @@ export default function Agency() {
       </Reveal>
 
       <div className="mt-4 grid gap-2">
-        <Note tone="marigold" icon={FlaskConical}>{t("u4.agency.method", { n: m.total, lo: rupees(COHORT_CAPITAL_RANGE[0]), hi: rupees(COHORT_CAPITAL_RANGE[1]), share: Math.round(DISBURSED_SHARE * 100) })}</Note>
+        <Note tone="sand">{t("u4.agency.method", { n: m.total, lo: rupees(COHORT_CAPITAL_RANGE[0]), hi: rupees(COHORT_CAPITAL_RANGE[1]), share: Math.round(DISBURSED_SHARE * 100) })}</Note>
         <Note tone="azure">{t("agency.note")}</Note>
       </div>
     </Screen>

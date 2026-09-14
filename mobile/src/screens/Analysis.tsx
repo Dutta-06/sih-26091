@@ -12,7 +12,6 @@ import { Badge, Button, ConfidenceBadge, cx, Screen } from "../ui";
 import { placeOf } from "./g1/conversation";
 import { AGENT_ORDER, confidenceOf, findingLine, type AgentId } from "./g1/findings";
 import { AGENT_ICONS, OrchestratorDiagram } from "./g1/OrchestratorDiagram";
-import { PackNote } from "./g1/PackNote";
 import { useFmt } from "./w1/chatI18n";
 
 /* Animation timeline per attempt (ms). Only the pacing is fixed; every line shown is computed. */
@@ -166,7 +165,6 @@ export default function Analysis() {
           </motion.div>
         )}
       </div>
-      <PackNote light />
     </Screen>
   );
 }

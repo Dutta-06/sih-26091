@@ -8,7 +8,6 @@ import { useNav } from "../nav";
 import { todayOf, uid, useStore, type Observation } from "../state/store";
 import { Button, Card, Chip, cx, Note, Progress, Reveal, Screen, Section, Segmented } from "../ui";
 import { activityLabel, placeOf } from "./g2/feasibility";
-import { PackNote } from "./g2/ReportSections";
 import { FEEDBACK_PRESETS, FEEDBACK_TOPICS, SURVEY_QUESTIONS, tallies, type EvidenceTopic } from "./w2/evidence";
 
 type Mode = "resident" | "funded";
@@ -271,7 +270,6 @@ export default function Survey() {
       <div className="mt-4">
         <Note>{t("survey.privacy")}</Note>
       </div>
-      <PackNote />
     </Screen>
   );
 }

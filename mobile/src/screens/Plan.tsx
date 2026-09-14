@@ -8,7 +8,7 @@ import { rupees } from "../lib/format";
 import { useNav } from "../nav";
 import { todayOf, useStore } from "../state/store";
 import { Button, Card, ListRow, Note, Reveal, Section, TabScreen, toast } from "../ui";
-import { PackNote } from "./g3/bits";
+import { RulesNote } from "./g3/bits";
 import { Calculator } from "./g3/Calculator";
 import { Budget, EmptyPlan, PlanHero, Repayment } from "./g3/PlanSections";
 import { SLIDER_MIN } from "./g3/SavingsSlider";
@@ -79,7 +79,7 @@ export default function Plan() {
           <EmptyPlan hasProfile={hasProfile} onAsk={() => switchTab("assistant")} onReport={() => push({ name: view.feasibility.exhausted ? "noViable" : "report" })} />
         </Reveal>
         <Section title={t("plan.calc.titlePreview")}>{calculator}</Section>
-        <PackNote uses="rules" />
+        <RulesNote />
       </TabScreen>
     );
   }
@@ -153,7 +153,6 @@ export default function Plan() {
         </Button>
       </Section>
 
-      <PackNote />
     </TabScreen>
   );
 }

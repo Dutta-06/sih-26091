@@ -9,7 +9,7 @@ import { ratio, rupees } from "../lib/format";
 import { useNav } from "../nav";
 import { useCase } from "../state/store";
 import { Badge, Button, Card, Note, Reveal, Screen, Section } from "../ui";
-import { PackNote, RulesChip } from "./g3/bits";
+import { RulesChip } from "./g3/bits";
 import { seasonView } from "./g3/model";
 import { activityDisplay, coverageTone } from "./g3/util";
 import { Rows, SeasonBars, StepCard } from "./w3/EarningsSteps";
@@ -214,7 +214,6 @@ export default function Earnings() {
         </Card>
       </Section>
 
-      <PackNote />
     </Screen>
   );
 }

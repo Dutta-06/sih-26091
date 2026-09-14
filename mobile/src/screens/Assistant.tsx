@@ -2,6 +2,7 @@ import { Languages, Mic, RotateCcw, SendHorizontal, Sparkles } from "lucide-reac
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { tap } from "../lib/haptics";
+import { useToolsUnlocked } from "../lib/tools";
 import { useI18n } from "../i18n";
 import { canListen, speak, voiceCapabilities } from "../lib/speech";
 import { useNav, type Route } from "../nav";
@@ -53,6 +54,7 @@ function applyLocal(input: ConvInput, user: ChatMessage, r: ConvResult): ConvInp
 
 export default function Assistant() {
   const { t } = useI18n();
+  const tools = useToolsUnlocked();
   const { cl, tc, actName } = useChatI18n();
   const { state, dispatch, set, view } = useStore();
   const { push, switchTab } = useNav();
@@ -292,7 +294,7 @@ export default function Assistant() {
         )}
         <div className="scroll-area -mx-4 mb-2.5 flex gap-2 overflow-x-auto px-4 empty:hidden">
           {!busy && pendingSlot === "name" && <Chip onClick={() => void turn(tc("u1.ans.skip"), skipName(conv()))}>{tc("u1.chip.skip")}</Chip>}
-          {!busy && !complete && (
+          {!busy && !complete && tools && (
             <Chip icon={Sparkles} onClick={() => void runSample()}>
               <span className="whitespace-nowrap">{tc("u1.chip.sample")}</span>
             </Chip>

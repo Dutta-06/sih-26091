@@ -1,4 +1,4 @@
-import { CalendarCheck, CheckCircle2, ChevronRight, Clock, Database, HeartPulse, Hourglass, Meh, ThumbsDown, ThumbsUp, type LucideIcon } from "lucide-react";
+import { CalendarCheck, CheckCircle2, ChevronRight, Database, HeartPulse, Hourglass, Meh, ThumbsDown, ThumbsUp, type LucideIcon } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { tap } from "../App";
@@ -22,7 +22,7 @@ const ANSWERS: { id: Answer; icon: LucideIcon }[] = [
 export default function Outcome() {
   const { t, lang } = useI18n();
   const { state, view, lc, set, dispatch } = useLifecycle();
-  const { push, switchTab } = useNav();
+  const { push } = useNav();
   const [answer, setAnswer] = useState<Answer | null>(null);
   const chosen = state.interventionChosen;
 
@@ -97,9 +97,6 @@ export default function Outcome() {
               </div>
             </div>
             {before !== null && <p className="mt-3 rounded-xl bg-sand px-3 py-2 text-[13px] text-ink-2">{t("u4.outcome.beforeWas", { score: Math.round(before), month: monthLabel(chosen.month, lang) })}</p>}
-            <Button variant="ghost" size="md" icon={Clock} className="mt-2 w-full" onClick={() => switchTab("more")}>
-              {t("u4.presenter.advance")}
-            </Button>
           </Card>
         </Reveal>
         {chosenCard}

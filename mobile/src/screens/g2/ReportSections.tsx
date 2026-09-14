@@ -1,7 +1,6 @@
 import { AlertTriangle, ArrowRight, Building2, Bus, Factory, GraduationCap, Landmark, Map as MapIcon, Package, ShoppingBasket, Sparkles, Store, Truck, Users, type LucideIcon } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { MONTHS } from "../../core/intel/catalog";
-import { packMeta } from "../../core/pack";
 import type { Confidence, FeasibilityAttempt, Intel, IntelMeta, PackPoi, Swot } from "../../core/types";
 import { useI18n } from "../../i18n";
 import { rupees } from "../../lib/format";
@@ -392,13 +391,3 @@ export function ConfidenceLegend({ i }: { i: number }) {
   );
 }
 
-/** Disclosure wherever bundled data-pack values are shown (reads `_meta.json`). */
-export function PackNote() {
-  const { t } = useI18n();
-  const meta = packMeta() as ReturnType<typeof packMeta> & { counts?: { villages?: number; pois?: number } };
-  return (
-    <p className="mt-6 text-center text-[11px] leading-snug text-ink-3">
-      {meta.synthetic_sample ? t("g2.pack.sample", { villages: meta.counts?.villages ?? "—", pois: meta.counts?.pois ?? "—" }) : t("g2.pack.real")}
-    </p>
-  );
-}

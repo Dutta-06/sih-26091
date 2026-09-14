@@ -345,11 +345,6 @@ export function Note({ children, icon: Icon = Info, tone = "sand" }: { children:
   );
 }
 
-/** Subtle disclosure shown on data screens of the investor demo. */
-export function SampleDataNote() {
-  const { t } = useI18n();
-  return <p className="mt-6 text-center text-[11px] text-ink-3">{t("demo.sampleData")}</p>;
-}
 
 /** Bottom sheet modal, portalled to the app root so it always sits above the tab bar. */
 export function Sheet({ open, onClose, title, children }: { open: boolean; onClose: () => void; title?: string; children: ReactNode }) {

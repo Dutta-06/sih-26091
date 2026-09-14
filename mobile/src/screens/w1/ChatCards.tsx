@@ -56,7 +56,6 @@ export function LocationChoices({ query, selected, active, onPick }: { query: st
       })}
       <div className="flex items-center gap-2 px-1">
         <ConfidenceBadge value="real" compact />
-        <p className="text-[11px] text-ink-3">{tc("u1.pack.note")}</p>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ import { useNav } from "../nav";
 import { useStore } from "../state/store";
 import { Badge, Button, Chip, ConfidenceBadge, cx, Note, Screen, Sheet } from "../ui";
 import { activityLabel, caseIntel, placeOf } from "./g2/feasibility";
-import { PackNote, PLACE_ICON } from "./g2/ReportSections";
+import { PLACE_ICON } from "./g2/ReportSections";
 
 type Layer = "markets" | "competitors" | "suppliers" | "schools";
 const LAYERS: { id: Layer; icon: typeof Store }[] = [
@@ -218,7 +218,6 @@ export default function MapScreen() {
         <p className="mt-3 text-[11px] leading-snug text-ink-3">{t("g2.map.projection", { km: scaleKm })}</p>
       </div>
 
-      <PackNote />
 
       <Sheet open={!!selected} onClose={() => setSelected(null)}>
         {selected && (

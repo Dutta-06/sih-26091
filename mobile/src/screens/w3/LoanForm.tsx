@@ -132,7 +132,6 @@ export function LoanForm() {
             ))}
           </div>
         </Card>
-        <p className="mt-3 text-center text-[11px] text-ink-3">{t("loanform.simulated")}</p>
       </Sheet>
     </>
   );

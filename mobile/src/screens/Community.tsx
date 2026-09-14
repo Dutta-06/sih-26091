@@ -1,4 +1,4 @@
-import { CheckCircle2, FlaskConical, MessageSquareHeart, Package, Quote, Star, Users, Vote } from "lucide-react";
+import { CheckCircle2, MessageSquareHeart, Package, Quote, Star, Users, Vote } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { tap } from "../App";
@@ -8,7 +8,7 @@ import type { PackFeedback } from "../core/types";
 import { useI18n } from "../i18n";
 import { rupees } from "../lib/format";
 import { useStore, uid, todayOf } from "../state/store";
-import { Badge, Button, Card, Chip, ConfidenceBadge, cx, IconBubble, Note, Reveal, Screen, Section, toast } from "../ui";
+import { Badge, Button, Card, Chip, ConfidenceBadge, cx, IconBubble, Reveal, Screen, Section, toast } from "../ui";
 import { activityLabel } from "./g4/model";
 
 const TOPICS: PackFeedback["topic"][] = ["demand", "pricing", "supply", "seasonality", "competition", "other"];
@@ -242,7 +242,6 @@ export default function Community() {
 
       {packMeta().synthetic_sample && (
         <div className="mt-4">
-          <Note tone="marigold" icon={FlaskConical}>{t("u4.samplePack")}</Note>
         </div>
       )}
     </Screen>

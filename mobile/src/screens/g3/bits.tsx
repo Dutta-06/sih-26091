@@ -1,6 +1,5 @@
 import { Lock } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { packMeta } from "../../core/pack";
 import type { TierName } from "../../engine/finance";
 import { useI18n } from "../../i18n";
 import { cx } from "../../ui";
@@ -16,11 +15,10 @@ export function RulesChip({ light }: { light?: boolean }) {
   );
 }
 
-/** "Sample data pack" disclosure, shown only while the bundled pack is the synthetic sample (packMeta). */
-export function PackNote({ uses = "pack" }: { uses?: "pack" | "rules" }) {
+/** Reminder that loan figures follow fixed scheme rules. */
+export function RulesNote() {
   const { t } = useI18n();
-  if (!packMeta().synthetic_sample) return null;
-  return <p className="mt-6 px-2 text-center text-[11px] leading-snug text-ink-3">{t(uses === "pack" ? "g3.pack.sample" : "g3.pack.rules")}</p>;
+  return <p className="mt-6 px-2 text-center text-[11px] leading-snug text-ink-3">{t("g3.pack.rules")}</p>;
 }
 
 /** Scheme tier badge that springs when the tier switches. */

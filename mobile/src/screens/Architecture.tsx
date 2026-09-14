@@ -8,7 +8,6 @@ import { useStore } from "../state/store";
 import { ConfidenceBadge, CountUp, cx, Reveal, Screen, Section } from "../ui";
 import { profileComplete } from "./g1/conversation";
 import { AGENT_ORDER } from "./g1/findings";
-import { PackNote } from "./g1/PackNote";
 
 const SOURCES = ["census", "lgd", "osm", "agmarknet", "udyam", "secc", "osrm"];
 
@@ -131,7 +130,6 @@ export default function Architecture() {
         <p className="mt-2 px-1 text-xs text-ink-3">{t("arch.offline")}</p>
       </Section>
 
-      <PackNote />
     </Screen>
   );
 }

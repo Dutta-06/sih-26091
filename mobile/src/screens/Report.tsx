@@ -8,7 +8,7 @@ import { useStore } from "../state/store";
 import { Badge, Button, Card, ConfidenceBadge, Note, Ring, Screen } from "../ui";
 import { activityLabel, confidenceCounts, firstRejected, placeOf, reportAttempt } from "./g2/feasibility";
 import { useMsg } from "./g2/msg";
-import { CompetitorSection, ConfidenceLegend, MarketSection, OpportunitySection, PackNote, PricingSection, RiskSection, SupplySection, SwotSection } from "./g2/ReportSections";
+import { CompetitorSection, ConfidenceLegend, MarketSection, OpportunitySection, PricingSection, RiskSection, SupplySection, SwotSection } from "./g2/ReportSections";
 import { EvidenceSection } from "./w2/EvidenceSection";
 
 const VERDICT = { viable: { tone: "good", icon: CheckCircle2 }, marginal: { tone: "warn", icon: ShieldAlert }, not_recommended: { tone: "risk", icon: ShieldX } } as const;
@@ -203,7 +203,6 @@ export default function Report() {
       <EvidenceSection intel={attempt.intel} district={place?.district.id ?? null} activityId={attempt.activityId} i={7} />
       <SwotSection swot={attempt.swot} i={8} />
       <ConfidenceLegend i={9} />
-      <PackNote />
     </Screen>
   );
 }
