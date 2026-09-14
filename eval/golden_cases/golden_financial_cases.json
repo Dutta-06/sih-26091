@@ -1,38 +1,179 @@
 [
   {
     "case_id": "case_sih_canonical_10L",
+    "kind": "plan",
     "description": "Problem statement worked example: Rs. 1,00,000 margin -> Rs. 10,00,000 project -> Rs. 9,00,000 loan -> Term Loan Scheme",
-    "inputs": {
-      "available_capital": 100000.0,
-      "location": "Bhadohi, Bhadohi, Uttar Pradesh",
-      "category": "Dairy Farming"
-    },
+    "inputs": {"available_capital": 100000.0, "location": "Bhadohi, Bhadohi, Uttar Pradesh", "category": "Dairy Farming"},
     "expected_outputs": {
-      "project_cost": 1000000.0,
-      "loan_eligibility": 900000.0,
-      "scheme_tier": "term_loan",
-      "interest_rate": 0.08,
-      "tenure_years": 7,
-      "moratorium_months": 6,
-      "total_quarters": 28
+      "eligibility_status": "eligible", "project_cost": 1000000.0, "loan_eligibility": 900000.0,
+      "margin_percentage": 10.0, "loan_percentage": 90.0, "loan_cap_applied": false,
+      "scheme_tier": "term_loan", "interest_rate": 0.08, "tenure_years": 7, "moratorium_months": 6,
+      "total_quarters": 28, "moratorium_quarters": 2, "first_quarter_interest": 18000.0,
+      "regular_quarterly_installment": 44729.31, "total_interest": 298961.96, "total_repayment": 1198961.96,
+      "working_capital": 200000.0, "capex": 800000.0, "principal_total": 900000.0, "last_closing_balance": 0.0
     }
   },
   {
     "case_id": "case_micro_finance_120k",
-    "description": "Micro Finance case: Rs. 12,000 margin -> Rs. 1,20,000 project -> Rs. 1,08,000 loan -> Micro Finance Scheme",
-    "inputs": {
-      "available_capital": 12000.0,
-      "location": "Mirzapur, Uttar Pradesh",
-      "category": "Tailoring and Garment Repair"
-    },
+    "kind": "plan",
+    "description": "Micro Finance case: Rs. 12,000 margin -> Rs. 1,20,000 project -> Rs. 1,08,000 loan (cap not binding)",
+    "inputs": {"available_capital": 12000.0, "location": "Mirzapur, Uttar Pradesh", "category": "Tailoring and Garment Repair"},
     "expected_outputs": {
-      "project_cost": 120000.0,
-      "loan_eligibility": 108000.0,
-      "scheme_tier": "micro_finance",
-      "interest_rate": 0.065,
-      "tenure_years": 3,
-      "moratorium_months": 3,
-      "total_quarters": 12
+      "eligibility_status": "eligible", "project_cost": 120000.0, "loan_eligibility": 108000.0,
+      "margin_percentage": 10.0, "loan_percentage": 90.0, "loan_cap_applied": false,
+      "scheme_tier": "micro_finance", "interest_rate": 0.065, "tenure_years": 3, "moratorium_months": 3,
+      "total_quarters": 12, "moratorium_quarters": 1, "regular_quarterly_installment": 10801.16,
+      "total_interest": 12567.73, "total_repayment": 120567.73, "principal_total": 108000.0, "last_closing_balance": 0.0
     }
+  },
+  {
+    "case_id": "case_micro_cap_not_binding_138880",
+    "kind": "plan",
+    "description": "Just below the cap region: 90% of Rs. 1,38,880 = Rs. 1,24,992 < Rs. 1,25,000 cap",
+    "inputs": {"available_capital": 13888.0, "category": "Tea Stall"},
+    "expected_outputs": {
+      "eligibility_status": "eligible", "project_cost": 138880.0, "loan_eligibility": 124992.0,
+      "loan_cap_applied": false, "loan_percentage": 90.0, "scheme_tier": "micro_finance",
+      "regular_quarterly_installment": 12500.54, "principal_total": 124992.0, "last_closing_balance": 0.0
+    }
+  },
+  {
+    "case_id": "case_micro_ceiling_140k_cap_binds",
+    "kind": "plan",
+    "description": "Micro Finance ceiling Rs. 1,40,000: 90% = Rs. 1,26,000 is capped at Rs. 1,25,000; effective shares reported",
+    "inputs": {"available_capital": 14000.0, "category": "Tailoring"},
+    "expected_outputs": {
+      "eligibility_status": "eligible", "project_cost": 140000.0, "loan_eligibility": 125000.0,
+      "margin_percentage": 10.71, "loan_percentage": 89.29, "loan_cap_applied": true,
+      "scheme_tier": "micro_finance", "interest_rate": 0.065, "total_quarters": 12,
+      "regular_quarterly_installment": 12501.34, "total_interest": 14546.01, "principal_total": 125000.0,
+      "last_closing_balance": 0.0
+    }
+  },
+  {
+    "case_id": "case_just_above_140k_term_loan",
+    "kind": "plan",
+    "description": "One paisa of margin above the micro ceiling routes to the Term Loan Scheme with an uncapped 90% loan",
+    "inputs": {"available_capital": 14000.01, "category": "Flour Mill"},
+    "expected_outputs": {
+      "eligibility_status": "eligible", "project_cost": 140000.1, "loan_eligibility": 126000.09,
+      "loan_cap_applied": false, "scheme_tier": "term_loan", "interest_rate": 0.08, "tenure_years": 7,
+      "moratorium_months": 6, "total_quarters": 28, "regular_quarterly_installment": 6262.11,
+      "principal_total": 126000.09, "last_closing_balance": 0.0
+    }
+  },
+  {
+    "case_id": "case_term_ceiling_50L",
+    "kind": "plan",
+    "description": "Term Loan ceiling Rs. 50,00,000: loan Rs. 45,00,000 equals the cap (not exceeded)",
+    "inputs": {"available_capital": 500000.0, "category": "Food Processing"},
+    "expected_outputs": {
+      "eligibility_status": "eligible", "project_cost": 5000000.0, "loan_eligibility": 4500000.0,
+      "loan_cap_applied": false, "loan_percentage": 90.0, "scheme_tier": "term_loan",
+      "regular_quarterly_installment": 223646.54, "total_interest": 1494810.01, "total_repayment": 5994810.01,
+      "principal_total": 4500000.0, "last_closing_balance": 0.0
+    }
+  },
+  {
+    "case_id": "case_outside_range_above_50L",
+    "kind": "plan",
+    "description": "Project cost just above Rs. 50,00,000 is outside the scheme range: plan returned, no tier, no loan",
+    "inputs": {"available_capital": 500000.01, "category": "Cold Storage"},
+    "expected_outputs": {
+      "eligibility_status": "outside_scheme_range", "project_cost": 5000000.1, "loan_eligibility": 0.0,
+      "loan_percentage": 0.0, "scheme_tier": null, "total_quarters": 0, "working_capital": 1000000.02,
+      "has_ineligibility_reason": true
+    }
+  },
+  {
+    "case_id": "case_non_positive_zero",
+    "kind": "plan",
+    "description": "Zero margin capital: no project cost can be computed",
+    "inputs": {"available_capital": 0.0, "category": ""},
+    "expected_outputs": {
+      "eligibility_status": "outside_scheme_range", "project_cost": 0.0, "loan_eligibility": 0.0,
+      "scheme_tier": null, "total_quarters": 0, "has_ineligibility_reason": true
+    }
+  },
+  {
+    "case_id": "case_non_positive_negative",
+    "kind": "plan",
+    "description": "Negative margin capital is treated as non-positive",
+    "inputs": {"available_capital": -5000.0, "category": ""},
+    "expected_outputs": {
+      "eligibility_status": "outside_scheme_range", "project_cost": 0.0, "scheme_tier": null,
+      "has_ineligibility_reason": true
+    }
+  },
+  {
+    "case_id": "case_route_rejects_non_positive",
+    "kind": "error",
+    "description": "Direct callers: route_scheme_tier and compute_project_cost still raise on invalid input",
+    "inputs": {"function": "route_scheme_tier", "argument": 0.0},
+    "expected_outputs": {"error_contains": "greater than zero"}
+  },
+  {
+    "case_id": "case_route_rejects_above_50L",
+    "kind": "error",
+    "description": "Direct callers: route_scheme_tier raises above the Term Loan ceiling",
+    "inputs": {"function": "route_scheme_tier", "argument": 5500000.0},
+    "expected_outputs": {"error_contains": "exceeds the maximum supported"}
+  },
+  {
+    "case_id": "case_project_cost_rejects_non_positive",
+    "kind": "error",
+    "description": "Direct callers: compute_project_cost raises on non-positive capital",
+    "inputs": {"function": "compute_project_cost", "argument": -1.0},
+    "expected_outputs": {"error_contains": "must be positive"}
+  },
+  {
+    "case_id": "case_schedule_zero_rate_no_moratorium",
+    "kind": "schedule",
+    "description": "Schedule branch: zero interest rate and no moratorium -> straight-line principal",
+    "inputs": {"loan_amount": 10000.0, "interest_rate": 0.0, "tenure_years": 1, "moratorium_months": 0},
+    "expected_outputs": {"total_quarters": 4, "moratorium_quarters": 0, "total_interest": 0.0, "total_repayment": 10000.0,
+                         "principal_total": 10000.0, "last_closing_balance": 0.0}
+  },
+  {
+    "case_id": "case_schedule_zero_loan",
+    "kind": "schedule",
+    "description": "Schedule branch: zero loan -> only interest-free moratorium rows, no amortisation",
+    "inputs": {"loan_amount": 0.0, "interest_rate": 0.08, "tenure_years": 7, "moratorium_months": 6},
+    "expected_outputs": {"total_quarters": 2, "moratorium_quarters": 2, "total_interest": 0.0, "total_repayment": 0.0}
+  },
+  {
+    "case_id": "case_node_viable_builds_plan",
+    "kind": "node",
+    "description": "financial_engine.run builds a plan when the feasibility verdict is viable",
+    "inputs": {"available_capital": 100000.0, "feasibility_verdict": "viable", "category": "Dairy Farming (Milch Animals)"},
+    "expected_outputs": {"plan_produced": true, "project_cost": 1000000.0, "scheme_tier": "term_loan"}
+  },
+  {
+    "case_id": "case_node_viable_without_shortlist",
+    "kind": "node",
+    "description": "financial_engine.run with a viable verdict but no shortlisted candidate still builds the plan",
+    "inputs": {"available_capital": 12000.0, "feasibility_verdict": "viable"},
+    "expected_outputs": {"plan_produced": true, "project_cost": 120000.0, "scheme_tier": "micro_finance"}
+  },
+  {
+    "case_id": "case_node_marginal_no_plan",
+    "kind": "node",
+    "description": "financial_engine.run is defensive: marginal verdict produces no plan",
+    "inputs": {"available_capital": 100000.0, "feasibility_verdict": "marginal"},
+    "expected_outputs": {"plan_produced": false}
+  },
+  {
+    "case_id": "case_node_no_feasibility_record",
+    "kind": "node",
+    "description": "financial_engine.run without a feasibility record produces no plan",
+    "inputs": {"available_capital": 100000.0, "feasibility_verdict": null},
+    "expected_outputs": {"plan_produced": false}
+  },
+  {
+    "case_id": "case_node_no_profile",
+    "kind": "node",
+    "description": "financial_engine.run without an entrepreneur profile produces no plan",
+    "inputs": {"available_capital": null, "feasibility_verdict": "viable"},
+    "expected_outputs": {"plan_produced": false}
   }
 ]
