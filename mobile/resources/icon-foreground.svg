@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- Adaptive icon foreground: keep artwork inside the central 66% safe zone. -->
+  <g transform="translate(512 548)">
+    <!-- rising sun -->
+    <circle cx="0" cy="-10" r="150" fill="#F2A516"/>
+    <g stroke="#F2A516" stroke-width="26" stroke-linecap="round">
+      <line x1="0" y1="-210" x2="0" y2="-250"/>
+      <line x1="-150" y1="-150" x2="-178" y2="-178"/>
+      <line x1="150" y1="-150" x2="178" y2="-178"/>
+      <line x1="-215" y1="-10" x2="-255" y2="-10"/>
+      <line x1="215" y1="-10" x2="255" y2="-10"/>
+    </g>
+    <!-- ground line with sprout -->
+    <rect x="-270" y="60" width="540" height="34" rx="17" fill="#FBF7EF"/>
+    <path d="M0 60 C0 10 0 -30 0 -60" stroke="#FBF7EF" stroke-width="30" stroke-linecap="round" fill="none"/>
+    <path d="M0 -20 C -40 -90 -120 -100 -150 -60 C -110 -20 -50 -10 0 -20 Z" fill="#FBF7EF"/>
+    <path d="M0 -50 C 40 -130 120 -140 155 -100 C 115 -55 50 -45 0 -50 Z" fill="#FBF7EF"/>
+  </g>
+</svg>
