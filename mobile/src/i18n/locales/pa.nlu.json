@@ -1,0 +1,72 @@
+{
+  "lakh": ["ਲੱਖ", "lakh", "lac"],
+  "thousand": ["ਹਜ਼ਾਰ", "hazar", "hazaar"],
+  "crore": ["ਕਰੋੜ", "karod", "crore"],
+  "rupee": ["ਰੁਪਏ", "ਰੁਪਿਆ", "rupaye", "rupaya", "₹"],
+  "numberWords": {
+    "ਇੱਕ": 1, "ik": 1, "ਦੋ": 2, "do": 2, "ਤਿੰਨ": 3, "tin": 3, "ਚਾਰ": 4, "char": 4,
+    "ਪੰਜ": 5, "panj": 5, "ਛੇ": 6, "chhe": 6, "ਸੱਤ": 7, "sat": 7, "ਅੱਠ": 8, "ath": 8,
+    "ਨੌਂ": 9, "nau": 9, "ਦਸ": 10, "das": 10, "ਗਿਆਰਾਂ": 11, "gyaran": 11, "ਬਾਰਾਂ": 12, "baran": 12,
+    "ਤੇਰਾਂ": 13, "teran": 13, "ਚੌਦਾਂ": 14, "chaudan": 14, "ਪੰਦਰਾਂ": 15, "pandran": 15,
+    "ਸੋਲਾਂ": 16, "solan": 16, "ਸਤਾਰਾਂ": 17, "sataran": 17, "ਅਠਾਰਾਂ": 18, "atharan": 18,
+    "ਉੱਨੀ": 19, "unni": 19, "ਵੀਹ": 20, "vih": 20, "ਪੱਚੀ": 25, "pachi": 25,
+    "ਤੀਹ": 30, "tih": 30, "ਚਾਲੀ": 40, "chali": 40, "ਪੰਜਾਹ": 50, "panjah": 50,
+    "ਸੱਠ": 60, "sath": 60, "ਸੱਤਰ": 70, "sattar": 70, "ਪੰਝੱਤਰ": 75, "panjhattar": 75,
+    "ਅੱਸੀ": 80, "assi": 80, "ਨੱਬੇ": 90, "nabbe": 90,
+    "ਡੇਢ": 1.5, "dedh": 1.5, "ਢਾਈ": 2.5, "dhai": 2.5
+  },
+  "because": ["ਕਿਉਂਕਿ", "kyunki", "ਕਰਕੇ", "karke", "ਇਸ ਲਈ", "is layi"],
+  "negation": ["ਨਹੀਂ", "nahi", "nahin", "ਨਾ", "na"],
+  "activities": {
+    "dairy_farming": ["ਦੁੱਧ", "ਗਾਂ", "ਮੱਝ", "doodh", "gaan", "majh", "dairy", "ਪਸ਼ੂ ਪਾਲਣ"],
+    "goat_rearing": ["ਬੱਕਰੀ", "bakri", "ਬੱਕਰੀ ਪਾਲਣ", "bakri palan", "goat"],
+    "poultry_backyard": ["ਮੁਰਗੀ", "murgi", "ਕੁੱਕੜ", "kukkar", "ਆਂਡੇ", "ande", "poultry"],
+    "poultry_layer": ["ਲੇਅਰ ਮੁਰਗੀ", "layer murgi", "ਆਂਡੇ ਵਾਲੀ ਮੁਰਗੀ", "ande wali murgi", "layer poultry"],
+    "fisheries_pond": ["ਮੱਛੀ", "machhi", "ਤਲਾਬ", "talab", "fisheries", "ਮੱਛੀ ਪਾਲਣ"],
+    "beekeeping": ["ਸ਼ਹਿਦ", "shahad", "ਮੱਖੀ", "makhi", "beekeeping", "ਮਧੂ ਮੱਖੀ ਪਾਲਣ"],
+    "mustard_oil_mill": ["ਸਰ੍ਹੋਂ", "sarson", "ਤੇਲ ਮਿੱਲ", "tel mill", "ਕੋਹਲੂ", "kohlu"],
+    "flour_mill": ["ਆਟਾ ਚੱਕੀ", "atta chakki", "ਚੱਕੀ", "chakki", "flour mill"],
+    "food_processing_home": ["ਅਚਾਰ", "achar", "ਪਾਪੜ", "papad", "food processing"],
+    "grocery_kirana": ["ਕਰਿਆਨਾ", "kirana", "ਦੁਕਾਨ", "dukan", "grocery", "kirana store"],
+    "agri_input_depot": ["ਖਾਦ", "khad", "ਬੀਜ", "beej", "ਦਵਾਈ ਦੁਕਾਨ", "agri input", "khad beej"],
+    "tailoring": ["ਸਿਲਾਈ", "silai", "ਕਢਾਈ", "kadhai", "tailoring", "ਦਰਜ਼ੀ", "darzi"],
+    "handloom_weaving": ["ਹੱਥਖੱਡੀ", "hathkhaddi", "ਬੁਣਾਈ", "bunai", "handloom", "weaving"],
+    "carpet_weaving": ["ਦਰੀ", "dari", "ਗਲੀਚਾ", "galicha", "carpet weaving", "ਕਾਲੀਨ", "kalin"],
+    "mobile_repair": ["ਮੋਬਾਈਲ", "mobile", "ਮੁਰੰਮਤ", "murammat", "mobile repair", "ਰਿਪੇਅਰ", "repair"],
+    "beauty_parlour": ["ਬਿਊਟੀ ਪਾਰਲਰ", "beauty parlour", "ਪਾਰਲਰ", "parlour", "ਸ਼ਿੰਗਾਰ", "shingar"],
+    "tea_snack_stall": ["ਚਾਹ", "chah", "ਨਾਸ਼ਤਾ", "nashta", "tea stall", "ਸਟਾਲ", "stall"]
+  },
+  "skills": {
+    "stitching": ["ਸਿਲਾਈ", "silai", "ਸਿਲਣਾ", "silna"],
+    "embroidery": ["ਕਢਾਈ", "kadhai"],
+    "weaving": ["ਬੁਣਾਈ", "bunai", "ਹੱਥਖੱਡੀ", "hathkhaddi"],
+    "cooking": ["ਰਸੋਈ", "rasoi", "ਖਾਣਾ ਬਣਾਉਣਾ", "khana banauna", "ਪਕਾਉਣਾ", "pakauna"],
+    "livestock": ["ਪਸ਼ੂ ਪਾਲਣ", "pashu palan", "ਪਸ਼ੂ", "pashu"],
+    "retail": ["ਦੁਕਾਨਦਾਰੀ", "dukandari", "ਦੁਕਾਨ", "dukan", "retail"],
+    "repair": ["ਮੁਰੰਮਤ", "murammat", "ਰਿਪੇਅਰ", "repair"],
+    "beauty": ["ਸ਼ਿੰਗਾਰ", "shingar", "ਬਿਊਟੀ", "beauty", "ਪਾਰਲਰ", "parlour"]
+  },
+  "premises": {
+    "home": ["ਘਰੋਂ", "gharon", "ਘਰ ਤੋਂ", "ghar ton", "ਘਰ ਵਿੱਚ", "ghar vich"],
+    "rented_shop": ["ਕਿਰਾਏ ਦੀ ਦੁਕਾਨ", "kiraye di dukan", "ਕਿਰਾਏ ਤੇ", "kiraye te"],
+    "own_land": ["ਆਪਣੀ ਜ਼ਮੀਨ", "apni zameen", "ਖੁਦ ਦੀ ਜ਼ਮੀਨ", "khud di zameen"]
+  },
+  "category": {
+    "sc": ["ਅਨੁਸੂਚਿਤ ਜਾਤੀ", "anusuchit jati", "sc", "ਐਸਸੀ"],
+    "st": ["ਅਨੁਸੂਚਿਤ ਜਨਜਾਤੀ", "anusuchit janjati", "st", "ਐਸਟੀ"],
+    "obc": ["ਪਿਛੜੀ ਸ਼੍ਰੇਣੀ", "pichhdi shreni", "obc", "ਓਬੀਸੀ"],
+    "general": ["ਜਨਰਲ", "general", "ਸਧਾਰਨ", "sadharan"]
+  },
+  "shg": ["ਸਵੈ ਸਹਾਇਤਾ ਸਮੂਹ", "swai sahaita samuh", "shg", "ਐਸਐਚਜੀ", "ਸਮੂਹ", "samuh"],
+  "intents": {
+    "raise_grievance": ["ਸ਼ਿਕਾਇਤ", "shikayat", "ਸ਼ਿਕਾਇਤ ਕਰਨੀ", "shikayat karni", "complaint"],
+    "application_status": ["ਅਰਜ਼ੀ ਦੀ ਸਥਿਤੀ", "arzi di sthiti", "ਅਰਜ਼ੀ ਦਾ ਕੀ ਬਣਿਆ", "arzi da ki bania", "application status"],
+    "scheme_inquiry": ["ਸਕੀਮ", "scheme", "ਯੋਜਨਾ", "yojna", "ਕਿਹੜੀ ਸਕੀਮ", "kihdi scheme"],
+    "monitoring": ["ਨਿਗਰਾਨੀ", "nigrani", "ਟਰੈਕ", "track", "monitoring"],
+    "community": ["ਭਾਈਚਾਰਾ", "bhaichara", "community", "ਸਮੂਹ ਦੇ ਲੋਕ", "samuh de lok"],
+    "change_language": ["ਭਾਸ਼ਾ ਬਦਲੋ", "bhasha badlo", "change language", "ਭਾਸ਼ਾ", "bhasha"],
+    "new_case": ["ਨਵੀਂ ਅਰਜ਼ੀ", "navin arzi", "ਨਵਾਂ ਕੇਸ", "navan case", "new application"]
+  },
+  "greetings": ["ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ", "sat sri akal", "ਨਮਸਤੇ", "namaste", "ਹੈਲੋ", "hello"],
+  "languageNames": ["ਪੰਜਾਬੀ", "punjabi", "panjabi", "ਪੰਜਾਬੀ ਭਾਸ਼ਾ", "punjabi bhasha", "pa"]
+}

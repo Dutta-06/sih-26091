@@ -1,0 +1,69 @@
+{
+  "lakh": ["ಲಕ್ಷ", "lakh", "lakhs"],
+  "thousand": ["ಸಾವಿರ", "hazar", "thousand"],
+  "crore": ["ಕೋಟಿ", "crore"],
+  "rupee": ["ರೂಪಾಯಿ", "ರೂ", "₹", "rupee", "rupaye"],
+  "numberWords": {
+    "ಒಂದು": 1, "ಎರಡು": 2, "ಮೂರು": 3, "ನಾಲ್ಕು": 4, "ಐದು": 5,
+    "ಆರು": 6, "ಏಳು": 7, "ಎಂಟು": 8, "ಒಂಬತ್ತು": 9, "ಹತ್ತು": 10,
+    "ಹನ್ನೊಂದು": 11, "ಹನ್ನೆರಡು": 12, "ಹದಿಮೂರು": 13, "ಹದಿನಾಲ್ಕು": 14, "ಹದಿನೈದು": 15,
+    "ಹದಿನಾರು": 16, "ಹದಿನೇಳು": 17, "ಹದಿನೆಂಟು": 18, "ಹತ್ತೊಂಬತ್ತು": 19, "ಇಪ್ಪತ್ತು": 20,
+    "ಇಪ್ಪತ್ತೈದು": 25, "ಮೂವತ್ತು": 30, "ನಲವತ್ತು": 40, "ಐವತ್ತು": 50,
+    "ಅರವತ್ತು": 60, "ಎಪ್ಪತ್ತು": 70, "ಎಪ್ಪತ್ತೈದು": 75, "ಎಂಬತ್ತು": 80,
+    "ತೊಂಬತ್ತು": 90, "ಒಂದೂವರೆ": 1.5, "ಎರಡೂವರೆ": 2.5
+  },
+  "because": ["ಏಕೆಂದರೆ", "ಕಾರಣ", "ಆದ್ದರಿಂದ", "because", "kyunki"],
+  "negation": ["ಇಲ್ಲ", "ಬೇಡ", "ಅಲ್ಲ", "ಯಾವುದೂ ಇಲ್ಲ", "nahi", "no", "not"],
+  "activities": {
+    "dairy_farming": ["ಹೈನುಗಾರಿಕೆ", "ಹಸು", "ಎಮ್ಮೆ", "ಹಾಲು", "dairy", "gaay", "milk"],
+    "goat_rearing": ["ಮೇಕೆ ಸಾಕಣೆ", "ಮೇಕೆ", "ಆಡು", "goat", "meke"],
+    "poultry_backyard": ["ಕೋಳಿ ಸಾಕಣೆ", "ಕೋಳಿ", "ಮರಿ ಕೋಳಿ", "poultry", "koli"],
+    "poultry_layer": ["ಮೊಟ್ಟೆ ಕೋಳಿ", "ಲೇಯರ್ ಫಾರ್ಮ್", "ಮೊಟ್ಟೆ", "egg farm", "layer"],
+    "fisheries_pond": ["ಮೀನು ಸಾಕಣೆ", "ಮೀನು", "ಕೆರೆ", "fish", "meenu", "pond"],
+    "beekeeping": ["ಜೇನು ಸಾಕಣೆ", "ಜೇನುತುಪ್ಪ", "ಜೇನುಹುಳು", "honey", "bee", "jenu"],
+    "mustard_oil_mill": ["ಸಾಸಿವೆ ಎಣ್ಣೆ", "ಎಣ್ಣೆ ಗಿರಣಿ", "ಸಾಸಿವೆ", "mustard oil", "oil mill"],
+    "flour_mill": ["ಹಿಟ್ಟಿನ ಗಿರಣಿ", "ಗಿರಣಿ", "ಆಟಾ ಚಕ್ಕಿ", "flour mill", "atta chakki"],
+    "food_processing_home": ["ಉಪ್ಪಿನಕಾಯಿ", "ಹಪ್ಪಳ", "ಪಾಪಡ್", "pickle", "papad"],
+    "grocery_kirana": ["ಕಿರಾಣಿ ಅಂಗಡಿ", "ಕಿರಾಣಿ", "ದಿನಸಿ ಅಂಗಡಿ", "kirana", "grocery"],
+    "agri_input_depot": ["ಬೀಜ ಅಂಗಡಿ", "ಗೊಬ್ಬರ ಅಂಗಡಿ", "ಬೀಜ ಮತ್ತು ಗೊಬ್ಬರ", "seed shop", "fertiliser shop"],
+    "tailoring": ["ಹೊಲಿಗೆ", "ಟೈಲರಿಂಗ್", "ಕಸೂತಿ", "tailoring", "stitching", "holige"],
+    "handloom_weaving": ["ಕೈಮಗ್ಗ", "ನೇಯ್ಗೆ", "ಮಗ್ಗ", "handloom", "weaving"],
+    "carpet_weaving": ["ಕಂಬಳಿ ನೇಯ್ಗೆ", "ಕಂಬಳಿ", "carpet weaving", "carpet"],
+    "mobile_repair": ["ಮೊಬೈಲ್ ರಿಪೇರಿ", "ಮೊಬೈಲ್ ದುರಸ್ತಿ", "mobile repair"],
+    "beauty_parlour": ["ಬ್ಯೂಟಿ ಪಾರ್ಲರ್", "ಸೌಂದರ್ಯ ಕೇಂದ್ರ", "beauty parlour", "parlour"],
+    "tea_snack_stall": ["ಚಹಾ ಅಂಗಡಿ", "ಟೀ ಸ್ಟಾಲ್", "ತಿಂಡಿ ಅಂಗಡಿ", "tea stall", "snacks"]
+  },
+  "skills": {
+    "stitching": ["ಹೊಲಿಗೆ", "ಟೈಲರಿಂಗ್", "stitching"],
+    "embroidery": ["ಕಸೂತಿ", "embroidery"],
+    "weaving": ["ನೇಯ್ಗೆ", "ಮಗ್ಗ", "weaving"],
+    "cooking": ["ಅಡುಗೆ", "ಅಡಿಗೆ", "cooking"],
+    "livestock": ["ಜಾನುವಾರು ಆರೈಕೆ", "ಪಶು ಸಾಕಣೆ", "livestock"],
+    "retail": ["ಮಾರಾಟ", "ಅಂಗಡಿ", "shopkeeping", "retail"],
+    "repair": ["ರಿಪೇರಿ", "ದುರಸ್ತಿ", "repair"],
+    "beauty": ["ಸೌಂದರ್ಯ", "ಮೆಹಂದಿ", "beauty", "mehendi"]
+  },
+  "premises": {
+    "home": ["ಮನೆಯಿಂದ", "ಮನೆಯಲ್ಲಿ", "from home", "mane"],
+    "rented_shop": ["ಬಾಡಿಗೆ ಅಂಗಡಿ", "ಬಾಡಿಗೆ", "rented shop"],
+    "own_land": ["ಸ್ವಂತ ಜಮೀನು", "ಸ್ವಂತ ಭೂಮಿ", "own land"]
+  },
+  "category": {
+    "sc": ["ಪರಿಶಿಷ್ಟ ಜಾತಿ", "sc"],
+    "st": ["ಪರಿಶಿಷ್ಟ ಪಂಗಡ", "st"],
+    "obc": ["ಇತರೆ ಹಿಂದುಳಿದ ವರ್ಗ", "obc"],
+    "general": ["ಸಾಮಾನ್ಯ", "general"]
+  },
+  "shg": ["ಸ್ವ-ಸಹಾಯ ಗುಂಪು", "ಎಸ್‌ಎಚ್‌ಜಿ", "shg", "self help group", "ಸ್ವಸಹಾಯ ಸಂಘ"],
+  "intents": {
+    "raise_grievance": ["ದೂರು", "ಸಮಸ್ಯೆ", "ಶಿಕಾಯತ್", "complaint", "grievance", "problem"],
+    "application_status": ["ಅರ್ಜಿ ಸ್ಥಿತಿ", "ಸಾಲದ ಸ್ಥಿತಿ", "loan status", "application status"],
+    "scheme_inquiry": ["ಯೋಜನೆ ನಿಯಮ", "ಯೋಜನೆ ಬಗ್ಗೆ", "scheme rules", "scheme"],
+    "monitoring": ["ವ್ಯಾಪಾರದ ಆರೋಗ್ಯ", "ಕಮಾಣಿ", "business health", "monitoring"],
+    "community": ["ಒಟ್ಟಿಗೆ ಖರೀದಿ", "ಸಮುದಾಯ", "buy together", "community"],
+    "change_language": ["ಭಾಷೆ ಬದಲಾಯಿಸಿ", "ಭಾಷೆ", "change language", "language"],
+    "new_case": ["ಹೊಸ ಪ್ರಕರಣ", "ಹೊಸದಾಗಿ", "new case", "start again"]
+  },
+  "greetings": ["ನಮಸ್ತೆ", "ನಮಸ್ಕಾರ", "ಹಲೋ", "hi", "hello", "namaste"],
+  "languageNames": ["ಕನ್ನಡ", "kannada", "kn"]
+}
