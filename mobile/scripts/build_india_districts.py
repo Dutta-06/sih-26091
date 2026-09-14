@@ -9,7 +9,7 @@ Sources (downloaded into mobile/scripts/cache/, not committed):
 Districts are matched within their state on normalised names (aliases for renamed districts below). A Census district
 without a boundary match takes the population-weighted position of matched districts in its state shifted by a
 deterministic offset, and is flagged "approxLocation". Output rows:
-  [id, name, state, lat, lon, population, areaSqKm, literacyPct, approxLocation(0/1)]
+  [id, name, state, lat, lon, population, areaSqKm, literacyPct, approxLocation(0/1), census2011DistrictCode]
 
 Run: python mobile/scripts/build_india_districts.py
 """
@@ -145,7 +145,7 @@ def main() -> None:
             pop = int(r["Population"])
             lit = round(100 * int(r["Literate"]) / pop, 1) if pop else 0
             rows.append({"name": name, "state": STATE_TITLE.get(st, r["State name"].title().replace(" And ", " and ")), "st": st,
-                         "pop": pop, "lit": lit, "shape": hit})
+                         "pop": pop, "lit": lit, "shape": hit, "code": int(r["District code"])})
             if hit is None:
                 unmatched.append(f"{name} ({st})")
 
@@ -197,7 +197,7 @@ def main() -> None:
         did = base if base not in ids else f"{base}_{slug(r['state'])}"
         ids.add(did)
         area, lat, lon = r["shape"]
-        out.append([did, r["name"], r["state"], round(lat, 4), round(lon, 4), r["pop"], round(area), r["lit"], 1 if r.get("approx") else 0])
+        out.append([did, r["name"], r["state"], round(lat, 4), round(lon, 4), r["pop"], round(area), r["lit"], 1 if r.get("approx") else 0, r["code"]])
     OUT.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"{len(out)} districts written, {sum(x[8] for x in out)} with approximate location, dropped {len(rows) - len(out)}")
     print("approximate:", ", ".join(unmatched[:80]), file=sys.stderr)

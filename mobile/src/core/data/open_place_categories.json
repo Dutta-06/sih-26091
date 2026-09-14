@@ -1,0 +1,310 @@
+{
+ "dairy_farm": {
+  "kind": "enterprise",
+  "activities": [
+   "dairy_farming"
+  ]
+ },
+ "livestock_breeder": {
+  "kind": "enterprise",
+  "activities": [
+   "goat_rearing"
+  ]
+ },
+ "poultry_farm": {
+  "kind": "enterprise",
+  "activities": [
+   "poultry_backyard",
+   "poultry_layer"
+  ]
+ },
+ "poultry_farming": {
+  "kind": "enterprise",
+  "activities": [
+   "poultry_backyard",
+   "poultry_layer"
+  ]
+ },
+ "fish_farm": {
+  "kind": "enterprise",
+  "activities": [
+   "fisheries_pond"
+  ]
+ },
+ "fish_farms_and_hatcheries": {
+  "kind": "enterprise",
+  "activities": [
+   "fisheries_pond"
+  ]
+ },
+ "fishmonger": {
+  "kind": "enterprise",
+  "activities": [
+   "fisheries_pond"
+  ]
+ },
+ "honey_farm_shop": {
+  "kind": "enterprise",
+  "activities": [
+   "beekeeping"
+  ]
+ },
+ "oil_refiners": {
+  "kind": "enterprise",
+  "activities": [
+   "mustard_oil_mill"
+  ]
+ },
+ "flour_mill": {
+  "kind": "enterprise",
+  "activities": [
+   "flour_mill"
+  ]
+ },
+ "rice_mill": {
+  "kind": "enterprise",
+  "activities": [
+   "flour_mill"
+  ]
+ },
+ "indian_sweets_shop": {
+  "kind": "enterprise",
+  "activities": [
+   "food_processing_home"
+  ]
+ },
+ "herb_and_spice_shop": {
+  "kind": "enterprise",
+  "activities": [
+   "food_processing_home"
+  ]
+ },
+ "grocery_store": {
+  "kind": "enterprise",
+  "activities": [
+   "grocery_kirana"
+  ]
+ },
+ "indian_grocery_store": {
+  "kind": "enterprise",
+  "activities": [
+   "grocery_kirana"
+  ]
+ },
+ "convenience_store": {
+  "kind": "enterprise",
+  "activities": [
+   "grocery_kirana"
+  ]
+ },
+ "supermarket": {
+  "kind": "enterprise",
+  "activities": [
+   "grocery_kirana"
+  ]
+ },
+ "agricultural_service": {
+  "kind": "enterprise",
+  "activities": [
+   "agri_input_depot"
+  ]
+ },
+ "fertilizer_store": {
+  "kind": "enterprise",
+  "activities": [
+   "agri_input_depot"
+  ]
+ },
+ "agricultural_seed_store": {
+  "kind": "enterprise",
+  "activities": [
+   "agri_input_depot"
+  ]
+ },
+ "agricultural_cooperatives": {
+  "kind": "enterprise",
+  "activities": [
+   "agri_input_depot"
+  ]
+ },
+ "sewing_and_alterations": {
+  "kind": "enterprise",
+  "activities": [
+   "tailoring"
+  ]
+ },
+ "gents_tailor": {
+  "kind": "enterprise",
+  "activities": [
+   "tailoring"
+  ]
+ },
+ "b2b_textiles": {
+  "kind": "enterprise",
+  "activities": [
+   "handloom_weaving"
+  ]
+ },
+ "textile_mill": {
+  "kind": "enterprise",
+  "activities": [
+   "handloom_weaving"
+  ]
+ },
+ "weaving_mill": {
+  "kind": "enterprise",
+  "activities": [
+   "handloom_weaving"
+  ]
+ },
+ "saree_shop": {
+  "kind": "enterprise",
+  "activities": [
+   "handloom_weaving"
+  ]
+ },
+ "carpet_store": {
+  "kind": "enterprise",
+  "activities": [
+   "carpet_weaving"
+  ]
+ },
+ "mobile_phone_repair": {
+  "kind": "enterprise",
+  "activities": [
+   "mobile_repair"
+  ]
+ },
+ "mobile_phone_store": {
+  "kind": "enterprise",
+  "activities": [
+   "mobile_repair"
+  ]
+ },
+ "beauty_salon": {
+  "kind": "enterprise",
+  "activities": [
+   "beauty_parlour"
+  ]
+ },
+ "beauty_and_spa": {
+  "kind": "enterprise",
+  "activities": [
+   "beauty_parlour"
+  ]
+ },
+ "hair_salon": {
+  "kind": "enterprise",
+  "activities": [
+   "beauty_parlour"
+  ]
+ },
+ "tea_room": {
+  "kind": "enterprise",
+  "activities": [
+   "tea_snack_stall"
+  ]
+ },
+ "cafe": {
+  "kind": "enterprise",
+  "activities": [
+   "tea_snack_stall"
+  ]
+ },
+ "food_stand": {
+  "kind": "enterprise",
+  "activities": [
+   "tea_snack_stall"
+  ]
+ },
+ "fast_food_restaurant": {
+  "kind": "enterprise",
+  "activities": [
+   "tea_snack_stall"
+  ]
+ },
+ "smoothie_juice_bar": {
+  "kind": "enterprise",
+  "activities": [
+   "tea_snack_stall"
+  ]
+ },
+ "bank_credit_union": {
+  "kind": "bank",
+  "activities": []
+ },
+ "banks": {
+  "kind": "bank",
+  "activities": []
+ },
+ "farmers_market": {
+  "kind": "market",
+  "activities": []
+ },
+ "flea_market": {
+  "kind": "market",
+  "activities": []
+ },
+ "bus_station": {
+  "kind": "transport",
+  "activities": []
+ },
+ "train_station": {
+  "kind": "transport",
+  "activities": []
+ },
+ "school": {
+  "kind": "school",
+  "activities": []
+ },
+ "elementary_school": {
+  "kind": "school",
+  "activities": []
+ },
+ "high_school": {
+  "kind": "school",
+  "activities": []
+ },
+ "post_office": {
+  "kind": "post_office",
+  "activities": []
+ },
+ "wholesale_store": {
+  "kind": "supplier",
+  "activities": []
+ },
+ "wholesaler": {
+  "kind": "supplier",
+  "activities": []
+ },
+ "wholesale_grocer": {
+  "kind": "supplier",
+  "activities": []
+ },
+ "hardware_store": {
+  "kind": "supplier",
+  "activities": []
+ },
+ "fabric_store": {
+  "kind": "supplier",
+  "activities": [
+   "handloom_weaving"
+  ]
+ },
+ "cosmetic_and_beauty_supplies": {
+  "kind": "supplier",
+  "activities": []
+ },
+ "livestock_feed_and_supply_store": {
+  "kind": "supplier",
+  "activities": []
+ },
+ "tools_wholesaler": {
+  "kind": "supplier",
+  "activities": []
+ },
+ "spices_wholesaler": {
+  "kind": "supplier",
+  "activities": []
+ }
+}
