@@ -1,4 +1,4 @@
-import { AlertTriangle, BellRing, CalendarCheck, CalendarClock, ChevronRight, Eye, HeartPulse, Hourglass, LifeBuoy, Lock, Milestone, ShieldCheck, TrendingDown, TrendingUp, Users } from "lucide-react";
+import { AlertTriangle, BellRing, CalendarCheck, CalendarClock, ChevronRight, Eye, HeartPulse, Hourglass, LifeBuoy, Lock, Milestone, ScanSearch, ShieldCheck, Sparkles, TrendingDown, TrendingUp, Users } from "lucide-react";
 import { motion } from "motion/react";
 import { useI18n } from "../i18n";
 import { rupees } from "../lib/format";
@@ -166,6 +166,28 @@ export default function Business() {
                 </div>
                 <ChevronRight className="size-5 text-ink-3" />
               </div>
+            </Card>
+          )}
+          {state.smsConsent && (view.forecast?.installment || view.anomalies.length > 0) && (
+            <Card className="mt-3 divide-y divide-line py-1">
+              {view.forecast?.installment && (
+                <ListRow
+                  icon={Sparkles}
+                  tone={view.forecast.installment.chance >= 0.75 ? "azure" : view.forecast.installment.chance >= 0.45 ? "marigold" : "clay"}
+                  title={t("u4.fc.short", { pct: Math.round(view.forecast.installment.chance * 100) })}
+                  subtitle={t("u4.fc.shortSub", { amount: rupees(view.forecast.installment.amount), month: monthLabel(view.forecast.installment.month, lang) })}
+                  onClick={() => push({ name: "monitoring" })}
+                />
+              )}
+              {view.anomalies.length > 0 && (
+                <ListRow
+                  icon={ScanSearch}
+                  tone={view.anomalies[0].severity === "high" ? "clay" : "marigold"}
+                  title={t("u4.anomaly.short", { n: view.anomalies.length })}
+                  subtitle={t(`u4.anomaly.${view.anomalies[0].kind}.title`)}
+                  onClick={() => push({ name: "monitoring" })}
+                />
+              )}
             </Card>
           )}
         </Reveal>

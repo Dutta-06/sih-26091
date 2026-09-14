@@ -160,6 +160,43 @@ function split(total: number, n: number, rnd: () => number): number[] {
 }
 
 /**
+ * Everyday irregularities layered on the simulated inbox (kept apart from simulateBankAlerts, which mirrors the
+ * backend): a supplier payment charged twice in the second month, an unusually large incoming transfer in the fourth month and,
+ * with a disruption, no incoming payments on days 8–19 of the disrupted month. Returns a new array.
+ */
+export function addIrregularEvents(raw: string[], startMonth: string, months: number, seed: number, disruptedMonth?: string): string[] {
+  const rnd = prng(seed ^ 0x5bd1e995);
+  const acct = /A\/c (XX\d{4})/.exec(raw.join(" "))?.[1] ?? "XX4821";
+  const [y0, m0] = startMonth.split("-").map(Number);
+  const at = (k: number) => ({ y: Math.floor((y0 * 12 + m0 - 1 + k) / 12), m: (y0 * 12 + m0 - 1 + k) % 12 });
+  const debits = raw.map((s) => parseOne(s)).filter((t): t is Transaction => !!t && t.direction === "debit" && !t.isLoanRepayment).map((t) => t.amount).sort((a, b) => a - b);
+  const usualDebit = debits.length ? debits[debits.length >> 1] : 2000;
+  let out = [...raw];
+  if (disruptedMonth) {
+    out = out.filter((s) => {
+      const t = parseOne(s);
+      if (!t || t.direction !== "credit" || t.at.slice(0, 7) !== disruptedMonth) return true;
+      const d = +t.at.slice(8, 10);
+      return d < 8 || d > 19;
+    });
+  }
+  if (months >= 2) {
+    const { y, m } = at(1);
+    const amt = Math.round((usualDebit * (0.6 + 0.3 * rnd())) / 10) * 10;
+    const date = fmtDate(y, m, 9, 0);
+    for (const ref of [0, 1]) {
+      out.push(`A/c ${acct} debited by Rs ${inr(amt)} on ${date} towards UPI payment to shreetraders@ybl. UPI Ref ${700000000000 + Math.floor(rnd() * 1e11) + ref}. Not you? Call 1800111109`);
+    }
+  }
+  if (months >= 4) {
+    const { y, m } = at(3);
+    const amt = Math.round((15000 + 10000 * rnd()) / 500) * 500;
+    out.push(`INR ${inr(amt)} credited to A/c ${acct} on ${fmtDate(y, m, 17, 2)} via IMPS from RAJU PRASAD. Ref ${400000000000 + Math.floor(rnd() * 1e11)}`);
+  }
+  return out;
+}
+
+/**
  * Raw alert strings for `months` calendar months from `startMonth` (YYYY-MM, taken as the disbursement month).
  * Revenue per month = base projection × days/365 × catalog/risk seasonal factor (raw, as the monitoring baseline)
  * × seeded noise (±6%); a shock month cuts revenue by revenueDropPct while costs stay at the unshocked level.

@@ -160,6 +160,67 @@ export const PlanVsActual = memo(function PlanVsActual({
   );
 });
 
+/** Recent actual months followed by forecast months: forecast line dashed inside its shaded likely range. */
+export const ForecastChart = memo(function ForecastChart({
+  actual,
+  forecast,
+  labels,
+  height = 160,
+}: {
+  actual: number[];
+  forecast: { mid: number; low: number; high: number }[];
+  labels: string[];
+  height?: number;
+}) {
+  const W = 300;
+  const geo = useMemo(() => {
+    const count = actual.length + forecast.length;
+    const max = Math.max(1e-9, ...actual, ...forecast.map((f) => f.high)) * 1.08;
+    const x = (i: number) => (count > 1 ? (i / (count - 1)) * (W - 16) + 8 : W / 2);
+    const y = (v: number) => height - 8 - (v / max) * (height - 20);
+    const a0 = actual.length - 1;
+    const path = (pts: [number, number][]) => pts.map(([i, v], k) => `${k ? "L" : "M"}${x(i)},${y(v)}`).join(" ");
+    const anchor: [number, number][] = a0 >= 0 ? [[a0, actual[a0]]] : [];
+    const band = forecast.length
+      ? `${path([...anchor, ...forecast.map((f, j) => [a0 + 1 + j, f.high] as [number, number])])} ${[...forecast.map((f, j) => [a0 + 1 + j, f.low] as [number, number]).reverse(), ...anchor]
+          .map(([i, v]) => `L${x(i)},${y(v)}`)
+          .join(" ")} Z`
+      : "";
+    return {
+      actualLine: path(actual.map((v, i) => [i, v])),
+      forecastLine: path([...anchor, ...forecast.map((f, j) => [a0 + 1 + j, f.mid] as [number, number])]),
+      band,
+      split: a0 >= 0 ? x(a0) : 0,
+      dots: actual.map((v, i) => ({ cx: x(i), cy: y(v) })),
+      fdots: forecast.map((f, j) => ({ cx: x(a0 + 1 + j), cy: y(f.mid) })),
+    };
+  }, [actual, forecast, height]);
+
+  return (
+    <div>
+      <svg viewBox={`0 0 ${W} ${height}`} className="w-full" style={{ height }}>
+        <rect x={geo.split} y={0} width={W - geo.split} height={height} fill="#ECF8FA" rx={6} />
+        {geo.band && <motion.path d={geo.band} fill="#0e9bb3" initial={{ opacity: 0 }} animate={{ opacity: 0.18 }} transition={{ delay: 0.5, duration: 0.6 }} />}
+        <motion.path d={geo.actualLine} fill="none" stroke="#0A8AA0" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.7, ease: "easeInOut" }} />
+        <motion.path d={geo.forecastLine} fill="none" stroke="#00596A" strokeWidth={2.5} strokeDasharray="6 5" strokeLinecap="round" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 0.4 }} />
+        {geo.dots.map((d, i) => (
+          <circle key={i} cx={d.cx} cy={d.cy} r={3.5} fill="#0A8AA0" stroke="white" strokeWidth={1.5} />
+        ))}
+        {geo.fdots.map((d, i) => (
+          <motion.circle key={`f${i}`} cx={d.cx} cy={d.cy} r={3.5} fill="white" stroke="#00596A" strokeWidth={2} initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.8 + i * 0.1 }} />
+        ))}
+      </svg>
+      <div className="mt-1 flex justify-between px-1 text-[10px] text-ink-3">
+        {labels.map((l, i) => (
+          <span key={i} className={i >= actual.length ? "font-semibold text-azure-800" : undefined}>
+            {l}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+});
+
 /** Semi-circular gauge for coverage ratios (DSCR). 0 → 2.0×, bands at 1.0 and 1.25. */
 export const CoverageGauge = memo(function CoverageGauge({ value, size = 180 }: { value: number; size?: number }) {
   const clamped = Math.max(0, Math.min(2, Number.isFinite(value) ? value : 2));

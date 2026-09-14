@@ -1,4 +1,4 @@
-import { AlertTriangle, ArrowDownLeft, ArrowUpRight, CheckCircle2, ChevronRight, Clock, FlaskConical, Gauge, Hourglass, Landmark, Lock, PauseCircle, ShieldCheck, TrendingDown, TrendingUp } from "lucide-react";
+import { AlertTriangle, ArrowDownLeft, ArrowUpRight, CheckCircle2, ChevronRight, Gauge, Hourglass, Landmark, Lock, PauseCircle, ShieldCheck, TrendingDown, TrendingUp } from "lucide-react";
 import { useState } from "react";
 import { useI18n } from "../i18n";
 import { rupees } from "../lib/format";
@@ -6,6 +6,7 @@ import { useNav } from "../nav";
 import { PlanVsActual } from "../ui/charts";
 import { Badge, Button, Card, cx, IconBubble, ListRow, Note, Progress, Reveal, Ring, Screen, Section, Stat } from "../ui";
 import { ConsentCard } from "./g4/Consent";
+import { ForecastCard, UnusualActivity } from "./g4/Insights";
 import { BAND_TONE, consentLog, dateLabel, monthLabel, pctOfPlan, RING_TONE, STATUS_TONE, useLifecycle } from "./g4/model";
 
 const CHART_MONTHS = 6;
@@ -14,7 +15,7 @@ const TX_PAGE = 15;
 export default function Monitoring() {
   const { t, lang } = useI18n();
   const { state, view, lc } = useLifecycle();
-  const { push, switchTab } = useNav();
+  const { push } = useNav();
   const [showAll, setShowAll] = useState(false);
 
   const manage = (
@@ -57,11 +58,7 @@ export default function Monitoring() {
             <p className="mt-1 max-w-80 text-[15px] leading-snug text-ink-3">
               {disbursed ? (state.dataDeletedOn ? t("u4.monitoring.noData.afterDelete", { date: dateLabel(state.dataDeletedOn, lang) }) : t("u4.monitoring.noData.body")) : t("u4.monitoring.notDisbursed.body")}
             </p>
-            {disbursed ? (
-              <Button className="mt-5" variant="secondary" icon={Clock} onClick={() => switchTab("more")}>
-                {t("u4.presenter.advance")}
-              </Button>
-            ) : (
+            {!disbursed && (
               <Button className="mt-5" variant="secondary" onClick={() => push({ name: "application" })}>
                 {t("business.locked.cta")}
               </Button>
@@ -139,6 +136,20 @@ export default function Monitoring() {
           </Card>
         </Reveal>
       )}
+
+      {view.forecast && (
+        <Section title={t("u4.fc.section")}>
+          <Reveal i={2}>
+            <ForecastCard forecast={view.forecast} history={view.health} />
+          </Reveal>
+        </Section>
+      )}
+
+      <Section title={t("u4.anomaly.section")}>
+        <Reveal i={2}>
+          <UnusualActivity anomalies={view.anomalies} />
+        </Reveal>
+      </Section>
 
       <Section title={t("monitoring.chart.title")}>
         <Reveal i={2}>
@@ -244,11 +255,7 @@ export default function Monitoring() {
         )}
         <div className="mt-3 grid gap-2">
           <Note tone="azure">{t("u4.monitoring.parsedNote")}</Note>
-          <Note tone="marigold" icon={FlaskConical}>{t("u4.monitoring.sampleInbox", { kind: t(`u4.inbox.${state.inbox}`) })}</Note>
         </div>
-        <Button variant="ghost" size="md" icon={Clock} className="mt-2 w-full" onClick={() => switchTab("more")}>
-          {t("u4.presenter.advance")}
-        </Button>
         {manage}
       </Section>
     </Screen>

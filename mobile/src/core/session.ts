@@ -6,7 +6,7 @@
  * (6 analyses → SWOT → red-team review → alternatives) → financial plan → documents/application →
  * launch roadmap & pooled procurement → consented SMS monitoring → health snapshots → interventions/outcomes.
  */
-import { buildFinancial, type FinancialOutput } from "./financial";
+import { buildFinancial, catalogEntry, type FinancialOutput } from "./financial";
 import { checklist, requiredDocuments } from "./documents";
 import { runFeasibility, runIntel, type FeasibilityOutcome } from "./feasibility";
 import { resolveLocation } from "./geo";
@@ -14,7 +14,9 @@ import { monthlySnapshots } from "./health";
 import { roadmap } from "./launch";
 import { interventionOptions, categoryPrior } from "./outcomes";
 import { pool } from "./procurement";
-import { parseNotifications, simulateBankAlerts } from "./sms";
+import { addIrregularEvents, parseNotifications, simulateBankAlerts } from "./sms";
+import { detectAnomalies, type Anomaly } from "./anomalies";
+import { forecast, type Forecast } from "./forecast";
 import type { AppStage, DocStatus, GrievanceTicket, InterventionOption, Intel, OutcomeRecord, ProfileInput, ResolvedLocation, Transaction } from "./types";
 
 export type MonthlyHealth = ReturnType<typeof monthlySnapshots>[number];
@@ -52,6 +54,10 @@ export interface CaseView {
   health: MonthlyHealth[];
   latestHealth: MonthlyHealth | null;
   warning: MonthlyHealth | null; // latest snapshot with an early warning
+  /** Next months learned from finished months (null before the first finished month). */
+  forecast: Forecast | null;
+  /** Unusual activity in the bank alerts up to today, newest first. */
+  anomalies: Anomaly[];
   interventions: InterventionOption[];
   prior: ReturnType<typeof categoryPrior> | null;
 }
@@ -83,7 +89,9 @@ export function readInbox(inputs: SessionInputs, financial: FinancialOutput, act
   const months = monthsBetween(inputs.disbursedOn, inputs.today);
   if (months <= 0) return [];
   const shock = inputs.inbox === "monsoon_disruption" ? { month: firstJulyAfter(inputs.disbursedOn), revenueDropPct: 35 } : undefined;
-  const raw = simulateBankAlerts(financial, activityId, monthKey(inputs.disbursedOn), months, seedOf(inputs.profile), shock, intel?.risk.seasonalIndex ?? null);
+  const seed = seedOf(inputs.profile);
+  const start = monthKey(inputs.disbursedOn);
+  const raw = addIrregularEvents(simulateBankAlerts(financial, activityId, start, months, seed, shock, intel?.risk.seasonalIndex ?? null), start, months, seed, shock?.month);
   const today = new Date(`${inputs.today}T23:59:59Z`);
   return parseNotifications(raw, today).filter((t) => t.at.slice(0, 10) <= inputs.today && (!inputs.dataDeletedOn || t.at.slice(0, 10) > inputs.dataDeletedOn));
 }
@@ -110,6 +118,10 @@ export function computeCase(inputs: SessionInputs): CaseView {
   const allMonths = activityId && financial ? monthlySnapshots(transactions, financial, activityId, { intel, disbursedOn: inputs.disbursedOn }) : [];
   const health = finishedMonths(allMonths, inputs.today);
   const warning = [...health].reverse().find((h) => h.earlyWarning) ?? null;
+  const seasonal = activityId ? intel?.risk.seasonalIndex ?? catalogEntry(activityId).seasonal_profile : null;
+  const anomalies = transactions.length ? detectAnomalies(transactions, inputs.today, seasonal) : [];
+  const oneOff: Record<string, number> = {};
+  for (const a of anomalies) if (a.kind === "large_credit" && a.amount) oneOff[a.at.slice(0, 7)] = (oneOff[a.at.slice(0, 7)] ?? 0) + a.amount;
   const district = place?.district.id ?? null;
   return {
     location,
@@ -125,6 +137,8 @@ export function computeCase(inputs: SessionInputs): CaseView {
     health,
     latestHealth: health.at(-1) ?? null,
     warning,
+    forecast: activityId && financial ? forecast(health, { financial, activityId, intel, disbursedOn: inputs.disbursedOn, oneOff }) : null,
+    anomalies,
     interventions: activityId ? interventionOptions(activityId, district, inputs.realOutcomes) : [],
     prior: activityId ? categoryPrior(activityId, district, inputs.realOutcomes) : null,
   };
