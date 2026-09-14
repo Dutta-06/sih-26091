@@ -4,7 +4,7 @@ android {
     namespace = "in.arambh.advisor"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "in.arambh.advisor"
+        applicationId "in.aashaudyami.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
