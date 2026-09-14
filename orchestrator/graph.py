@@ -1,167 +1,208 @@
-"""Master LangGraph StateGraph Orchestration Definition.
+"""LangGraph control flow for the whole case lifecycle (TDD 4.1-4.2, TECHNICAL_SETUP 4).
 
-Implements the multi-agent control flow defined in Technical Setup Section 2 & 4
-and Technical Design Document Figure 2 & Figure 3:
-- Fan-out to 6 parallel Module 1 intelligence agents
-- Fan-in to SWOT Synthesis
-- Adversarial Review red-team pass with conditional rejection loop back to Business Discovery
-- Deterministic Module 2 Financial Engine -> Financial Analyst -> Stress Test -> Policy -> Documentation -> Tracker
-- Module 3 Post-disbursement Lifecycle: Procurement -> Roadmap -> Monitoring -> Health Score -> Grievance -> Outcome Loop.
+Reads: session_meta.requested_stage (set by the router / API), verdicts and statuses written by agents
+Writes: nothing itself; nodes return partial updates
+Tech: LangGraph StateGraph over the Pydantic ``CaseState``; conditional edges re-enter any stage.
+
+START -> entry_router -> by requested_stage:
+  profiling       profiling_agent -> discovery_agent -> 6 parallel intel agents -> swot_synthesis
+                  -> adversarial_review -> viable: financial_engine | rejected & alternatives left: discovery_agent
+                  | exhausted: END
+                  financial_engine -> eligible: financial_analyst -> scenario_digital_twin -> policy_scheme
+                  -> documentation -> application_tracker | outside scheme range: END
+                  application_tracker -> disbursed: procurement_coordinator -> launch_copilot -> END | else END (paused)
+  application     documentation -> application_tracker -> (as above)
+  launch          procurement_coordinator (only when disbursed)
+  monitoring      ongoing_monitoring -> health_score -> outcome_learning_loop -> END (only with consent)
+  grievance       grievance_engine -> outcome_learning_loop -> END
+  scheme_inquiry  policy_scheme -> END
+
+Agent modules are imported lazily inside each node so the graph compiles even while a module is being
+rewritten, and tests can monkeypatch ``<module>.run``.
 """
 
 from __future__ import annotations
 
+import importlib
 import sys
-from typing import Any
-from langgraph.graph import END, StateGraph
+from typing import Any, Callable
 
-from orchestrator.state import CaseState
+from langgraph.graph import END, START, StateGraph
+
+from config.settings import settings
+from module2_financial.financial_engine import MARGIN_SHARE, TERM_LOAN_MAX_PROJECT_COST
 from orchestrator.persistence import get_checkpointer
+from orchestrator.state import CaseState
 
-# Import Module 1 agents
-import module1_feasibility.profiling_agent as profiling_agent
-import module1_feasibility.discovery_agent as discovery_agent
-import module1_feasibility.market_reach_agent as market_reach_agent
-import module1_feasibility.opportunity_agent as opportunity_agent
-import module1_feasibility.risk_agent as risk_agent
-import module1_feasibility.competitor_agent as competitor_agent
-import module1_feasibility.pricing_agent as pricing_agent
-import module1_feasibility.supply_chain_agent as supply_chain_agent
-import module1_feasibility.swot_synthesis as swot_synthesis
-import module1_feasibility.adversarial_review as adversarial_review
+INTEL_NODES = ["market_reach_agent", "opportunity_agent", "risk_agent", "competitor_agent", "pricing_agent", "supply_chain_agent"]
 
-# Import Module 2 nodes
-import module2_financial.financial_engine as financial_engine
-import module2_financial.financial_analyst_agent as financial_analyst_agent
-import module2_financial.scenario_digital_twin as scenario_digital_twin
-import module2_financial.policy_scheme_agent as policy_scheme_agent
-import module2_financial.documentation_agent as documentation_agent
-import module2_financial.application_tracker as application_tracker
+NODE_MODULES: dict[str, str] = {
+    "profiling_agent": "module1_feasibility.profiling_agent",
+    "discovery_agent": "module1_feasibility.discovery_agent",
+    **{name: f"module1_feasibility.{name}" for name in INTEL_NODES},
+    "swot_synthesis": "module1_feasibility.swot_synthesis",
+    "adversarial_review": "module1_feasibility.adversarial_review",
+    "financial_engine": "module2_financial.financial_engine",
+    "financial_analyst": "module2_financial.financial_analyst_agent",
+    "scenario_digital_twin": "module2_financial.scenario_digital_twin",
+    "policy_scheme": "module2_financial.policy_scheme_agent",
+    "documentation": "module2_financial.documentation_agent",
+    "application_tracker": "module2_financial.application_tracker",
+    "procurement_coordinator": "module3_monitoring.procurement_coordinator",
+    "launch_copilot": "module3_monitoring.launch_copilot",
+    "ongoing_monitoring": "module3_monitoring.ongoing_monitoring_agent",
+    "health_score": "module3_monitoring.health_score_agent",
+    "grievance_engine": "module3_monitoring.grievance_engine",
+    "outcome_learning_loop": "module3_monitoring.outcome_learning_loop",
+}
 
-# Import Module 3 nodes
-import module3_monitoring.procurement_coordinator as procurement_coordinator
-import module3_monitoring.launch_copilot as launch_copilot
-import module3_monitoring.ongoing_monitoring_agent as ongoing_monitoring_agent
-import module3_monitoring.health_score_agent as health_score_agent
-import module3_monitoring.grievance_engine as grievance_engine
-import module3_monitoring.outcome_learning_loop as outcome_learning_loop
+ENTRY_NODES = {
+    "profiling": "profiling_agent",
+    "application": "documentation",
+    "launch": "procurement_coordinator",
+    "monitoring": "ongoing_monitoring",
+    "grievance": "grievance_engine",
+    "scheme_inquiry": "policy_scheme",
+}
 
 
-def route_adversarial_verdict(state: CaseState) -> str:
-    """Conditional Edge:
-    - If adversarial review outputs 'not_recommended' or 'marginal', loop back to 'discovery_agent'
-      with the candidate added to rejection history.
-    - If 'viable', advance to Module 2 'financial_engine'.
-    """
-    verdict = "viable"
-    if state.feasibility_record:
-        verdict = state.feasibility_record.verdict
+def _node(module_name: str) -> Callable[[CaseState], dict[str, Any]]:
+    def call(state: CaseState) -> dict[str, Any]:
+        return importlib.import_module(module_name).run(state) or {}
 
-    if verdict in ("not_recommended", "marginal"):
-        return "discovery_agent"
-    return "financial_engine"
+    call.__name__ = module_name.rsplit(".", 1)[-1]
+    return call
+
+
+def entry_router(state: CaseState) -> dict[str, Any]:
+    stage = state.session_meta.requested_stage or "profiling"
+    return {"session_meta": state.session_meta.model_copy(update={"current_stage": stage})}
+
+
+def route_entry(state: CaseState) -> str:
+    meta = state.session_meta
+    stage = meta.requested_stage or "profiling"
+    if stage == "monitoring" and not meta.consent_sms_monitoring:
+        return END
+    if stage == "launch" and (not state.application_status or state.application_status.disbursement_status != "disbursed"):
+        return END
+    if stage == "application" and not _eligible(state):
+        return END
+    return ENTRY_NODES[stage]
+
+
+def route_after_profiling(state: CaseState) -> str:
+    """TDD 5.1: stop before feasibility when the stated capital cannot enter any scheme tier."""
+    profile = state.entrepreneur_profile
+    if not profile or profile.available_capital <= 0:
+        return END
+    within_scheme = profile.available_capital / MARGIN_SHARE <= TERM_LOAN_MAX_PROJECT_COST
+    return "discovery_agent" if within_scheme else END
+
+
+def route_after_discovery(state: CaseState) -> list[str] | str:
+    return list(INTEL_NODES) if state.business_shortlist else END
+
+
+def route_after_review(state: CaseState) -> str:
+    record = state.feasibility_record
+    if record is None:
+        return END
+    if record.verdict == "viable":
+        return "financial_engine"
+    if record.alternatives_exhausted or record.attempt_number > settings.max_feasibility_attempts:
+        return END
+    return "discovery_agent"
+
+
+def _eligible(state: CaseState) -> bool:
+    return bool(state.financial_plan and state.financial_plan.eligibility_status == "eligible")
+
+
+def route_after_financial_engine(state: CaseState) -> str:
+    return "financial_analyst" if _eligible(state) else END
+
+
+def route_after_policy(state: CaseState) -> str:
+    """Scheme questions stop after the explanation; the main pipeline continues to documentation."""
+    return END if state.session_meta.requested_stage == "scheme_inquiry" else "documentation"
+
+
+def route_after_tracker(state: CaseState) -> str:
+    status = state.application_status.disbursement_status if state.application_status else None
+    return "procurement_coordinator" if status == "disbursed" else END
 
 
 def build_graph(with_checkpointer: bool = True):
-    """Assembles the compiled StateGraph across all 3 modules."""
-    workflow = StateGraph(CaseState)
+    g = StateGraph(CaseState)
+    g.add_node("entry_router", entry_router)
+    for name, module in NODE_MODULES.items():
+        g.add_node(name, _node(module))
 
-    # ---------------------------------------------------------
-    # Register Module 1 Nodes
-    # ---------------------------------------------------------
-    workflow.add_node("profiling_agent", profiling_agent.run)
-    workflow.add_node("discovery_agent", discovery_agent.run)
+    g.add_edge(START, "entry_router")
+    g.add_conditional_edges("entry_router", route_entry, [*ENTRY_NODES.values(), END])
+    g.add_conditional_edges("profiling_agent", route_after_profiling, ["discovery_agent", END])
+    g.add_conditional_edges("discovery_agent", route_after_discovery, [*INTEL_NODES, END])
+    for name in INTEL_NODES:
+        g.add_edge(name, "swot_synthesis")  # same superstep -> swot runs once per pass
+    g.add_edge("swot_synthesis", "adversarial_review")
+    g.add_conditional_edges("adversarial_review", route_after_review, ["financial_engine", "discovery_agent", END])
+    g.add_conditional_edges("financial_engine", route_after_financial_engine, ["financial_analyst", END])
+    g.add_edge("financial_analyst", "scenario_digital_twin")
+    g.add_edge("scenario_digital_twin", "policy_scheme")
+    g.add_conditional_edges("policy_scheme", route_after_policy, ["documentation", END])
+    g.add_edge("documentation", "application_tracker")
+    g.add_conditional_edges("application_tracker", route_after_tracker, ["procurement_coordinator", END])
+    g.add_edge("procurement_coordinator", "launch_copilot")
+    g.add_edge("launch_copilot", END)
+    g.add_edge("ongoing_monitoring", "health_score")
+    g.add_edge("health_score", "outcome_learning_loop")
+    g.add_edge("grievance_engine", "outcome_learning_loop")
+    g.add_edge("outcome_learning_loop", END)
+    return g.compile(checkpointer=get_checkpointer() if with_checkpointer else None)
 
-    # 6 Parallel Local Intelligence Nodes
-    workflow.add_node("market_reach_agent", market_reach_agent.run)
-    workflow.add_node("opportunity_agent", opportunity_agent.run)
-    workflow.add_node("risk_agent", risk_agent.run)
-    workflow.add_node("competitor_agent", competitor_agent.run)
-    workflow.add_node("pricing_agent", pricing_agent.run)
-    workflow.add_node("supply_chain_agent", supply_chain_agent.run)
 
-    workflow.add_node("swot_synthesis", swot_synthesis.run)
-    workflow.add_node("adversarial_review", adversarial_review.run)
+def agent_node_count(app) -> int:
+    return len([n for n in app.get_graph().nodes if not n.startswith("__")])
 
-    # ---------------------------------------------------------
-    # Register Module 2 Nodes
-    # ---------------------------------------------------------
-    workflow.add_node("financial_engine", financial_engine.run)
-    workflow.add_node("financial_analyst", financial_analyst_agent.run)
-    workflow.add_node("scenario_digital_twin", scenario_digital_twin.run)
-    workflow.add_node("policy_scheme", policy_scheme_agent.run)
-    workflow.add_node("documentation", documentation_agent.run)
-    workflow.add_node("application_tracker", application_tracker.run)
 
-    # ---------------------------------------------------------
-    # Register Module 3 Nodes
-    # ---------------------------------------------------------
-    workflow.add_node("procurement_coordinator", procurement_coordinator.run)
-    workflow.add_node("launch_copilot", launch_copilot.run)
-    workflow.add_node("ongoing_monitoring", ongoing_monitoring_agent.run)
-    workflow.add_node("health_score", health_score_agent.run)
-    workflow.add_node("grievance_engine", grievance_engine.run)
-    workflow.add_node("outcome_learning_loop", outcome_learning_loop.run)
+def run_case(app, state: CaseState, recursion_limit: int = 100) -> CaseState:
+    """Invoke the compiled graph for one entry and return the validated resulting state.
 
-    # ---------------------------------------------------------
-    # Edges & Parallel Fan-Out / Fan-In
-    # ---------------------------------------------------------
-    workflow.set_entry_point("profiling_agent")
-    workflow.add_edge("profiling_agent", "discovery_agent")
+    The whole state is passed as a dict so every channel (including cleared ``None`` fields) is written
+    over any earlier checkpoint on the same thread.
+    """
+    config = {"configurable": {"thread_id": state.session_meta.session_id}, "recursion_limit": recursion_limit}
+    result = app.invoke(state.model_dump(), config=config)
+    case = result if isinstance(result, CaseState) else CaseState.model_validate(result)
+    case.session_meta.current_stage = lifecycle_stage(case)
+    return case
 
-    # 1 -> 6 Fan-Out from discovery_agent to the 6 parallel local intelligence agents
-    workflow.add_edge("discovery_agent", "market_reach_agent")
-    workflow.add_edge("discovery_agent", "opportunity_agent")
-    workflow.add_edge("discovery_agent", "risk_agent")
-    workflow.add_edge("discovery_agent", "competitor_agent")
-    workflow.add_edge("discovery_agent", "pricing_agent")
-    workflow.add_edge("discovery_agent", "supply_chain_agent")
 
-    # 6 -> 1 Fan-In from all 6 agents to swot_synthesis
-    workflow.add_edge("market_reach_agent", "swot_synthesis")
-    workflow.add_edge("opportunity_agent", "swot_synthesis")
-    workflow.add_edge("risk_agent", "swot_synthesis")
-    workflow.add_edge("competitor_agent", "swot_synthesis")
-    workflow.add_edge("pricing_agent", "swot_synthesis")
-    workflow.add_edge("supply_chain_agent", "swot_synthesis")
-
-    # Synthesis -> Adversarial Review
-    workflow.add_edge("swot_synthesis", "adversarial_review")
-
-    # Conditional Branch on Adversarial Verdict
-    workflow.add_conditional_edges(
-        "adversarial_review",
-        route_adversarial_verdict,
-        {
-            "discovery_agent": "discovery_agent",
-            "financial_engine": "financial_engine",
-        },
-    )
-
-    # Module 2 Flow
-    workflow.add_edge("financial_engine", "financial_analyst")
-    workflow.add_edge("financial_analyst", "scenario_digital_twin")
-    workflow.add_edge("scenario_digital_twin", "policy_scheme")
-    workflow.add_edge("policy_scheme", "documentation")
-    workflow.add_edge("documentation", "application_tracker")
-
-    # Module 3 Flow
-    workflow.add_edge("application_tracker", "procurement_coordinator")
-    workflow.add_edge("procurement_coordinator", "launch_copilot")
-    workflow.add_edge("launch_copilot", "ongoing_monitoring")
-    workflow.add_edge("ongoing_monitoring", "health_score")
-    workflow.add_edge("health_score", "grievance_engine")
-    workflow.add_edge("grievance_engine", "outcome_learning_loop")
-    workflow.add_edge("outcome_learning_loop", END)
-
-    checkpointer = get_checkpointer() if with_checkpointer else None
-    return workflow.compile(checkpointer=checkpointer)
+def lifecycle_stage(state: CaseState) -> str:
+    """Where the case stands after a run, derived from what the state actually contains."""
+    app_status, plan, record = state.application_status, state.financial_plan, state.feasibility_record
+    if state.monitoring_record:
+        return "post_disbursement_monitoring"
+    if state.launch_roadmap:
+        return "launch"
+    if app_status and app_status.disbursement_status != "not_applied":
+        return f"application_{app_status.disbursement_status}"
+    if plan and plan.eligibility_status != "eligible":
+        return "not_eligible"
+    if plan:
+        return "financial_structuring"
+    if record and record.verdict != "viable" and record.alternatives_exhausted:
+        return "feasibility_closed_no_viable_option"
+    if record:
+        return "feasibility_assessment"
+    profile = state.entrepreneur_profile
+    if profile and profile.available_capital > 0 and not state.business_shortlist:
+        return "not_eligible" if profile.constraints else "no_affordable_activity"
+    return "profiling"
 
 
 if __name__ == "__main__":
     if "--dry-run" in sys.argv:
-        print("Compiling LangGraph StateGraph across Modules 1, 2, and 3...")
-        app = build_graph(with_checkpointer=True)
-        print("LangGraph StateGraph compiled successfully!")
-        print(f"Total Nodes: {len(app.get_graph().nodes)}")
-        sys.exit(0)
+        compiled = build_graph(with_checkpointer=True)
+        print(f"Graph compiled: {agent_node_count(compiled)} nodes (+ START/END)")

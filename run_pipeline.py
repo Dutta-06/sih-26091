@@ -1,16 +1,14 @@
-"""CLI Pipeline Runner & Demonstration Tool.
+"""CLI runner: one case through the orchestrator graph, reported from the real resulting state.
 
-Demonstrates the end-to-end execution of the Hyper-Local Business Advisory
-and Financial Structuring Platform (SIH 26091).
+Usage: python run_pipeline.py --demo
+       python run_pipeline.py --capital 12000 --location "Bhadohi, Uttar Pradesh" --category tailoring --reason "I know stitching"
 """
 
 from __future__ import annotations
 
 import argparse
 import sys
-import uuid
 
-# Ensure UTF-8 output on Windows console
 if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
     try:
         sys.stdout.reconfigure(encoding="utf-8")
@@ -18,200 +16,136 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
         pass
 
 from rich.console import Console
-from rich.panel import Panel
 from rich.table import Table
 
-from orchestrator.graph import build_graph
+from module1_feasibility.profiling_agent import extract_profile_from_slots
+from orchestrator.graph import build_graph, run_case
 from orchestrator.router import route_conversational_turn
 from orchestrator.state import CaseState
 
-console = Console(force_terminal=True, legacy_windows=False)
+console = Console()
+DEMO = {"capital": 100_000.0, "location": "Bhadohi, Uttar Pradesh", "category": "dairy", "reason": "my family keeps buffaloes"}
 
 
-def print_formatted_report(state: CaseState):
-    """Renders a structured, institutional-grade report in the console."""
-    console.print()
-    console.print(
-        Panel.fit(
-            "[bold green]HYPER-LOCAL BUSINESS ADVISORY & FINANCIAL STRUCTURING PLATFORM[/bold green]\n"
-            "[cyan]National SC/ST/OBC Concessional Lending Scheme Advisory (SIH 26091)[/cyan]",
-            border_style="green",
-        )
-    )
+def _conf(value: str) -> str:
+    return f"[green]{value}[/green]" if value == "real" else f"[yellow]{value}[/yellow]"
 
-    # 1. Entrepreneur Profile
-    profile = state.entrepreneur_profile
-    if profile:
-        table_prof = Table(title="1. Entrepreneur Profile", show_header=True, header_style="bold magenta")
-        table_prof.add_column("Attribute", style="dim")
-        table_prof.add_column("Details")
-        loc_str = f"{profile.location.village or 'Bhadohi'}, {profile.location.district or 'Bhadohi'}, {profile.location.state or 'Uttar Pradesh'}"
-        table_prof.add_row("Location", loc_str)
-        table_prof.add_row("Available Margin Capital", f"Rs. {profile.available_capital:,.2f} (10% Self-Contribution)")
-        table_prof.add_row("Proposed Activity", profile.business_preference or "Dairy")
-        table_prof.add_row("Identified Skills", ", ".join(profile.skills))
-        table_prof.add_row("Available Premises", ", ".join(profile.assets))
-        console.print(table_prof)
 
-    # 2. Market Intelligence & Feasibility
-    feasibility = state.feasibility_record
-    market = state.market_intelligence
-    if feasibility and market:
-        table_feat = Table(title="2. Hyper-Local Feasibility & Market Intelligence", show_header=True, header_style="bold cyan")
-        table_feat.add_column("Analysis Dimension", style="bold")
-        table_feat.add_column("Verified Findings")
-        table_feat.add_column("Confidence", justify="center")
+def _fmt(value, pattern: str = "{:,.0f}", missing: str = "unknown") -> str:
+    return missing if value is None else pattern.format(value)
 
-        table_feat.add_row(
-            "Market Reach (5-10 km)",
-            f"Consumer base: ~{market.market_reach.consumer_base_estimate:,} persons | {len(market.market_reach.distribution_points)} primary distribution hubs identified",
-            f"[green]{market.market_reach.source_confidence.upper()}[/green]",
-        )
-        table_feat.add_row(
-            "Opportunity & Niche",
-            f"Sub-niche: {market.opportunity.sector_niche} | Saturation: {market.opportunity.saturation_level.upper()} (score: {market.opportunity.saturation_score})",
-            f"[green]{market.opportunity.source_confidence.upper()}[/green]",
-        )
-        table_feat.add_row(
-            "Competitor Density",
-            f"{market.competitor.estimated_competitor_count} local units ({market.competitor.density_per_10k_population:.2f}/10k pop) | District z-score: {market.competitor.z_score_vs_district:.2f}",
-            f"[green]{market.competitor.source_confidence.upper()}[/green]",
-        )
-        table_feat.add_row(
-            "Product Value & Pricing",
-            f"Optimal target: Rs. {market.pricing.optimal_target_price:.2f} (Range: Rs. {market.pricing.min_market_price:.2f} - Rs. {market.pricing.max_market_price:.2f})",
-            f"[green]{market.pricing.source_confidence.upper()}[/green]",
-        )
-        table_feat.add_row(
-            "Threats & Supply Risk",
-            f"{len(market.risk.risk_flags)} critical flags noted | Dry-period drop: {', '.join(market.risk.low_season_months)}",
-            f"[green]{market.risk.source_confidence.upper()}[/green]",
-        )
-        table_feat.add_row(
-            "Adversarial Review Verdict",
-            f"[bold green]{feasibility.verdict.upper()}[/bold green]: {feasibility.verdict_reasoning}",
-            "[green]AUDITED[/green]",
-        )
-        console.print(table_feat)
 
-    # 3. Deterministic Financial Plan & Scheme Router
+def print_report(state: CaseState) -> None:
+    p = state.entrepreneur_profile
+    if p:
+        t = Table(title="Entrepreneur profile", show_header=False)
+        loc = p.location
+        place = ", ".join(x for x in (loc.village, loc.block, loc.district, loc.state) if x) or p.location_query
+        t.add_row("Location", f"{place} ({loc.resolution_method}, {_conf(loc.source_confidence)})")
+        t.add_row("Margin capital", f"Rs {p.available_capital:,.0f}")
+        t.add_row("Preference", f"{p.business_preference or '-'}" + (f" because {p.preference_reason}" if p.preference_reason else ""))
+        for c in p.constraints:
+            t.add_row("Constraint", c)
+        console.print(t)
+
+    if state.business_shortlist:
+        t = Table(title="Discovery shortlist (top 5)")
+        for col in ("Rank", "Activity", "Score", "Notes"):
+            t.add_column(col)
+        for c in state.business_shortlist[:5]:
+            notes = "user preference" if c.is_user_preference else (f"adjacent to {c.adjacent_to}" if c.adjacent_to else "")
+            t.add_row(str(c.rank), c.category, f"{c.feasibility_score:.1f}", notes)
+        console.print(t)
+
+    mi = state.market_intelligence
+    if mi:
+        t = Table(title="Market intelligence")
+        for col in ("Analysis", "Finding", "Confidence"):
+            t.add_column(col)
+        t.add_row("Market reach", f"consumers {_fmt(mi.market_reach.consumer_base_estimate)} within {mi.market_reach.radius_km:g} km; "
+                  f"{len(mi.market_reach.distribution_points)} distribution points", _conf(mi.market_reach.source_confidence))
+        t.add_row("Opportunity", f"{mi.opportunity.sector_niche or '-'}; saturation {mi.opportunity.saturation_level}", _conf(mi.opportunity.source_confidence))
+        t.add_row("Competitors", f"{_fmt(mi.competitor.estimated_competitor_count)} nearby; density {_fmt(mi.competitor.density_per_10k_population, '{:.2f}')}/10k; "
+                  f"z {_fmt(mi.competitor.z_score_vs_district, '{:+.2f}')} ({mi.competitor.fallback_tier_used})", _conf(mi.competitor.source_confidence))
+        t.add_row("Pricing", f"{_fmt(mi.pricing.min_market_price)}-{_fmt(mi.pricing.max_market_price)} {mi.pricing.recommended_price_unit} "
+                  f"({mi.pricing.price_source_type})", _conf(mi.pricing.source_confidence))
+        t.add_row("Risk", f"severity {mi.risk.overall_severity}; low months {', '.join(mi.risk.low_season_months) or '-'}", _conf(mi.risk.source_confidence))
+        t.add_row("Supply chain", f"raw materials {mi.supply_chain.raw_material_availability}; lead time {_fmt(mi.supply_chain.lead_time_days, '{:g} days')}",
+                  _conf(mi.supply_chain.source_confidence))
+        if mi.missing_branches:
+            t.add_row("Missing", ", ".join(mi.missing_branches), "")
+        console.print(t)
+
+    r = state.feasibility_record
+    if r:
+        console.print(f"\n[bold]Feasibility verdict:[/bold] {r.selected_category or '-'} -> [bold]{r.verdict}[/bold]")
+        for e in r.rejection_history:
+            console.print(f"  attempt {e.attempt_number}: {e.category} {e.verdict}: " + "; ".join(e.reasons))
+        if r.alternatives_exhausted:
+            console.print("  [red]Alternatives exhausted: no activity passed review. Rejection is a valid outcome.[/red]")
+        for line in r.adversarial_critique:
+            console.print(f"  - {line}")
+        if r.preference_reason_context:
+            console.print(f"  context: {r.preference_reason_context}")
+        if r.swot.budget_scaling_notes:
+            console.print(f"  budget: {r.swot.budget_scaling_notes}")
+
     plan = state.financial_plan
     if plan:
-        table_fin = Table(title="3. Smart Scheme Calculator & Financial Structuring (Deterministic Core)", show_header=True, header_style="bold yellow")
-        table_fin.add_column("Financial Metric", style="bold")
-        table_fin.add_column("Computed Amount / Term")
-        table_fin.add_column("Governing Formula / Logic")
+        if plan.eligibility_status != "eligible":
+            console.print(f"\n[red]Not eligible:[/red] {plan.ineligibility_reason}")
+        else:
+            t = Table(title="Financial plan (deterministic core)", show_header=False)
+            t.add_row("Project cost", f"Rs {plan.computed_project_cost:,.0f}")
+            t.add_row("Loan eligibility", f"Rs {plan.maximum_loan_eligibility:,.0f}")
+            if plan.scheme_tier:
+                s = plan.scheme_tier
+                t.add_row("Scheme tier", f"{s.display_name}: {s.interest_rate:.2%}, {s.tenure_years} years, {s.moratorium_months} months moratorium")
+            t.add_row("Quarterly installment", f"Rs {plan.regular_quarterly_installment:,.0f}")
+            t.add_row("Base DSCR", _fmt(plan.base_debt_service_coverage_ratio, "{:.2f}"))
+            if plan.stress_test_result:
+                st = plan.stress_test_result
+                t.add_row("Stress test", f"{st.scenario_name}: min DSCR {st.debt_service_coverage_ratio:.2f}, "
+                          f"{st.deficit_quarters} deficit quarters, {'sustainable' if st.is_sustainable else 'at risk'}")
+            console.print(t)
 
-        table_fin.add_row(
-            "Beneficiary Margin Capital",
-            f"Rs. {plan.available_margin_capital:,.2f}",
-            "Stated 10% Contribution",
-        )
-        table_fin.add_row(
-            "Total Feasible Project Cost",
-            f"[bold]Rs. {plan.computed_project_cost:,.2f}[/bold]",
-            "Available Margin / 0.10",
-        )
-        table_fin.add_row(
-            "Concessional Loan Eligibility",
-            f"[bold green]Rs. {plan.maximum_loan_eligibility:,.2f}[/bold green]",
-            "90% of Project Cost",
-        )
-        table_fin.add_row(
-            "Auto-Selected Scheme Tier",
-            f"[bold yellow]{plan.scheme_tier.display_name}[/bold yellow]",
-            f"Project cost within Rs. 1.40L - 50.00L tier threshold",
-        )
-        table_fin.add_row(
-            "Concessional Interest Rate",
-            f"{plan.scheme_tier.interest_rate * 100:.1f}% per annum",
-            "Fixed statutory SCA rate",
-        )
-        table_fin.add_row(
-            "Repayment Tenure",
-            f"{plan.scheme_tier.tenure_years} Years ({len(plan.repayment_schedule)} Quarters)",
-            "Standard amortized repayment cycle",
-        )
-        table_fin.add_row(
-            "Moratorium Holiday Period",
-            f"{plan.scheme_tier.moratorium_months} Months ({plan.scheme_tier.moratorium_months // 3} Quarters)",
-            "Interest-only payment before regular amortization",
-        )
-        installment_due = plan.repayment_schedule[2].total_installment if len(plan.repayment_schedule) > 2 else plan.repayment_schedule[0].total_installment
-        table_fin.add_row(
-            "Quarterly Installment (Regular)",
-            f"Rs. {installment_due:,.2f} per quarter",
-            "Equal Quarterly Installment (EQI)",
-        )
-        table_fin.add_row(
-            "Working Capital Allocation",
-            f"Rs. {plan.working_capital_requirement:,.2f}",
-            "20% operating cash reserve",
-        )
-        console.print(table_fin)
-
-    # 4. Stress Test & Scenario Simulation
-    if plan and plan.stress_test_result:
-        stress = plan.stress_test_result
-        table_stress = Table(title="4. Downside Scenario Stress Testing (Seasonal Dry-Period)", show_header=True, header_style="bold red")
-        table_stress.add_column("Stress Parameter")
-        table_stress.add_column("Value")
-        table_stress.add_row("Simulated Revenue Contraction", f"{stress.revenue_drop_percentage:.0f}%")
-        table_stress.add_row("Stressed Quarterly Operating Surplus", f"Rs. {stress.stressed_quarterly_surplus:,.2f}")
-        table_stress.add_row("Quarterly Debt Service Due", f"Rs. {stress.quarterly_installment_due:,.2f}")
-        table_stress.add_row("Debt Service Coverage Ratio (DSCR)", f"[bold green]{stress.debt_service_coverage_ratio:.2f}x[/bold green]")
-        table_stress.add_row("Sustainability Assessment", "[bold green]SUSTAINABLE[/bold green]" if stress.is_sustainable else "[bold red]AT RISK[/bold red]")
-        table_stress.add_row("Prudent Action", stress.buffer_recommendation)
-        console.print(table_stress)
-
-    # 5. Module 3: Launch & Post-Disbursement Monitoring
+    a = state.application_status
+    if a:
+        console.print(f"\n[bold]Application:[/bold] {a.disbursement_status}"
+                      + (f"; next: {a.next_required_prompt or a.next_required_field}" if a.next_required_field else ""))
     if state.launch_roadmap:
-        table_road = Table(title="5. Post-Disbursement Launch Roadmap & Monitoring", show_header=True, header_style="bold blue")
-        table_road.add_column("Phase")
-        table_road.add_column("Milestone")
-        table_road.add_column("Target Timeline")
-        table_road.add_column("Status")
+        console.print("\n[bold]Launch roadmap[/bold]")
         for m in state.launch_roadmap:
-            table_road.add_row(
-                f"Phase {m.phase_number}",
-                m.title,
-                f"Week {m.target_week}",
-                "[green]DONE[/green]" if m.completed else "[yellow]PENDING[/yellow]",
-            )
-        console.print(table_road)
+            console.print(f"  week {m.target_week}: {m.title}")
+    if state.monitoring_record:
+        snap = state.monitoring_record[-1]
+        console.print(f"\n[bold]Monitoring:[/bold] health {_fmt(snap.health_score, '{:.0f}')} ({snap.health_band}); {snap.coverage_note}")
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Run the central advisory and financial structuring pipeline.")
-    parser.add_argument("--capital", type=float, default=100_000.0, help="Available margin capital in INR (default: 100,000)")
-    parser.add_argument("--location", type=str, default="Bhadohi, Bhadohi, Uttar Pradesh", help="Location (Village, Block, District)")
-    parser.add_argument("--category", type=str, default="Dairy Farming", help="Proposed business category")
-    parser.add_argument("--demo", action="store_true", help="Run the canonical worked demo case")
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Run one case through the orchestrator graph.")
+    parser.add_argument("--capital", type=float)
+    parser.add_argument("--location", type=str)
+    parser.add_argument("--category", type=str)
+    parser.add_argument("--reason", type=str)
+    parser.add_argument("--demo", action="store_true", help=f"use the demo inputs {DEMO}")
     args = parser.parse_args()
+    inputs = dict(DEMO) if args.demo else {}
+    inputs.update({k: v for k, v in vars(args).items() if k != "demo" and v is not None})
+    missing = [k for k in ("capital", "location", "category") if not inputs.get(k)]
+    if missing:
+        parser.error(f"missing {', '.join('--' + m for m in missing)} (or use --demo)")
 
-    console.print("[bold green]Compiling Central Multi-Agent Orchestration Graph...[/bold green]")
-    app = build_graph(with_checkpointer=True)
-
-    session_id = f"sess_{str(uuid.uuid4())[:8]}"
-    initial_message = (
-        f"I have {args.capital:,.0f} rupees available margin capital and want to start a {args.category} in {args.location}"
-    )
-
-    console.print(f"[cyan]Processing User Input:[/cyan] \"{initial_message}\"")
-    state, response_text = route_conversational_turn(initial_message)
-    console.print(f"[dim]{response_text}[/dim]")
-
-    # Run the compiled StateGraph
-    config = {"configurable": {"thread_id": session_id}}
-    result_state_dict = app.invoke(state, config=config)
-
-    # Format into CaseState object if dict returned
-    if isinstance(result_state_dict, dict):
-        final_state = CaseState.model_validate(result_state_dict)
-    else:
-        final_state = result_state_dict
-
-    print_formatted_report(final_state)
+    reason = f" because {inputs['reason']}" if inputs.get("reason") else ""
+    message = f"I have Rs {inputs['capital']:.0f} and want to start {inputs['category']} in {inputs['location']}{reason}"
+    console.print(f"[cyan]Input:[/cyan] {message}")
+    state, reply, run_graph = route_conversational_turn(message)
+    console.print(f"[dim]{reply}[/dim]")
+    if not run_graph:  # CLI arguments are authoritative even when the text parser misses a slot
+        state.entrepreneur_profile = extract_profile_from_slots(
+            inputs["location"], inputs["capital"], business_preference=inputs["category"], preference_reason=inputs.get("reason"))
+        state.session_meta.requested_stage = "profiling"
+    print_report(run_case(build_graph(with_checkpointer=True), state))
 
 
 if __name__ == "__main__":

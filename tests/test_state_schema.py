@@ -1,61 +1,60 @@
-"""Unit tests for CaseState schema and Conversational Router."""
+"""CaseState schema conventions and persistence round-trip."""
 
+from __future__ import annotations
+
+import pytest
+from pydantic import ValidationError
+
+from orchestrator import persistence
 from orchestrator.state import (
+    BusinessCandidate,
     CaseState,
-    Confidence,
-    EntrepreneurProfile,
+    FeasibilityRecord,
+    MarketIntelligence,
     MarketReachIntelligence,
+    RejectionEntry,
     SessionMeta,
+    TransactionRecord,
 )
-from orchestrator.router import extract_slots_from_text, route_conversational_turn
 
 
-def test_confidence_tagging():
-    """Verify confidence tags are strictly enforced as 'real' or 'estimated'."""
-    reach = MarketReachIntelligence(
-        population_within_radius=50_000,
-        source_confidence="real",
-    )
-    assert reach.source_confidence == "real"
-
-    reach_est = MarketReachIntelligence(
-        population_within_radius=50_000,
-        source_confidence="estimated",
-    )
-    assert reach_est.source_confidence == "estimated"
+def test_confidence_labels_are_strict():
+    assert MarketReachIntelligence().source_confidence == "estimated"
+    assert MarketReachIntelligence(source_confidence="real").source_confidence == "real"
+    with pytest.raises(ValidationError):
+        MarketReachIntelligence(source_confidence="verified")
 
 
-def test_slot_extraction_various_prompts():
-    """Verify natural language extraction for capital, location, and business category."""
-    # Test lakh format
-    slots1 = extract_slots_from_text("I have 1.5 lakh rupees in Bhadohi and want to do dairy")
-    assert slots1.get("available_capital") == 150_000.0
-    assert slots1.get("business_preference") == "Dairy"
-    assert "Bhadohi" in slots1.get("location_query", "")
-
-    # Test numerical format
-    slots2 = extract_slots_from_text("I have 100000 available capital in Varanasi for poultry")
-    assert slots2.get("available_capital") == 100_000.0
-    assert slots2.get("business_preference") == "Poultry"
-    assert "Varanasi" in slots2.get("location_query", "")
+def test_missing_data_defaults_are_none_not_good_news():
+    reach = MarketReachIntelligence()
+    assert reach.population_within_radius is None and reach.consumer_base_estimate is None
+    mi = MarketIntelligence()
+    assert mi.competitor.saturation_level == "unknown" and mi.competitor.z_score_vs_district is None
+    assert set(mi.confidence_summary().values()) == {"estimated"}
 
 
-def test_conversational_slot_filling_flow():
-    """Verify conversational slot filling asks for missing fields step-by-step."""
-    # Turn 1: empty message -> asks for location
-    state1, reply1 = route_conversational_turn("Hello, I want to start a business")
-    assert "location" in reply1.lower()
+def test_selected_candidate_and_rejected_ids():
+    state = CaseState(session_meta=SessionMeta(session_id="s"))
+    assert state.selected_candidate() is None
+    state.business_shortlist = [BusinessCandidate(category="A", catalog_id="a"), BusinessCandidate(category="B", catalog_id="b", rank=2)]
+    assert state.selected_candidate().catalog_id == "a"
+    record = FeasibilityRecord(rejection_history=[RejectionEntry(category="A", catalog_id="a", verdict="marginal")])
+    assert record.rejected_catalog_ids() == {"a"}
 
-    # Turn 2: provides location -> asks for capital
-    state2, reply2 = route_conversational_turn("I am in Jaunpur, Uttar Pradesh", state1)
-    assert "margin money" in reply2.lower()
 
-    # Turn 3: provides capital -> asks for category
-    state3, reply3 = route_conversational_turn("I have 1 lakh rupees", state2)
-    assert "what type of business" in reply3.lower()
+def test_transaction_record_has_no_raw_text_field():
+    assert "raw_text" not in TransactionRecord.model_fields and "message" not in TransactionRecord.model_fields
 
-    # Turn 4: provides category -> launches pipeline
-    state4, reply4 = route_conversational_turn("Dairy farming", state3)
-    assert "launching" in reply4.lower()
-    assert state4.entrepreneur_profile.available_capital == 100_000.0
-    assert state4.entrepreneur_profile.business_preference == "Dairy Farming"
+
+def test_case_snapshot_round_trip():
+    state = CaseState(session_meta=SessionMeta(session_id="persist_1", requested_stage="grievance"),
+                      feasibility_record=FeasibilityRecord(verdict="viable", selected_catalog_id="tailoring"))
+    persistence.save_case(state)
+    loaded = persistence.load_case("persist_1")
+    assert loaded.feasibility_record.selected_catalog_id == "tailoring"
+    assert loaded.session_meta.requested_stage == "grievance"
+    assert persistence.load_case("nope") is None
+
+
+def test_checkpointer_self_test():
+    assert persistence.test_checkpoint()
