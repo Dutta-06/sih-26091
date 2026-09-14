@@ -1,121 +1,129 @@
 # Hyper-Local Business Advisory & Financial Structuring Platform (SIH 26091)
 
-An autonomous, agentic advisory platform tailored for first-time rural and semi-urban entrepreneurs applying for concessional credit schemes (under State Channelizing Agencies / Channelizing Agencies).
+An agentic advisory platform for first-time rural and semi-urban entrepreneurs applying for concessional credit
+through State Channelising Agencies. It implements `Technical_Design_Document.pdf` (TDD):
 
-The platform combines a **hyper-local business feasibility engine**, a **100% deterministic financial structuring & scheme-routing engine**, and a **post-disbursement monitoring layer**, all driven through a stateful multi-agent system built on **LangGraph**.
+* a hyper-local feasibility engine,
+* a deterministic financial structuring and scheme-routing engine,
+* a post-disbursement monitoring layer,
 
----
+all driven by one conversational orchestrator built on LangGraph. `TECHNICAL_SETUP.md` gives per-agent setup detail.
 
-## System Architecture
-
-```
-                                [User Turn (Text / Voice)]
-                                            │
-                                            ▼
-                               [orchestrator/router.py]
-                        (Slot Filling: Location, Margin, Preference)
-                                            │
-                                            ▼
-                               [orchestrator/graph.py]
-                             (LangGraph StateGraph Engine)
-                                            │
-               ┌────────────────────────────┼────────────────────────────┐
-               ▼                            ▼                            ▼
-      [Module 1: Feasibility]     [Module 2: Financial]        [Module 3: Monitoring]
-    • profiling_agent           • financial_engine           • procurement_coordinator
-    • discovery_agent             (100% Deterministic)       • launch_copilot
-    • 6 Parallel Intelligence:  • financial_analyst          • ongoing_monitoring
-      - market_reach            • scenario_digital_twin      • health_score
-      - opportunity             • policy_scheme              • grievance_engine
-      - risk                    • documentation              • outcome_learning_loop
-      - competitor              • application_tracker
-      - pricing
-      - supply_chain
-    • swot_synthesis (Fan-In)
-    • adversarial_review
-      (Loop-back on rejection)
-```
-
----
-
-## Key Core Principles
-
-1. **Deterministic Core, Reasoning Periphery:** All scheme routing, project costs, eligibility, interest rates, moratoriums, and quarterly repayment tables are calculated using pure deterministic functions (`module2_financial/financial_engine.py`). Language models explain and contextualize these numbers, but never alter them.
-   * **Project Cost:** $\text{Available Margin} / 0.10$
-   * **Loan Eligibility:** $90\%$ of Project Cost
-   * **Scheme Tiers:**
-     * **Micro Finance Scheme** ($\le ₹1.40$ Lakh): 6.5% interest p.a., 3-year tenure, 3-month moratorium (capped at ₹1.25L).
-     * **Term Loan Scheme** ($₹1.40\text{L} - ₹50.00\text{L}$): 8.0% interest p.a., 7-year tenure, 6-month moratorium (capped at ₹45L).
-2. **Confidence-Labeled Outputs:** Every intelligence finding is explicitly tagged with `source_confidence: "real" | "estimated"`.
-3. **Adversarial Red-Team Review:** Self-critique reviewer authorized to output `not_recommended` or `marginal`, triggering a loop back to Business Discovery to redirect beneficiaries away from unviable copycats.
-4. **End-to-End Lifecycle:** Persists state across profiling, feasibility, financial structuring, sanction, launch roadmaps, consented SMS transaction monitoring, and grievance escalation.
-
----
-
-## Directory Layout
+## How a case flows
 
 ```
-.
-├── orchestrator/                 # Central Multi-Agent Orchestration Layer
-│   ├── state.py                  # Canonical CaseState Pydantic schema
-│   ├── graph.py                  # 24-node LangGraph StateGraph (Modules 1, 2, 3)
-│   ├── router.py                 # Intent routing & conversational slot-filling
-│   ├── persistence.py            # Checkpointing & session persistence
-│   └── app.py                    # FastAPI service (/session, /pipeline/run)
-│
-├── module1_feasibility/          # Module 1: Profiling & Feasibility (10 nodes)
-├── module2_financial/            # Module 2: Deterministic Financial Engine & Planning (6 nodes)
-├── module3_monitoring/           # Module 3: Launch & Post-Disbursement Monitoring (6 nodes)
-├── config/                       # Settings & environment variables
-├── eval/                         # Evaluation harness & golden regression benchmarks
-├── tests/                        # Automated Pytest suite
-├── run_pipeline.py               # Interactive CLI demonstration tool
-└── requirements.txt              # Project dependencies
+user turn (text / voice, English or Indic script)
+      │
+orchestrator/router.py ── intent + one-at-a-time slot filling (location → capital → activity, + stated reason)
+      │  sets session_meta.requested_stage
+orchestrator/graph.py  ── entry_router re-enters the stage the user asked for
+      │
+      ├─ profiling ─ profiling_agent (resolve location, early constraints; > Rs 50L project stops here)
+      │     └─ discovery_agent (ranked shortlist; user's own activity first; adjacent alternatives after rejection)
+      │          └─ 6 in parallel: market_reach · opportunity · risk · competitor · pricing · supply_chain
+      │               └─ swot_synthesis (fan-in, saturation cross-check) ─ adversarial_review
+      │                    ├─ viable ─────────────► financial_engine (deterministic)
+      │                    ├─ marginal / rejected ► back to discovery (bounded by MAX_FEASIBILITY_ATTEMPTS)
+      │                    └─ exhausted ─────────► END ("rejection is a valid outcome")
+      │   financial_engine ─ eligible ► financial_analyst ► scenario_digital_twin ► policy_scheme
+      │                                   ► documentation ► application_tracker
+      │   application_tracker ─ disbursed ► procurement_coordinator ► launch_copilot
+      │                         otherwise ► END (case paused; resumes on officer events)
+      ├─ application   (answers / documents)        ► documentation ► application_tracker
+      ├─ launch        (after disbursement)         ► procurement_coordinator ► launch_copilot
+      ├─ monitoring    (consented notifications)    ► ongoing_monitoring ► health_score ► outcome_learning_loop
+      ├─ grievance                                  ► grievance_engine ► outcome_learning_loop
+      └─ scheme_inquiry                             ► policy_scheme
 ```
 
----
+## Core principles and how they are enforced
 
-## Getting Started
+| TDD principle | Implementation |
+|---|---|
+| **Deterministic core.** No language model computes eligibility, cost, loan amount, interest, tenure or schedule. | `module2_financial/financial_engine.py` is pure Python with golden tests and branch-covering eval cases. `common/llm.py` may only rephrase a deterministic template, and falls back to it on any failure. |
+| **Confidence-labelled outputs** | Every intelligence output has `source_confidence: "real" \| "estimated"`, `sources` and `limitations`. "Real" means read from an open data source during this run. Missing data stays `None` with a limitation, never a plausible default. |
+| **Rejection is valid** | The adversarial review applies documented rules, including debt-service coverage from `operating_model.preview_debt_service`. Rejected options are excluded, and adjacent alternatives are proposed up to a bound. |
+| **Persistent state** | A single `CaseState`, saved as a SQLite snapshot per session (`orchestrator/stores.py`). The graph can be re-entered at any stage. |
+| **Open data first** | Nominatim, LGD tables, Census village tables, Overpass, OSRM, data.gov.in Agmarknet, and Udyam/SECC extracts. There are no commercial dependencies. |
+| **Consent and privacy** | SMS monitoring needs `SMS_MONITORING_ENABLED` plus per-case consent. Raw notification text is parsed and discarded. Aadhaar and bank account numbers are stored masked. |
 
-### 1. Installation
+Scheme structure, from the problem statement:
+* **Project cost** = margin ÷ 0.10. **Loan** = 90%.
+* **Micro Finance** (project ≤ Rs 1.40L): 6.5%, 3 years, 3-month moratorium, loan capped at Rs 1.25L.
+* **Term Loan** (≤ Rs 50L): 8%, 7 years, 6-month moratorium, loan capped at Rs 45L.
+* Repayment is quarterly, with the moratorium counted inside the tenure.
+
+## What is real data, and what is still an estimate
+
+The platform runs **offline by default** (`DATA_MODE=offline`). In offline mode every Module 1 output is honestly
+labelled `estimated`:
+
+| Input | Offline (default) | Live (`DATA_MODE=live` + configuration) |
+|---|---|---|
+| Location | Sample LGD / Census tables, then district HQ or state coordinates | Nominatim + LGD disambiguation |
+| Population | Sample Census table, or state density × area | Census village abstract (`python -m data_connectors.census --build-index`) |
+| POIs, competitors, suppliers | Skipped (named places are never invented) | Overpass; Udyam CSV at `UDYAM_DATASET_PATH` |
+| Prices and seasonality | Catalog reference range × purchasing-power tier; catalog seasonal profile | Agmarknet via `DATA_GOV_IN_API_KEY` (24+ months: seasonal decomposition) |
+| Road distance | Unavailable (never assumed short) | OSRM at `OSRM_BASE_URL` |
+| Sector niches, risk taxonomy, scheme rules | TF-IDF retrieval over `data/reference_corpus`, `data/risk_taxonomy` and `data/scheme_guidelines` | Same; replace the SAMPLE corpus with published NABARD/KVIC reports |
+| Business economics | `data/reference/business_catalog.json` (indicative planning assumptions) | To be calibrated with real project reports |
+| Outcome learning | 408 synthetic seed records (`is_synthetic: true`), down-weighted | Real outcomes accumulate from grievances and health snapshots |
+
+Known gaps:
+* Web-search competitor extraction is not implemented; that tier is recorded as unavailable.
+* The Indic translation and ASR models (AI4Bharat) load only when `INDIC_TRANSLATION_ENABLED=true` and `transformers` is installed. Without them, Devanagari keywords are still understood directly, and replies stay in English.
+
+## Getting started
 
 ```bash
 pip install -r requirements.txt
+cp config/.env.example config/.env           # optional: live data, API keys, LLM provider
+
+python -m orchestrator.graph --dry-run        # compile graph (23 nodes)
+python -m orchestrator.persistence --init-db  # create the SQLite store
+python -m synthetic_data.seed_outcomes        # cold-start outcome seed (tagged synthetic)
+python -m pytest                              # offline test suite
+python -m eval.harness --module all           # golden financial cases + confidence compliance
+python run_pipeline.py --demo                 # CLI report
+python run_pipeline.py --capital 12000 --location "Mirzapur, Uttar Pradesh" --category "tailoring" --reason "I know stitching"
+uvicorn orchestrator.app:app --reload --port 8000   # API docs at http://localhost:8000/docs
 ```
 
-### 2. Verify Graph Compilation & Checkpointing
+### API
 
-```bash
-python -m orchestrator.graph --dry-run
-python -m orchestrator.persistence --test-checkpoint
+| Endpoint | Purpose |
+|---|---|
+| `POST /session` | Conversational turn (creates or resumes a case) |
+| `POST /session/{id}/voice` | Audio turn (501 unless Indic ASR is enabled) |
+| `POST /pipeline/run` | Direct programmatic run |
+| `GET /state/{id}` | Full case state |
+| `POST /application/{id}/field` | Answer a form field or declare documents |
+| `POST /application/{id}/event` | Officer events: `start_verification`, `sanction`, `disburse`, `reject`, ... |
+| `POST /monitoring/{id}/consent`, `POST /monitoring/{id}/notifications` | Consent-gated cash-flow monitoring |
+| `POST /grievance/{id}` | Log an issue with its case context |
+| `POST /feedback`, `POST /survey` | Funded-entrepreneur feedback and resident surveys (TDD 5.6) |
+| `GET /map/{id}`, `GET /map/{id}/view` | GeoJSON and Leaflet map of market reach and competitors |
+| `GET /health` | Service status and graph node count |
+
+## Directory layout
+
+```
+orchestrator/        state.py (CaseState) · graph.py · router.py · language.py · persistence.py · stores.py · app.py
+module1_feasibility/ profiling · discovery · market_reach · opportunity · risk · competitor · pricing · supply_chain · swot_synthesis · adversarial_review
+module2_financial/   financial_engine (deterministic) · operating_model · financial_analyst · scenario_digital_twin · policy_scheme · documentation · application_tracker
+module3_monitoring/  procurement_coordinator · launch_copilot · ongoing_monitoring · health_score · grievance_engine · outcome_learning_loop
+data_connectors/     geocoding · census · overpass · udyam · agmarknet · secc · osrm · sms_parser · datagovin · shrug
+rag/                 vector_store (TF-IDF) · ingest_sector_reports · ingest_risk_taxonomy · ingest_scheme_docs
+common/              reference data helpers · network gate · optional LLM client
+data/                reference catalog and state table · sample corpora · risk taxonomy · scheme guidelines · synthetic seed
+eval/ · tests/ · synthetic_data/ · config/
 ```
 
-### 3. Run Automated Tests
+## Credits
 
-```bash
-python -m pytest tests/
-```
-
-### 4. Run Evaluation Harness
-
-```bash
-python -m eval.harness --module all
-```
-
-### 5. Run Interactive Demo in Terminal
-
-```bash
-python run_pipeline.py --demo
-```
-
-Or pass custom parameters:
-```bash
-python run_pipeline.py --capital 100000 --location "Bhadohi, Uttar Pradesh" --category "Dairy Farming"
-```
-
-### 6. Start the FastAPI Web Server
-
-```bash
-uvicorn orchestrator.app:app --reload --port 8000
-```
-Interactive API documentation available at `http://localhost:8000/docs`.
+This integrates work from the team's feature branches onto the main architecture:
+* market reach, opportunity and geo connectors: Vedant Khanna
+* competitor, pricing and supply chain: Navya Minocha
+* risk and documentation agents: Vinay Kumar Goyal
+* financial analyst and scenarios: Paarth Manchanda
+* policy agent and application tracker: Aahan
