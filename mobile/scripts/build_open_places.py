@@ -1,4 +1,4 @@
-"""Real places, PIN codes and bank branches for the app (public/data/*.bin.gz, src/core/data/open_*.json).
+"""Real places, PIN codes and bank branches for the app (public/data/*.dat, src/core/data/open_*.json).
 
 Sources (downloaded by hand into one folder, see README "Open data"):
   - overture_places_india.parquet — Overture Maps places for India (2023-12 release), CDLA Permissive 2.0, via
@@ -6,15 +6,15 @@ Sources (downloaded by hand into one folder, see README "Open data"):
   - Datagov_Pincode_Boundaries.parquet — India Post PIN code areas from data.gov.in, CC0 (attribute datameet / data.gov.in),
     via https://github.com/ramSeraph/indian_admin_boundaries/releases/tag/postal
   - IFSC.csv, banknames.json — Razorpay IFSC dataset v2.0.62, MIT, https://github.com/razorpay/ifsc
-  - public/data/villages.bin.gz (build_open_villages.py) for assigning places and PIN codes to districts.
+  - public/data/villages.dat (build_open_villages.py) for assigning places and PIN codes to districts.
 
 Only categories the app uses are kept (open_place_categories.json maps them to business activities and place kinds);
 names are kept, phone numbers, e-mails and websites are not. Every place and PIN code is assigned to the district of
 its nearest Census village. Outputs:
-  places.bin.gz   "PLC1" | u32 n | u32 nameBytes | names | u32[n+1] offsets | i32 lat×1e5 | i32 lon×1e5 | u16 category | u16 district
+  places.dat   "PLC1" | u32 n | u32 nameBytes | names | u32[n+1] offsets | i32 lat×1e5 | i32 lon×1e5 | u16 category | u16 district
   open_place_counts.json  {district: {category: count}} for the district-versus-state density comparison
-  pincodes.json.gz  {pin: [lat, lon, district, office]}
-  ifsc.json.gz      {bankCode: [bankName, [[suffix, branch, district, state, upi], …]]}
+  pincodes.dat  {pin: [lat, lon, district, office]}
+  ifsc.dat      {bankCode: [bankName, [[suffix, branch, district, state, upi], …]]}
 
 Run: python mobile/scripts/build_open_places.py <folder with the downloads>
 """
@@ -138,7 +138,7 @@ class VillageGrid:
 
 def main() -> None:
     src = Path(sys.argv[1])
-    grid = VillageGrid(PUBLIC / "villages.bin.gz")
+    grid = VillageGrid(PUBLIC / "villages.dat")
     cats = sorted(CATEGORIES)
     cat_index = {c: i for i, c in enumerate(cats)}
     districts: list[str] = []
@@ -181,10 +181,10 @@ def main() -> None:
     blob = bytearray(b"PLC1") + struct.pack("<II", kept, len(header)) + header + struct.pack("<I", len(names)) + names
     for arr in (offsets, lat, lon, cat, dist):
         blob += arr.tobytes()
-    (PUBLIC / "places.bin.gz").write_bytes(gzip.compress(bytes(blob), 9))
+    (PUBLIC / "places.dat").write_bytes(gzip.compress(bytes(blob), 9))
     (CORE / "open_place_counts.json").write_text(json.dumps(counts, separators=(",", ":")), "utf-8")
     (CORE / "open_place_categories.json").write_text(json.dumps({c: {"kind": k, "activities": a} for c, (k, a) in CATEGORIES.items()}, indent=1), "utf-8")
-    print(f"places: {kept} kept, {(PUBLIC / 'places.bin.gz').stat().st_size / 2**20:.1f} MB")
+    print(f"places: {kept} kept, {(PUBLIC / 'places.dat').stat().st_size / 2**20:.1f} MB")
 
     # ---------------------------------------------------------------- PIN codes
     pins = {}
@@ -194,8 +194,8 @@ def main() -> None:
             continue
         la, lo = (b["ymin"] + b["ymax"]) / 2, (b["xmin"] + b["xmax"]) / 2
         pins[r["Pincode"].strip()] = [round(la, 4), round(lo, 4), grid.district(la, lo), (r["Office_Name"] or "").strip()]
-    (PUBLIC / "pincodes.json.gz").write_bytes(gzip.compress(json.dumps(pins, ensure_ascii=False, separators=(",", ":")).encode("utf-8"), 9))
-    print(f"pincodes: {len(pins)}, {(PUBLIC / 'pincodes.json.gz').stat().st_size / 2**20:.1f} MB")
+    (PUBLIC / "pincodes.dat").write_bytes(gzip.compress(json.dumps(pins, ensure_ascii=False, separators=(",", ":")).encode("utf-8"), 9))
+    print(f"pincodes: {len(pins)}, {(PUBLIC / 'pincodes.dat').stat().st_size / 2**20:.1f} MB")
 
     # ---------------------------------------------------------------- IFSC
     bank_names = json.loads((src / "banknames.json").read_text("utf-8"))
@@ -207,8 +207,8 @@ def main() -> None:
                 continue
             entry = banks.setdefault(code[:4], [bank_names.get(code[:4], r["BANK"] or code[:4]), []])
             entry[1].append([code[4:], r["BRANCH"].strip().title(), r["DISTRICT"].strip().title(), r["STATE"].strip().title(), 1 if r["UPI"] == "true" else 0])
-    (PUBLIC / "ifsc.json.gz").write_bytes(gzip.compress(json.dumps(banks, ensure_ascii=False, separators=(",", ":")).encode("utf-8"), 9))
-    print(f"ifsc: {sum(len(v[1]) for v in banks.values())} branches of {len(banks)} banks, {(PUBLIC / 'ifsc.json.gz').stat().st_size / 2**20:.1f} MB")
+    (PUBLIC / "ifsc.dat").write_bytes(gzip.compress(json.dumps(banks, ensure_ascii=False, separators=(",", ":")).encode("utf-8"), 9))
+    print(f"ifsc: {sum(len(v[1]) for v in banks.values())} branches of {len(banks)} banks, {(PUBLIC / 'ifsc.dat').stat().st_size / 2**20:.1f} MB")
 
 
 if __name__ == "__main__":

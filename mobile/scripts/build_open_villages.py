@@ -1,4 +1,4 @@
-"""All Census 2011 villages of India for the app (public/data/villages.bin.gz).
+"""All Census 2011 villages of India for the app (public/data/villages.dat).
 
 Source (CC0; attribute datameet and the Census of India / LGD / Bharatmaps):
   https://github.com/ramSeraph/indian_admin_boundaries/releases/download/census-2011/Census_Villages.parquet
@@ -30,7 +30,7 @@ import pyarrow.parquet as pq
 
 HERE = Path(__file__).resolve().parent
 MOBILE = HERE.parent
-OUT = MOBILE / "public" / "data" / "villages.bin.gz"
+OUT = MOBILE / "public" / "data" / "villages.dat"
 
 norm = lambda s: re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
 

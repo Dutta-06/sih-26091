@@ -8,9 +8,9 @@ const buf = (path: string): ArrayBuffer => {
   return b.buffer.slice(b.byteOffset, b.byteOffset + b.byteLength) as ArrayBuffer;
 };
 
-if (existsSync("public/data/villages.bin.gz")) {
-  loadVillages(buf("public/data/villages.bin.gz"));
-  loadPlaces(buf("public/data/places.bin.gz"));
-  loadPincodes(JSON.parse(gunzipSync(readFileSync("public/data/pincodes.json.gz")).toString("utf8")));
-  loadIfsc(JSON.parse(gunzipSync(readFileSync("public/data/ifsc.json.gz")).toString("utf8")));
+if (existsSync("public/data/villages.dat")) {
+  loadVillages(buf("public/data/villages.dat"));
+  loadPlaces(buf("public/data/places.dat"));
+  loadPincodes(JSON.parse(gunzipSync(readFileSync("public/data/pincodes.dat")).toString("utf8")));
+  loadIfsc(JSON.parse(gunzipSync(readFileSync("public/data/ifsc.dat")).toString("utf8")));
 }

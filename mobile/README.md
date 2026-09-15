@@ -38,14 +38,14 @@ its district headquarters.
 The screens carry no sample-data or demo labels; _meta.json and this README record what is synthetic. Outcome counts are shown as `baseline` (the synthetic seed) and `follow-up` (records saved on the phone).
 
 ## Open data (`public/data/`, no keys)
-Bundled and loaded at start-up (about 18 MB compressed); if a file fails to load the app falls back to the generated tables.
+Bundled gzip files (named `.dat`, because Android packaging unpacks and renames `.gz` assets), loaded at start-up (about 18 MB); if a file fails to load the app falls back to the generated tables.
 
 | File | Source | Licence | What it adds |
 |---|---|---|---|
-| `villages.bin.gz` | Census of India 2011 village directory with coordinates, via [datameet](https://github.com/datameet) / ramSeraph | CC0 | 645,805 villages for place matching; 116 post-2011 districts added to `india_districts.json` |
-| `places.bin.gz` | [Overture Maps](https://overturemaps.org) places | CDLA-Permissive-2.0 | 432,975 mapped shops, banks, schools and services; competitor density vs the state |
-| `pincodes.json.gz` | India Post PIN directory (data.gov.in) | CC0 / GODL | PIN code → area centre and district, in chat and forms |
-| `ifsc.json.gz` | [Razorpay IFSC](https://github.com/razorpay/ifsc) | MIT | IFSC → bank and branch check in the loan form |
+| `villages.dat` | Census of India 2011 village directory with coordinates, via [datameet](https://github.com/datameet) / ramSeraph | CC0 | 645,805 villages for place matching; 116 post-2011 districts added to `india_districts.json` |
+| `places.dat` | [Overture Maps](https://overturemaps.org) places | CDLA-Permissive-2.0 | 432,975 mapped shops, banks, schools and services; competitor density vs the state |
+| `pincodes.dat` | India Post PIN directory (data.gov.in) | CC0 / GODL | PIN code → area centre and district, in chat and forms |
+| `ifsc.dat` | [Razorpay IFSC](https://github.com/razorpay/ifsc) | MIT | IFSC → bank and branch check in the loan form |
 
 Rebuild: `python scripts/build_open_villages.py` then `python scripts/build_open_places.py` (input paths at the top of each script).
 

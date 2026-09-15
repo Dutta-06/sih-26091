@@ -9,7 +9,7 @@ async function gunzip(path: string): Promise<ArrayBuffer> {
   const res = await fetch(new URL(path, document.baseURI));
   if (!res.ok) throw new Error(`${path}: HTTP ${res.status}`);
   const buf = await res.arrayBuffer();
-  // Some servers send .gz files with Content-Encoding: gzip, and the browser has already unpacked them
+  // Files are gzip data named .dat (Android packaging unpacks and renames .gz assets); a server may also have unpacked them
   const bytes = new Uint8Array(buf, 0, Math.min(2, buf.byteLength));
   if (bytes[0] !== 0x1f || bytes[1] !== 0x8b) return buf;
   return new Response(new Blob([buf]).stream().pipeThrough(new DecompressionStream("gzip"))).arrayBuffer();
@@ -19,10 +19,10 @@ const json = async (path: string) => JSON.parse(new TextDecoder().decode(await g
 
 export async function loadOpenData(): Promise<void> {
   const tasks: [string, Promise<void>][] = [
-    ["villages", gunzip("data/villages.bin.gz").then(loadVillages)],
-    ["places", gunzip("data/places.bin.gz").then(loadPlaces)],
-    ["pincodes", json("data/pincodes.json.gz").then(loadPincodes)],
-    ["ifsc", json("data/ifsc.json.gz").then(loadIfsc)],
+    ["villages", gunzip("data/villages.dat").then(loadVillages)],
+    ["places", gunzip("data/places.dat").then(loadPlaces)],
+    ["pincodes", json("data/pincodes.dat").then(loadPincodes)],
+    ["ifsc", json("data/ifsc.dat").then(loadIfsc)],
   ];
   const results = await Promise.allSettled(tasks.map(([, p]) => p));
   results.forEach((r, i) => {
