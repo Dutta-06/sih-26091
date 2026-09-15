@@ -2,7 +2,7 @@
 
 Reads: state.financial_plan.scheme_tier
 Writes: state.financial_plan.policy_explanation
-Tech: Plain-language explanation of scheme guidelines, subsidy norms, and eligibility criteria.
+Tech: RAG over scheme guideline documents (embedding model plus vector retrieval).
 Constraint: Never modifies eligibility or financial terms; owned exclusively by financial_engine.py.
 """
 
@@ -10,6 +10,22 @@ from __future__ import annotations
 
 from typing import Any
 from orchestrator.state import CaseState
+from config.settings import settings
+from rag.vector_store import get_retriever
+
+
+def _mock_llm_chain(query: str, context: str) -> str:
+    """Mock LLM response generation that summarizes the retrieved context."""
+    if settings.LLM_API_KEY == "mock-key":
+        return (
+            f"[Mock LLM Output using {settings.LLM_MODEL}]\n"
+            f"Based on the scheme rules for '{query}', here is the plain-language explanation:\n\n"
+            f"{context.strip()}\n\n"
+            "This eligibility was determined deterministically by the financial engine."
+        )
+    else:
+        # In a real setup, this would invoke a LangChain ChatModel like ChatGoogleGenerativeAI
+        return f"Real LLM explanation for {query}:\n{context}"
 
 
 def run(state: CaseState) -> dict[str, Any]:
@@ -18,22 +34,16 @@ def run(state: CaseState) -> dict[str, Any]:
         return {}
 
     tier_name = plan.scheme_tier.name
-    if tier_name == "micro_finance":
-        explanation = (
-            "Scheme Guidelines (Micro Finance Scheme):\n"
-            "• Objective: Concessional lending for ultra-micro income generation activities up to ₹1.40 Lakh project cost.\n"
-            "• Beneficiary Margin: Exactly 10% self-contribution; SCA provides 90% (max ₹1.25 Lakh).\n"
-            "• Terms: Concessional interest rate of 6.5% p.a., 3-year repayment tenure with a 3-month moratorium.\n"
-            "• Pre-payment Penalty: Nil. Concessional credit designed to prevent indebtedness."
-        )
-    else:
-        explanation = (
-            "Scheme Guidelines (Term Loan Scheme):\n"
-            "• Objective: Concessional medium-scale income generation for projects between ₹1.40 Lakh and ₹50.00 Lakh.\n"
-            "• Beneficiary Margin: 10% self-contribution; State Channelizing Agency finances remaining 90% (max ₹45.00 Lakh).\n"
-            "• Terms: Concessional interest rate of 8.0% p.a., 7-year repayment tenure with a 6-month moratorium.\n"
-            "• Security Norms: Hypothecation of assets created out of loan; personal guarantee per SCA norms."
-        )
+    
+    # 1. Retrieve scheme guidelines via RAG
+    retriever = get_retriever()
+    docs = retriever.invoke(tier_name)
+    
+    # 2. Combine context
+    context = "\n\n".join(d.page_content for d in docs)
+    
+    # 3. Generate explanation using LLM (mocked based on settings)
+    explanation = _mock_llm_chain(tier_name, context)
 
     plan.policy_explanation = explanation
     return {"financial_plan": plan}
