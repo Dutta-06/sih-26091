@@ -1,0 +1,1961 @@
+{
+ "review": [
+  {
+   "capital": 12000,
+   "activity": "handloom_weaving",
+   "stub": "crowded_z",
+   "verdict": "not_recommended",
+   "rules": [
+    "R2",
+    "R3",
+    "M4"
+   ],
+   "notes": 1
+  },
+  {
+   "capital": 12000,
+   "activity": "handloom_weaving",
+   "stub": "clean",
+   "verdict": "not_recommended",
+   "rules": [
+    "R2",
+    "M4"
+   ],
+   "notes": 0
+  },
+  {
+   "capital": 12000,
+   "activity": "tailoring",
+   "stub": "clean",
+   "verdict": "viable",
+   "rules": [],
+   "notes": 0
+  },
+  {
+   "capital": 12000,
+   "activity": "tailoring",
+   "stub": "crowded",
+   "verdict": "marginal",
+   "rules": [
+    "M2"
+   ],
+   "notes": 1
+  },
+  {
+   "capital": 12000,
+   "activity": "tailoring",
+   "stub": "niches_saturated",
+   "verdict": "marginal",
+   "rules": [
+    "M2"
+   ],
+   "notes": 0
+  },
+  {
+   "capital": 12000,
+   "activity": "tailoring",
+   "stub": "two_highs",
+   "verdict": "marginal",
+   "rules": [
+    "M3"
+   ],
+   "notes": 1
+  },
+  {
+   "capital": 12000,
+   "activity": "tailoring",
+   "stub": "seasonal_highs",
+   "verdict": "viable",
+   "rules": [],
+   "notes": 1
+  },
+  {
+   "capital": 12000,
+   "activity": "carpet_weaving",
+   "stub": "clean",
+   "verdict": "not_recommended",
+   "rules": [
+    "R1",
+    "R2",
+    "M4"
+   ],
+   "notes": 0
+  },
+  {
+   "capital": 2500,
+   "activity": "tea_snack_stall",
+   "stub": "clean",
+   "verdict": "not_recommended",
+   "rules": [
+    "R1"
+   ],
+   "notes": 0
+  },
+  {
+   "capital": 100000,
+   "activity": "dairy_farming",
+   "stub": "clean",
+   "verdict": "viable",
+   "rules": [],
+   "notes": 0
+  },
+  {
+   "capital": 100000,
+   "activity": "dairy_farming",
+   "stub": "two_highs",
+   "verdict": "marginal",
+   "rules": [
+    "M3"
+   ],
+   "notes": 1
+  },
+  {
+   "capital": 8000,
+   "activity": "beauty_parlour",
+   "stub": "none",
+   "verdict": "viable",
+   "rules": [],
+   "notes": 1
+  },
+  {
+   "capital": 600000,
+   "activity": "grocery_kirana",
+   "stub": "clean",
+   "verdict": "viable",
+   "rules": [],
+   "notes": 1
+  },
+  {
+   "capital": 30000,
+   "activity": "goat_rearing",
+   "stub": "crowded",
+   "verdict": "marginal",
+   "rules": [
+    "M2"
+   ],
+   "notes": 1
+  },
+  {
+   "capital": 15000,
+   "activity": "grocery_kirana",
+   "stub": "clean",
+   "verdict": "viable",
+   "rules": [],
+   "notes": 0
+  },
+  {
+   "capital": 50000,
+   "activity": "flour_mill",
+   "stub": "seasonal_highs",
+   "verdict": "marginal",
+   "rules": [
+    "M1"
+   ],
+   "notes": 1
+  },
+  {
+   "capital": 14000,
+   "activity": "handloom_weaving",
+   "stub": "clean",
+   "verdict": "not_recommended",
+   "rules": [
+    "R2",
+    "M4"
+   ],
+   "notes": 0
+  },
+  {
+   "capital": 7000,
+   "activity": "mobile_repair",
+   "stub": "crowded_z",
+   "verdict": "not_recommended",
+   "rules": [
+    "R3"
+   ],
+   "notes": 1
+  }
+ ],
+ "stubs": {
+  "clean": {
+   "sat": "low",
+   "z": -1.0,
+   "count": 3,
+   "niches": [
+    "low",
+    "medium"
+   ],
+   "flags": [],
+   "estimated": []
+  },
+  "crowded_z": {
+   "sat": "high",
+   "z": 3.4,
+   "count": 41,
+   "niches": [
+    "unknown"
+   ],
+   "flags": [],
+   "estimated": [
+    "risk",
+    "pricing"
+   ]
+  },
+  "crowded": {
+   "sat": "high",
+   "z": 1.2,
+   "count": 20,
+   "niches": [],
+   "flags": [],
+   "estimated": [
+    "risk"
+   ]
+  },
+  "niches_saturated": {
+   "sat": "medium",
+   "z": 0.4,
+   "count": 8,
+   "niches": [
+    "high",
+    "high"
+   ],
+   "flags": [],
+   "estimated": []
+  },
+  "seasonal_highs": {
+   "sat": "unknown",
+   "z": null,
+   "count": null,
+   "niches": [],
+   "flags": [
+    [
+     "seasonal_demand_variation",
+     "seasonal",
+     "high"
+    ],
+    [
+     "working_capital_strain",
+     "structural",
+     "high"
+    ],
+    [
+     "festival_season_concentration",
+     "structural",
+     "high"
+    ],
+    [
+     "route_distance",
+     "route",
+     "medium"
+    ]
+   ],
+   "estimated": [
+    "market_reach",
+    "opportunity",
+    "risk",
+    "competitor",
+    "pricing",
+    "supply_chain"
+   ]
+  },
+  "two_highs": {
+   "sat": "medium",
+   "z": 0.0,
+   "count": 5,
+   "niches": [],
+   "flags": [
+    [
+     "route_distance",
+     "route",
+     "high"
+    ],
+    [
+     "power_reliability",
+     "structural",
+     "high"
+    ],
+    [
+     "working_capital_strain",
+     "structural",
+     "high"
+    ]
+   ],
+   "estimated": [
+    "risk",
+    "supply_chain",
+    "pricing"
+   ]
+  },
+  "none": null
+ },
+ "series": {
+  "wheat_like": [
+   {
+    "month": "2022-01",
+    "modal": 2000.0
+   },
+   {
+    "month": "2022-02",
+    "modal": 2092.32
+   },
+   {
+    "month": "2022-03",
+    "modal": 2163.67
+   },
+   {
+    "month": "2022-04",
+    "modal": 2186.92
+   },
+   {
+    "month": "2022-05",
+    "modal": 2177.78
+   },
+   {
+    "month": "2022-06",
+    "modal": 2130.6
+   },
+   {
+    "month": "2022-07",
+    "modal": 2050.0
+   },
+   {
+    "month": "2022-08",
+    "modal": 1979.76
+   },
+   {
+    "month": "2022-09",
+    "modal": 1931.0
+   },
+   {
+    "month": "2022-10",
+    "modal": 1909.24
+   },
+   {
+    "month": "2022-11",
+    "modal": 1942.89
+   },
+   {
+    "month": "2022-12",
+    "modal": 2004.48
+   },
+   {
+    "month": "2023-01",
+    "modal": 2100.0
+   },
+   {
+    "month": "2023-02",
+    "modal": 2196.16
+   },
+   {
+    "month": "2023-03",
+    "modal": 2259.32
+   },
+   {
+    "month": "2023-04",
+    "modal": 2294.6
+   },
+   {
+    "month": "2023-05",
+    "modal": 2284.43
+   },
+   {
+    "month": "2023-06",
+    "modal": 2223.44
+   },
+   {
+    "month": "2023-07",
+    "modal": 2150.0
+   },
+   {
+    "month": "2023-08",
+    "modal": 2075.92
+   },
+   {
+    "month": "2023-09",
+    "modal": 2013.35
+   },
+   {
+    "month": "2023-10",
+    "modal": 2001.56
+   },
+   {
+    "month": "2023-11",
+    "modal": 2025.24
+   },
+   {
+    "month": "2023-12",
+    "modal": 2100.64
+   },
+   {
+    "month": "2024-01",
+    "modal": 2200.0
+   },
+   {
+    "month": "2024-02",
+    "modal": 2289.0
+   },
+   {
+    "month": "2024-03",
+    "modal": 2365.97
+   },
+   {
+    "month": "2024-04",
+    "modal": 2402.28
+   },
+   {
+    "month": "2024-05",
+    "modal": 2380.08
+   },
+   {
+    "month": "2024-06",
+    "modal": 2327.28
+   },
+   {
+    "month": "2024-07",
+    "modal": 2250.0
+   },
+   {
+    "month": "2024-08",
+    "modal": 2161.08
+   },
+   {
+    "month": "2024-09",
+    "modal": 2106.7
+   },
+   {
+    "month": "2024-10",
+    "modal": 2082.88
+   },
+   {
+    "month": "2024-11",
+    "modal": 2118.59
+   },
+   {
+    "month": "2024-12",
+    "modal": 2196.8
+   }
+  ],
+  "goat_like": [
+   {
+    "month": "2021-01",
+    "modal": 7200.0
+   },
+   {
+    "month": "2021-02",
+    "modal": 7456.15
+   },
+   {
+    "month": "2021-03",
+    "modal": 8130.0
+   },
+   {
+    "month": "2021-04",
+    "modal": 9045.0
+   },
+   {
+    "month": "2021-05",
+    "modal": 9960.0
+   },
+   {
+    "month": "2021-06",
+    "modal": 10633.85
+   },
+   {
+    "month": "2021-07",
+    "modal": 10890.0
+   },
+   {
+    "month": "2021-08",
+    "modal": 10663.85
+   },
+   {
+    "month": "2021-09",
+    "modal": 10020.0
+   },
+   {
+    "month": "2021-10",
+    "modal": 9135.0
+   },
+   {
+    "month": "2021-11",
+    "modal": 8250.0
+   },
+   {
+    "month": "2021-12",
+    "modal": 7606.15
+   },
+   {
+    "month": "2022-01",
+    "modal": 7380.0
+   },
+   {
+    "month": "2022-02",
+    "modal": 7636.15
+   },
+   {
+    "month": "2022-03",
+    "modal": 8310.0
+   },
+   {
+    "month": "2022-04",
+    "modal": 9225.0
+   },
+   {
+    "month": "2022-05",
+    "modal": 10140.0
+   },
+   {
+    "month": "2022-06",
+    "modal": 10813.85
+   },
+   {
+    "month": "2022-07",
+    "modal": 11070.0
+   },
+   {
+    "month": "2022-08",
+    "modal": 10843.85
+   },
+   {
+    "month": "2022-09",
+    "modal": 10200.0
+   },
+   {
+    "month": "2022-10",
+    "modal": 9315.0
+   },
+   {
+    "month": "2022-11",
+    "modal": 8430.0
+   },
+   {
+    "month": "2022-12",
+    "modal": 7786.15
+   },
+   {
+    "month": "2023-01",
+    "modal": 7560.0
+   },
+   {
+    "month": "2023-02",
+    "modal": 7816.15
+   },
+   {
+    "month": "2023-03",
+    "modal": 8490.0
+   },
+   {
+    "month": "2023-04",
+    "modal": 9405.0
+   },
+   {
+    "month": "2023-05",
+    "modal": 10320.0
+   },
+   {
+    "month": "2023-06",
+    "modal": 10993.85
+   }
+  ],
+  "gappy": [
+   {
+    "month": "2022-01",
+    "modal": 1500.0
+   },
+   {
+    "month": "2022-02",
+    "modal": 1589.15
+   },
+   {
+    "month": "2022-03",
+    "modal": 1600.93
+   },
+   {
+    "month": "2022-04",
+    "modal": 1529.11
+   },
+   {
+    "month": "2022-05",
+    "modal": 1444.32
+   },
+   {
+    "month": "2022-07",
+    "modal": 1502.06
+   },
+   {
+    "month": "2022-08",
+    "modal": 1600.7
+   },
+   {
+    "month": "2022-09",
+    "modal": 1638.94
+   },
+   {
+    "month": "2022-10",
+    "modal": 1586.21
+   },
+   {
+    "month": "2022-11",
+    "modal": 1495.6
+   },
+   {
+    "month": "2022-12",
+    "modal": 1455.0
+   },
+   {
+    "month": "2023-01",
+    "modal": 1506.34
+   },
+   {
+    "month": "2023-02",
+    "modal": 1607.02
+   },
+   {
+    "month": "2023-03",
+    "modal": 1669.06
+   },
+   {
+    "month": "2023-04",
+    "modal": 1640.03
+   },
+   {
+    "month": "2023-05",
+    "modal": 1551.21
+   },
+   {
+    "month": "2023-08",
+    "modal": 1609.99
+   },
+   {
+    "month": "2023-09",
+    "modal": 1691.29
+   },
+   {
+    "month": "2023-10",
+    "modal": 1688.67
+   },
+   {
+    "month": "2023-11",
+    "modal": 1609.11
+   },
+   {
+    "month": "2023-12",
+    "modal": 1530.38
+   },
+   {
+    "month": "2024-01",
+    "modal": 1529.44
+   },
+   {
+    "month": "2024-02",
+    "modal": 1611.76
+   },
+   {
+    "month": "2024-03",
+    "modal": 1706.26
+   },
+   {
+    "month": "2024-04",
+    "modal": 1730.64
+   },
+   {
+    "month": "2024-05",
+    "modal": 1667.09
+   },
+   {
+    "month": "2024-09",
+    "modal": 1715.14
+   },
+   {
+    "month": "2024-10",
+    "modal": 1764.99
+   },
+   {
+    "month": "2024-11",
+    "modal": 1722.91
+   },
+   {
+    "month": "2024-12",
+    "modal": 1632.18
+   },
+   {
+    "month": "2025-01",
+    "modal": 1580.82
+   },
+   {
+    "month": "2025-02",
+    "modal": 1620.65
+   },
+   {
+    "month": "2025-03",
+    "modal": 1719.64
+   },
+   {
+    "month": "2025-04",
+    "modal": 1791.38
+   }
+  ],
+  "short": [
+   {
+    "month": "2023-01",
+    "modal": 100
+   },
+   {
+    "month": "2023-02",
+    "modal": 101
+   },
+   {
+    "month": "2023-03",
+    "modal": 102
+   },
+   {
+    "month": "2023-04",
+    "modal": 103
+   },
+   {
+    "month": "2023-05",
+    "modal": 104
+   },
+   {
+    "month": "2023-06",
+    "modal": 105
+   },
+   {
+    "month": "2023-07",
+    "modal": 106
+   },
+   {
+    "month": "2023-08",
+    "modal": 107
+   },
+   {
+    "month": "2023-09",
+    "modal": 108
+   },
+   {
+    "month": "2023-10",
+    "modal": 109
+   },
+   {
+    "month": "2023-11",
+    "modal": 110
+   },
+   {
+    "month": "2023-12",
+    "modal": 111
+   },
+   {
+    "month": "2024-01",
+    "modal": 112
+   },
+   {
+    "month": "2024-02",
+    "modal": 113
+   },
+   {
+    "month": "2024-03",
+    "modal": 114
+   },
+   {
+    "month": "2024-04",
+    "modal": 115
+   },
+   {
+    "month": "2024-05",
+    "modal": 116
+   },
+   {
+    "month": "2024-06",
+    "modal": 117
+   },
+   {
+    "month": "2024-07",
+    "modal": 118
+   },
+   {
+    "month": "2024-08",
+    "modal": 119
+   }
+  ]
+ },
+ "seasonal": {
+  "wheat_like": [
+   0.9999,
+   1.0392,
+   1.0679,
+   1.0808,
+   1.0698,
+   1.04,
+   1.0001,
+   0.962,
+   0.932,
+   0.9202,
+   0.9299,
+   0.9582
+  ],
+  "goat_like": [
+   0.8039,
+   0.8305,
+   0.9023,
+   1.0,
+   1.0974,
+   1.1684,
+   1.1961,
+   1.1695,
+   1.0977,
+   1.0,
+   0.9026,
+   0.8315
+  ],
+  "gappy": [
+   0.9438,
+   0.997,
+   1.0421,
+   1.0367,
+   0.9862,
+   0.9926,
+   0.992,
+   1.0206,
+   1.044,
+   1.0374,
+   0.9751,
+   0.9326
+  ],
+  "short": null
+ },
+ "structural": [
+  {
+   "activity": "dairy_farming",
+   "km": null,
+   "variation": "medium",
+   "low": [
+    4,
+    5,
+    6
+   ],
+   "rules": [
+    [
+     "perishability_cold_chain",
+     "medium"
+    ],
+    [
+     "input_price_volatility",
+     "medium"
+    ],
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "climate_disease_livestock_fisheries",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "dairy_farming",
+   "km": 8.0,
+   "variation": "medium",
+   "low": [
+    4,
+    5,
+    6
+   ],
+   "rules": [
+    [
+     "perishability_cold_chain",
+     "medium"
+    ],
+    [
+     "input_price_volatility",
+     "medium"
+    ],
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "climate_disease_livestock_fisheries",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "dairy_farming",
+   "km": 30.0,
+   "variation": "medium",
+   "low": [
+    4,
+    5,
+    6
+   ],
+   "rules": [
+    [
+     "perishability_cold_chain",
+     "high"
+    ],
+    [
+     "input_price_volatility",
+     "medium"
+    ],
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "climate_disease_livestock_fisheries",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "goat_rearing",
+   "km": null,
+   "variation": "medium",
+   "low": [
+    0,
+    1,
+    8,
+    11
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "medium"
+    ],
+    [
+     "input_price_volatility",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "climate_disease_livestock_fisheries",
+     "medium"
+    ],
+    [
+     "festival_season_concentration",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "goat_rearing",
+   "km": 8.0,
+   "variation": "medium",
+   "low": [
+    0,
+    1,
+    8,
+    11
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "medium"
+    ],
+    [
+     "input_price_volatility",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "climate_disease_livestock_fisheries",
+     "medium"
+    ],
+    [
+     "festival_season_concentration",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "goat_rearing",
+   "km": 30.0,
+   "variation": "medium",
+   "low": [
+    0,
+    1,
+    8,
+    11
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "medium"
+    ],
+    [
+     "input_price_volatility",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "climate_disease_livestock_fisheries",
+     "medium"
+    ],
+    [
+     "festival_season_concentration",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "poultry_backyard",
+   "km": null,
+   "variation": "medium",
+   "low": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "perishability_cold_chain",
+     "medium"
+    ],
+    [
+     "input_price_volatility",
+     "medium"
+    ],
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "climate_disease_livestock_fisheries",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "poultry_backyard",
+   "km": 8.0,
+   "variation": "medium",
+   "low": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "perishability_cold_chain",
+     "medium"
+    ],
+    [
+     "input_price_volatility",
+     "medium"
+    ],
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "climate_disease_livestock_fisheries",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "poultry_backyard",
+   "km": 30.0,
+   "variation": "medium",
+   "low": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "perishability_cold_chain",
+     "high"
+    ],
+    [
+     "input_price_volatility",
+     "medium"
+    ],
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "climate_disease_livestock_fisheries",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "flour_mill",
+   "km": null,
+   "variation": "low",
+   "low": [
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "medium"
+    ],
+    [
+     "input_price_volatility",
+     "medium"
+    ],
+    [
+     "power_reliability",
+     "high"
+    ],
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "flour_mill",
+   "km": 8.0,
+   "variation": "low",
+   "low": [
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "medium"
+    ],
+    [
+     "input_price_volatility",
+     "medium"
+    ],
+    [
+     "power_reliability",
+     "high"
+    ],
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "flour_mill",
+   "km": 30.0,
+   "variation": "low",
+   "low": [
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "medium"
+    ],
+    [
+     "input_price_volatility",
+     "medium"
+    ],
+    [
+     "power_reliability",
+     "high"
+    ],
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "food_processing_home",
+   "km": null,
+   "variation": "medium",
+   "low": [
+    5,
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "input_price_volatility",
+     "medium"
+    ],
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "food_processing_home",
+   "km": 8.0,
+   "variation": "medium",
+   "low": [
+    5,
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "input_price_volatility",
+     "medium"
+    ],
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "food_processing_home",
+   "km": 30.0,
+   "variation": "medium",
+   "low": [
+    5,
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "input_price_volatility",
+     "medium"
+    ],
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "grocery_kirana",
+   "km": null,
+   "variation": "low",
+   "low": [
+    6
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "high"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "grocery_kirana",
+   "km": 8.0,
+   "variation": "low",
+   "low": [
+    6
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "high"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "grocery_kirana",
+   "km": 30.0,
+   "variation": "low",
+   "low": [
+    6
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "high"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "tailoring",
+   "km": null,
+   "variation": "medium",
+   "low": [
+    0,
+    5,
+    6,
+    7,
+    11
+   ],
+   "rules": [
+    [
+     "power_reliability",
+     "low"
+    ],
+    [
+     "festival_season_concentration",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "high"
+    ]
+   ]
+  },
+  {
+   "activity": "tailoring",
+   "km": 8.0,
+   "variation": "medium",
+   "low": [
+    0,
+    5,
+    6,
+    7,
+    11
+   ],
+   "rules": [
+    [
+     "power_reliability",
+     "low"
+    ],
+    [
+     "festival_season_concentration",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "high"
+    ]
+   ]
+  },
+  {
+   "activity": "tailoring",
+   "km": 30.0,
+   "variation": "medium",
+   "low": [
+    0,
+    5,
+    6,
+    7,
+    11
+   ],
+   "rules": [
+    [
+     "power_reliability",
+     "low"
+    ],
+    [
+     "festival_season_concentration",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "high"
+    ]
+   ]
+  },
+  {
+   "activity": "handloom_weaving",
+   "km": null,
+   "variation": "medium",
+   "low": [
+    0,
+    5,
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "festival_season_concentration",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "handloom_weaving",
+   "km": 8.0,
+   "variation": "medium",
+   "low": [
+    0,
+    5,
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "festival_season_concentration",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "handloom_weaving",
+   "km": 30.0,
+   "variation": "medium",
+   "low": [
+    0,
+    5,
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "festival_season_concentration",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "carpet_weaving",
+   "km": null,
+   "variation": "medium",
+   "low": [
+    5,
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "high"
+    ],
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "carpet_weaving",
+   "km": 8.0,
+   "variation": "medium",
+   "low": [
+    5,
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "high"
+    ],
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "carpet_weaving",
+   "km": 30.0,
+   "variation": "medium",
+   "low": [
+    5,
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "high"
+    ],
+    [
+     "credit_receivables",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "mobile_repair",
+   "km": null,
+   "variation": "low",
+   "low": [],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "high"
+    ],
+    [
+     "power_reliability",
+     "low"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "mobile_repair",
+   "km": 8.0,
+   "variation": "low",
+   "low": [],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "high"
+    ],
+    [
+     "power_reliability",
+     "low"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "mobile_repair",
+   "km": 30.0,
+   "variation": "low",
+   "low": [],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "high"
+    ],
+    [
+     "power_reliability",
+     "low"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "beauty_parlour",
+   "km": null,
+   "variation": "medium",
+   "low": [
+    5,
+    6,
+    7,
+    11
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "medium"
+    ],
+    [
+     "power_reliability",
+     "low"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "festival_season_concentration",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "beauty_parlour",
+   "km": 8.0,
+   "variation": "medium",
+   "low": [
+    5,
+    6,
+    7,
+    11
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "medium"
+    ],
+    [
+     "power_reliability",
+     "low"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "festival_season_concentration",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "beauty_parlour",
+   "km": 30.0,
+   "variation": "medium",
+   "low": [
+    5,
+    6,
+    7,
+    11
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "medium"
+    ],
+    [
+     "power_reliability",
+     "low"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "festival_season_concentration",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "tea_snack_stall",
+   "km": null,
+   "variation": "medium",
+   "low": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "medium"
+    ],
+    [
+     "perishability_cold_chain",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "tea_snack_stall",
+   "km": 8.0,
+   "variation": "medium",
+   "low": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "medium"
+    ],
+    [
+     "perishability_cold_chain",
+     "medium"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  },
+  {
+   "activity": "tea_snack_stall",
+   "km": 30.0,
+   "variation": "medium",
+   "low": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "rules": [
+    [
+     "single_buyer_dependency",
+     "medium"
+    ],
+    [
+     "perishability_cold_chain",
+     "high"
+    ],
+    [
+     "regulatory_licensing",
+     "medium"
+    ],
+    [
+     "working_capital_strain",
+     "medium"
+    ]
+   ]
+  }
+ ],
+ "severityCases": [
+  [
+   "low"
+  ],
+  [
+   "medium",
+   "low"
+  ],
+  [
+   "high"
+  ],
+  [
+   "high",
+   "high"
+  ],
+  [],
+  [
+   "high",
+   "medium",
+   "high"
+  ]
+ ],
+ "overall": [
+  "low",
+  "medium",
+  "medium",
+  "high",
+  "low",
+  "high"
+ ],
+ "stats": {
+  "poisson": [
+   [
+    41,
+    60000,
+    1.5,
+    10.67
+   ],
+   [
+    9,
+    60000,
+    5.0,
+    -3.83
+   ],
+   [
+    0,
+    1000,
+    2.0,
+    -0.45
+   ],
+   [
+    5,
+    null,
+    2.0,
+    null
+   ]
+  ],
+  "saturation": [
+   [
+    1.0,
+    2.0,
+    "low"
+   ],
+   [
+    1.5,
+    2.0,
+    "low"
+   ],
+   [
+    2.5,
+    2.0,
+    "medium"
+   ],
+   [
+    2.6,
+    2.0,
+    "high"
+   ],
+   [
+    null,
+    1.0,
+    "unknown"
+   ],
+   [
+    1.0,
+    0.0,
+    "unknown"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,340 @@
+{
+  "regions": {
+    "north": {
+      "prefixes": [
+        ["Ram", "राम"], ["Shiv", "शिव"], ["Hari", "हरि"], ["Sultan", "सुल्तान"], ["Chand", "चंद"], ["Madho", "माधो"],
+        ["Bhim", "भीम"], ["Kishan", "किशन"], ["Sher", "शेर"], ["Dev", "देव"], ["Bhagwan", "भगवान"],
+        ["Kamal", "कमल"], ["Ratan", "रतन"], ["Mohan", "मोहन"], ["Sita", "सीता"], ["Durga", "दुर्गा"],
+        ["Gauri", "गौरी"], ["Jagdish", "जगदीश"], ["Rasul", "रसूल"], ["Karim", "करीम"], ["Bishun", "बिशुन"],
+        ["Hanuman", "हनुमान"], ["Mahesh", "महेश"], ["Bhawani", "भवानी"], ["Anand", "आनंद"], ["Bahadur", "बहादुर"],
+        ["Nawab", "नवाब"], ["Sarai", "सराय"], ["Khajuri", "खजुरी"], ["Baraula", "बरौला"]
+      ],
+      "suffixes": [
+        ["pur", "पुर"], ["ganj", "गंज"], ["nagar", "नगर"], ["patti", "पट्टी"], ["garh", "गढ़"], ["pura", "पुरा"],
+        ["dih", "डीह"], ["tola", "टोला"]
+      ],
+      "surnames": [
+        ["Ansari", "अंसारी"], ["Maurya", "मौर्य"], ["Yadav", "यादव"], ["Patel", "पटेल"], ["Gupta", "गुप्ता"],
+        ["Sharma", "शर्मा"], ["Verma", "वर्मा"], ["Khan", "खान"], ["Singh", "सिंह"], ["Prajapati", "प्रजापति"],
+        ["Pal", "पाल"], ["Bind", "बिंद"], ["Kushwaha", "कुशवाहा"], ["Jaiswal", "जायसवाल"], ["Saroj", "सरोज"]
+      ],
+      "rrb": ["Baroda UP Bank", "बड़ौदा यूपी बैंक"]
+    },
+    "maharashtra": {
+      "prefixes": [
+        ["Pimpal", "पिंपळ"], ["Wad", "वड"], ["Shir", "शिर"], ["Deo", "देव"], ["Kas", "कस"], ["Nan", "नान"],
+        ["Mohad", "मोहाड"], ["Wan", "वण"], ["Bor", "बोर"], ["Dhon", "धोन"], ["Chinch", "चिंच"], ["Umbar", "उंबर"],
+        ["Ambe", "आंबे"], ["Nimb", "निंब"], ["Kothur", "कोठुर"], ["Palas", "पळस"]
+      ],
+      "suffixes": [
+        ["gaon", "गाव"], ["wadi", "वाडी"], ["khed", "खेड"], ["ner", "नेर"], ["pada", "पाडा"]
+      ],
+      "surnames": [
+        ["Patil", "पाटील"], ["Jadhav", "जाधव"], ["Pawar", "पवार"], ["Shinde", "शिंदे"], ["More", "मोरे"],
+        ["Gaikwad", "गायकवाड"], ["Deshmukh", "देशमुख"], ["Kale", "काळे"]
+      ],
+      "rrb": ["Maharashtra Gramin Bank", "महाराष्ट्र ग्रामीण बैंक"]
+    },
+    "karnataka": {
+      "prefixes": [
+        ["Hebba", "हेब्ब"], ["Kalla", "कल्ल"], ["Hosa", "होस"], ["Bela", "बेल"], ["Gara", "गर"], ["Mada", "मद"],
+        ["Hire", "हिरे"], ["Chikka", "चिक्क"], ["Ninga", "निंग"], ["Uppin", "उप्पिन"], ["Kote", "कोटे"],
+        ["Timma", "तिम्म"], ["Ammin", "अम्मिन"], ["Kyara", "क्यार"], ["Sula", "सुल"]
+      ],
+      "suffixes": [
+        ["halli", "हल्ली"], ["koppa", "कोप्प"], ["gere", "गेरे"], ["bhavi", "भावी"], ["hal", "हाल"]
+      ],
+      "surnames": [
+        ["Patil", "पाटील"], ["Hiremath", "हिरेमठ"], ["Kulkarni", "कुलकर्णी"], ["Gowda", "गौडा"], ["Naik", "नायक"],
+        ["Hosamani", "होसमनी"], ["Desai", "देसाई"]
+      ],
+      "rrb": ["Karnataka Gramin Bank", "कर्नाटक ग्रामीण बैंक"]
+    },
+    "tamil": {
+      "prefixes": [
+        ["Pudu", "पुदु"], ["Periya", "पेरिया"], ["Chinna", "चिन्ना"], ["Then", "तेन"], ["Vada", "वड"],
+        ["Mel", "मेल"], ["Keela", "कीला"], ["Karai", "करई"], ["Deva", "देव"], ["Raja", "राजा"],
+        ["Muthu", "मुत्तु"], ["Velu", "वेलु"], ["Aru", "अरु"], ["Nall", "नल्ल"], ["Semman", "सेम्मण"],
+        ["Kovil", "कोविल"], ["Anna", "अन्ना"], ["Sankara", "शंकर"], ["Mannar", "मन्नार"], ["Nager", "नागर"],
+        ["Sivan", "शिवन"], ["Kumara", "कुमार"], ["Ayan", "अयन"], ["Vellai", "वेल्लै"], ["Natta", "नट्ट"]
+      ],
+      "suffixes": [
+        ["palayam", "पालयम"], ["pettai", "पेट्टई"], ["kurichi", "कुरिची"], ["pattu", "पट्टू"], ["ur", "ऊर"],
+        ["patti", "पट्टी"], ["nadu", "नाडू"], ["kudi", "कुडी"], ["kottai", "कोट्टई"]
+      ],
+      "surnames": [
+        ["Iyer", "अय्यर"], ["Iyengar", "अयंगर"], ["Pillai", "पिल्लई"], ["Nadar", "नादर"], ["Gounder", "गौंडर"],
+        ["Chettiar", "चेट्टियार"], ["Thevar", "थेवर"], ["Mudaliar", "मुदलियार"], ["Naidu", "नायडू"], ["Reddiar", "रेड्डियार"]
+      ],
+      "rrb": ["Tamil Nadu Grama Bank", "तमिलनाडु ग्राम बैंक"]
+    },
+    "telugu": {
+      "prefixes": [
+        ["Kotha", "कोठा"], ["Pedda", "पेड्डा"], ["China", "चीना"], ["Nalla", "नल्ला"], ["Yerra", "येर्रा"],
+        ["Gudi", "गुडी"], ["Malka", "मल्का"], ["Bhupati", "भूपति"], ["Venkata", "वेंकट"], ["Rama", "रामा"],
+        ["Krishna", "कृष्णा"], ["Seetha", "सीता"], ["Anjaneya", "अंजनेय"], ["Vempa", "वेम्पा"], ["Timma", "तिम्मा"],
+        ["Bhima", "भीमा"], ["Sundara", "सुंदर"], ["Chenna", "चेन्ना"]
+      ],
+      "suffixes": [
+        ["palli", "पल्ली"], ["peta", "पेटा"], ["puram", "पुरम"], ["padu", "पाडु"], ["wada", "वाडा"],
+        ["gudem", "गुडेम"], ["cheruvu", "चेरुवु"]
+      ],
+      "surnames": [
+        ["Reddy", "रेड्डी"], ["Naidu", "नायडू"], ["Rao", "राव"], ["Choudary", "चौधरी"], ["Prasad", "प्रसाद"],
+        ["Naik", "नायक"], ["Goud", "गौड़"], ["Yadav", "यादव"], ["Setty", "शेट्टी"]
+      ],
+      "rrb": ["Telangana Grameena Bank", "तेलंगाना ग्रामीण बैंक"]
+    },
+    "kerala": {
+      "prefixes": [
+        ["Vada", "वड"], ["Chena", "चेना"], ["Kotta", "कोट्टा"], ["Muvatt", "मुवट्ट"], ["Perumb", "पेरुम्ब"],
+        ["Chalak", "चलक"], ["Vaikom", "वैकोम"], ["Alap", "आलप"], ["Chertha", "चेरता"], ["Kumara", "कुमारा"],
+        ["Thiru", "तिरु"], ["Nada", "नाडा"], ["Panda", "पंडा"], ["Ambala", "अंबाला"], ["Karuna", "करुणा"]
+      ],
+      "suffixes": [
+        ["kara", "करा"], ["puram", "पुरम"], ["kulam", "कुलम"], ["kode", "कोड"], ["sseri", "स्सेरी"],
+        ["angadi", "अंगडी"], ["mangalam", "मंगलम"]
+      ],
+      "surnames": [
+        ["Nair", "नायर"], ["Menon", "मेनन"], ["Pillai", "पिल्लई"], ["Nambiar", "नंबियार"], ["Warrier", "वारियर"],
+        ["Kurup", "कुरुप"], ["Panicker", "पणिक्कर"], ["Thomas", "थॉमस"], ["Varghese", "वर्गीस"], ["Ismail", "इस्माइल"]
+      ],
+      "rrb": ["Kerala Gramin Bank", "केरल ग्रामीण बैंक"]
+    },
+    "bengal": {
+      "prefixes": [
+        ["Kali", "काली"], ["Nabo", "नबो"], ["Purba", "पूर्ब"], ["Paschim", "पश्चिम"], ["Uttar", "उत्तर"],
+        ["Dakshin", "दक्षिण"], ["Rai", "राय"], ["Chandi", "चंडी"], ["Shyam", "श्याम"], ["Gopal", "गोपाल"],
+        ["Bagh", "बाघ"], ["Kanta", "कांता"], ["Madhu", "मधु"], ["Nimta", "निमता"], ["Bara", "बारा"],
+        ["Chota", "छोटा"]
+      ],
+      "suffixes": [
+        ["pur", "पुर"], ["danga", "डांगा"], ["gram", "ग्राम"], ["hati", "हाटी"], ["para", "पाड़ा"], ["bari", "बाड़ी"]
+      ],
+      "surnames": [
+        ["Banerjee", "बनर्जी"], ["Chatterjee", "चटर्जी"], ["Mukherjee", "मुखर्जी"], ["Ghosh", "घोष"], ["Das", "दास"],
+        ["Sarkar", "सरकार"], ["Bose", "बोस"], ["Roy", "रॉय"], ["Mondal", "मंडल"], ["Halder", "हलदर"]
+      ],
+      "rrb": ["Paschim Banga Gramin Bank", "पश्चिम बंग ग्रामीण बैंक"]
+    },
+    "odia": {
+      "prefixes": [
+        ["Nua", "नुआ"], ["Bada", "बड़ा"], ["Sana", "सना"], ["Kanta", "कांता"], ["Jagat", "जगत"],
+        ["Bhima", "भीम"], ["Gopal", "गोपाल"], ["Mahi", "महि"], ["Kesa", "केसा"], ["Sundar", "सुंदर"],
+        ["Rana", "राणा"], ["Bali", "बाली"], ["Deu", "देउ"], ["Chak", "चक"]
+      ],
+      "suffixes": [
+        ["pada", "पड़ा"], ["pur", "पुर"], ["garh", "गढ़"], ["sahi", "साही"], ["gaon", "गाँव"], ["bandha", "बंध"]
+      ],
+      "surnames": [
+        ["Patra", "पात्रा"], ["Mohanty", "मोहंती"], ["Nayak", "नायक"], ["Behera", "बेहरा"], ["Dash", "दाश"],
+        ["Jena", "जेना"], ["Sahoo", "साहू"], ["Panda", "पंडा"], ["Rout", "राउत"], ["Pradhan", "प्रधान"]
+      ],
+      "rrb": ["Odisha Gramya Bank", "ओडिशा ग्राम्य बैंक"]
+    },
+    "gujarat": {
+      "prefixes": [
+        ["Nava", "नवा"], ["Jun", "जून"], ["Moti", "मोटी"], ["Nani", "नानी"], ["Sun", "सून"],
+        ["Vadi", "वाडी"], ["Kaka", "काका"], ["Bhim", "भीम"], ["Rana", "राणा"], ["Sardar", "सरदार"],
+        ["Amba", "अंबा"], ["Vasa", "वासा"], ["Limba", "लिंबा"], ["Kot", "कोट"]
+      ],
+      "suffixes": [
+        ["pura", "पुरा"], ["vada", "वाडा"], ["nagar", "नगर"], ["pur", "पुर"], ["gam", "गाम"], ["wada", "वाड"]
+      ],
+      "surnames": [
+        ["Patel", "पटेल"], ["Shah", "शाह"], ["Mehta", "मेहता"], ["Desai", "देसाई"], ["Joshi", "जोशी"],
+        ["Trivedi", "त्रिवेदी"], ["Bhatt", "भट्ट"], ["Rana", "राणा"], ["Chaudhary", "चौधरी"], ["Parmar", "परमार"]
+      ],
+      "rrb": ["Baroda Gujarat Gramin Bank", "बड़ौदा गुजरात ग्रामीण बैंक"]
+    },
+    "punjab": {
+      "prefixes": [
+        ["Bhag", "भाग"], ["Gur", "गुर"], ["Jag", "जग"], ["Man", "मान"], ["Sur", "सुर"],
+        ["Nihal", "निहाल"], ["Dial", "दियाल"], ["Fateh", "फ़तेह"], ["Amar", "अमर"], ["Sham", "शाम"],
+        ["Rai", "राय"], ["Kot", "कोट"], ["Bhola", "भोला"], ["Chak", "चक"]
+      ],
+      "suffixes": [
+        ["wal", "वाल"], ["pur", "पुर"], ["kot", "कोट"], ["wala", "वाला"], ["pind", "पिंड"], ["garh", "गढ़"]
+      ],
+      "surnames": [
+        ["Singh", "सिंह"], ["Kaur", "कौर"], ["Gill", "गिल"], ["Sidhu", "सिद्धू"], ["Sandhu", "संधू"],
+        ["Grewal", "ग्रेवाल"], ["Dhillon", "ढिल्लों"], ["Brar", "बराड़"], ["Bajwa", "बाजवा"], ["Randhawa", "रंधावा"]
+      ],
+      "rrb": ["Punjab Gramin Bank", "पंजाब ग्रामीण बैंक"]
+    },
+    "assam_ne": {
+      "prefixes": [
+        ["Bor", "बर"], ["Guwa", "गुवा"], ["Dhup", "धूप"], ["Kaji", "काजी"], ["Sona", "सोना"],
+        ["Naba", "नबा"], ["Ranga", "रंगा"], ["Dima", "दिमा"], ["Kokra", "कोकरा"], ["Silo", "सिलो"],
+        ["Chandra", "चंद्र"], ["Deka", "डेका"], ["Bihu", "बिहू"], ["Luit", "लुइत"]
+      ],
+      "suffixes": [
+        ["gaon", "गाँव"], ["pukhuri", "पुखुरी"], ["bari", "बारी"], ["chuk", "चुक"], ["ali", "आली"]
+      ],
+      "surnames": [
+        ["Bora", "बोरा"], ["Baruah", "बरुआ"], ["Das", "दास"], ["Kalita", "कलिता"], ["Gogoi", "गोगोई"],
+        ["Saikia", "सैकिया"], ["Hazarika", "हजारिका"], ["Deka", "डेका"], ["Phukan", "फुकन"], ["Rajkhowa", "राजखोवा"]
+      ],
+      "rrb": ["Assam Gramin Vikash Bank", "असम ग्रामीण विकास बैंक"]
+    },
+    "kashmir": {
+      "prefixes": [
+        ["Gul", "गुल"], ["Noor", "नूर"], ["Wan", "वान"], ["Kani", "कानी"], ["Sona", "सोना"],
+        ["Bagh", "बाग़"], ["Chand", "चांद"], ["Zeb", "ज़ेब"], ["Ashm", "अश्म"], ["Trak", "त्रक"],
+        ["Khan", "खान"], ["Reshi", "रेशी"], ["Aish", "ऐश"], ["Sopor", "सोपोर"]
+      ],
+      "suffixes": [
+        ["pora", "पोरा"], ["bal", "बल"], ["gam", "गाम"], ["abad", "आबाद"], ["pathri", "पथरी"]
+      ],
+      "surnames": [
+        ["Wani", "वानी"], ["Bhat", "भट"], ["Dar", "डार"], ["Mir", "मीर"], ["Malik", "मलिक"],
+        ["Lone", "लोन"], ["Sheikh", "शेख"], ["Rather", "राठर"], ["Ganai", "गनई"], ["Khan", "खान"]
+      ],
+      "rrb": ["J&K Grameen Bank", "जेएंडके ग्रामीण बैंक"]
+    },
+    "himalaya": {
+      "prefixes": [
+        ["Dev", "देव"], ["Kot", "कोट"], ["Ban", "बण"], ["Tal", "ताल"], ["Chand", "चंद"],
+        ["Gaur", "गौड़"], ["Shyam", "श्याम"], ["Bhim", "भीम"], ["Kul", "कुल"], ["Naini", "नैनी"],
+        ["Ram", "राम"], ["Kedar", "केदार"], ["Badri", "बद्री"], ["Chak", "चक"]
+      ],
+      "suffixes": [
+        ["gaon", "गाँव"], ["khal", "खाल"], ["gad", "गाड़"], ["dhar", "धार"], ["tal", "ताल"], ["syun", "स्यूं"]
+      ],
+      "surnames": [
+        ["Thakur", "ठाकुर"], ["Rawat", "रावत"], ["Bisht", "बिष्ट"], ["Negi", "नेगी"], ["Chauhan", "चौहान"],
+        ["Panwar", "पंवार"], ["Rana", "राणा"], ["Sharma", "शर्मा"], ["Verma", "वर्मा"], ["Bhandari", "भंडारी"]
+      ],
+      "rrb": ["Uttarakhand Gramin Bank", "उत्तराखंड ग्रामीण बैंक"]
+    },
+    "rajasthan": {
+      "prefixes": [
+        ["Bhim", "भीम"], ["Jai", "जय"], ["Udai", "उदय"], ["Amar", "अमर"], ["Ganga", "गंगा"],
+        ["Sur", "सूर"], ["Ratan", "रतन"], ["Chand", "चंद"], ["Man", "मान"], ["Bika", "बीका"],
+        ["Nath", "नाथ"], ["Deva", "देवा"], ["Bala", "बाला"], ["Khejar", "खेजड़"]
+      ],
+      "suffixes": [
+        ["garh", "गढ़"], ["pura", "पुरा"], ["sar", "सर"], ["wala", "वाला"], ["nagar", "नगर"], ["bas", "बास"]
+      ],
+      "surnames": [
+        ["Rathore", "राठौड़"], ["Chouhan", "चौहान"], ["Sisodia", "सिसोदिया"], ["Rajput", "राजपूत"], ["Meena", "मीणा"],
+        ["Jat", "जाट"], ["Bishnoi", "बिश्नोई"], ["Gurjar", "गुर्जर"], ["Sharma", "शर्मा"], ["Charan", "चारण"]
+      ],
+      "rrb": ["Rajasthan Marudhara Gramin Bank", "राजस्थान मरुधरा ग्रामीण बैंक"]
+    }
+  },
+  "states": {
+    "Jammu and Kashmir": "kashmir",
+    "Himachal Pradesh": "himalaya",
+    "Punjab": "punjab",
+    "Chandigarh": "punjab",
+    "Uttarakhand": "himalaya",
+    "Haryana": "north",
+    "Delhi": "north",
+    "Rajasthan": "rajasthan",
+    "Uttar Pradesh": "north",
+    "Bihar": "north",
+    "Sikkim": "assam_ne",
+    "Arunachal Pradesh": "assam_ne",
+    "Nagaland": "assam_ne",
+    "Manipur": "assam_ne",
+    "Mizoram": "assam_ne",
+    "Tripura": "assam_ne",
+    "Meghalaya": "assam_ne",
+    "Assam": "assam_ne",
+    "West Bengal": "bengal",
+    "Jharkhand": "north",
+    "Odisha": "odia",
+    "Chhattisgarh": "north",
+    "Madhya Pradesh": "north",
+    "Gujarat": "gujarat",
+    "Daman and Diu": "gujarat",
+    "Dadra and Nagar Haveli": "gujarat",
+    "Maharashtra": "maharashtra",
+    "Andhra Pradesh": "telugu",
+    "Telangana": "telugu",
+    "Karnataka": "karnataka",
+    "Goa": "maharashtra",
+    "Kerala": "kerala",
+    "Tamil Nadu": "tamil",
+    "Puducherry": "tamil",
+    "Andaman and Nicobar Islands": "tamil"
+  },
+  "stateRrb": {
+    "Jammu and Kashmir": ["J&K Grameen Bank", "जेएंडके ग्रामीण बैंक"],
+    "Himachal Pradesh": ["Himachal Pradesh Gramin Bank", "हिमाचल प्रदेश ग्रामीण बैंक"],
+    "Punjab": ["Punjab Gramin Bank", "पंजाब ग्रामीण बैंक"],
+    "Chandigarh": ["Punjab Gramin Bank", "पंजाब ग्रामीण बैंक"],
+    "Uttarakhand": ["Uttarakhand Gramin Bank", "उत्तराखंड ग्रामीण बैंक"],
+    "Haryana": ["Sarva Haryana Gramin Bank", "सर्व हरियाणा ग्रामीण बैंक"],
+    "Delhi": ["Delhi State Cooperative Bank", "दिल्ली राज्य सहकारी बैंक"],
+    "Rajasthan": ["Rajasthan Marudhara Gramin Bank", "राजस्थान मरुधरा ग्रामीण बैंक"],
+    "Uttar Pradesh": ["Baroda UP Bank", "बड़ौदा यूपी बैंक"],
+    "Bihar": ["Dakshin Bihar Gramin Bank", "दक्षिण बिहार ग्रामीण बैंक"],
+    "Sikkim": ["Sikkim State Cooperative Bank", "सिक्किम राज्य सहकारी बैंक"],
+    "Arunachal Pradesh": ["Arunachal Pradesh Rural Bank", "अरुणाचल प्रदेश रूरल बैंक"],
+    "Nagaland": ["Nagaland Rural Bank", "नागालैंड रूरल बैंक"],
+    "Manipur": ["Manipur Rural Bank", "मणिपुर रूरल बैंक"],
+    "Mizoram": ["Mizoram Rural Bank", "मिज़ोरम रूरल बैंक"],
+    "Tripura": ["Tripura Gramin Bank", "त्रिपुरा ग्रामीण बैंक"],
+    "Meghalaya": ["Meghalaya Rural Bank", "मेघालय रूरल बैंक"],
+    "Assam": ["Assam Gramin Vikash Bank", "असम ग्रामीण विकास बैंक"],
+    "West Bengal": ["Paschim Banga Gramin Bank", "पश्चिम बंग ग्रामीण बैंक"],
+    "Jharkhand": ["Jharkhand Rajya Gramin Bank", "झारखंड राज्य ग्रामीण बैंक"],
+    "Odisha": ["Odisha Gramya Bank", "ओडिशा ग्राम्य बैंक"],
+    "Chhattisgarh": ["Chhattisgarh Rajya Gramin Bank", "छत्तीसगढ़ राज्य ग्रामीण बैंक"],
+    "Madhya Pradesh": ["Madhyanchal Gramin Bank", "मध्यांचल ग्रामीण बैंक"],
+    "Gujarat": ["Baroda Gujarat Gramin Bank", "बड़ौदा गुजरात ग्रामीण बैंक"],
+    "Daman and Diu": ["Baroda Gujarat Gramin Bank", "बड़ौदा गुजरात ग्रामीण बैंक"],
+    "Dadra and Nagar Haveli": ["Baroda Gujarat Gramin Bank", "बड़ौदा गुजरात ग्रामीण बैंक"],
+    "Maharashtra": ["Maharashtra Gramin Bank", "महाराष्ट्र ग्रामीण बैंक"],
+    "Andhra Pradesh": ["Andhra Pragathi Grameena Bank", "आंध्र प्रगति ग्रामीण बैंक"],
+    "Telangana": ["Telangana Grameena Bank", "तेलंगाना ग्रामीण बैंक"],
+    "Karnataka": ["Karnataka Gramin Bank", "कर्नाटक ग्रामीण बैंक"],
+    "Goa": ["Goa State Cooperative Bank", "गोवा राज्य सहकारी बैंक"],
+    "Kerala": ["Kerala Gramin Bank", "केरल ग्रामीण बैंक"],
+    "Tamil Nadu": ["Tamil Nadu Grama Bank", "तमिलनाडु ग्राम बैंक"],
+    "Puducherry": ["Puduvai Bharathiar Grama Bank", "पुदुवई भारतियार ग्राम बैंक"],
+    "Andaman and Nicobar Islands": ["Andaman and Nicobar State Cooperative Bank", "अंडमान और निकोबार राज्य सहकारी बैंक"]
+  },
+  "clusters": {
+    "Ludhiana": { "tailoring": 3.5 },
+    "Tiruppur": { "tailoring": 5.0 },
+    "Surat": { "tailoring": 4.0 },
+    "Murshidabad": { "handloom_weaving": 3.5 },
+    "Kancheepuram": { "handloom_weaving": 4.5 },
+    "Anand": { "dairy_farming": 4.0 },
+    "Namakkal": { "poultry_layer": 4.5 },
+    "Kachchh": { "handloom_weaving": 2.0 },
+    "Srinagar": { "carpet_weaving": 4.0 },
+    "Panipat": { "handloom_weaving": 3.0 },
+    "Bhagalpur": { "handloom_weaving": 4.0 },
+    "Mysore": { "handloom_weaving": 2.0 },
+    "Nadia": { "handloom_weaving": 2.0 },
+    "Nalgonda": { "handloom_weaving": 3.0 },
+    "Bharatpur": { "mustard_oil_mill": 3.0 },
+    "Ganganagar": { "mustard_oil_mill": 3.5 },
+    "West Godavari": { "fisheries_pond": 3.0 },
+    "Krishna": { "fisheries_pond": 2.5 },
+    "Mahesana": { "dairy_farming": 3.5 },
+    "Karnal": { "dairy_farming": 3.0 },
+    "Bara Banki": { "handloom_weaving": 1.5 },
+    "Mau": { "handloom_weaving": 3.0 },
+    "Malda": { "food_processing_home": 2.0 },
+    "Erode": { "tailoring": 2.0 },
+    "Salem": { "handloom_weaving": 1.8 },
+    "Barmer": { "goat_rearing": 2.0 },
+    "Kolar": { "dairy_farming": 2.0 },
+    "Warangal": { "handloom_weaving": 1.8 },
+    "Prakasam": { "fisheries_pond": 2.0 },
+    "Nellore": { "fisheries_pond": 3.0 },
+    "South 24 Parganas": { "fisheries_pond": 2.5 },
+    "Balasore": { "fisheries_pond": 2.0 },
+    "Kendrapara": { "fisheries_pond": 2.5 },
+    "Hisar": { "dairy_farming": 2.0 },
+    "Rohtak": { "dairy_farming": 1.8 },
+    "Mewat": { "goat_rearing": 1.8 },
+    "Alappuzha": { "fisheries_pond": 2.0 },
+    "Karimnagar": { "handloom_weaving": 1.5 }
+  }
+}

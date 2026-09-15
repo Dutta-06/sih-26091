@@ -90,7 +90,18 @@ The repository is organized so that each agent or deterministic node from the de
 └── TECHNICAL_SETUP.md
 ```
 
-Each agent file exposes a single callable node function with the signature `def run(state: CaseState) -> CaseState`, so it can be registered directly as a LangGraph node without an adapter layer.
+Each agent file exposes a single callable node function with the signature `def run(state: CaseState) -> dict[str, Any]`, returning only the state keys it writes (a LangGraph partial update), so it can be registered directly as a LangGraph node without an adapter layer.
+
+### Implementation notes (where the prototype intentionally differs from this document)
+
+- **Parallel writes:** the six Module 1 agents write to flat fields (`market_reach_intel` … `supply_chain_intel`) so concurrent LangGraph writes never collide. `swot_synthesis` fans them in to `state.market_intelligence`.
+- **Opportunity cross-check:** because the analyses run concurrently, cross-checking opportunity saturation against competitor density happens in `swot_synthesis`.
+- **Retrieval:** `rag/vector_store.py` uses TF-IDF cosine retrieval (scikit-learn) instead of a neural embedding model and FAISS. Nothing needs downloading, and the `retrieve()` interface is kept so a dense backend can replace it.
+- **Persistence:** `langgraph-checkpoint-sqlite` is not a dependency. Durable resume uses per-session `CaseState` snapshots in SQLite (`orchestrator/stores.py`, `CHECKPOINT_BACKEND=sqlite`); the in-graph checkpointer is `MemorySaver`.
+- **Offline default:** every connector runs offline unless `DATA_MODE=live`. Fallbacks are labelled `estimated` with a `limitations` entry.
+- **Extra modules:** `common/` (shared reference data, network gate, optional LLM client) and `module2_financial/operating_model.py` (indicative operating projection used by the analyst, stress test and adversarial review) are not in the tree above.
+- **LLM use:** optional (`LLM_PROVIDER=ollama`) and limited to rephrasing deterministic templates. Agents run with `LLM_PROVIDER=none`.
+- **Seasonal decomposition:** implemented with numpy/pandas; `statsmodels` is used when installed.
 
 ---
 ## 2. Core Framework Setup

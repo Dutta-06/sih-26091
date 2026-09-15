@@ -119,3 +119,94 @@ def test_invalid_inputs():
     # Over ₹50 Lakh project cost exceeds scheme limits
     with pytest.raises(ValueError, match="exceeds the maximum supported"):
         route_scheme_tier(5_500_000.0)
+
+
+def test_capital_just_above_micro_ceiling_routes_to_term_loan():
+    plan = build_financial_plan(14_000.01)
+    assert plan.scheme_tier.name == "term_loan"
+    assert plan.maximum_loan_eligibility == 126_000.09
+    assert plan.loan_cap_applied is False
+
+
+def test_micro_cap_flags_and_effective_percentages():
+    capped = build_financial_plan(14_000.0)
+    assert capped.loan_cap_applied is True
+    assert capped.maximum_loan_eligibility == 125_000.0
+    assert capped.loan_percentage == 89.29 and capped.margin_percentage == 10.71
+
+    uncapped = build_financial_plan(13_888.0)
+    assert uncapped.loan_cap_applied is False
+    assert (uncapped.margin_percentage, uncapped.loan_percentage) == (10.0, 90.0)
+
+
+def test_term_loan_ceiling_is_eligible_and_not_capped():
+    plan = build_financial_plan(500_000.0)
+    assert plan.eligibility_status == "eligible"
+    assert plan.maximum_loan_eligibility == 4_500_000.0
+    assert plan.loan_cap_applied is False
+
+
+@pytest.mark.parametrize("capital", [500_000.01, 1_000_000.0])
+def test_outside_scheme_range_returns_plan_instead_of_raising(capital):
+    plan = build_financial_plan(capital)
+    assert plan.eligibility_status == "outside_scheme_range"
+    assert plan.scheme_tier is None
+    assert "exceeds" in plan.ineligibility_reason
+    assert plan.computed_project_cost == round(capital * 10, 2)
+    assert plan.maximum_loan_eligibility == 0.0 and plan.loan_percentage == 0.0
+    assert plan.repayment_schedule == [] and plan.regular_quarterly_installment == 0.0
+    assert plan.working_capital_requirement == round(plan.computed_project_cost * 0.2, 2)
+
+
+@pytest.mark.parametrize("capital", [0.0, -1.0])
+def test_non_positive_capital_returns_outside_range_plan(capital):
+    plan = build_financial_plan(capital)
+    assert plan.eligibility_status == "outside_scheme_range"
+    assert plan.computed_project_cost == 0.0 and plan.scheme_tier is None
+    assert plan.ineligibility_reason
+
+
+@pytest.mark.parametrize("capital", [12_000.0, 14_000.0, 14_000.01, 100_000.0, 500_000.0])
+def test_schedule_sums_and_regular_installment(capital):
+    plan = build_financial_plan(capital)
+    schedule = plan.repayment_schedule
+    assert round(sum(i.principal_payment for i in schedule), 2) == plan.maximum_loan_eligibility
+    assert schedule[-1].closing_balance == 0.0
+    assert plan.total_repayment_amount == round(sum(i.total_installment for i in schedule), 2)
+    assert plan.total_interest_payable == round(plan.total_repayment_amount - plan.maximum_loan_eligibility, 2)
+    first_regular = next(i for i in schedule if not i.is_moratorium)
+    assert plan.regular_quarterly_installment == first_regular.total_installment
+    assert all(i.opening_balance == round(i.opening_balance, 2) for i in schedule)
+    for prev, nxt in zip(schedule, schedule[1:]):
+        assert nxt.opening_balance == prev.closing_balance
+    assert plan.working_capital_requirement + plan.capital_expenditure_allocation == plan.computed_project_cost
+
+
+def test_schedule_zero_rate_and_zero_loan_branches():
+    schedule, interest, repayment = generate_quarterly_schedule(10_000.0, 0.0, 1, 0)
+    assert [i.total_installment for i in schedule] == [2_500.0] * 4
+    assert (interest, repayment) == (0.0, 10_000.0)
+    schedule, interest, repayment = generate_quarterly_schedule(0.0, 0.08, 7, 6)
+    assert len(schedule) == 2 and interest == repayment == 0.0
+
+
+def _state(capital, verdict, with_candidate=True):
+    from orchestrator.state import BusinessCandidate, CaseState, EntrepreneurProfile, FeasibilityRecord, SessionMeta
+
+    return CaseState(
+        session_meta=SessionMeta(session_id="t"),
+        entrepreneur_profile=None if capital is None else EntrepreneurProfile(location_query="x", available_capital=capital),
+        feasibility_record=None if verdict is None else FeasibilityRecord(verdict=verdict),
+        business_shortlist=[BusinessCandidate(category="Dairy", catalog_id="dairy_farming")] if with_candidate else [],
+    )
+
+
+def test_run_only_builds_plan_for_viable_verdict():
+    from module2_financial.financial_engine import run
+
+    assert run(_state(100_000.0, "viable"))["financial_plan"].computed_project_cost == 1_000_000.0
+    assert run(_state(100_000.0, "viable", with_candidate=False))["financial_plan"].scheme_tier.name == "term_loan"
+    assert run(_state(100_000.0, "marginal")) == {}
+    assert run(_state(100_000.0, "not_recommended")) == {}
+    assert run(_state(100_000.0, None)) == {}
+    assert run(_state(None, "viable")) == {}

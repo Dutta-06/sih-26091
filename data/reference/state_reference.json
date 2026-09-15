@@ -1,0 +1,284 @@
+{
+  "_meta": {
+    "description": "Coarse state- and district-level fallbacks used ONLY when village-level open data (Census village tables, Nominatim, SECC extracts) is unavailable. Every value derived from this file must be labeled source_confidence='estimated'.",
+    "population_density_basis": "Census 2011 state population density, persons per sq km (rounded).",
+    "coordinates_basis": "Approximate coordinates of the state capital / district headquarters town; a coarse location fallback, not the entrepreneur's actual location.",
+    "purchasing_power_basis": "Indicative tier (low / medium / high) from relative per-capita income ranking; a placeholder until SECC asset-index data is loaded via SECC_DATASET_PATH.",
+    "aliases_basis": "Alternate and regional-script names used only for matching user input."
+  },
+  "states": {
+    "Uttar Pradesh": {
+      "density": 829,
+      "lat": 26.85,
+      "lon": 80.95,
+      "purchasing_power": "low",
+      "aliases": [
+        "उत्तर प्रदेश",
+        "UP"
+      ]
+    },
+    "Bihar": {
+      "density": 1106,
+      "lat": 25.59,
+      "lon": 85.14,
+      "purchasing_power": "low",
+      "aliases": [
+        "बिहार"
+      ]
+    },
+    "West Bengal": {
+      "density": 1028,
+      "lat": 22.57,
+      "lon": 88.36,
+      "purchasing_power": "medium",
+      "aliases": [
+        "पश्चिम बंगाल",
+        "পশ্চিমবঙ্গ"
+      ]
+    },
+    "Jharkhand": {
+      "density": 414,
+      "lat": 23.34,
+      "lon": 85.31,
+      "purchasing_power": "low",
+      "aliases": [
+        "झारखंड"
+      ]
+    },
+    "Odisha": {
+      "density": 270,
+      "lat": 20.3,
+      "lon": 85.82,
+      "purchasing_power": "low",
+      "aliases": [
+        "Orissa",
+        "ओडिशा",
+        "ଓଡ଼ିଶା"
+      ]
+    },
+    "Madhya Pradesh": {
+      "density": 236,
+      "lat": 23.26,
+      "lon": 77.41,
+      "purchasing_power": "low",
+      "aliases": [
+        "मध्य प्रदेश",
+        "MP"
+      ]
+    },
+    "Chhattisgarh": {
+      "density": 189,
+      "lat": 21.25,
+      "lon": 81.63,
+      "purchasing_power": "low",
+      "aliases": [
+        "छत्तीसगढ़"
+      ]
+    },
+    "Rajasthan": {
+      "density": 200,
+      "lat": 26.91,
+      "lon": 75.79,
+      "purchasing_power": "medium",
+      "aliases": [
+        "राजस्थान"
+      ]
+    },
+    "Gujarat": {
+      "density": 308,
+      "lat": 23.22,
+      "lon": 72.65,
+      "purchasing_power": "high",
+      "aliases": [
+        "ગુજરાત",
+        "गुजरात"
+      ]
+    },
+    "Maharashtra": {
+      "density": 365,
+      "lat": 19.08,
+      "lon": 72.88,
+      "purchasing_power": "high",
+      "aliases": [
+        "महाराष्ट्र"
+      ]
+    },
+    "Karnataka": {
+      "density": 319,
+      "lat": 12.97,
+      "lon": 77.59,
+      "purchasing_power": "high",
+      "aliases": [
+        "ಕರ್ನಾಟಕ"
+      ]
+    },
+    "Tamil Nadu": {
+      "density": 555,
+      "lat": 13.08,
+      "lon": 80.27,
+      "purchasing_power": "high",
+      "aliases": [
+        "தமிழ்நாடு"
+      ]
+    },
+    "Kerala": {
+      "density": 860,
+      "lat": 8.52,
+      "lon": 76.94,
+      "purchasing_power": "high",
+      "aliases": [
+        "കേരളം"
+      ]
+    },
+    "Andhra Pradesh": {
+      "density": 308,
+      "lat": 16.51,
+      "lon": 80.52,
+      "purchasing_power": "medium",
+      "aliases": [
+        "ఆంధ్ర ప్రదేశ్"
+      ]
+    },
+    "Telangana": {
+      "density": 312,
+      "lat": 17.39,
+      "lon": 78.49,
+      "purchasing_power": "high",
+      "aliases": [
+        "తెలంగాణ"
+      ]
+    },
+    "Punjab": {
+      "density": 551,
+      "lat": 30.73,
+      "lon": 76.78,
+      "purchasing_power": "medium",
+      "aliases": [
+        "ਪੰਜਾਬ",
+        "पंजाब"
+      ]
+    },
+    "Haryana": {
+      "density": 573,
+      "lat": 30.73,
+      "lon": 76.78,
+      "purchasing_power": "high",
+      "aliases": [
+        "हरियाणा"
+      ]
+    },
+    "Himachal Pradesh": {
+      "density": 123,
+      "lat": 31.1,
+      "lon": 77.17,
+      "purchasing_power": "high",
+      "aliases": [
+        "हिमाचल प्रदेश"
+      ]
+    },
+    "Uttarakhand": {
+      "density": 189,
+      "lat": 30.32,
+      "lon": 78.03,
+      "purchasing_power": "medium",
+      "aliases": [
+        "उत्तराखंड"
+      ]
+    },
+    "Assam": {
+      "density": 398,
+      "lat": 26.14,
+      "lon": 91.79,
+      "purchasing_power": "low",
+      "aliases": [
+        "অসম",
+        "असम"
+      ]
+    }
+  },
+  "national_average_density": 382,
+  "districts": {
+    "Bhadohi": {
+      "state": "Uttar Pradesh",
+      "lat": 25.39,
+      "lon": 82.57,
+      "aliases": [
+        "भदोही",
+        "संत रविदास नगर",
+        "Sant Ravidas Nagar"
+      ]
+    },
+    "Varanasi": {
+      "state": "Uttar Pradesh",
+      "lat": 25.32,
+      "lon": 82.97,
+      "aliases": [
+        "बनारस",
+        "Kashi",
+        "Banaras",
+        "वाराणसी"
+      ]
+    },
+    "Mirzapur": {
+      "state": "Uttar Pradesh",
+      "lat": 25.15,
+      "lon": 82.57,
+      "aliases": [
+        "मिर्जापुर",
+        "मिर्ज़ापुर"
+      ]
+    },
+    "Jaunpur": {
+      "state": "Uttar Pradesh",
+      "lat": 25.75,
+      "lon": 82.69,
+      "aliases": [
+        "जौनपुर"
+      ]
+    },
+    "Prayagraj": {
+      "state": "Uttar Pradesh",
+      "lat": 25.44,
+      "lon": 81.85,
+      "aliases": [
+        "इलाहाबाद",
+        "प्रयागराज",
+        "Allahabad"
+      ]
+    },
+    "Gaya": {
+      "state": "Bihar",
+      "lat": 24.8,
+      "lon": 85.01,
+      "aliases": [
+        "गया"
+      ]
+    },
+    "Muzaffarpur": {
+      "state": "Bihar",
+      "lat": 26.12,
+      "lon": 85.39,
+      "aliases": [
+        "मुजफ्फरपुर",
+        "मुज़फ़्फ़रपुर"
+      ]
+    },
+    "Nashik": {
+      "state": "Maharashtra",
+      "lat": 19.99,
+      "lon": 73.79,
+      "aliases": [
+        "नासिक",
+        "नाशिक"
+      ]
+    },
+    "Dharwad": {
+      "state": "Karnataka",
+      "lat": 15.46,
+      "lon": 75.01,
+      "aliases": [
+        "ಧಾರವಾಡ"
+      ]
+    }
+  }
+}

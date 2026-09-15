@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Market Reach Map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<style>
+  :root {
+    --ground: #f3f5f2; --panel: #ffffff; --ink: #1d2a24; --muted: #5b6b63; --line: #d8ded9;
+    --home: #2f4b9a; --dist: #b7791f; --comp: #a23b2a; --est: #7a6a2f; --real: #2f6b45;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #141a17; --panel: #1c2420; --ink: #e4ebe6; --muted: #9aaaa1; --line: #2e3833;
+      --home: #8aa4ec; --dist: #e0a84a; --comp: #e07a66; --est: #d6c27a; --real: #7fc79a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #141a17; --panel: #1c2420; --ink: #e4ebe6; --muted: #9aaaa1; --line: #2e3833;
+    --home: #8aa4ec; --dist: #e0a84a; --comp: #e07a66; --est: #d6c27a; --real: #7fc79a;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body { background: var(--ground); color: var(--ink); font: 14px/1.5 "IBM Plex Sans", system-ui, sans-serif;
+         display: grid; grid-template-columns: minmax(0, 1fr) 320px; }
+  #map { min-height: 60vh; }
+  aside { background: var(--panel); border-left: 1px solid var(--line); padding: 20px 18px; overflow-y: auto;
+          display: flex; flex-direction: column; gap: 16px; }
+  h1 { font-size: 17px; margin: 0; text-wrap: balance; }
+  .sub { color: var(--muted); font-size: 12px; margin: 2px 0 0; }
+  h2 { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  li { display: grid; grid-template-columns: 10px 1fr auto; gap: 8px; align-items: baseline; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .km { font: 12px "IBM Plex Mono", ui-monospace, monospace; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .chip { font: 500 10px "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: .05em;
+          padding: 1px 6px; border: 1px solid currentColor; border-radius: 3px; }
+  .chip.estimated { color: var(--est); border-style: dashed; }
+  .chip.real { color: var(--real); }
+  .empty, .note { color: var(--muted); font-size: 12px; }
+  @media (max-width: 720px) {
+    body { grid-template-columns: 1fr; grid-template-rows: 60vh auto; }
+    aside { border-left: 0; border-top: 1px solid var(--line); padding-inline: 16px; }
+  }
+</style>
+</head>
+<body>
+<div id="map" role="region" aria-label="Map of market reach and competitors"></div>
+<aside>
+  <div>
+    <h1 id="title">Market reach and competitors</h1>
+    <p class="sub">Case {{SESSION_ID}}. Dashed markers are estimates; solid markers came from open data in this run.</p>
+  </div>
+  <section><h2>Your location</h2><ul id="entrepreneur"></ul></section>
+  <section><h2>Distribution points</h2><ul id="distribution_point"></ul></section>
+  <section><h2>Competitors</h2><ul id="competitor"></ul></section>
+  <p class="note" id="status">Loading case data…</p>
+</aside>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function () {
+  const css = getComputedStyle(document.documentElement);
+  const color = k => css.getPropertyValue({ entrepreneur: "--home", distribution_point: "--dist", competitor: "--comp" }[k]).trim();
+  const map = L.map("map").setView([22.5, 79], 5);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    { maxZoom: 18, attribution: "&copy; OpenStreetMap contributors" }).addTo(map);
+
+  function row(p) {
+    const li = document.createElement("li");
+    const dot = document.createElement("span");
+    dot.className = "dot"; dot.style.background = color(p.kind);
+    const name = document.createElement("span");
+    name.textContent = p.name || p.type || "Unnamed";
+    const meta = document.createElement("span");
+    meta.innerHTML = (p.distance_km != null ? `<span class="km">${Number(p.distance_km).toFixed(1)} km</span> ` : "")
+      + `<span class="chip ${p.confidence}">${p.confidence}</span>`;
+    li.append(dot, name, meta);
+    return li;
+  }
+
+  fetch("../{{SESSION_ID}}").then(r => {
+    if (!r.ok) throw new Error(`Case data request failed (${r.status}).`);
+    return r.json();
+  }).then(fc => {
+    const bounds = [];
+    fc.features.forEach(f => {
+      const p = f.properties, [lon, lat] = f.geometry.coordinates, c = color(p.kind);
+      const estimated = p.confidence !== "real";
+      L.circleMarker([lat, lon], { radius: p.kind === "entrepreneur" ? 9 : 6, color: c, weight: 2,
+        dashArray: estimated ? "3 3" : null, fillColor: c, fillOpacity: estimated ? 0.25 : 0.8 })
+        .bindPopup(`<strong>${(p.name || p.type || "").replace(/</g, "&lt;")}</strong><br>${p.kind.replace("_", " ")} · ${p.confidence}`)
+        .addTo(map);
+      if (p.kind === "entrepreneur" && p.radius_km) {
+        L.circle([lat, lon], { radius: p.radius_km * 1000, color: c, weight: 1, fillOpacity: 0.05 }).addTo(map);
+      }
+      document.getElementById(p.kind).append(row(p));
+      bounds.push([lat, lon]);
+    });
+    ["entrepreneur", "distribution_point", "competitor"].forEach(k => {
+      const ul = document.getElementById(k);
+      if (!ul.children.length) ul.innerHTML = '<li class="empty">No located results for this case.</li>';
+    });
+    if (bounds.length) map.fitBounds(bounds, { padding: [30, 30], maxZoom: 13 });
+    document.getElementById("status").textContent = `${fc.features.length} located features. Items without coordinates are not drawn.`;
+  }).catch(e => { document.getElementById("status").textContent = e.message; });
+})();
+</script>
+</body>
+</html>

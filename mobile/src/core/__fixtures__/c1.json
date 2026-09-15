@@ -1,0 +1,924 @@
+{
+ "retrieval": [
+  {
+   "collection": "sector_reports",
+   "query": "handloom weaving competition in a weaving cluster",
+   "results": [
+    {
+     "source": "textiles_apparel__handloom_weaving.md",
+     "heading": "Sector: textiles_apparel - Handloom Weaving Unit",
+     "score": 0.3017
+    },
+    {
+     "source": "textiles_apparel__handloom_weaving.md",
+     "heading": "Sub-niche: Job-work weaving for master weavers",
+     "score": 0.1806
+    },
+    {
+     "source": "textiles_apparel__carpet_weaving.md",
+     "heading": "Sub-niche: Carpet finishing services",
+     "score": 0.1443
+    },
+    {
+     "source": "textiles_apparel__handloom_weaving.md",
+     "heading": "Sub-niche: Occasion sarees and festival textiles",
+     "score": 0.14
+    },
+    {
+     "source": "textiles_apparel__carpet_weaving.md",
+     "heading": "Sector: textiles_apparel - Hand-Knotted Carpet Weaving Unit",
+     "score": 0.1179
+    }
+   ]
+  },
+  {
+   "collection": "risk_taxonomy",
+   "query": "handloom weaving competition in a weaving cluster",
+   "results": []
+  },
+  {
+   "collection": "scheme_guidelines",
+   "query": "handloom weaving competition in a weaving cluster",
+   "results": []
+  },
+  {
+   "collection": "sector_reports",
+   "query": "tailoring demand school uniforms wedding season",
+   "results": [
+    {
+     "source": "textiles_apparel__tailoring.md",
+     "heading": "Sub-niche: School uniform orders",
+     "score": 0.3005
+    },
+    {
+     "source": "services__beauty_parlour.md",
+     "heading": "Sector: services - Beauty Parlour",
+     "score": 0.1744
+    },
+    {
+     "source": "textiles_apparel__tailoring.md",
+     "heading": "Sector: textiles_apparel - Tailoring and Garment Stitching Unit",
+     "score": 0.1648
+    },
+    {
+     "source": "animal_husbandry__goat_rearing.md",
+     "heading": "Sub-niche: Festival-season live goat sales",
+     "score": 0.0644
+    },
+    {
+     "source": "services__beauty_parlour.md",
+     "heading": "Sub-niche: Mehendi and festival services",
+     "score": 0.0544
+    }
+   ]
+  },
+  {
+   "collection": "risk_taxonomy",
+   "query": "tailoring demand school uniforms wedding season",
+   "results": [
+    {
+     "source": "festival_season_concentration.md",
+     "heading": "Festival and peak-season concentration",
+     "score": 0.2506
+    },
+    {
+     "source": "working_capital_strain.md",
+     "heading": "Working capital strain",
+     "score": 0.0661
+    }
+   ]
+  },
+  {
+   "collection": "scheme_guidelines",
+   "query": "tailoring demand school uniforms wedding season",
+   "results": [
+    {
+     "source": "micro_finance.md",
+     "heading": "Who the Micro Finance Scheme is for",
+     "score": 0.132
+    }
+   ]
+  },
+  {
+   "collection": "sector_reports",
+   "query": "working capital shortage and delayed payments from buyers",
+   "results": [
+    {
+     "source": "textiles_apparel__handloom_weaving.md",
+     "heading": "Sub-niche: Job-work weaving for master weavers",
+     "score": 0.1836
+    },
+    {
+     "source": "food_processing__mustard_oil_mill.md",
+     "heading": "Sub-niche: Custom oilseed crushing for farmers",
+     "score": 0.1835
+    },
+    {
+     "source": "textiles_apparel__carpet_weaving.md",
+     "heading": "Sector: textiles_apparel - Hand-Knotted Carpet Weaving Unit",
+     "score": 0.1148
+    },
+    {
+     "source": "animal_husbandry__poultry.md",
+     "heading": "Sub-niche: Backyard desi chicken and eggs",
+     "score": 0.0796
+    },
+    {
+     "source": "services__tea_snack_stall.md",
+     "heading": "Sub-niche: Market-day and haat stall",
+     "score": 0.053
+    }
+   ]
+  },
+  {
+   "collection": "risk_taxonomy",
+   "query": "working capital shortage and delayed payments from buyers",
+   "results": [
+    {
+     "source": "working_capital_strain.md",
+     "heading": "Working capital strain",
+     "score": 0.1863
+    },
+    {
+     "source": "credit_receivables.md",
+     "heading": "Credit sales and delayed receivables",
+     "score": 0.1685
+    }
+   ]
+  },
+  {
+   "collection": "scheme_guidelines",
+   "query": "working capital shortage and delayed payments from buyers",
+   "results": [
+    {
+     "source": "term_loan.md",
+     "heading": "How the Term Loan project cost is split",
+     "score": 0.2429
+    },
+    {
+     "source": "application_process.md",
+     "heading": "Application process steps",
+     "score": 0.15
+    }
+   ]
+  },
+  {
+   "collection": "sector_reports",
+   "query": "documents required for the loan application",
+   "results": [
+    {
+     "source": "services__beauty_parlour.md",
+     "heading": "Sub-niche: Mehendi and festival services",
+     "score": 0.2092
+    }
+   ]
+  },
+  {
+   "collection": "risk_taxonomy",
+   "query": "documents required for the loan application",
+   "results": [
+    {
+     "source": "regulatory_licensing.md",
+     "heading": "Regulatory and licensing requirements",
+     "score": 0.1015
+    }
+   ]
+  },
+  {
+   "collection": "scheme_guidelines",
+   "query": "documents required for the loan application",
+   "results": [
+    {
+     "source": "application_process.md",
+     "heading": "Application process steps",
+     "score": 0.1704
+    },
+    {
+     "source": "required_documents.md",
+     "heading": "Documents required for all applicants",
+     "score": 0.124
+    },
+    {
+     "source": "application_process.md",
+     "heading": "Application Process",
+     "score": 0.1154
+    },
+    {
+     "source": "required_documents.md",
+     "heading": "Required Documents",
+     "score": 0.1154
+    },
+    {
+     "source": "required_documents.md",
+     "heading": "Additional documents for the Term Loan Scheme",
+     "score": 0.071
+    }
+   ]
+  },
+  {
+   "collection": "sector_reports",
+   "query": "interest rate moratorium and repayment schedule for term loan",
+   "results": [
+    {
+     "source": "textiles_apparel__tailoring.md",
+     "heading": "Sub-niche: Job-work stitching for garment units and boutiques",
+     "score": 0.1754
+    }
+   ]
+  },
+  {
+   "collection": "risk_taxonomy",
+   "query": "interest rate moratorium and repayment schedule for term loan",
+   "results": [
+    {
+     "source": "working_capital_strain.md",
+     "heading": "Working capital strain",
+     "score": 0.1447
+    },
+    {
+     "source": "regulatory_licensing.md",
+     "heading": "Regulatory and licensing requirements",
+     "score": 0.052
+    }
+   ]
+  },
+  {
+   "collection": "scheme_guidelines",
+   "query": "interest rate moratorium and repayment schedule for term loan",
+   "results": [
+    {
+     "source": "term_loan.md",
+     "heading": "Term Loan Scheme key terms",
+     "score": 0.1669
+    },
+    {
+     "source": "application_process.md",
+     "heading": "Application process steps",
+     "score": 0.1603
+    },
+    {
+     "source": "micro_finance.md",
+     "heading": "Micro Finance Scheme key terms",
+     "score": 0.144
+    },
+    {
+     "source": "term_loan.md",
+     "heading": "How the Term Loan is repaid",
+     "score": 0.1195
+    },
+    {
+     "source": "term_loan.md",
+     "heading": "Who the Term Loan Scheme is for",
+     "score": 0.1073
+    }
+   ]
+  },
+  {
+   "collection": "sector_reports",
+   "query": "milk price seasonality and fodder cost",
+   "results": [
+    {
+     "source": "animal_husbandry__dairy_farming.md",
+     "heading": "Sub-niche: Green fodder and feed supply to dairy farmers",
+     "score": 0.1525
+    },
+    {
+     "source": "animal_husbandry__dairy_farming.md",
+     "heading": "Sub-niche: Milk supply to a cooperative collection centre",
+     "score": 0.1356
+    },
+    {
+     "source": "animal_husbandry__dairy_farming.md",
+     "heading": "Sector: animal_husbandry - Dairy Farming (Milch Animals)",
+     "score": 0.1023
+    },
+    {
+     "source": "animal_husbandry__goat_rearing.md",
+     "heading": "Sub-niche: Goat milk and manure by-products",
+     "score": 0.0833
+    },
+    {
+     "source": "animal_husbandry__poultry.md",
+     "heading": "Sector: animal_husbandry - Poultry (Backyard and Layer Units)",
+     "score": 0.0772
+    }
+   ]
+  },
+  {
+   "collection": "risk_taxonomy",
+   "query": "milk price seasonality and fodder cost",
+   "results": [
+    {
+     "source": "input_price_volatility.md",
+     "heading": "Input price volatility",
+     "score": 0.1915
+    }
+   ]
+  },
+  {
+   "collection": "scheme_guidelines",
+   "query": "milk price seasonality and fodder cost",
+   "results": [
+    {
+     "source": "term_loan.md",
+     "heading": "Term Loan Scheme key terms",
+     "score": 0.1504
+    },
+    {
+     "source": "micro_finance.md",
+     "heading": "Micro Finance loan cap",
+     "score": 0.142
+    },
+    {
+     "source": "micro_finance.md",
+     "heading": "Micro Finance Scheme key terms",
+     "score": 0.1414
+    },
+    {
+     "source": "term_loan.md",
+     "heading": "How the Term Loan project cost is split",
+     "score": 0.117
+    },
+    {
+     "source": "application_process.md",
+     "heading": "Application process steps",
+     "score": 0.0723
+    }
+   ]
+  },
+  {
+   "collection": "sector_reports",
+   "query": "power cuts electricity for flour mill",
+   "results": [
+    {
+     "source": "food_processing__flour_mill.md",
+     "heading": "Sub-niche: Multigrain, besan and spice grinding",
+     "score": 0.1305
+    },
+    {
+     "source": "textiles_apparel__handloom_weaving.md",
+     "heading": "Sub-niche: Job-work weaving for master weavers",
+     "score": 0.1265
+    },
+    {
+     "source": "food_processing__flour_mill.md",
+     "heading": "Sector: food_processing - Flour Mill (Atta Chakki)",
+     "score": 0.1115
+    },
+    {
+     "source": "food_processing__flour_mill.md",
+     "heading": "Sub-niche: Cattle feed and dalia processing",
+     "score": 0.0892
+    },
+    {
+     "source": "food_processing__flour_mill.md",
+     "heading": "Sub-niche: Custom household grain milling",
+     "score": 0.081
+    }
+   ]
+  },
+  {
+   "collection": "risk_taxonomy",
+   "query": "power cuts electricity for flour mill",
+   "results": [
+    {
+     "source": "perishability_cold_chain.md",
+     "heading": "Perishability and cold chain",
+     "score": 0.1174
+    },
+    {
+     "source": "power_reliability.md",
+     "heading": "Power reliability",
+     "score": 0.1022
+    },
+    {
+     "source": "single_buyer_dependency.md",
+     "heading": "Single-buyer dependency",
+     "score": 0.0821
+    }
+   ]
+  },
+  {
+   "collection": "scheme_guidelines",
+   "query": "power cuts electricity for flour mill",
+   "results": [
+    {
+     "source": "term_loan.md",
+     "heading": "Who the Term Loan Scheme is for",
+     "score": 0.1194
+    }
+   ]
+  },
+  {
+   "collection": "sector_reports",
+   "query": "honey beekeeping litchi flowering",
+   "results": [
+    {
+     "source": "agri_allied__beekeeping.md",
+     "heading": "Sector: agri_allied - Beekeeping and Honey Production",
+     "score": 0.3431
+    },
+    {
+     "source": "agri_allied__beekeeping.md",
+     "heading": "Sub-niche: Bulk raw honey sale to processors",
+     "score": 0.1621
+    },
+    {
+     "source": "agri_allied__beekeeping.md",
+     "heading": "Sub-niche: Bottled local honey for direct retail",
+     "score": 0.1193
+    },
+    {
+     "source": "agri_allied__beekeeping.md",
+     "heading": "Sub-niche: Pollination services for mustard and orchard growers",
+     "score": 0.0962
+    }
+   ]
+  },
+  {
+   "collection": "risk_taxonomy",
+   "query": "honey beekeeping litchi flowering",
+   "results": []
+  },
+  {
+   "collection": "scheme_guidelines",
+   "query": "honey beekeeping litchi flowering",
+   "results": []
+  }
+ ],
+ "nlu": [
+  {
+   "text": "I want to start tailoring in Gopiganj with 12,000 rupees because I know silai",
+   "pending": null,
+   "capital": 12000.0,
+   "activityId": "tailoring",
+   "rawPreference": null,
+   "locationText": "Gopiganj",
+   "reason": "I know silai",
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "I have 1 lakh and want a dairy in Bhadohi",
+   "pending": null,
+   "capital": 100000.0,
+   "activityId": "dairy_farming",
+   "rawPreference": null,
+   "locationText": "Bhadohi",
+   "reason": null,
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "1.5 लाख",
+   "pending": null,
+   "capital": 150000.0,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "provide_info",
+   "language": "hi"
+  },
+  {
+   "text": "मेरे पास 50000 रुपये हैं",
+   "pending": null,
+   "capital": 50000.0,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "provide_info",
+   "language": "hi"
+  },
+  {
+   "text": "₹ 12,000",
+   "pending": null,
+   "capital": 12000.0,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "₹12k",
+   "pending": null,
+   "capital": 12000.0,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "50 lakh",
+   "pending": null,
+   "capital": 5000000.0,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "2 crore",
+   "pending": null,
+   "capital": 20000000.0,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "0",
+   "pending": "capital",
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "unknown",
+   "language": "en"
+  },
+  {
+   "text": "0",
+   "pending": null,
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "unknown",
+   "language": "en"
+  },
+  {
+   "text": "-500",
+   "pending": null,
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "unknown",
+   "language": "en"
+  },
+  {
+   "text": "500",
+   "pending": "capital",
+   "capital": 500.0,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "unknown",
+   "language": "en"
+  },
+  {
+   "text": "twelve thousand",
+   "pending": "capital",
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "unknown",
+   "language": "en"
+  },
+  {
+   "text": "",
+   "pending": null,
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "unknown",
+   "language": "en"
+  },
+  {
+   "text": "🙂🙏",
+   "pending": null,
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "unknown",
+   "language": "en"
+  },
+  {
+   "text": "Gopiganj",
+   "pending": "location",
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": "Gopiganj",
+   "reason": null,
+   "intent": "unknown",
+   "language": "en"
+  },
+  {
+   "text": "near Varanasi",
+   "pending": null,
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": "Varanasi",
+   "reason": null,
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "Bhadohi mein silai ka kaam",
+   "pending": null,
+   "capital": null,
+   "activityId": "tailoring",
+   "rawPreference": null,
+   "locationText": "Bhadohi",
+   "reason": null,
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "मैं गोपीगंज में सिलाई करना चाहती हूँ",
+   "pending": null,
+   "capital": null,
+   "activityId": "tailoring",
+   "rawPreference": null,
+   "locationText": "गोपीगंज",
+   "reason": null,
+   "intent": "provide_info",
+   "language": "hi"
+  },
+  {
+   "text": "बकरी पालन",
+   "pending": null,
+   "capital": null,
+   "activityId": "goat_rearing",
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "provide_info",
+   "language": "hi"
+  },
+  {
+   "text": "I want to open a beauty parlour since women here need one",
+   "pending": null,
+   "capital": null,
+   "activityId": "beauty_parlour",
+   "rawPreference": null,
+   "locationText": null,
+   "reason": "women here need one",
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "I have been weaving for years",
+   "pending": null,
+   "capital": null,
+   "activityId": "handloom_weaving",
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "hotel business",
+   "pending": null,
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "unknown",
+   "language": "en"
+  },
+  {
+   "text": "mobile repair shop at Nashik",
+   "pending": null,
+   "capital": null,
+   "activityId": "mobile_repair",
+   "rawPreference": null,
+   "locationText": "Nashik",
+   "reason": null,
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "I want to raise a complaint, my machine is broken",
+   "pending": null,
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "raise_grievance",
+   "language": "en"
+  },
+  {
+   "text": "मेरी शिकायत है",
+   "pending": null,
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "raise_grievance",
+   "language": "hi"
+  },
+  {
+   "text": "what is my application status",
+   "pending": null,
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "application_status",
+   "language": "en"
+  },
+  {
+   "text": "tell me about the scheme subsidy",
+   "pending": null,
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "scheme_inquiry",
+   "language": "en"
+  },
+  {
+   "text": "I consent",
+   "pending": null,
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "monitoring",
+   "language": "en"
+  },
+  {
+   "text": "start over",
+   "pending": null,
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "new_case",
+   "language": "en"
+  },
+  {
+   "text": "how is my business doing",
+   "pending": null,
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "monitoring",
+   "language": "en"
+  },
+  {
+   "text": "hello",
+   "pending": null,
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "unknown",
+   "language": "en"
+  },
+  {
+   "text": "20 hazaar hai mere paas",
+   "pending": null,
+   "capital": 20000.0,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "mere paas 30 hajar hai aur Jaunpur mein rehti hoon",
+   "pending": null,
+   "capital": 30000.0,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": "Jaunpur",
+   "reason": null,
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "I can invest 25,000 in a kirana store in Mirzapur",
+   "pending": null,
+   "capital": 25000.0,
+   "activityId": "grocery_kirana",
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "10000",
+   "pending": "capital",
+   "capital": 10000.0,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "7,50,000",
+   "pending": null,
+   "capital": 750000.0,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "fish farming in Prayagraj kyunki talab hai",
+   "pending": null,
+   "capital": null,
+   "activityId": "fisheries_pond",
+   "rawPreference": null,
+   "locationText": "Prayagraj kyunki talab hai",
+   "reason": "talab hai",
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "I live at Dharwad and want a flour mill",
+   "pending": null,
+   "capital": null,
+   "activityId": "flour_mill",
+   "rawPreference": null,
+   "locationText": "Dharwad",
+   "reason": null,
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "the loan interest rate for 1 lakh scheme",
+   "pending": null,
+   "capital": 100000.0,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx in Gaya with 40000",
+   "pending": null,
+   "capital": 40000.0,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": "Gaya",
+   "reason": null,
+   "intent": "provide_info",
+   "language": "en"
+  },
+  {
+   "text": "দুধ বিক্রি করতে চাই",
+   "pending": null,
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "unknown",
+   "language": "bn"
+  },
+  {
+   "text": "நான் தையல் தொழில் தொடங்க விரும்புகிறேன்",
+   "pending": null,
+   "capital": null,
+   "activityId": null,
+   "rawPreference": null,
+   "locationText": null,
+   "reason": null,
+   "intent": "unknown",
+   "language": "ta"
+  }
+ ]
+}

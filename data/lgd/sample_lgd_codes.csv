@@ -1,0 +1,5 @@
+village_name,block,district,state,lgd_code,is_sample
+Sample Village A,Sample Block,Sample District,Sample State,999001,1
+Sample Village Alpha,Other Block,Other District,Other State,999002,1
+Sample Village B,Sample Block,Sample District,Sample State,999003,1
+Sample Village B,Other Block,Other District,Other State,999004,1

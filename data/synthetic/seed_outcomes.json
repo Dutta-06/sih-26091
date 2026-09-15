@@ -1,0 +1,3273 @@
+{
+ "_meta": {
+  "is_synthetic": true,
+  "seed": 26091,
+  "description": "SYNTHETIC cold-start outcome records (illustrative, not observed). Down-weighted and progressively replaced by genuine outcome records."
+ },
+ "records": [
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 51.0,
+   "health_after": 66.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 34.2,
+   "health_after": 43.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 45.6,
+   "health_after": 49.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 49.5,
+   "health_after": 53.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 58.8,
+   "health_after": 55.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 56.9,
+   "health_after": 61.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 52.6,
+   "health_after": 68.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 32.9,
+   "health_after": 21.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 42.9,
+   "health_after": 57.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 59.6,
+   "health_after": 73.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 54.8,
+   "health_after": 67.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 47.8,
+   "health_after": 45.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 37.2,
+   "health_after": 32.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 46.1,
+   "health_after": 53.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 37.4,
+   "health_after": 37.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 33.0,
+   "health_after": 22.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 41.6,
+   "health_after": 47.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 53.7,
+   "health_after": 68.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 51.1,
+   "health_after": 57.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 31.3,
+   "health_after": 23.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 32.3,
+   "health_after": 46.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 30.9,
+   "health_after": 28.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 37.9,
+   "health_after": 42.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "agri_input_depot",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 50.7,
+   "health_after": 62.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 47.1,
+   "health_after": 40.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 32.5,
+   "health_after": 35.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 49.0,
+   "health_after": 56.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 51.9,
+   "health_after": 45.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 58.6,
+   "health_after": 49.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 42.6,
+   "health_after": 39.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 44.7,
+   "health_after": 39.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 30.0,
+   "health_after": 41.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 50.9,
+   "health_after": 63.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 35.1,
+   "health_after": 41.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 57.5,
+   "health_after": 46.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 31.9,
+   "health_after": 29.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 48.3,
+   "health_after": 52.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 58.0,
+   "health_after": 64.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 45.0,
+   "health_after": 53.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 43.2,
+   "health_after": 54.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 48.6,
+   "health_after": 44.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 60.0,
+   "health_after": 50.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 30.1,
+   "health_after": 23.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 51.5,
+   "health_after": 55.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 49.1,
+   "health_after": 63.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 55.7,
+   "health_after": 66.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 36.3,
+   "health_after": 41.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beauty_parlour",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 46.6,
+   "health_after": 53.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 34.9,
+   "health_after": 49.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 51.7,
+   "health_after": 41.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 47.0,
+   "health_after": 56.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 32.8,
+   "health_after": 37.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 36.7,
+   "health_after": 48.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 45.9,
+   "health_after": 34.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 40.6,
+   "health_after": 49.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 37.2,
+   "health_after": 49.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 41.5,
+   "health_after": 58.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 58.3,
+   "health_after": 64.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 45.6,
+   "health_after": 57.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 42.6,
+   "health_after": 59.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 38.6,
+   "health_after": 37.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 40.4,
+   "health_after": 33.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 59.0,
+   "health_after": 51.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 48.0,
+   "health_after": 52.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 47.8,
+   "health_after": 54.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 56.0,
+   "health_after": 46.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 48.5,
+   "health_after": 52.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 39.8,
+   "health_after": 57.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 50.9,
+   "health_after": 65.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 33.6,
+   "health_after": 29.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 36.6,
+   "health_after": 42.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "beekeeping",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 37.1,
+   "health_after": 41.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 50.9,
+   "health_after": 66.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 30.4,
+   "health_after": 42.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 35.9,
+   "health_after": 41.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 37.5,
+   "health_after": 26.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 33.3,
+   "health_after": 37.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 35.4,
+   "health_after": 25.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 38.8,
+   "health_after": 50.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 40.6,
+   "health_after": 31.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 35.5,
+   "health_after": 25.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 51.9,
+   "health_after": 66.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 37.2,
+   "health_after": 35.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 60.3,
+   "health_after": 67.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 46.0,
+   "health_after": 41.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 47.3,
+   "health_after": 40.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 34.3,
+   "health_after": 27.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 48.4,
+   "health_after": 43.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 43.3,
+   "health_after": 51.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 38.3,
+   "health_after": 31.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 48.5,
+   "health_after": 42.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 42.7,
+   "health_after": 36.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 38.8,
+   "health_after": 33.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 59.1,
+   "health_after": 47.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 48.2,
+   "health_after": 64.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "carpet_weaving",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 46.0,
+   "health_after": 61.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 55.2,
+   "health_after": 50.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 44.7,
+   "health_after": 53.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 59.3,
+   "health_after": 50.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 42.3,
+   "health_after": 31.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 48.4,
+   "health_after": 41.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 55.4,
+   "health_after": 60.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 30.9,
+   "health_after": 24.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 34.1,
+   "health_after": 48.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 43.1,
+   "health_after": 55.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 37.0,
+   "health_after": 28.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 39.5,
+   "health_after": 31.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 39.4,
+   "health_after": 28.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 35.5,
+   "health_after": 32.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 30.1,
+   "health_after": 42.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 32.5,
+   "health_after": 30.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 43.0,
+   "health_after": 60.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 45.8,
+   "health_after": 49.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 53.0,
+   "health_after": 44.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 54.4,
+   "health_after": 49.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 47.8,
+   "health_after": 54.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 31.8,
+   "health_after": 20.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 35.2,
+   "health_after": 46.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 57.8,
+   "health_after": 55.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "dairy_farming",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 45.8,
+   "health_after": 43.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 42.2,
+   "health_after": 45.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 39.3,
+   "health_after": 42.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 35.7,
+   "health_after": 53.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 58.8,
+   "health_after": 50.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 58.1,
+   "health_after": 67.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 50.5,
+   "health_after": 44.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 42.5,
+   "health_after": 57.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 33.3,
+   "health_after": 49.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 45.1,
+   "health_after": 50.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 57.4,
+   "health_after": 56.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 59.2,
+   "health_after": 65.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 44.2,
+   "health_after": 43.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 45.6,
+   "health_after": 58.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 33.9,
+   "health_after": 29.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 55.2,
+   "health_after": 52.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 48.4,
+   "health_after": 64.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 41.2,
+   "health_after": 37.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 43.8,
+   "health_after": 41.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 49.5,
+   "health_after": 46.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 41.9,
+   "health_after": 59.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 47.3,
+   "health_after": 54.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 36.2,
+   "health_after": 24.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 51.6,
+   "health_after": 42.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "fisheries_pond",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 39.7,
+   "health_after": 29.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 60.4,
+   "health_after": 57.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 33.2,
+   "health_after": 24.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 58.4,
+   "health_after": 69.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 37.6,
+   "health_after": 45.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 61.6,
+   "health_after": 51.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 39.9,
+   "health_after": 52.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 45.4,
+   "health_after": 51.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 35.8,
+   "health_after": 51.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 55.4,
+   "health_after": 67.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 52.4,
+   "health_after": 46.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 45.0,
+   "health_after": 40.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 50.6,
+   "health_after": 48.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 46.0,
+   "health_after": 42.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 32.9,
+   "health_after": 42.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 30.6,
+   "health_after": 30.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 61.2,
+   "health_after": 51.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 32.1,
+   "health_after": 29.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 31.0,
+   "health_after": 28.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 45.0,
+   "health_after": 51.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 38.5,
+   "health_after": 43.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 51.9,
+   "health_after": 43.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 45.1,
+   "health_after": 37.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 56.7,
+   "health_after": 56.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "flour_mill",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 61.7,
+   "health_after": 69.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 60.4,
+   "health_after": 60.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 58.7,
+   "health_after": 69.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 49.9,
+   "health_after": 63.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 56.5,
+   "health_after": 54.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 55.6,
+   "health_after": 67.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 37.0,
+   "health_after": 28.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 48.7,
+   "health_after": 53.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 44.5,
+   "health_after": 51.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 51.8,
+   "health_after": 55.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 34.3,
+   "health_after": 41.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 41.4,
+   "health_after": 48.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 35.9,
+   "health_after": 45.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 47.7,
+   "health_after": 62.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 57.4,
+   "health_after": 50.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 56.2,
+   "health_after": 55.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 54.7,
+   "health_after": 68.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 56.7,
+   "health_after": 46.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 42.4,
+   "health_after": 48.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 31.7,
+   "health_after": 28.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 37.6,
+   "health_after": 49.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 39.7,
+   "health_after": 38.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 41.8,
+   "health_after": 34.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 56.8,
+   "health_after": 49.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "food_processing_home",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 56.3,
+   "health_after": 56.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 41.1,
+   "health_after": 30.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 50.2,
+   "health_after": 42.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 42.7,
+   "health_after": 58.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 57.2,
+   "health_after": 45.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 37.9,
+   "health_after": 26.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 40.8,
+   "health_after": 34.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 56.9,
+   "health_after": 46.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 34.3,
+   "health_after": 43.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 57.2,
+   "health_after": 50.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 40.6,
+   "health_after": 51.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 30.0,
+   "health_after": 36.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 38.0,
+   "health_after": 35.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 42.2,
+   "health_after": 40.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 43.3,
+   "health_after": 41.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 41.9,
+   "health_after": 54.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 44.1,
+   "health_after": 42.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 41.4,
+   "health_after": 36.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 61.0,
+   "health_after": 52.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 37.4,
+   "health_after": 52.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 38.0,
+   "health_after": 50.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 55.8,
+   "health_after": 63.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 45.8,
+   "health_after": 55.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 42.6,
+   "health_after": 33.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "goat_rearing",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 58.0,
+   "health_after": 72.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 48.3,
+   "health_after": 42.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 50.0,
+   "health_after": 39.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 41.7,
+   "health_after": 46.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 50.5,
+   "health_after": 55.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 53.7,
+   "health_after": 66.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 30.8,
+   "health_after": 36.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 33.8,
+   "health_after": 43.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 30.5,
+   "health_after": 40.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 33.4,
+   "health_after": 40.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 60.2,
+   "health_after": 67.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 49.5,
+   "health_after": 56.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 53.9,
+   "health_after": 59.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 48.0,
+   "health_after": 56.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 36.7,
+   "health_after": 44.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 52.7,
+   "health_after": 44.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 30.7,
+   "health_after": 40.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 48.3,
+   "health_after": 47.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 52.0,
+   "health_after": 43.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 31.4,
+   "health_after": 23.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 49.4,
+   "health_after": 47.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 45.2,
+   "health_after": 62.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 39.4,
+   "health_after": 55.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 39.6,
+   "health_after": 39.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "grocery_kirana",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 32.4,
+   "health_after": 24.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 33.0,
+   "health_after": 27.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 36.6,
+   "health_after": 41.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 42.5,
+   "health_after": 58.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 40.7,
+   "health_after": 33.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 35.8,
+   "health_after": 47.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 41.0,
+   "health_after": 37.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 52.8,
+   "health_after": 60.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 56.9,
+   "health_after": 71.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 48.5,
+   "health_after": 63.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 51.9,
+   "health_after": 59.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 43.1,
+   "health_after": 49.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 57.5,
+   "health_after": 69.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 55.1,
+   "health_after": 65.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 54.9,
+   "health_after": 66.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 40.3,
+   "health_after": 43.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 44.7,
+   "health_after": 40.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 56.5,
+   "health_after": 51.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 58.2,
+   "health_after": 48.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 30.4,
+   "health_after": 23.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 47.5,
+   "health_after": 62.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 36.4,
+   "health_after": 27.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 53.1,
+   "health_after": 44.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 41.3,
+   "health_after": 50.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "handloom_weaving",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 58.8,
+   "health_after": 47.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 46.5,
+   "health_after": 51.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 61.0,
+   "health_after": 54.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 36.7,
+   "health_after": 47.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 51.5,
+   "health_after": 58.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 46.4,
+   "health_after": 39.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 57.7,
+   "health_after": 54.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 44.7,
+   "health_after": 59.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 54.5,
+   "health_after": 68.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 57.8,
+   "health_after": 61.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 55.8,
+   "health_after": 69.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 60.6,
+   "health_after": 77.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 58.8,
+   "health_after": 58.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 60.7,
+   "health_after": 64.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 36.4,
+   "health_after": 44.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 35.7,
+   "health_after": 28.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 47.8,
+   "health_after": 43.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 31.1,
+   "health_after": 29.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 46.9,
+   "health_after": 36.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 36.6,
+   "health_after": 28.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 58.4,
+   "health_after": 54.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 58.7,
+   "health_after": 66.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 54.7,
+   "health_after": 53.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 58.3,
+   "health_after": 75.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mobile_repair",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 39.5,
+   "health_after": 30.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 52.9,
+   "health_after": 70.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 37.4,
+   "health_after": 50.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 54.0,
+   "health_after": 51.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 30.1,
+   "health_after": 22.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 34.6,
+   "health_after": 52.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 34.3,
+   "health_after": 42.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 39.9,
+   "health_after": 33.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 56.3,
+   "health_after": 48.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 59.4,
+   "health_after": 74.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 34.6,
+   "health_after": 43.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 51.3,
+   "health_after": 62.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 42.0,
+   "health_after": 53.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 36.0,
+   "health_after": 49.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 52.2,
+   "health_after": 43.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 30.7,
+   "health_after": 41.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 56.6,
+   "health_after": 60.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 52.2,
+   "health_after": 61.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 39.4,
+   "health_after": 44.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 39.5,
+   "health_after": 27.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 47.2,
+   "health_after": 35.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 60.1,
+   "health_after": 55.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 34.3,
+   "health_after": 34.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 43.5,
+   "health_after": 39.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "mustard_oil_mill",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 35.7,
+   "health_after": 35.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 57.4,
+   "health_after": 52.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 31.3,
+   "health_after": 42.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 49.2,
+   "health_after": 45.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 46.5,
+   "health_after": 44.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 61.2,
+   "health_after": 55.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 41.3,
+   "health_after": 39.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 33.3,
+   "health_after": 48.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 54.1,
+   "health_after": 46.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 45.9,
+   "health_after": 58.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 33.7,
+   "health_after": 37.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 60.6,
+   "health_after": 78.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 56.2,
+   "health_after": 50.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 42.2,
+   "health_after": 53.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 40.5,
+   "health_after": 33.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 48.7,
+   "health_after": 58.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 54.6,
+   "health_after": 45.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 30.2,
+   "health_after": 44.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 39.8,
+   "health_after": 46.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 48.5,
+   "health_after": 59.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 37.5,
+   "health_after": 35.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 46.5,
+   "health_after": 54.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 48.0,
+   "health_after": 64.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 55.1,
+   "health_after": 47.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_backyard",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 50.1,
+   "health_after": 45.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 53.3,
+   "health_after": 60.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 45.0,
+   "health_after": 57.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 35.0,
+   "health_after": 23.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 51.5,
+   "health_after": 59.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 49.3,
+   "health_after": 48.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 39.9,
+   "health_after": 29.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 62.0,
+   "health_after": 53.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 39.7,
+   "health_after": 37.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 48.7,
+   "health_after": 46.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 46.3,
+   "health_after": 45.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 56.1,
+   "health_after": 66.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 55.4,
+   "health_after": 65.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 36.4,
+   "health_after": 52.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 61.4,
+   "health_after": 66.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 55.7,
+   "health_after": 46.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 39.8,
+   "health_after": 51.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 42.2,
+   "health_after": 41.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 41.4,
+   "health_after": 45.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 55.4,
+   "health_after": 60.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 43.1,
+   "health_after": 31.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 35.1,
+   "health_after": 50.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 58.1,
+   "health_after": 69.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 37.5,
+   "health_after": 35.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "poultry_layer",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 32.4,
+   "health_after": 44.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 34.8,
+   "health_after": 28.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 60.2,
+   "health_after": 71.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 48.2,
+   "health_after": 60.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 46.0,
+   "health_after": 57.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 61.3,
+   "health_after": 69.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 60.4,
+   "health_after": 49.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 40.6,
+   "health_after": 37.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 50.2,
+   "health_after": 58.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 37.7,
+   "health_after": 46.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 30.9,
+   "health_after": 46.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 31.3,
+   "health_after": 34.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 40.2,
+   "health_after": 38.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 34.5,
+   "health_after": 32.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 58.1,
+   "health_after": 74.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 60.2,
+   "health_after": 57.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 39.7,
+   "health_after": 37.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 38.2,
+   "health_after": 31.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 44.2,
+   "health_after": 50.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 60.4,
+   "health_after": 50.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 44.6,
+   "health_after": 54.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 50.6,
+   "health_after": 58.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 60.6,
+   "health_after": 66.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 59.6,
+   "health_after": 75.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tailoring",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 38.6,
+   "health_after": 55.3,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 35.0,
+   "health_after": 42.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 45.0,
+   "health_after": 50.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 39.6,
+   "health_after": 48.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 46.8,
+   "health_after": 50.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 37.3,
+   "health_after": 49.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "pricing_adjustment",
+   "health_before": 51.9,
+   "health_after": 63.8,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 38.7,
+   "health_after": 32.2,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 45.3,
+   "health_after": 36.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 52.2,
+   "health_after": 70.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 37.3,
+   "health_after": 50.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 39.1,
+   "health_after": 49.4,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "supply_chain_change",
+   "health_before": 45.8,
+   "health_after": 51.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 48.5,
+   "health_after": 40.9,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 55.4,
+   "health_after": 64.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 60.9,
+   "health_after": 60.7,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 38.7,
+   "health_after": 50.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 45.5,
+   "health_after": 41.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "mentor_outreach",
+   "health_before": 54.4,
+   "health_after": 48.1,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 36.8,
+   "health_after": 48.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 32.4,
+   "health_after": 41.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 50.6,
+   "health_after": 50.5,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 59.7,
+   "health_after": 68.0,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 31.2,
+   "health_after": 26.6,
+   "is_synthetic": true
+  },
+  {
+   "catalog_id": "tea_snack_stall",
+   "district": null,
+   "intervention_type": "repayment_counselling",
+   "health_before": 58.2,
+   "health_after": 63.9,
+   "is_synthetic": true
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+{
+  "_comment": "Enterprise health scoring configuration (TDD 7.4). Tune here; no code change needed.",
+  "weights": {
+    "revenue_vs_plan": 0.45,
+    "surplus_coverage": 0.35,
+    "repayment": 0.20
+  },
+  "bands": {
+    "healthy_min_score": 70,
+    "watch_min_score": 50
+  },
+  "revenue_ratio_full_score": 1.0,
+  "revenue_ratio_floor": 0.70,
+  "revenue_shortfall_ratio": 0.90,
+  "coverage_full_score": 1.5,
+  "expense_ratio_spike_margin": 0.15,
+  "normal_volume_min_transactions_per_week": 3,
+  "normal_volume_vs_previous_ratio": 0.80,
+  "persistent_at_risk_snapshots": 2,
+  "repayment_scores": {
+    "paid": 1.0,
+    "not_due": 1.0,
+    "unknown": 0.6,
+    "grace_period": 0.5,
+    "overdue": 0.0
+  }
+}
